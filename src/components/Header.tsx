@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +17,10 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
+    if (location.pathname !== '/') {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -32,12 +38,12 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-lg flex items-center justify-center">
               <span className="text-white font-black text-lg">U</span>
             </div>
             <span className="text-xl sm:text-2xl font-black text-usergy-dark">Usergy</span>
-          </div>
+          </Link>
 
           {/* Navigation - Hidden on mobile, visible on tablet and up */}
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
@@ -47,12 +53,12 @@ const Header = () => {
             >
               Home
             </button>
-            <button 
-              onClick={() => scrollToSection('services')}
+            <Link 
+              to="/services"
               className="text-usergy-dark hover:text-usergy-turquoise transition-colors font-semibold text-sm lg:text-base"
             >
               Services
-            </button>
+            </Link>
             <button 
               onClick={() => scrollToSection('how-it-works')}
               className="text-usergy-dark hover:text-usergy-skyblue transition-colors font-semibold text-sm lg:text-base"
