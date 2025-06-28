@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { DollarSign, TrendingUp, Stack, Search } from 'lucide-react';
+import { DollarSign, TrendingUp, Layers, Search } from 'lucide-react';
 
 const PricingPsychologySection = () => {
   const principles = [
@@ -13,7 +13,7 @@ const PricingPsychologySection = () => {
     },
     {
       title: 'Tier Anchoring',
-      icon: Stack,
+      icon: Layers,
       description: 'The \'Full Traction\' column anchors perceived value, making our \'Feedback + Community\' plan an incredibly attractive sweet spot for core activation.',
       color: 'usergy-coral',
       gradient: 'from-usergy-coral/20 to-usergy-coral/5'
