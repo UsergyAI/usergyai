@@ -7,25 +7,29 @@ const PricingPsychologySection = () => {
       title: 'Charm Pricing',
       icon: '💰',
       description: 'Our pricing uses charm pricing to make plans feel more approachable and accessible for early-stage budgets, maximizing your growth potential.',
-      color: 'usergy-turquoise'
+      color: 'usergy-turquoise',
+      gradient: 'from-usergy-turquoise/20 to-usergy-turquoise/5'
     },
     {
       title: 'Tier Anchoring',
       icon: '⚖️',
       description: 'The \'Full Traction\' column anchors perceived value, making our \'Feedback + Community\' plan an incredibly attractive sweet spot for core activation.',
-      color: 'usergy-coral'
+      color: 'usergy-coral',
+      gradient: 'from-usergy-coral/20 to-usergy-coral/5'
     },
     {
       title: 'Volume Discounts',
       icon: '📈',
       description: 'Benefit from built-in volume discounts: per-participant costs decrease as you invest in more users, ensuring scalability for your growth.',
-      color: 'usergy-skyblue'
+      color: 'usergy-skyblue',
+      gradient: 'from-usergy-skyblue/20 to-usergy-skyblue/5'
     },
     {
       title: 'Complete Transparency',
       icon: '🔍',
       description: 'All incentives included means no hidden fees or unexpected costs. Your investment directly funds real human insights and engagement.',
-      color: 'usergy-gold'
+      color: 'usergy-gold',
+      gradient: 'from-usergy-gold/20 to-usergy-gold/5'
     }
   ];
 
@@ -40,13 +44,17 @@ const PricingPsychologySection = () => {
           {principles.map((principle, index) => (
             <div 
               key={index}
-              className="text-center bg-white rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100"
+              className={`text-center bg-gradient-to-b ${principle.gradient} rounded-xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-gray-100 hover:border-${principle.color}/30 transform group cursor-pointer`}
             >
-              <div className={`w-16 h-16 bg-${principle.color}/20 rounded-full flex items-center justify-center mx-auto mb-4`}>
-                <span className="text-2xl">{principle.icon}</span>
+              <div className={`w-16 h-16 bg-gradient-to-br from-${principle.color} to-${principle.color}/80 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                <span className="text-2xl filter drop-shadow-sm">{principle.icon}</span>
               </div>
-              <h4 className="font-bold text-usergy-dark mb-2">{principle.title}</h4>
-              <p className="text-sm text-gray-600">{principle.description}</p>
+              <h4 className={`font-bold text-${principle.color} mb-3 text-lg group-hover:text-usergy-dark transition-colors`}>
+                {principle.title}
+              </h4>
+              <p className="text-sm text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors">
+                {principle.description}
+              </p>
             </div>
           ))}
         </div>

@@ -24,14 +24,14 @@ const PricingMatrixSection = () => {
             Select your desired participant count below to see how Usergy delivers comprehensive growth, tailored to your needs.
           </h3>
           
-          {/* Tab-based Participant Selector */}
+          {/* Enhanced Tab-based Participant Selector */}
           <Tabs value={selectedUsers} onValueChange={setSelectedUsers} className="mb-8">
-            <TabsList className="bg-gray-100 rounded-full p-2 inline-flex h-auto">
+            <TabsList className="bg-gray-100 rounded-full p-2 inline-flex h-auto shadow-lg">
               {userOptions.map(option => (
                 <TabsTrigger
                   key={option.value}
                   value={option.value}
-                  className="px-6 py-3 rounded-full font-semibold transition-all data-[state=active]:bg-usergy-skyblue data-[state=active]:text-white data-[state=active]:shadow-lg text-gray-600 hover:text-usergy-turquoise"
+                  className="px-6 py-3 rounded-full font-semibold transition-all duration-300 data-[state=active]:bg-usergy-skyblue data-[state=active]:text-white data-[state=active]:shadow-xl data-[state=active]:transform data-[state=active]:scale-105 text-gray-600 hover:text-usergy-turquoise hover:bg-white hover:shadow-md"
                 >
                   {option.label}
                 </TabsTrigger>

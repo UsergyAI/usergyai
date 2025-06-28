@@ -24,31 +24,31 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-      {/* Table Header - Now 3 columns instead of 4 */}
-      <div className="grid grid-cols-1 md:grid-cols-3 bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white">
-        <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-black/10">
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 animate-fade-in">
+      {/* Table Header - Enhanced gradient backgrounds */}
+      <div className="grid grid-cols-1 md:grid-cols-3">
+        <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-gradient-to-b from-usergy-coral to-usergy-coral/80 text-white relative">
           <div className="font-bold text-lg">Feedback Only</div>
           <div className="text-sm font-normal mt-1 opacity-90">Basic Insight</div>
         </div>
-        <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-usergy-gold/20 relative">
+        <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-gradient-to-b from-usergy-turquoise to-usergy-skyblue text-white relative">
           <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-usergy-gold text-usergy-dark px-4 py-1 rounded-full text-sm font-bold shadow-lg z-10">
             Most Popular
           </div>
           <div className="font-bold text-lg mt-2">Feedback + Community</div>
           <div className="text-sm font-normal mt-1 opacity-90">Core Activation</div>
         </div>
-        <div className="p-6 text-center font-bold text-lg bg-black/10">
+        <div className="p-6 text-center font-bold text-lg bg-gradient-to-b from-usergy-skyblue to-usergy-skyblue/80 text-white">
           <div className="font-bold text-lg">Full Traction</div>
           <div className="text-sm font-normal mt-1 opacity-90">Amplify & Buzz</div>
         </div>
       </div>
 
-      {/* Pricing Row - Now 3 columns with hover effects */}
+      {/* Pricing Row - Enhanced with smooth animations and hover effects */}
       <div className="grid grid-cols-1 md:grid-cols-3 border-b-2 border-usergy-turquoise bg-gradient-to-r from-usergy-turquoise/5 to-usergy-skyblue/5">
         {/* Feedback Only */}
-        <div className="p-6 text-center border-r border-gray-200 bg-white hover:shadow-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-1">
-          <div className="text-3xl font-black text-usergy-dark mb-3">
+        <div className="p-6 text-center border-r border-gray-200 bg-white hover:shadow-2xl hover:bg-gradient-to-b hover:from-white hover:to-usergy-coral/5 transition-all duration-300 hover:-translate-y-2 transform group">
+          <div className="text-3xl font-black text-usergy-dark mb-3 group-hover:text-usergy-coral transition-colors">
             ${prices.feedback.toLocaleString()}
           </div>
           <div className="text-sm text-gray-500 mb-4">for {selectedUsers} users</div>
@@ -68,16 +68,16 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
           </ul>
           <Button 
             onClick={() => handleBookCall('Feedback Only')}
-            className="w-full bg-usergy-coral hover:bg-usergy-coral/90 text-white font-bold"
+            className="w-full bg-usergy-coral hover:bg-usergy-coral/90 text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <Phone className="w-4 h-4 mr-2" />
-            Select Plan
+            Book Your Strategy Call 📞
           </Button>
         </div>
 
         {/* Feedback + Community */}
-        <div className="p-6 text-center bg-usergy-gold/5 border-2 border-usergy-gold/30 border-r border-gray-200 relative hover:shadow-xl hover:bg-usergy-gold/10 transition-all duration-300 hover:-translate-y-1">
-          <div className="text-3xl font-black text-usergy-dark mb-3">
+        <div className="p-6 text-center bg-gradient-to-b from-usergy-gold/5 to-usergy-turquoise/5 border-2 border-usergy-gold/30 border-r border-gray-200 relative hover:shadow-2xl hover:bg-gradient-to-b hover:from-usergy-gold/10 hover:to-usergy-turquoise/10 transition-all duration-300 hover:-translate-y-2 transform group">
+          <div className="text-3xl font-black text-usergy-dark mb-3 group-hover:text-usergy-turquoise transition-colors">
             ${prices.community.toLocaleString()}
           </div>
           <div className="text-sm text-gray-500 mb-4">for {selectedUsers} users</div>
@@ -97,16 +97,16 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
           </ul>
           <Button 
             onClick={() => handleBookCall('Feedback + Community')}
-            className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold"
+            className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <Phone className="w-4 h-4 mr-2" />
-            Select Plan
+            Book Your Strategy Call 📞
           </Button>
         </div>
 
         {/* Full Traction */}
-        <div className="p-6 text-center bg-white hover:shadow-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-1">
-          <div className="text-3xl font-black text-usergy-dark mb-3">
+        <div className="p-6 text-center bg-white hover:shadow-2xl hover:bg-gradient-to-b hover:from-white hover:to-usergy-skyblue/5 transition-all duration-300 hover:-translate-y-2 transform group">
+          <div className="text-3xl font-black text-usergy-dark mb-3 group-hover:text-usergy-skyblue transition-colors">
             ${prices.full.toLocaleString()}
           </div>
           <div className="text-sm text-gray-500 mb-4">for {selectedUsers} users</div>
@@ -126,10 +126,10 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
           </ul>
           <Button 
             onClick={() => handleBookCall('Full Traction')}
-            className="w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold"
+            className="w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <Phone className="w-4 h-4 mr-2" />
-            Select Plan
+            Book Your Strategy Call 📞
           </Button>
         </div>
       </div>

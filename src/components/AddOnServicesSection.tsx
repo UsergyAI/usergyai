@@ -8,7 +8,8 @@ const AddOnServicesSection = () => {
       price: '$35 each',
       description: 'Scale your insights with additional high-quality participants',
       icon: '➕',
-      color: 'usergy-turquoise'
+      color: 'usergy-turquoise',
+      gradient: 'from-usergy-turquoise/20 to-usergy-turquoise/5'
     },
     {
       title: 'Advanced Analytics',
@@ -16,7 +17,8 @@ const AddOnServicesSection = () => {
       subtitle: '(one-time)',
       description: 'Deep-dive analysis with predictive insights and recommendations',
       icon: '🔍',
-      color: 'usergy-coral'
+      color: 'usergy-coral',
+      gradient: 'from-usergy-coral/20 to-usergy-coral/5'
     },
     {
       title: 'Retainer Bundle',
@@ -24,7 +26,8 @@ const AddOnServicesSection = () => {
       subtitle: '3+ projects',
       description: 'Maximize your investment with ongoing partnership discounts',
       icon: '🎁',
-      color: 'usergy-skyblue'
+      color: 'usergy-skyblue',
+      gradient: 'from-usergy-skyblue/20 to-usergy-skyblue/5'
     }
   ];
 
@@ -39,16 +42,22 @@ const AddOnServicesSection = () => {
           {addOns.map((addOn, index) => (
             <div 
               key={index}
-              className="bg-white rounded-lg p-6 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-gray-200"
+              className={`bg-gradient-to-b ${addOn.gradient} rounded-xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-gray-100 hover:border-${addOn.color}/30 transform group cursor-pointer`}
             >
               <div className="flex items-center justify-center mb-4">
-                <span className="text-3xl mr-2">{addOn.icon}</span>
-                <h4 className={`font-bold text-${addOn.color}`}>{addOn.title}</h4>
+                <div className={`w-12 h-12 bg-gradient-to-br from-${addOn.color} to-${addOn.color}/80 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                  <span className="text-xl filter drop-shadow-sm">{addOn.icon}</span>
+                </div>
+                <h4 className={`font-bold text-${addOn.color} group-hover:text-usergy-dark transition-colors text-lg`}>
+                  {addOn.title}
+                </h4>
               </div>
-              <p className="text-2xl font-black text-usergy-dark">
+              <p className="text-2xl font-black text-usergy-dark mb-2 group-hover:scale-105 transition-transform">
                 {addOn.price} {addOn.subtitle && <span className="text-sm text-gray-600">{addOn.subtitle}</span>}
               </p>
-              <p className="text-sm text-gray-600 mt-2">{addOn.description}</p>
+              <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors leading-relaxed">
+                {addOn.description}
+              </p>
             </div>
           ))}
         </div>
