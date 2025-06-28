@@ -1,219 +1,211 @@
-
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import React, { useState, useEffect, useRef } from 'react';
+import { Rocket, Users, BarChart3, Zap, Target, Gift, ChevronDown, ChevronUp } from 'lucide-react';
 
 const HowItWorksSection = () => {
-  const [activeStep, setActiveStep] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [expandedStep, setExpandedStep] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
-  const steps = [
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleStep = (stepIndex: number) => {
+    setExpandedStep(expandedStep === stepIndex ? null : stepIndex);
+  };
+
+  const founderSteps = [
     {
-      id: 1,
       title: "Connect & Launch",
-      description: "Founders launch campaigns, users find matching projects",
-      founderActions: [
-        "Create compelling campaign with clear objectives",
-        "Set target audience and engagement goals",
-        "Upload product demos and key materials"
-      ],
-      userActions: [
-        "Browse curated AI projects by category",
-        "Match with projects aligned to interests",
-        "Join campaigns that excite you most"
-      ],
-      icon: "🚀",
-      color: "#4ECDC4"
+      icon: Rocket,
+      color: "#4ECDC4",
+      description: "Set up your AI project profile and launch your campaign",
+      details: "Founders create detailed project profiles with demo links, target audience specs, and feedback goals. Our smart matching system connects you with relevant AI enthusiasts within 24 hours."
     },
     {
-      id: 2,
-      title: "Engage & Contribute",
-      description: "Users interact with AI, provide feedback & social buzz",
-      founderActions: [
-        "Monitor real-time engagement metrics",
-        "Respond to user questions and feedback",
-        "Refine product based on insights"
-      ],
-      userActions: [
-        "Test AI tools with guided workflows",
-        "Provide structured, valuable feedback",
-        "Share experiences on social platforms"
-      ],
-      icon: "🤝",
-      color: "#45B7D1"
+      title: "Engage & Monitor",
+      icon: BarChart3,
+      color: "#45B7D1", 
+      description: "Track real-time engagement and gather valuable insights",
+      details: "Monitor user interactions through our comprehensive dashboard. Track engagement metrics, user demographics, and feedback quality scores in real-time as your campaign progresses."
     },
     {
-      id: 3,
-      title: "Analyze & Reward",
-      description: "Founders get actionable insights, users earn points & rewards",
-      founderActions: [
-        "Access detailed analytics dashboard",
-        "Download actionable feedback reports",
-        "Connect with top contributing users"
-      ],
-      userActions: [
-        "Earn points for quality contributions",
-        "Redeem rewards and exclusive access",
-        "Level up your AI explorer status"
-      ],
-      icon: "📊",
-      color: "#FF6B6B"
+      title: "Analyze & Optimize",
+      icon: Target,
+      color: "#FF6B6B",
+      description: "Transform feedback into actionable product improvements",
+      details: "Access detailed analytics reports with sentiment analysis, feature priority rankings, and actionable recommendations. Use AI-powered insights to make data-driven product decisions."
+    }
+  ];
+
+  const userSteps = [
+    {
+      title: "Discover & Explore",
+      icon: Zap,
+      color: "#4ECDC4",
+      description: "Browse cutting-edge AI projects tailored to your interests",
+      details: "Users explore personalized AI project recommendations based on their interests and expertise. Advanced filtering helps discover projects in specific domains like healthcare, productivity, or creativity."
+    },
+    {
+      title: "Test & Contribute",
+      icon: Users,
+      color: "#45B7D1",
+      description: "Provide meaningful feedback on innovative AI solutions",
+      details: "Engage with AI tools through structured testing sessions. Provide detailed feedback using our guided questionnaires and rating systems designed to capture nuanced user experiences."
+    },
+    {
+      title: "Earn & Redeem",
+      icon: Gift,
+      color: "#FF6B6B",
+      description: "Collect points and unlock exclusive rewards",
+      details: "Earn points for quality feedback, consistent participation, and community engagement. Redeem rewards including early access to premium AI tools, tech merchandise, and exclusive events."
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-20 bg-white">
+    <section id="how-it-works" ref={sectionRef} className="py-20 bg-gradient-to-br from-usergy-light to-white">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
+          <div className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             <h2 className="text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-6">
-              Usergy in Action: 
-              <span className="gradient-text"> Simple Steps, Powerful Results</span>
+              How <span className="gradient-text">Usergy Works</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
-              Our intuitive platform streamlines the entire validation process for founders and creates 
-              a rewarding experience for users. Click any step below to explore the detailed workflow.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              A streamlined 3-step process designed for maximum impact and minimal friction. 
+              Whether you're launching or exploring, success is just three clicks away.
             </p>
           </div>
 
-          {/* Enhanced Interactive Flow */}
-          <div className="relative">
-            {/* Flow Steps */}
-            <div className="grid md:grid-cols-3 gap-8 mb-12">
-              {steps.map((step, index) => (
-                <div key={step.id} className="relative">
-                  {/* Connection Line */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden md:block absolute top-1/2 left-full w-8 h-1 bg-gradient-to-r from-gray-300 to-gray-200 transform -translate-y-1/2 z-0"></div>
-                  )}
-                  
-                  {/* Enhanced Step Card */}
-                  <div 
-                    className={`relative bg-white rounded-2xl p-8 shadow-lg cursor-pointer transition-all duration-500 hover:shadow-xl transform hover:scale-105 ${
-                      activeStep === step.id 
-                        ? 'ring-4 ring-opacity-50 scale-105 shadow-2xl' 
-                        : 'hover:shadow-xl'
-                    }`}
-                    style={{
-                      ...(activeStep === step.id && { 
-                        boxShadow: `0 0 0 4px ${step.color}50, 0 20px 40px rgba(0,0,0,0.1)` 
-                      })
-                    }}
-                    onClick={() => setActiveStep(activeStep === step.id ? null : step.id)}
-                  >
-                    {/* Step Icon with enhanced animation */}
-                    <div 
-                      className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto text-white text-2xl font-bold shadow-lg transition-all duration-300 ${
-                        activeStep === step.id ? 'scale-125 animate-pulse-glow' : ''
-                      }`}
-                      style={{ backgroundColor: step.color }}
-                    >
-                      {step.icon}
-                    </div>
-
-                    {/* Step Number */}
-                    <div className="text-center text-sm font-bold text-gray-400 mb-2">
-                      STEP {step.id}
-                    </div>
-
-                    {/* Step Title */}
-                    <h3 className="text-xl font-bold text-center mb-4" style={{ color: step.color }}>
-                      {step.title}
-                    </h3>
-
-                    {/* Step Description */}
-                    <p className="text-gray-600 text-center text-sm leading-relaxed">
-                      {step.description}
-                    </p>
-
-                    {/* Enhanced Click Indicator */}
-                    <div className="text-center mt-6">
-                      <span className={`text-xs transition-all duration-300 ${
-                        activeStep === step.id 
-                          ? 'text-white font-semibold' 
-                          : 'text-gray-400'
-                      }`}>
-                        {activeStep === step.id ? 'Click to collapse' : 'Click to expand'}
-                      </span>
-                    </div>
-                  </div>
+          {/* Dual Path Layout */}
+          <div className="grid lg:grid-cols-2 gap-12">
+            {/* For Founders Path */}
+            <div className={`transition-all duration-1000 delay-300 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}>
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center space-x-3 bg-usergy-turquoise text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg">
+                  <Rocket className="h-6 w-6" />
+                  <span>For AI Founders</span>
                 </div>
-              ))}
-            </div>
+              </div>
 
-            {/* Enhanced Expandable Details */}
-            {activeStep && (
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-inner animate-slide-up border-l-4" 
-                   style={{ borderLeftColor: steps.find(s => s.id === activeStep)?.color }}>
-                {(() => {
-                  const step = steps.find(s => s.id === activeStep);
-                  if (!step) return null;
-                  
-                  return (
-                    <div>
-                      <div className="text-center mb-8">
+              <div className="space-y-6">
+                {founderSteps.map((step, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div 
+                      className="p-6 cursor-pointer"
+                      onClick={() => toggleStep(index)}
+                    >
+                      <div className="flex items-center space-x-4">
                         <div 
-                          className="inline-flex items-center justify-center w-20 h-20 rounded-full text-white text-3xl mb-4 animate-pulse-glow"
+                          className="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
                           style={{ backgroundColor: step.color }}
                         >
-                          {step.icon}
+                          <step.icon className="h-6 w-6 text-white" />
                         </div>
-                        <h3 className="text-3xl font-bold mb-2" style={{ color: step.color }}>
-                          {step.title}
-                        </h3>
-                        <p className="text-xl text-gray-600">{step.description}</p>
-                      </div>
-
-                      <div className="grid md:grid-cols-2 gap-8">
-                        {/* For Founders */}
-                        <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-usergy-turquoise">
-                          <div className="flex items-center mb-4">
-                            <div className="w-8 h-8 bg-usergy-turquoise rounded-lg flex items-center justify-center mr-3">
-                              <span className="text-white text-sm">🚀</span>
-                            </div>
-                            <h4 className="text-xl font-bold text-usergy-dark">For Founders</h4>
-                          </div>
-                          <ul className="space-y-3">
-                            {step.founderActions.map((action, index) => (
-                              <li key={index} className="flex items-start space-x-3">
-                                <div className="w-2 h-2 bg-usergy-turquoise rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-gray-700">{action}</span>
-                              </li>
-                            ))}
-                          </ul>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-usergy-dark mb-1">{step.title}</h3>
+                          <p className="text-gray-600">{step.description}</p>
                         </div>
-
-                        {/* For Users */}
-                        <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-usergy-coral">
-                          <div className="flex items-center mb-4">
-                            <div className="w-8 h-8 bg-usergy-coral rounded-lg flex items-center justify-center mr-3">
-                              <span className="text-white text-sm">🎮</span>
-                            </div>
-                            <h4 className="text-xl font-bold text-usergy-dark">For Users</h4>
-                          </div>
-                          <ul className="space-y-3">
-                            {step.userActions.map((action, index) => (
-                              <li key={index} className="flex items-start space-x-3">
-                                <div className="w-2 h-2 bg-usergy-coral rounded-full mt-2 flex-shrink-0"></div>
-                                <span className="text-gray-700">{action}</span>
-                              </li>
-                            ))}
-                          </ul>
+                        <div className="text-gray-400">
+                          {expandedStep === index ? 
+                            <ChevronUp className="h-5 w-5" /> : 
+                            <ChevronDown className="h-5 w-5" />
+                          }
                         </div>
                       </div>
                     </div>
-                  );
-                })()}
+                    
+                    {expandedStep === index && (
+                      <div className="px-6 pb-6 border-t border-gray-100 pt-4 animate-accordion-down">
+                        <p className="text-gray-700 leading-relaxed">{step.details}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
-            )}
+            </div>
 
-            {/* CTA */}
-            <div className="text-center mt-12">
-              <Button 
-                size="lg"
-                className="bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
-              >
-                See the Full Interactive Workflow →
-              </Button>
+            {/* For Users Path */}
+            <div className={`transition-all duration-1000 delay-600 ${
+              isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            }`}>
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center space-x-3 bg-usergy-coral text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg">
+                  <Users className="h-6 w-6" />
+                  <span>For AI Enthusiasts</span>
+                </div>
+              </div>
+
+              <div className="space-y-6">
+                {userSteps.map((step, index) => (
+                  <div key={index + 100} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                    <div 
+                      className="p-6 cursor-pointer"
+                      onClick={() => toggleStep(index + 100)}
+                    >
+                      <div className="flex items-center space-x-4">
+                        <div 
+                          className="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+                          style={{ backgroundColor: step.color }}
+                        >
+                          <step.icon className="h-6 w-6 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-usergy-dark mb-1">{step.title}</h3>
+                          <p className="text-gray-600">{step.description}</p>
+                        </div>
+                        <div className="text-gray-400">
+                          {expandedStep === index + 100 ? 
+                            <ChevronUp className="h-5 w-5" /> : 
+                            <ChevronDown className="h-5 w-5" />
+                          }
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {expandedStep === index + 100 && (
+                      <div className="px-6 pb-6 border-t border-gray-100 pt-4 animate-accordion-down">
+                        <p className="text-gray-700 leading-relaxed">{step.details}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className={`text-center mt-16 transition-all duration-1000 delay-900 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <div className="bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white rounded-2xl p-8 shadow-2xl">
+              <h3 className="text-2xl font-bold mb-4">Ready to Transform Your AI Journey?</h3>
+              <p className="text-lg mb-6 opacity-90">Join thousands of innovators already building the future with Usergy</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="bg-white text-usergy-turquoise font-bold py-3 px-8 rounded-full hover:bg-gray-50 transition-colors duration-300 shadow-lg">
+                  Start Your Campaign
+                </button>
+                <button className="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-usergy-turquoise transition-all duration-300">
+                  Explore Projects
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
-
 import React, { useEffect, useRef, useState } from 'react';
+import { BarChart3, Users, Star, Gift, Quote, ChevronLeft, ChevronRight, Shield } from 'lucide-react';
 
 const TrustSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,10 +13,10 @@ const TrustSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const kpis = [
-    { key: 'campaigns', end: 1200, label: 'Campaigns Launched', color: '#4ECDC4', suffix: '+', icon: '📊' },
-    { key: 'enthusiasts', end: 75000, label: 'Engaged AI Enthusiasts', color: '#FF6B6B', suffix: '+', icon: '👥' },
-    { key: 'quality', end: 92, label: 'Average Feedback Quality Score', color: '#45B7D1', suffix: '%', icon: '⭐' },
-    { key: 'points', end: 500, label: 'Total Points Redeemed (K)', color: '#FED766', suffix: 'K+', icon: '🎁' }
+    { key: 'campaigns', end: 1200, label: 'Campaigns Launched', color: '#4ECDC4', suffix: '+', icon: BarChart3 },
+    { key: 'enthusiasts', end: 75000, label: 'Engaged AI Enthusiasts', color: '#FF6B6B', suffix: '+', icon: Users },
+    { key: 'quality', end: 92, label: 'Average Feedback Quality Score', color: '#45B7D1', suffix: '%', icon: Star },
+    { key: 'points', end: 500, label: 'Total Points Redeemed (K)', color: '#FED766', suffix: 'K+', icon: Gift }
   ];
 
   const testimonials = [
@@ -124,7 +124,7 @@ const TrustSection = () => {
             </p>
           </div>
 
-          {/* Enhanced KPI Counters with improved animations */}
+          {/* Enhanced KPI Counters with icons */}
           <div className={`grid md:grid-cols-4 gap-8 mb-16 transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
@@ -139,9 +139,7 @@ const TrustSection = () => {
                     animationDelay: `${index * 0.2}s`
                   }}
                 >
-                  <span className="text-3xl font-black text-white">
-                    {kpi.icon}
-                  </span>
+                  <kpi.icon className="h-8 w-8 text-white" />
                 </div>
                 <div 
                   className={`text-4xl lg:text-5xl font-black mb-2 transition-all duration-300 group-hover:scale-105 ${
@@ -170,13 +168,13 @@ const TrustSection = () => {
               onClick={prevTestimonial}
               className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-usergy-turquoise text-white flex items-center justify-center hover:bg-usergy-skyblue transition-colors duration-300 z-10"
             >
-              ←
+              <ChevronLeft className="h-5 w-5" />
             </button>
             <button
               onClick={nextTestimonial}
               className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-usergy-turquoise text-white flex items-center justify-center hover:bg-usergy-skyblue transition-colors duration-300 z-10"
             >
-              →
+              <ChevronRight className="h-5 w-5" />
             </button>
 
             <div className="relative overflow-hidden px-12">
@@ -187,7 +185,7 @@ const TrustSection = () => {
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="w-full flex-shrink-0 text-center px-8">
                     <div className="max-w-4xl mx-auto">
-                      <div className="text-4xl mb-6 animate-bounce">💭</div>
+                      <Quote className="h-12 w-12 text-usergy-turquoise mx-auto mb-6 animate-bounce" />
                       <blockquote className="text-2xl lg:text-3xl font-semibold text-usergy-dark mb-8 leading-relaxed">
                         "{testimonial.quote}"
                       </blockquote>
@@ -197,7 +195,10 @@ const TrustSection = () => {
                             testimonial.type === 'founder' ? 'bg-usergy-turquoise' : 'bg-usergy-coral'
                           }`}
                         >
-                          {testimonial.type === 'founder' ? '🚀' : '🎮'}
+                          {testimonial.type === 'founder' ? 
+                            <BarChart3 className="h-6 w-6" /> : 
+                            <Users className="h-6 w-6" />
+                          }
                         </div>
                         <div className="text-left">
                           <div className="font-bold text-usergy-dark">{testimonial.author}</div>
@@ -232,7 +233,7 @@ const TrustSection = () => {
           }`}>
             <div className="inline-flex items-center space-x-3 text-gray-600 bg-white rounded-full px-6 py-3 shadow-md hover:shadow-lg transition-shadow duration-300">
               <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-pulse">
-                <span className="text-white text-sm">🔒</span>
+                <Shield className="h-4 w-4 text-white" />
               </div>
               <span className="font-semibold">Your Data is Secure & Private. Built with Trust & Compliance.</span>
             </div>

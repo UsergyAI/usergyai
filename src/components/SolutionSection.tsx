@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
+import { MessageSquare, Users, Megaphone, Zap, Brain, Network, Target } from 'lucide-react';
 
 const SolutionSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -30,21 +31,24 @@ const SolutionSection = () => {
     {
       id: 1,
       title: "Authentic Feedback",
-      emoji: "💬",
+      icon: MessageSquare,
+      bgIcon: Brain,
       color: "#4ECDC4",
       description: "Real insights from engaged users who understand AI"
     },
     {
       id: 2,
       title: "Vibrant Community",
-      emoji: "👥",
+      icon: Users,
+      bgIcon: Network,
       color: "#45B7D1",
       description: "Build lasting connections with passionate advocates"
     },
     {
       id: 3,
       title: "Social Amplification",
-      emoji: "📢",
+      icon: Megaphone,
+      bgIcon: Target,
       color: "#FF6B6B",
       description: "Generate organic buzz and authentic testimonials"
     }
@@ -71,21 +75,21 @@ const SolutionSection = () => {
           </p>
 
           {/* Enhanced Interactive Diagram */}
-          <div className={`relative max-w-4xl mx-auto mb-16 transition-all duration-1000 delay-600 ${
+          <div className={`relative max-w-5xl mx-auto mb-16 transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             <div className="relative h-96 flex items-center justify-center">
-              {/* Central Momentum Node with enhanced animation */}
+              {/* Central Momentum Node with enhanced AI theme */}
               <div className={`absolute z-10 bg-gradient-to-br from-usergy-gold to-yellow-400 rounded-full w-32 h-32 flex items-center justify-center shadow-2xl transition-all duration-1000 ${
                 animationComplete ? 'animate-pulse-glow scale-110' : 'scale-100'
               }`}>
                 <div className="text-center">
-                  <div className="text-3xl mb-1">⚡</div>
-                  <div className="text-sm font-black text-white">MOMENTUM</div>
+                  <Zap className="h-8 w-8 text-white mx-auto mb-1" />
+                  <div className="text-xs font-black text-white">MOMENTUM</div>
                 </div>
               </div>
 
-              {/* Enhanced Connection Lines with flow animation */}
+              {/* Enhanced Connection Lines with AI data flow animation */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
                 <defs>
                   <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -93,13 +97,20 @@ const SolutionSection = () => {
                     <stop offset="50%" stopColor="#FED766" stopOpacity="1" />
                     <stop offset="100%" stopColor="#FF6B6B" stopOpacity="0.8" />
                   </linearGradient>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                    <feMerge> 
+                      <feMergeNode in="coloredBlur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
                 </defs>
                 {nodes.map((node, index) => {
                   const angle = (index * 120 - 90) * (Math.PI / 180);
-                  const startX = 160;
-                  const startY = 160;
-                  const endX = 160 + Math.cos(angle) * 120;
-                  const endY = 160 + Math.sin(angle) * 120;
+                  const startX = 200;
+                  const startY = 200;
+                  const endX = 200 + Math.cos(angle) * 120;
+                  const endY = 200 + Math.sin(angle) * 120;
                   
                   return (
                     <g key={node.id}>
@@ -110,39 +121,53 @@ const SolutionSection = () => {
                         y2={endY}
                         stroke={activeNode === node.id ? node.color : "url(#flowGradient)"}
                         strokeWidth={activeNode === node.id ? "4" : "3"}
-                        strokeDasharray="8,4"
+                        strokeDasharray="10,5"
+                        filter={activeNode === node.id ? "url(#glow)" : "none"}
                         className={`transition-all duration-500 ${
                           activeNode === node.id ? 'opacity-100' : animationComplete ? 'opacity-80' : 'opacity-0'
                         }`}
                         style={{
                           animation: animationComplete 
                             ? activeNode === node.id 
-                              ? 'dashFlow 1.5s linear infinite, pulse 2s ease-in-out infinite' 
-                              : 'dashFlow 3s linear infinite'
+                              ? 'dashFlow 1s linear infinite, pulse 2s ease-in-out infinite' 
+                              : 'dashFlow 2s linear infinite'
                             : 'none',
                           animationDelay: `${index * 0.3}s`
                         }}
                       />
-                      {/* Flow particles */}
+                      {/* Data flow particles */}
                       {animationComplete && (
-                        <circle
-                          cx={startX + Math.cos(angle) * 60}
-                          cy={startY + Math.sin(angle) * 60}
-                          r="2"
-                          fill={node.color}
-                          className="opacity-80"
-                          style={{
-                            animation: `flowParticle 2s ease-in-out infinite`,
-                            animationDelay: `${index * 0.5}s`
-                          }}
-                        />
+                        <>
+                          <circle
+                            cx={startX + Math.cos(angle) * 40}
+                            cy={startY + Math.sin(angle) * 40}
+                            r="3"
+                            fill={node.color}
+                            className="opacity-80"
+                            style={{
+                              animation: `flowParticle 2s ease-in-out infinite`,
+                              animationDelay: `${index * 0.5}s`
+                            }}
+                          />
+                          <circle
+                            cx={startX + Math.cos(angle) * 80}
+                            cy={startY + Math.sin(angle) * 80}
+                            r="2"
+                            fill={node.color}
+                            className="opacity-60"
+                            style={{
+                              animation: `flowParticle 2s ease-in-out infinite`,
+                              animationDelay: `${index * 0.5 + 0.5}s`
+                            }}
+                          />
+                        </>
                       )}
                     </g>
                   );
                 })}
               </svg>
 
-              {/* Enhanced Node Elements */}
+              {/* Enhanced Node Elements with tech icons */}
               {nodes.map((node, index) => {
                 const angle = (index * 120 - 90) * (Math.PI / 180);
                 const x = Math.cos(angle) * 120;
@@ -151,14 +176,14 @@ const SolutionSection = () => {
                 return (
                   <div
                     key={node.id}
-                    className={`absolute w-24 h-24 rounded-full flex items-center justify-center cursor-pointer transform transition-all duration-500 shadow-xl ${
+                    className={`absolute w-28 h-28 rounded-full flex items-center justify-center cursor-pointer transform transition-all duration-500 shadow-xl ${
                       animationComplete ? 'scale-100 opacity-100' : 'scale-75 opacity-60'
                     } ${
                       activeNode === node.id ? 'scale-125 z-20' : 'hover:scale-110 z-10'
                     }`}
                     style={{
-                      left: `calc(50% + ${x}px - 48px)`,
-                      top: `calc(50% + ${y}px - 48px)`,
+                      left: `calc(50% + ${x}px - 56px)`,
+                      top: `calc(50% + ${y}px - 56px)`,
                       backgroundColor: node.color,
                       boxShadow: activeNode === node.id 
                         ? `0 0 40px ${node.color}80, 0 0 20px ${node.color}40` 
@@ -168,11 +193,12 @@ const SolutionSection = () => {
                     onMouseEnter={() => setActiveNode(node.id)}
                     onMouseLeave={() => setActiveNode(null)}
                   >
-                    <span className={`text-2xl transition-transform duration-300 ${
-                      activeNode === node.id ? 'scale-125' : ''
-                    }`}>
-                      {node.emoji}
-                    </span>
+                    <div className="relative">
+                      <node.bgIcon className="absolute inset-0 h-12 w-12 text-white/20 transform scale-150" />
+                      <node.icon className={`h-8 w-8 text-white relative z-10 transition-transform duration-300 ${
+                        activeNode === node.id ? 'scale-125' : ''
+                      }`} />
+                    </div>
                   </div>
                 );
               })}
@@ -191,15 +217,16 @@ const SolutionSection = () => {
                   onMouseEnter={() => setActiveNode(node.id)}
                   onMouseLeave={() => setActiveNode(null)}
                 >
-                  <div className={`text-3xl mb-3 transition-transform duration-300 ${
+                  <div className={`transition-transform duration-300 mb-3 ${
                     activeNode === node.id ? 'scale-125' : ''
                   }`}>
-                    {node.emoji}
+                    <node.icon 
+                      className="h-10 w-10 mx-auto" 
+                      style={{ color: node.color }}
+                    />
                   </div>
-                  <h3 className={`text-xl font-bold mb-2 transition-colors duration-300 ${
-                    activeNode === node.id ? 'text-white' : ''
-                  }`} style={{ 
-                    color: activeNode === node.id ? node.color : node.color 
+                  <h3 className={`text-xl font-bold mb-2 transition-colors duration-300`} style={{ 
+                    color: node.color 
                   }}>
                     {node.title}
                   </h3>
@@ -214,7 +241,7 @@ const SolutionSection = () => {
       <style>{`
         @keyframes dashFlow {
           to {
-            stroke-dashoffset: -24;
+            stroke-dashoffset: -30;
           }
         }
         
