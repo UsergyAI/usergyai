@@ -22,7 +22,7 @@ const CustomEnterpriseSection = () => {
             </h2>
             
             <p className="text-lg font-semibold text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              For AI founders with ambitious growth targets, larger participant needs (250+), or highly specialized market penetration requirements, our team designs bespoke strategies. Let's create a custom plan to unlock your AI's full market potential.
+              For AI founders with ambitious growth targets, larger participant needs (100-1000+), or highly specialized market penetration requirements, our team designs bespoke strategies. Let's create a custom plan to unlock your AI's full market potential.
             </p>
             
             <Button 

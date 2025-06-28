@@ -1,10 +1,17 @@
 
 import React, { useState } from 'react';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import PricingTable from '@/components/PricingTable';
 
 const PricingMatrixSection = () => {
-  const [selectedUsers, setSelectedUsers] = useState(5);
-  const userOptions = [5, 10, 20, 50, 100];
+  const [selectedUsers, setSelectedUsers] = useState('5');
+  const userOptions = [
+    { value: '5', label: '5 Users' },
+    { value: '10', label: '10 Users' },
+    { value: '20', label: '20 Users' },
+    { value: '50', label: '50 Users' },
+    { value: '100', label: '100 Users' }
+  ];
 
   return (
     <section className="py-20 bg-white">
@@ -17,27 +24,27 @@ const PricingMatrixSection = () => {
             Select your desired participant count below to see how Usergy delivers comprehensive growth, tailored to your needs.
           </h3>
           
-          {/* Participant Selector */}
-          <div className="flex justify-center mb-8">
-            <div className="bg-gray-100 rounded-full p-2 inline-flex">
-              {userOptions.map(count => (
-                <button
-                  key={count}
-                  onClick={() => setSelectedUsers(count)}
-                  className={`px-6 py-3 rounded-full font-semibold transition-all ${
-                    selectedUsers === count
-                      ? 'bg-usergy-turquoise text-white shadow-lg'
-                      : 'text-gray-600 hover:text-usergy-turquoise'
-                  }`}
+          {/* Tab-based Participant Selector */}
+          <Tabs value={selectedUsers} onValueChange={setSelectedUsers} className="mb-8">
+            <TabsList className="bg-gray-100 rounded-full p-2 inline-flex h-auto">
+              {userOptions.map(option => (
+                <TabsTrigger
+                  key={option.value}
+                  value={option.value}
+                  className="px-6 py-3 rounded-full font-semibold transition-all data-[state=active]:bg-usergy-skyblue data-[state=active]:text-white data-[state=active]:shadow-lg text-gray-600 hover:text-usergy-turquoise"
                 >
-                  {count} Users
-                </button>
+                  {option.label}
+                </TabsTrigger>
               ))}
-            </div>
-          </div>
-        </div>
+            </TabsList>
 
-        <PricingTable selectedUsers={selectedUsers} />
+            {userOptions.map(option => (
+              <TabsContent key={option.value} value={option.value} className="mt-8">
+                <PricingTable selectedUsers={parseInt(option.value)} />
+              </TabsContent>
+            ))}
+          </Tabs>
+        </div>
       </div>
     </section>
   );

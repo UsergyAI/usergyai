@@ -25,11 +25,8 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
 
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-      {/* Table Header */}
-      <div className="grid grid-cols-1 md:grid-cols-4 bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white relative">
-        <div className="p-6 text-center font-bold text-lg border-r border-white/20">
-          # Users
-        </div>
+      {/* Table Header - Now 3 columns instead of 4 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white">
         <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-black/10">
           <div className="font-bold text-lg">Feedback Only</div>
           <div className="text-sm font-normal mt-1 opacity-90">Basic Insight</div>
@@ -47,23 +44,22 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
         </div>
       </div>
 
-      {/* Pricing Row */}
-      <div className={`grid grid-cols-1 md:grid-cols-4 border-b-2 border-usergy-turquoise bg-gradient-to-r from-usergy-turquoise/5 to-usergy-skyblue/5 transition-all duration-300`}>
-        <div className="p-6 text-center bg-gray-50 font-bold text-2xl text-usergy-dark border-r border-gray-200">
-          {selectedUsers}
-        </div>
-        <div className="p-6 text-center border-r border-gray-200 bg-white">
+      {/* Pricing Row - Now 3 columns with hover effects */}
+      <div className="grid grid-cols-1 md:grid-cols-3 border-b-2 border-usergy-turquoise bg-gradient-to-r from-usergy-turquoise/5 to-usergy-skyblue/5">
+        {/* Feedback Only */}
+        <div className="p-6 text-center border-r border-gray-200 bg-white hover:shadow-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-1">
           <div className="text-3xl font-black text-usergy-dark mb-3">
             ${prices.feedback.toLocaleString()}
           </div>
+          <div className="text-sm text-gray-500 mb-4">for {selectedUsers} users</div>
           <ul className="text-sm text-gray-600 mb-6 space-y-2 text-left">
             <li className="flex items-start">
               <span className="text-usergy-coral mr-2 font-bold">•</span>
-              Recruit & incentivize users (all incentives included)
+              Recruit & incentivize high-quality users; all incentives included
             </li>
             <li className="flex items-start">
               <span className="text-usergy-coral mr-2 font-bold">•</span>
-              Comprehensive feedback analysis report
+              Comprehensive feedback analysis report with actionable insights
             </li>
             <li className="flex items-start">
               <span className="text-usergy-coral mr-2 font-bold">•</span>
@@ -78,18 +74,21 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
             Select Plan
           </Button>
         </div>
-        <div className="p-6 text-center bg-usergy-gold/5 border-2 border-usergy-gold/30 border-r border-gray-200 relative">
+
+        {/* Feedback + Community */}
+        <div className="p-6 text-center bg-usergy-gold/5 border-2 border-usergy-gold/30 border-r border-gray-200 relative hover:shadow-xl hover:bg-usergy-gold/10 transition-all duration-300 hover:-translate-y-1">
           <div className="text-3xl font-black text-usergy-dark mb-3">
             ${prices.community.toLocaleString()}
           </div>
+          <div className="text-sm text-gray-500 mb-4">for {selectedUsers} users</div>
           <ul className="text-sm text-gray-600 mb-6 space-y-2 text-left">
             <li className="flex items-start">
               <span className="text-usergy-turquoise mr-2 font-bold">•</span>
-              All Feedback Only features included
+              Everything in Feedback Only package
             </li>
             <li className="flex items-start">
               <span className="text-usergy-turquoise mr-2 font-bold">•</span>
-              Expert community setup & nurturing
+              Expert community setup & nurturing strategies
             </li>
             <li className="flex items-start">
               <span className="text-usergy-turquoise mr-2 font-bold">•</span>
@@ -104,22 +103,25 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
             Select Plan
           </Button>
         </div>
-        <div className="p-6 text-center bg-white">
+
+        {/* Full Traction */}
+        <div className="p-6 text-center bg-white hover:shadow-lg hover:bg-gray-50 transition-all duration-300 hover:-translate-y-1">
           <div className="text-3xl font-black text-usergy-dark mb-3">
             ${prices.full.toLocaleString()}
           </div>
+          <div className="text-sm text-gray-500 mb-4">for {selectedUsers} users</div>
           <ul className="text-sm text-gray-600 mb-6 space-y-2 text-left">
             <li className="flex items-start">
               <span className="text-usergy-skyblue mr-2 font-bold">•</span>
-              All Community features included
+              Everything in Community package included
             </li>
             <li className="flex items-start">
               <span className="text-usergy-skyblue mr-2 font-bold">•</span>
-              Strategic social media task management
+              Strategic social media task management & execution
             </li>
             <li className="flex items-start">
               <span className="text-usergy-skyblue mr-2 font-bold">•</span>
-              Comprehensive UGC analysis report
+              Comprehensive UGC analysis report with market insights
             </li>
           </ul>
           <Button 
