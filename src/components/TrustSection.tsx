@@ -126,43 +126,43 @@ const TrustSection = () => {
   };
 
   return (
-    <section id="success-stories" ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 to-white">
-      <div className="container mx-auto px-6">
+    <section id="success-stories" ref={sectionRef} className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className={`text-center mb-16 transition-all duration-1000 ${
+          <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-4 sm:mb-6 px-2">
               Trusted by <span className="gradient-text">Visionary Founders</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
               Join the growing community of AI innovators who trust Usergy's expert guidance to accelerate their product success and market traction.
             </p>
           </div>
 
           {/* KPI Grid */}
-          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 transition-all duration-1000 delay-300 ${
+          <div className={`grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12 sm:mb-16 transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {kpis.map((kpi, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
+              <div key={index} className="bg-white rounded-xl p-4 sm:p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
                 <div 
-                  className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
+                  className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-full flex items-center justify-center"
                   style={{ backgroundColor: kpi.color + '20' }}
                 >
                   <kpi.icon 
-                    className="h-6 w-6"
+                    className="h-5 w-5 sm:h-6 sm:w-6"
                     style={{ color: kpi.color }}
                   />
                 </div>
-                <div className="text-3xl font-black text-usergy-dark mb-2">
+                <div className="text-2xl sm:text-3xl font-black text-usergy-dark mb-2">
                   {index === 0 ? animatedNumbers.campaigns.toLocaleString() :
                    index === 1 ? animatedNumbers.users.toLocaleString() :
                    index === 2 ? animatedNumbers.feedback :
                    animatedNumbers.revenue.toLocaleString()}{kpi.suffix}
                 </div>
-                <div className="text-gray-600 font-semibold">{kpi.label}</div>
+                <div className="text-sm sm:text-base text-gray-600 font-semibold">{kpi.label}</div>
               </div>
             ))}
           </div>
@@ -171,39 +171,39 @@ const TrustSection = () => {
           <div className={`relative transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 relative overflow-hidden">
+            <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-12 relative overflow-hidden">
               {/* Background Pattern */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-usergy-turquoise/10 to-usergy-skyblue/10 rounded-full blur-3xl"></div>
               
               {/* Testimonial Content */}
               <div className="relative z-10">
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-4 sm:mb-6">
                   {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                    <Star key={i} className="h-6 w-6 text-yellow-400 fill-current" />
+                    <Star key={i} className="h-5 w-5 sm:h-6 sm:w-6 text-yellow-400 fill-current" />
                   ))}
                 </div>
                 
-                <blockquote className="text-xl lg:text-2xl text-gray-700 text-center mb-8 leading-relaxed font-medium">
+                <blockquote className="text-lg sm:text-xl lg:text-2xl text-gray-700 text-center mb-6 sm:mb-8 leading-relaxed font-medium px-2">
                   "{testimonials[currentTestimonial].quote}"
                 </blockquote>
                 
                 <div className="text-center">
-                  <div className="font-bold text-usergy-dark text-lg">
+                  <div className="font-bold text-usergy-dark text-base sm:text-lg">
                     {testimonials[currentTestimonial].author}
                   </div>
-                  <div className="text-gray-600">
+                  <div className="text-sm sm:text-base text-gray-600">
                     {testimonials[currentTestimonial].role} at {testimonials[currentTestimonial].company}
                   </div>
                 </div>
               </div>
 
               {/* Navigation */}
-              <div className="flex justify-between items-center mt-8">
+              <div className="flex justify-between items-center mt-6 sm:mt-8">
                 <button 
                   onClick={prevTestimonial}
-                  className="p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
+                  className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
                 >
-                  <ChevronLeft className="h-5 w-5" />
+                  <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 
                 <div className="flex space-x-2">
@@ -211,7 +211,7 @@ const TrustSection = () => {
                     <button
                       key={index}
                       onClick={() => setCurrentTestimonial(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
                         index === currentTestimonial 
                           ? 'bg-usergy-turquoise' 
                           : 'bg-gray-300 hover:bg-gray-400'
@@ -222,9 +222,9 @@ const TrustSection = () => {
                 
                 <button 
                   onClick={nextTestimonial}
-                  className="p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
+                  className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
                 >
-                  <ChevronRight className="h-5 w-5" />
+                  <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
               </div>
             </div>
