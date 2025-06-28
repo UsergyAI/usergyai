@@ -1,76 +1,85 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { BarChart3, Users, Star, Gift, Quote, ChevronLeft, ChevronRight, Shield } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight, Star, Users, Target, TrendingUp, Award } from 'lucide-react';
 
 const TrustSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [counters, setCounters] = useState({
-    campaigns: 0,
-    enthusiasts: 0,
-    quality: 0,
-    points: 0
-  });
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [animatedNumbers, setAnimatedNumbers] = useState({
+    campaigns: 0,
+    users: 0,
+    feedback: 0,
+    revenue: 0
+  });
   const sectionRef = useRef<HTMLDivElement>(null);
-
-  const kpis = [
-    { key: 'campaigns', end: 1200, label: 'Campaigns Launched', color: '#4ECDC4', suffix: '+', icon: BarChart3 },
-    { key: 'enthusiasts', end: 75000, label: 'Engaged AI Enthusiasts', color: '#FF6B6B', suffix: '+', icon: Users },
-    { key: 'quality', end: 92, label: 'Average Feedback Quality Score', color: '#45B7D1', suffix: '%', icon: Star },
-    { key: 'points', end: 500, label: 'Total Points Redeemed (K)', color: '#FED766', suffix: 'K+', icon: Gift }
-  ];
 
   const testimonials = [
     {
-      quote: "Usergy's expert team delivered the targeted users and honest insights we needed to pivot effectively. Their strategic approach was absolutely indispensable for our pre-launch success.",
-      author: "Dr. Anya Sharma",
-      title: "CEO, Synthetica AI",
-      type: "founder"
-    },
-    {
-      quote: "Working with Usergy's community activation service was transformative. They helped us discover amazing AI tools and provided exceptional guidance throughout the testing process.",
-      author: "Mark T.",
-      title: "Elite AI Scout",
-      type: "user"
-    },
-    {
-      quote: "The quality of feedback we received through Usergy's consulting service was exceptional. Their team helped us identify critical UX issues before our public launch, saving us months of iteration.",
+      quote: "Usergy's expert team transformed our AI product launch. Their strategic approach to user engagement delivered insights we never could have gathered on our own.",
       author: "Sarah Chen",
-      title: "CTO, Neural Labs",
-      type: "founder"
+      role: "AI Startup Founder",
+      company: "VisionAI",
+      rating: 5
     },
     {
-      quote: "Usergy's team guided us through discovering amazing AI tools months before they hit the market. Their strategic community approach makes all the difference.",
-      author: "Alex Rodriguez",
-      title: "AI Explorer, Level 5",
-      type: "user"
+      quote: "The quality of feedback we received through Usergy's managed campaigns was exceptional. Their consultants know exactly how to extract valuable insights from users.",
+      author: "Marcus Rodriguez",
+      role: "Product Manager",
+      company: "TechFlow",
+      rating: 5
+    },
+    {
+      quote: "Working with Usergy felt like having a seasoned product team extension. They delivered actionable insights that directly shaped our product roadmap.",
+      author: "Elena Kowalski",
+      role: "CTO",
+      company: "DataSphere",
+      rating: 5
+    },
+    {
+      quote: "Usergy's community activation strategies exceeded our expectations. They connected us with the right users at the perfect time in our development cycle.",
+      author: "James Wu",
+      role: "Founder",
+      company: "AICore",
+      rating: 5
+    }
+  ];
+
+  const kpis = [
+    {
+      icon: Target,
+      number: 1200,
+      suffix: '+',
+      label: 'Campaigns Launched',
+      color: '#4ECDC4'
+    },
+    {
+      icon: Users,
+      number: 75000,
+      suffix: '+',
+      label: 'AI Users',
+      color: '#45B7D1'
+    },
+    {
+      icon: Award,
+      number: 92,
+      suffix: '%',
+      label: 'Feedback Quality Score',
+      color: '#FF6B6B'
+    },
+    {
+      icon: TrendingUp,
+      number: 500,
+      suffix: 'K+',
+      label: 'Revenue Generated',
+      color: '#96CEB4'
     }
   ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !isVisible) {
+        if (entry.isIntersecting) {
           setIsVisible(true);
-          
-          kpis.forEach((kpi, index) => {
-            let start = 0;
-            const duration = 2500;
-            const delay = index * 200;
-            
-            setTimeout(() => {
-              const increment = kpi.end / (duration / 16);
-              
-              const counter = setInterval(() => {
-                start += increment * (1 + Math.random() * 0.1);
-                if (start >= kpi.end) {
-                  setCounters(prev => ({ ...prev, [kpi.key]: kpi.end }));
-                  clearInterval(counter);
-                } else {
-                  setCounters(prev => ({ ...prev, [kpi.key]: Math.floor(start) }));
-                }
-              }, 16);
-            }, delay);
-          });
+          observer.unobserve(sectionRef.current!);
         }
       },
       { threshold: 0.3 }
@@ -80,20 +89,50 @@ const TrustSection = () => {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
-  }, [isVisible]);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 6000);
-
-    return () => clearInterval(interval);
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
 
-  const goToTestimonial = (index: number) => {
-    setCurrentTestimonial(index);
-  };
+  useEffect(() => {
+    if (isVisible) {
+      const animationDuration = 2000; // 2 seconds
+      const frameDuration = 10; // Update every 10ms
+      const totalFrames = animationDuration / frameDuration;
+
+      const animateNumbers = (targetNumbers: any) => {
+        let currentFrames = 0;
+        const initialNumbers = { ...animatedNumbers };
+
+        const animationInterval = setInterval(() => {
+          currentFrames++;
+          if (currentFrames >= totalFrames) {
+            clearInterval(animationInterval);
+            setAnimatedNumbers(targetNumbers);
+            return;
+          }
+
+          const progress = currentFrames / totalFrames;
+
+          setAnimatedNumbers(prevNumbers => ({
+            campaigns: Math.floor(initialNumbers.campaigns + (targetNumbers.campaigns - initialNumbers.campaigns) * progress),
+            users: Math.floor(initialNumbers.users + (targetNumbers.users - initialNumbers.users) * progress),
+            feedback: Math.floor(initialNumbers.feedback + (targetNumbers.feedback - initialNumbers.feedback) * progress),
+            revenue: Math.floor(initialNumbers.revenue + (targetNumbers.revenue - initialNumbers.revenue) * progress)
+          }));
+        }, frameDuration);
+      };
+
+      animateNumbers({
+        campaigns: kpis[0].number,
+        users: kpis[1].number,
+        feedback: kpis[2].number,
+        revenue: kpis[3].number
+      });
+    }
+  }, [isVisible, kpis]);
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -108,132 +147,103 @@ const TrustSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className={`text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-6 transition-all duration-1000 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}>
-              Trusted by Visionaries, 
-              <span className="gradient-text"> Fueled by Expert Guidance</span>
+          <div className={`text-center mb-16 transition-all duration-1000 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-6">
+              Trusted by <span className="gradient-text">Visionary Founders</span>
             </h2>
-            <p className={`text-xl text-gray-600 max-w-3xl mx-auto transition-all duration-1000 delay-300 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-            }`}>
-              Our numbers speak volumes. Join the growing movement of AI founders who trust our strategic expertise.
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Join the growing community of AI innovators who trust Usergy's expert guidance to accelerate their product success and market traction.
             </p>
           </div>
 
-          {/* Enhanced KPI Counters with icons */}
-          <div className={`grid md:grid-cols-4 gap-8 mb-16 transition-all duration-1000 delay-600 ${
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+          {/* KPI Grid */}
+          <div className={`grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16 transition-all duration-1000 delay-300 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {kpis.map((kpi, index) => (
-              <div key={kpi.key} className="text-center group">
+              <div key={index} className="bg-white rounded-xl p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
                 <div 
-                  className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg transition-all duration-500 group-hover:scale-110 ${
-                    isVisible ? 'animate-pulse-glow' : ''
-                  }`}
-                  style={{ 
-                    backgroundColor: kpi.color,
-                    animationDelay: `${index * 0.2}s`
-                  }}
+                  className="w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center"
+                  style={{ backgroundColor: kpi.color + '20' }}
                 >
-                  <kpi.icon className="h-8 w-8 text-white" />
+                  <kpi.icon 
+                    className="h-6 w-6"
+                    style={{ color: kpi.color }}
+                  />
                 </div>
-                <div 
-                  className={`text-4xl lg:text-5xl font-black mb-2 transition-all duration-300 group-hover:scale-105 ${
-                    isVisible ? 'animate-pulse-glow' : ''
-                  }`}
-                  style={{ 
-                    color: kpi.color,
-                    animationDelay: `${index * 0.3}s`
-                  }}
-                >
-                  {counters[kpi.key as keyof typeof counters].toLocaleString()}{kpi.suffix}
+                <div className="text-3xl font-black text-usergy-dark mb-2">
+                  {kpi.number === 75000 ? animatedNumbers.users.toLocaleString() : 
+                   kpi.number === 1200 ? animatedNumbers.campaigns.toLocaleString() :
+                   kpi.number === 92 ? animatedNumbers.feedback :
+                   animatedNumbers.revenue.toLocaleString()}{kpi.suffix}
                 </div>
-                <div className="text-lg font-semibold text-usergy-dark">
-                  {kpi.label}
-                </div>
+                <div className="text-gray-600 font-semibold">{kpi.label}</div>
               </div>
             ))}
           </div>
 
-          {/* Enhanced Testimonials Carousel */}
-          <div className={`bg-white rounded-2xl p-8 shadow-xl mb-12 relative transition-all duration-1000 delay-900 ${
+          {/* Testimonial Carousel */}
+          <div className={`relative transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevTestimonial}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-usergy-turquoise text-white flex items-center justify-center hover:bg-usergy-skyblue transition-colors duration-300 z-10"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <button
-              onClick={nextTestimonial}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-usergy-turquoise text-white flex items-center justify-center hover:bg-usergy-skyblue transition-colors duration-300 z-10"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-
-            <div className="relative overflow-hidden px-12">
-              <div 
-                className="flex transition-transform duration-700 ease-in-out"
-                style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
-              >
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="w-full flex-shrink-0 text-center px-8">
-                    <div className="max-w-4xl mx-auto">
-                      <Quote className="h-12 w-12 text-usergy-turquoise mx-auto mb-6 animate-bounce" />
-                      <blockquote className="text-2xl lg:text-3xl font-semibold text-usergy-dark mb-8 leading-relaxed">
-                        "{testimonial.quote}"
-                      </blockquote>
-                      <div className="flex items-center justify-center space-x-4">
-                        <div 
-                          className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold transition-transform duration-300 hover:scale-110 ${
-                            testimonial.type === 'founder' ? 'bg-usergy-turquoise' : 'bg-usergy-coral'
-                          }`}
-                        >
-                          {testimonial.type === 'founder' ? 
-                            <BarChart3 className="h-6 w-6" /> : 
-                            <Users className="h-6 w-6" />
-                          }
-                        </div>
-                        <div className="text-left">
-                          <div className="font-bold text-usergy-dark">{testimonial.author}</div>
-                          <div className="text-gray-600">{testimonial.title}</div>
-                        </div>
-                      </div>
-                    </div>
+            <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12 relative overflow-hidden">
+              {/* Background Pattern */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-usergy-turquoise/10 to-usergy-skyblue/10 rounded-full blur-3xl"></div>
+              
+              {/* Testimonial Content */}
+              <div className="relative z-10">
+                <div className="flex justify-center mb-6">
+                  {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                    <Star key={i} className="h-6 w-6 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                
+                <blockquote className="text-xl lg:text-2xl text-gray-700 text-center mb-8 leading-relaxed font-medium">
+                  "{testimonials[currentTestimonial].quote}"
+                </blockquote>
+                
+                <div className="text-center">
+                  <div className="font-bold text-usergy-dark text-lg">
+                    {testimonials[currentTestimonial].author}
                   </div>
-                ))}
+                  <div className="text-gray-600">
+                    {testimonials[currentTestimonial].role} at {testimonials[currentTestimonial].company}
+                  </div>
+                </div>
               </div>
-            </div>
 
-            {/* Enhanced Testimonial Navigation */}
-            <div className="flex justify-center space-x-3 mt-8">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToTestimonial(index)}
-                  className={`w-4 h-4 rounded-full transition-all duration-300 hover:scale-125 ${
-                    index === currentTestimonial 
-                      ? 'bg-usergy-turquoise shadow-lg' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Security Assurance */}
-          <div className={`text-center transition-all duration-1000 delay-1200 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}>
-            <div className="inline-flex items-center space-x-3 text-gray-600 bg-white rounded-full px-6 py-3 shadow-md hover:shadow-lg transition-shadow duration-300">
-              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-pulse">
-                <Shield className="h-4 w-4 text-white" />
+              {/* Navigation */}
+              <div className="flex justify-between items-center mt-8">
+                <button 
+                  onClick={prevTestimonial}
+                  className="p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
+                >
+                  <ChevronLeft className="h-5 w-5" />
+                </button>
+                
+                <div className="flex space-x-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentTestimonial(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentTestimonial 
+                          ? 'bg-usergy-turquoise' 
+                          : 'bg-gray-300 hover:bg-gray-400'
+                      }`}
+                    />
+                  ))}
+                </div>
+                
+                <button 
+                  onClick={nextTestimonial}
+                  className="p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
+                >
+                  <ChevronRight className="h-5 w-5" />
+                </button>
               </div>
-              <span className="font-semibold">Your Data is Secure & Private. Built with Trust & Compliance.</span>
             </div>
           </div>
         </div>
