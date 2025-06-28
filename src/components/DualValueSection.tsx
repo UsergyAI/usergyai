@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Rocket, Gamepad2, Zap, User, TrendingUp, Target, Lightbulb, Search, Gift } from 'lucide-react';
 
 const DualValueSection = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -24,7 +25,7 @@ const DualValueSection = () => {
             {/* Connection Flow */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 hidden lg:block">
               <div className="w-16 h-16 bg-gradient-to-br from-usergy-turquoise to-usergy-coral rounded-full flex items-center justify-center animate-pulse-glow">
-                <div className="text-2xl">⚡</div>
+                <Zap className="h-8 w-8 text-white" />
               </div>
               <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-1 bg-gradient-to-r from-usergy-turquoise to-usergy-coral opacity-50 animate-pulse"></div>
             </div>
@@ -43,7 +44,7 @@ const DualValueSection = () => {
                 {/* Header */}
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-lg flex items-center justify-center mr-4">
-                    <span className="text-white text-xl">🚀</span>
+                    <Rocket className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-3xl font-bold text-usergy-skyblue">
                     For AI Startup Founders
@@ -73,11 +74,11 @@ const DualValueSection = () => {
                 {/* Illustration */}
                 <div className="mb-8 text-center">
                   <div className="inline-flex items-center space-x-4 p-6 bg-gradient-to-r from-usergy-turquoise/20 to-usergy-skyblue/20 rounded-xl">
-                    <div className="text-4xl">👨‍💻</div>
+                    <User className="h-10 w-10 text-usergy-turquoise" />
                     <div className="text-2xl">→</div>
-                    <div className="text-4xl">📈</div>
+                    <TrendingUp className="h-10 w-10 text-usergy-skyblue" />
                     <div className="text-2xl">→</div>
-                    <div className="text-4xl">🎯</div>
+                    <Target className="h-10 w-10 text-usergy-turquoise" />
                   </div>
                   <p className="text-sm text-gray-500 mt-2">Founder → Growth → Success</p>
                 </div>
@@ -102,7 +103,7 @@ const DualValueSection = () => {
                 {/* Header */}
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-usergy-coral to-pink-500 rounded-lg flex items-center justify-center mr-4">
-                    <span className="text-white text-xl">🎮</span>
+                    <Gamepad2 className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-3xl font-bold text-usergy-coral">
                     For AI Enthusiasts
@@ -132,11 +133,11 @@ const DualValueSection = () => {
                 {/* Illustration */}
                 <div className="mb-8 text-center">
                   <div className="inline-flex items-center space-x-4 p-6 bg-gradient-to-r from-usergy-coral/20 to-pink-100/50 rounded-xl">
-                    <div className="text-4xl">🔍</div>
+                    <Search className="h-10 w-10 text-usergy-coral" />
                     <div className="text-2xl">→</div>
-                    <div className="text-4xl">💡</div>
+                    <Lightbulb className="h-10 w-10 text-pink-500" />
                     <div className="text-2xl">→</div>
-                    <div className="text-4xl">🎁</div>
+                    <Gift className="h-10 w-10 text-usergy-coral" />
                   </div>
                   <p className="text-sm text-gray-500 mt-2">Explore → Contribute → Earn</p>
                 </div>
