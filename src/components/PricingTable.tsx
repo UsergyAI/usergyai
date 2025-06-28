@@ -31,11 +31,11 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
           <div className="font-bold text-lg">Feedback Only</div>
           <div className="text-sm font-normal mt-1 opacity-90">Basic Insight</div>
         </div>
-        <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-gradient-to-b from-usergy-turquoise to-usergy-skyblue text-white relative pt-12">
-          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-usergy-gold text-usergy-dark px-3 py-1.5 rounded-full text-xs font-bold shadow-lg z-20 whitespace-nowrap">
+        <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-gradient-to-b from-usergy-turquoise to-usergy-skyblue text-white relative">
+          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-usergy-gold text-usergy-dark px-4 py-2 rounded-full text-sm font-bold shadow-lg z-30 whitespace-nowrap">
             MOST POPULAR
           </div>
-          <div className="font-bold text-lg">Feedback + Community</div>
+          <div className="font-bold text-lg mt-4">Feedback + Community</div>
           <div className="text-sm font-normal mt-1 opacity-90">Core Activation</div>
         </div>
         <div className="p-6 text-center font-bold text-lg bg-gradient-to-b from-usergy-skyblue to-usergy-skyblue/80 text-white">
