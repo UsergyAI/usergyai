@@ -71,11 +71,11 @@ const HowItWorksSection = () => {
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8">
               Our intuitive platform streamlines the entire validation process for founders and creates 
-              a rewarding experience for users. See the high-level flow below, or click for an in-depth journey.
+              a rewarding experience for users. Click any step below to explore the detailed workflow.
             </p>
           </div>
 
-          {/* Interactive Flow */}
+          {/* Enhanced Interactive Flow */}
           <div className="relative">
             {/* Flow Steps */}
             <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -86,21 +86,25 @@ const HowItWorksSection = () => {
                     <div className="hidden md:block absolute top-1/2 left-full w-8 h-1 bg-gradient-to-r from-gray-300 to-gray-200 transform -translate-y-1/2 z-0"></div>
                   )}
                   
-                  {/* Step Card */}
+                  {/* Enhanced Step Card */}
                   <div 
-                    className={`relative bg-white rounded-2xl p-6 shadow-lg cursor-pointer transition-all duration-300 hover:shadow-xl transform hover:scale-105 ${
-                      activeStep === step.id ? 'ring-4 ring-opacity-50' : ''
+                    className={`relative bg-white rounded-2xl p-8 shadow-lg cursor-pointer transition-all duration-500 hover:shadow-xl transform hover:scale-105 ${
+                      activeStep === step.id 
+                        ? 'ring-4 ring-opacity-50 scale-105 shadow-2xl' 
+                        : 'hover:shadow-xl'
                     }`}
                     style={{
                       ...(activeStep === step.id && { 
-                        boxShadow: `0 0 0 4px ${step.color}50` 
+                        boxShadow: `0 0 0 4px ${step.color}50, 0 20px 40px rgba(0,0,0,0.1)` 
                       })
                     }}
                     onClick={() => setActiveStep(activeStep === step.id ? null : step.id)}
                   >
-                    {/* Step Icon */}
+                    {/* Step Icon with enhanced animation */}
                     <div 
-                      className="w-16 h-16 rounded-full flex items-center justify-center mb-4 mx-auto text-white text-2xl font-bold shadow-lg"
+                      className={`w-16 h-16 rounded-full flex items-center justify-center mb-6 mx-auto text-white text-2xl font-bold shadow-lg transition-all duration-300 ${
+                        activeStep === step.id ? 'scale-125 animate-pulse-glow' : ''
+                      }`}
                       style={{ backgroundColor: step.color }}
                     >
                       {step.icon}
@@ -112,27 +116,34 @@ const HowItWorksSection = () => {
                     </div>
 
                     {/* Step Title */}
-                    <h3 className="text-xl font-bold text-center mb-3" style={{ color: step.color }}>
+                    <h3 className="text-xl font-bold text-center mb-4" style={{ color: step.color }}>
                       {step.title}
                     </h3>
 
                     {/* Step Description */}
-                    <p className="text-gray-600 text-center text-sm">
+                    <p className="text-gray-600 text-center text-sm leading-relaxed">
                       {step.description}
                     </p>
 
-                    {/* Click Indicator */}
-                    <div className="text-center mt-4">
-                      <span className="text-xs text-gray-400">Click to expand</span>
+                    {/* Enhanced Click Indicator */}
+                    <div className="text-center mt-6">
+                      <span className={`text-xs transition-all duration-300 ${
+                        activeStep === step.id 
+                          ? 'text-white font-semibold' 
+                          : 'text-gray-400'
+                      }`}>
+                        {activeStep === step.id ? 'Click to collapse' : 'Click to expand'}
+                      </span>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Expandable Details */}
+            {/* Enhanced Expandable Details */}
             {activeStep && (
-              <div className="bg-gray-50 rounded-2xl p-8 shadow-inner animate-slide-up">
+              <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 shadow-inner animate-slide-up border-l-4" 
+                   style={{ borderLeftColor: steps.find(s => s.id === activeStep)?.color }}>
                 {(() => {
                   const step = steps.find(s => s.id === activeStep);
                   if (!step) return null;
@@ -141,7 +152,7 @@ const HowItWorksSection = () => {
                     <div>
                       <div className="text-center mb-8">
                         <div 
-                          className="inline-flex items-center justify-center w-20 h-20 rounded-full text-white text-3xl mb-4"
+                          className="inline-flex items-center justify-center w-20 h-20 rounded-full text-white text-3xl mb-4 animate-pulse-glow"
                           style={{ backgroundColor: step.color }}
                         >
                           {step.icon}
@@ -154,7 +165,7 @@ const HowItWorksSection = () => {
 
                       <div className="grid md:grid-cols-2 gap-8">
                         {/* For Founders */}
-                        <div className="bg-white rounded-xl p-6 shadow-md">
+                        <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-usergy-turquoise">
                           <div className="flex items-center mb-4">
                             <div className="w-8 h-8 bg-usergy-turquoise rounded-lg flex items-center justify-center mr-3">
                               <span className="text-white text-sm">🚀</span>
@@ -172,7 +183,7 @@ const HowItWorksSection = () => {
                         </div>
 
                         {/* For Users */}
-                        <div className="bg-white rounded-xl p-6 shadow-md">
+                        <div className="bg-white rounded-xl p-6 shadow-md border-l-4 border-usergy-coral">
                           <div className="flex items-center mb-4">
                             <div className="w-8 h-8 bg-usergy-coral rounded-lg flex items-center justify-center mr-3">
                               <span className="text-white text-sm">🎮</span>
@@ -199,7 +210,7 @@ const HowItWorksSection = () => {
             <div className="text-center mt-12">
               <Button 
                 size="lg"
-                className="bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+                className="bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold px-8 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
               >
                 See the Full Interactive Workflow →
               </Button>

@@ -13,10 +13,10 @@ const TrustSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const kpis = [
-    { key: 'campaigns', end: 1200, label: 'Campaigns Launched', color: '#4ECDC4', suffix: '+' },
-    { key: 'enthusiasts', end: 75000, label: 'Engaged AI Enthusiasts', color: '#FF6B6B', suffix: '+' },
-    { key: 'quality', end: 92, label: 'Average Feedback Quality Score', color: '#45B7D1', suffix: '%' },
-    { key: 'points', end: 500, label: 'Total Points Redeemed (K)', color: '#FED766', suffix: 'K+' }
+    { key: 'campaigns', end: 1200, label: 'Campaigns Launched', color: '#4ECDC4', suffix: '+', icon: '📊' },
+    { key: 'enthusiasts', end: 75000, label: 'Engaged AI Enthusiasts', color: '#FF6B6B', suffix: '+', icon: '👥' },
+    { key: 'quality', end: 92, label: 'Average Feedback Quality Score', color: '#45B7D1', suffix: '%', icon: '⭐' },
+    { key: 'points', end: 500, label: 'Total Points Redeemed (K)', color: '#FED766', suffix: 'K+', icon: '🎁' }
   ];
 
   const testimonials = [
@@ -52,21 +52,25 @@ const TrustSection = () => {
         if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
           
-          // Animate counters
-          kpis.forEach((kpi) => {
+          // Enhanced counter animations with staggered starts
+          kpis.forEach((kpi, index) => {
             let start = 0;
-            const duration = 2000;
-            const increment = kpi.end / (duration / 16);
-
-            const counter = setInterval(() => {
-              start += increment;
-              if (start >= kpi.end) {
-                setCounters(prev => ({ ...prev, [kpi.key]: kpi.end }));
-                clearInterval(counter);
-              } else {
-                setCounters(prev => ({ ...prev, [kpi.key]: Math.floor(start) }));
-              }
-            }, 16);
+            const duration = 2500;
+            const delay = index * 200;
+            
+            setTimeout(() => {
+              const increment = kpi.end / (duration / 16);
+              
+              const counter = setInterval(() => {
+                start += increment * (1 + Math.random() * 0.1); // Add slight randomness
+                if (start >= kpi.end) {
+                  setCounters(prev => ({ ...prev, [kpi.key]: kpi.end }));
+                  clearInterval(counter);
+                } else {
+                  setCounters(prev => ({ ...prev, [kpi.key]: Math.floor(start) }));
+                }
+              }, 16);
+            }, delay);
           });
         }
       },
@@ -80,14 +84,26 @@ const TrustSection = () => {
     return () => observer.disconnect();
   }, [isVisible]);
 
-  // Auto-rotate testimonials
+  // Enhanced auto-rotate testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
+    }, 6000);
 
     return () => clearInterval(interval);
   }, []);
+
+  const goToTestimonial = (index: number) => {
+    setCurrentTestimonial(index);
+  };
+
+  const nextTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevTestimonial = () => {
+    setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
 
   return (
     <section ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -108,25 +124,33 @@ const TrustSection = () => {
             </p>
           </div>
 
-          {/* KPI Counters */}
+          {/* Enhanced KPI Counters with improved animations */}
           <div className={`grid md:grid-cols-4 gap-8 mb-16 transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             {kpis.map((kpi, index) => (
-              <div key={kpi.key} className="text-center">
+              <div key={kpi.key} className="text-center group">
                 <div 
-                  className="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg"
-                  style={{ backgroundColor: kpi.color }}
+                  className={`w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg transition-all duration-500 group-hover:scale-110 ${
+                    isVisible ? 'animate-pulse-glow' : ''
+                  }`}
+                  style={{ 
+                    backgroundColor: kpi.color,
+                    animationDelay: `${index * 0.2}s`
+                  }}
                 >
                   <span className="text-3xl font-black text-white">
-                    {kpi.key === 'campaigns' ? '📊' : 
-                     kpi.key === 'enthusiasts' ? '👥' : 
-                     kpi.key === 'quality' ? '⭐' : '🎁'}
+                    {kpi.icon}
                   </span>
                 </div>
                 <div 
-                  className="text-4xl lg:text-5xl font-black mb-2 animate-pulse-glow"
-                  style={{ color: kpi.color }}
+                  className={`text-4xl lg:text-5xl font-black mb-2 transition-all duration-300 group-hover:scale-105 ${
+                    isVisible ? 'animate-pulse-glow' : ''
+                  }`}
+                  style={{ 
+                    color: kpi.color,
+                    animationDelay: `${index * 0.3}s`
+                  }}
                 >
                   {counters[kpi.key as keyof typeof counters].toLocaleString()}{kpi.suffix}
                 </div>
@@ -137,25 +161,39 @@ const TrustSection = () => {
             ))}
           </div>
 
-          {/* Testimonials Carousel */}
-          <div className={`bg-white rounded-2xl p-8 shadow-xl mb-12 transition-all duration-1000 delay-900 ${
+          {/* Enhanced Testimonials Carousel */}
+          <div className={`bg-white rounded-2xl p-8 shadow-xl mb-12 relative transition-all duration-1000 delay-900 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="relative overflow-hidden">
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevTestimonial}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-usergy-turquoise text-white flex items-center justify-center hover:bg-usergy-skyblue transition-colors duration-300 z-10"
+            >
+              ←
+            </button>
+            <button
+              onClick={nextTestimonial}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full bg-usergy-turquoise text-white flex items-center justify-center hover:bg-usergy-skyblue transition-colors duration-300 z-10"
+            >
+              →
+            </button>
+
+            <div className="relative overflow-hidden px-12">
               <div 
-                className="flex transition-transform duration-500 ease-in-out"
+                className="flex transition-transform duration-700 ease-in-out"
                 style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
               >
                 {testimonials.map((testimonial, index) => (
                   <div key={index} className="w-full flex-shrink-0 text-center px-8">
                     <div className="max-w-4xl mx-auto">
-                      <div className="text-3xl mb-6">💭</div>
+                      <div className="text-4xl mb-6 animate-bounce">💭</div>
                       <blockquote className="text-2xl lg:text-3xl font-semibold text-usergy-dark mb-8 leading-relaxed">
                         "{testimonial.quote}"
                       </blockquote>
                       <div className="flex items-center justify-center space-x-4">
                         <div 
-                          className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${
+                          className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold transition-transform duration-300 hover:scale-110 ${
                             testimonial.type === 'founder' ? 'bg-usergy-turquoise' : 'bg-usergy-coral'
                           }`}
                         >
@@ -172,14 +210,16 @@ const TrustSection = () => {
               </div>
             </div>
 
-            {/* Testimonial Navigation */}
-            <div className="flex justify-center space-x-2 mt-8">
+            {/* Enhanced Testimonial Navigation */}
+            <div className="flex justify-center space-x-3 mt-8">
               {testimonials.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial ? 'bg-usergy-turquoise' : 'bg-gray-300'
+                  onClick={() => goToTestimonial(index)}
+                  className={`w-4 h-4 rounded-full transition-all duration-300 hover:scale-125 ${
+                    index === currentTestimonial 
+                      ? 'bg-usergy-turquoise shadow-lg' 
+                      : 'bg-gray-300 hover:bg-gray-400'
                   }`}
                 />
               ))}
@@ -190,8 +230,8 @@ const TrustSection = () => {
           <div className={`text-center transition-all duration-1000 delay-1200 ${
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}>
-            <div className="inline-flex items-center space-x-3 text-gray-600">
-              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+            <div className="inline-flex items-center space-x-3 text-gray-600 bg-white rounded-full px-6 py-3 shadow-md hover:shadow-lg transition-shadow duration-300">
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center animate-pulse">
                 <span className="text-white text-sm">🔒</span>
               </div>
               <span className="font-semibold">Your Data is Secure & Private. Built with Trust & Compliance.</span>
