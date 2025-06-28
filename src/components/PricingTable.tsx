@@ -24,80 +24,107 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
       {/* Table Header */}
-      <div className="grid grid-cols-1 md:grid-cols-4 bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white">
-        <div className="p-6 text-center font-bold text-lg">
+      <div className="grid grid-cols-1 md:grid-cols-4 bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white relative">
+        <div className="p-6 text-center font-bold text-lg border-r border-white/20">
           # Users
         </div>
-        <div className="p-6 text-center font-bold text-lg bg-black/10">
-          Feedback Only
-          <div className="text-sm font-normal mt-1">Basic Insight</div>
+        <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-black/10">
+          <div className="font-bold text-lg">Feedback Only</div>
+          <div className="text-sm font-normal mt-1 opacity-90">Basic Insight</div>
         </div>
-        <div className="p-6 text-center font-bold text-lg bg-usergy-gold/20 relative">
-          <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-usergy-gold text-usergy-dark px-3 py-1 rounded-full text-xs font-bold">
+        <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-usergy-gold/20 relative">
+          <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-usergy-gold text-usergy-dark px-4 py-1 rounded-full text-sm font-bold shadow-lg z-10">
             Most Popular
           </div>
-          Feedback + Community
-          <div className="text-sm font-normal mt-1">Core Activation</div>
+          <div className="font-bold text-lg mt-2">Feedback + Community</div>
+          <div className="text-sm font-normal mt-1 opacity-90">Core Activation</div>
         </div>
         <div className="p-6 text-center font-bold text-lg bg-black/10">
-          Full Traction
-          <div className="text-sm font-normal mt-1">Amplify & Buzz</div>
+          <div className="font-bold text-lg">Full Traction</div>
+          <div className="text-sm font-normal mt-1 opacity-90">Amplify & Buzz</div>
         </div>
       </div>
 
       {/* Pricing Row */}
-      <div className="grid grid-cols-1 md:grid-cols-4 border-b-2 border-usergy-turquoise bg-usergy-turquoise/5">
-        <div className="p-6 text-center bg-gray-50 font-bold text-2xl text-usergy-dark">
+      <div className={`grid grid-cols-1 md:grid-cols-4 border-b-2 border-usergy-turquoise bg-gradient-to-r from-usergy-turquoise/5 to-usergy-skyblue/5 transition-all duration-300`}>
+        <div className="p-6 text-center bg-gray-50 font-bold text-2xl text-usergy-dark border-r border-gray-200">
           {selectedUsers}
         </div>
-        <div className="p-6 text-center">
-          <div className="text-3xl font-black text-usergy-dark mb-2">
+        <div className="p-6 text-center border-r border-gray-200 bg-white">
+          <div className="text-3xl font-black text-usergy-dark mb-3">
             ${prices.feedback.toLocaleString()}
           </div>
-          <ul className="text-sm text-gray-600 mb-4 space-y-1">
-            <li>• Recruitment & incentives</li>
-            <li>• Basic report</li>
-            <li>• Email support</li>
+          <ul className="text-sm text-gray-600 mb-6 space-y-2 text-left">
+            <li className="flex items-start">
+              <span className="text-usergy-coral mr-2 font-bold">•</span>
+              Recruit & incentivize users (all incentives included)
+            </li>
+            <li className="flex items-start">
+              <span className="text-usergy-coral mr-2 font-bold">•</span>
+              Comprehensive feedback analysis report
+            </li>
+            <li className="flex items-start">
+              <span className="text-usergy-coral mr-2 font-bold">•</span>
+              Dedicated email support throughout campaign
+            </li>
           </ul>
           <Button 
             onClick={() => handleBookCall('Feedback Only')}
-            className="w-full bg-usergy-coral hover:bg-usergy-coral/90 text-white"
+            className="w-full bg-usergy-coral hover:bg-usergy-coral/90 text-white font-bold"
           >
             <Phone className="w-4 h-4 mr-2" />
             Select Plan
           </Button>
         </div>
-        <div className="p-6 text-center bg-usergy-gold/10 border-2 border-usergy-gold">
-          <div className="text-3xl font-black text-usergy-dark mb-2">
+        <div className="p-6 text-center bg-usergy-gold/5 border-2 border-usergy-gold/30 border-r border-gray-200 relative">
+          <div className="text-3xl font-black text-usergy-dark mb-3">
             ${prices.community.toLocaleString()}
           </div>
-          <ul className="text-sm text-gray-600 mb-4 space-y-1">
-            <li>• All Feedback Only features</li>
-            <li>• Community setup & nurture</li>
-            <li>• Engagement tracking</li>
+          <ul className="text-sm text-gray-600 mb-6 space-y-2 text-left">
+            <li className="flex items-start">
+              <span className="text-usergy-turquoise mr-2 font-bold">•</span>
+              All Feedback Only features included
+            </li>
+            <li className="flex items-start">
+              <span className="text-usergy-turquoise mr-2 font-bold">•</span>
+              Expert community setup & nurturing
+            </li>
+            <li className="flex items-start">
+              <span className="text-usergy-turquoise mr-2 font-bold">•</span>
+              Real-time engagement tracking & optimization
+            </li>
           </ul>
           <Button 
             onClick={() => handleBookCall('Feedback + Community')}
-            className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white"
+            className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold"
           >
             <Phone className="w-4 h-4 mr-2" />
             Select Plan
           </Button>
         </div>
-        <div className="p-6 text-center">
-          <div className="text-3xl font-black text-usergy-dark mb-2">
+        <div className="p-6 text-center bg-white">
+          <div className="text-3xl font-black text-usergy-dark mb-3">
             ${prices.full.toLocaleString()}
           </div>
-          <ul className="text-sm text-gray-600 mb-4 space-y-1">
-            <li>• All Community features</li>
-            <li>• Social task management</li>
-            <li>• UGC report</li>
+          <ul className="text-sm text-gray-600 mb-6 space-y-2 text-left">
+            <li className="flex items-start">
+              <span className="text-usergy-skyblue mr-2 font-bold">•</span>
+              All Community features included
+            </li>
+            <li className="flex items-start">
+              <span className="text-usergy-skyblue mr-2 font-bold">•</span>
+              Strategic social media task management
+            </li>
+            <li className="flex items-start">
+              <span className="text-usergy-skyblue mr-2 font-bold">•</span>
+              Comprehensive UGC analysis report
+            </li>
           </ul>
           <Button 
             onClick={() => handleBookCall('Full Traction')}
-            className="w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white"
+            className="w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold"
           >
             <Phone className="w-4 h-4 mr-2" />
             Select Plan
