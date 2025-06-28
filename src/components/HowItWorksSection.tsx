@@ -92,7 +92,9 @@ const HowItWorksSection = () => {
                       activeStep === step.id ? 'ring-4 ring-opacity-50' : ''
                     }`}
                     style={{
-                      ringColor: activeStep === step.id ? step.color : 'transparent'
+                      ...(activeStep === step.id && { 
+                        boxShadow: `0 0 0 4px ${step.color}50` 
+                      })
                     }}
                     onClick={() => setActiveStep(activeStep === step.id ? null : step.id)}
                   >

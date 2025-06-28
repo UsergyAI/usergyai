@@ -158,7 +158,7 @@ const SolutionSection = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes dash {
           to {
             stroke-dashoffset: -10;

@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { rocket, gamepad } from 'lucide-react';
+import { Rocket, Gamepad } from 'lucide-react';
 
 const FinalCTASection = () => {
   return (
@@ -33,7 +33,7 @@ const FinalCTASection = () => {
               size="lg"
               className="bg-white text-usergy-turquoise hover:bg-usergy-light font-black text-xl py-6 px-12 rounded-full shadow-2xl hover:shadow-white/30 transform hover:scale-110 transition-all duration-300 animate-pulse-glow"
             >
-              <rocket className="mr-3 h-6 w-6" />
+              <Rocket className="mr-3 h-6 w-6" />
               Launch Your AI Campaign Now! 🚀
             </Button>
             
@@ -42,7 +42,7 @@ const FinalCTASection = () => {
               variant="outline"
               className="border-3 border-white text-white hover:bg-white hover:text-usergy-coral font-black text-xl py-6 px-12 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300"
             >
-              <gamepad className="mr-3 h-6 w-6" />
+              <Gamepad className="mr-3 h-6 w-6" />
               Explore Groundbreaking AI Projects! 🎮
             </Button>
           </div>

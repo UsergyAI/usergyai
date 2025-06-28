@@ -99,7 +99,7 @@ const ProblemSection = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes fadeOut {
           0% { opacity: 0.6; transform: scale(1); }
           100% { opacity: 0.1; transform: scale(0.8); }
