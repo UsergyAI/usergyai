@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Plus, Search, Gift } from 'lucide-react';
 
 const AddOnServicesSection = () => {
   const addOns = [
@@ -7,7 +8,7 @@ const AddOnServicesSection = () => {
       title: 'Extra Participant',
       price: '$35 each',
       description: 'Scale your insights with additional high-quality participants',
-      icon: '➕',
+      icon: Plus,
       color: 'usergy-turquoise',
       gradient: 'from-usergy-turquoise/20 to-usergy-turquoise/5'
     },
@@ -16,7 +17,7 @@ const AddOnServicesSection = () => {
       price: '+$499',
       subtitle: '(one-time)',
       description: 'Deep-dive analysis with predictive insights and recommendations',
-      icon: '🔍',
+      icon: Search,
       color: 'usergy-coral',
       gradient: 'from-usergy-coral/20 to-usergy-coral/5'
     },
@@ -25,7 +26,7 @@ const AddOnServicesSection = () => {
       price: '10% off',
       subtitle: '3+ projects',
       description: 'Maximize your investment with ongoing partnership discounts',
-      icon: '🎁',
+      icon: Gift,
       color: 'usergy-skyblue',
       gradient: 'from-usergy-skyblue/20 to-usergy-skyblue/5'
     }
@@ -39,27 +40,30 @@ const AddOnServicesSection = () => {
         </h3>
         
         <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-          {addOns.map((addOn, index) => (
-            <div 
-              key={index}
-              className={`bg-gradient-to-b ${addOn.gradient} rounded-xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-gray-100 hover:border-${addOn.color}/30 transform group cursor-pointer`}
-            >
-              <div className="flex items-center justify-center mb-4">
-                <div className={`w-12 h-12 bg-gradient-to-br from-${addOn.color} to-${addOn.color}/80 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <span className="text-xl filter drop-shadow-sm">{addOn.icon}</span>
+          {addOns.map((addOn, index) => {
+            const IconComponent = addOn.icon;
+            return (
+              <div 
+                key={index}
+                className={`bg-gradient-to-b ${addOn.gradient} rounded-xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-gray-100 hover:border-${addOn.color}/30 transform group cursor-pointer`}
+              >
+                <div className="flex items-center justify-center mb-4">
+                  <div className={`w-12 h-12 bg-gradient-to-br from-${addOn.color} to-${addOn.color}/80 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <IconComponent className="w-6 h-6 text-white" />
+                  </div>
+                  <h4 className={`font-bold text-${addOn.color} group-hover:text-usergy-dark transition-colors text-lg`}>
+                    {addOn.title}
+                  </h4>
                 </div>
-                <h4 className={`font-bold text-${addOn.color} group-hover:text-usergy-dark transition-colors text-lg`}>
-                  {addOn.title}
-                </h4>
+                <p className="text-2xl font-black text-usergy-dark mb-2 group-hover:scale-105 transition-transform">
+                  {addOn.price} {addOn.subtitle && <span className="text-sm text-gray-600">{addOn.subtitle}</span>}
+                </p>
+                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors leading-relaxed">
+                  {addOn.description}
+                </p>
               </div>
-              <p className="text-2xl font-black text-usergy-dark mb-2 group-hover:scale-105 transition-transform">
-                {addOn.price} {addOn.subtitle && <span className="text-sm text-gray-600">{addOn.subtitle}</span>}
-              </p>
-              <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors leading-relaxed">
-                {addOn.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

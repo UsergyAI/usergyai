@@ -24,31 +24,34 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 animate-fade-in">
-      {/* Add top spacing for the badge */}
-      <div className="pt-6">
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 animate-fade-in relative">
+      {/* Most Popular Badge - Positioned absolutely above the table */}
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+        <div className="bg-gradient-to-r from-usergy-gold to-usergy-gold/90 text-usergy-dark px-4 py-2 rounded-full text-sm font-bold shadow-xl border-2 border-white">
+          MOST POPULAR
+        </div>
+      </div>
+
+      {/* Add top padding to accommodate the badge */}
+      <div className="pt-8">
         {/* Table Header - Enhanced gradient backgrounds */}
-        <div className="grid grid-cols-1 md:grid-cols-3 relative">
-          <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-gradient-to-b from-usergy-coral to-usergy-coral/80 text-white">
+        <div className="grid grid-cols-3 relative">
+          <div className="p-6 text-center font-bold text-lg bg-gradient-to-b from-usergy-coral to-usergy-coral/80 text-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
             <div className="font-bold text-lg">Feedback Only</div>
             <div className="text-sm font-normal mt-1 opacity-90">Basic Insight</div>
           </div>
-          <div className="p-6 text-center font-bold text-lg border-r border-white/20 bg-gradient-to-b from-usergy-turquoise to-usergy-skyblue text-white relative">
-            {/* Most Popular Badge - Repositioned */}
-            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-usergy-gold text-usergy-dark px-3 py-1 rounded-full text-xs font-bold shadow-lg z-10 whitespace-nowrap">
-              MOST POPULAR
-            </div>
+          <div className="p-6 text-center font-bold text-lg bg-gradient-to-b from-usergy-turquoise to-usergy-skyblue text-white relative hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
             <div className="font-bold text-lg">Feedback + Community</div>
             <div className="text-sm font-normal mt-1 opacity-90">Core Activation</div>
           </div>
-          <div className="p-6 text-center font-bold text-lg bg-gradient-to-b from-usergy-skyblue to-usergy-skyblue/80 text-white">
+          <div className="p-6 text-center font-bold text-lg bg-gradient-to-b from-usergy-skyblue to-usergy-skyblue/80 text-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
             <div className="font-bold text-lg">Full Traction</div>
             <div className="text-sm font-normal mt-1 opacity-90">Amplify & Buzz</div>
           </div>
         </div>
 
         {/* Pricing Row - Enhanced with smooth animations and hover effects */}
-        <div className="grid grid-cols-1 md:grid-cols-3 border-b-2 border-usergy-turquoise bg-gradient-to-r from-usergy-turquoise/5 to-usergy-skyblue/5">
+        <div className="grid grid-cols-3 border-b-2 border-usergy-turquoise bg-gradient-to-r from-usergy-turquoise/5 to-usergy-skyblue/5">
           {/* Feedback Only */}
           <div className="p-6 text-center border-r border-gray-200 bg-white hover:shadow-2xl hover:bg-gradient-to-b hover:from-white hover:to-usergy-coral/5 transition-all duration-300 hover:-translate-y-2 transform group">
             <div className="text-3xl font-black text-usergy-dark mb-3 group-hover:text-usergy-coral transition-colors">
