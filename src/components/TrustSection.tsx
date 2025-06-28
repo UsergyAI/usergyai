@@ -21,25 +21,25 @@ const TrustSection = () => {
 
   const testimonials = [
     {
-      quote: "Usergy delivered the targeted users and honest insights we needed to pivot effectively. Absolutely indispensable for our pre-launch.",
+      quote: "Usergy's expert team delivered the targeted users and honest insights we needed to pivot effectively. Their strategic approach was absolutely indispensable for our pre-launch success.",
       author: "Dr. Anya Sharma",
       title: "CEO, Synthetica AI",
       type: "founder"
     },
     {
-      quote: "Being an early tester on Usergy is addicting. I've tried future-defining AI and earned great rewards. It's truly a win-win!",
+      quote: "Working with Usergy's community activation service was transformative. They helped us discover amazing AI tools and provided exceptional guidance throughout the testing process.",
       author: "Mark T.",
       title: "Elite AI Scout",
       type: "user"
     },
     {
-      quote: "The quality of feedback we received was exceptional. Our users helped us identify critical UX issues before our public launch.",
+      quote: "The quality of feedback we received through Usergy's consulting service was exceptional. Their team helped us identify critical UX issues before our public launch, saving us months of iteration.",
       author: "Sarah Chen",
       title: "CTO, Neural Labs",
       type: "founder"
     },
     {
-      quote: "I've discovered amazing AI tools months before they hit the market. The community aspect makes it even more valuable.",
+      quote: "Usergy's team guided us through discovering amazing AI tools months before they hit the market. Their strategic community approach makes all the difference.",
       author: "Alex Rodriguez",
       title: "AI Explorer, Level 5",
       type: "user"
@@ -52,7 +52,6 @@ const TrustSection = () => {
         if (entry.isIntersecting && !isVisible) {
           setIsVisible(true);
           
-          // Enhanced counter animations with staggered starts
           kpis.forEach((kpi, index) => {
             let start = 0;
             const duration = 2500;
@@ -62,7 +61,7 @@ const TrustSection = () => {
               const increment = kpi.end / (duration / 16);
               
               const counter = setInterval(() => {
-                start += increment * (1 + Math.random() * 0.1); // Add slight randomness
+                start += increment * (1 + Math.random() * 0.1);
                 if (start >= kpi.end) {
                   setCounters(prev => ({ ...prev, [kpi.key]: kpi.end }));
                   clearInterval(counter);
@@ -84,7 +83,6 @@ const TrustSection = () => {
     return () => observer.disconnect();
   }, [isVisible]);
 
-  // Enhanced auto-rotate testimonials
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -106,7 +104,7 @@ const TrustSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="success-stories" ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
@@ -115,12 +113,12 @@ const TrustSection = () => {
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
               Trusted by Visionaries, 
-              <span className="gradient-text"> Fueled by a Thriving Community</span>
+              <span className="gradient-text"> Fueled by Expert Guidance</span>
             </h2>
             <p className={`text-xl text-gray-600 max-w-3xl mx-auto transition-all duration-1000 delay-300 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
-              Our numbers speak volumes. Join the growing movement transforming AI launches.
+              Our numbers speak volumes. Join the growing movement of AI founders who trust our strategic expertise.
             </p>
           </div>
 

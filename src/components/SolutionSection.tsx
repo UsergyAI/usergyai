@@ -30,48 +30,47 @@ const SolutionSection = () => {
   const nodes = [
     {
       id: 1,
-      title: "Authentic Feedback",
+      title: "Consulting & Strategy",
       icon: MessageSquare,
       bgIcon: Brain,
       color: "#4ECDC4",
-      description: "Real insights from engaged users who understand AI"
+      description: "Our experts guide you through strategic planning and optimization"
     },
     {
       id: 2,
-      title: "Vibrant Community",
+      title: "Community Activation",
       icon: Users,
       bgIcon: Network,
       color: "#45B7D1",
-      description: "Build lasting connections with passionate advocates"
+      description: "We build and nurture passionate communities around your AI solution"
     },
     {
       id: 3,
-      title: "Social Amplification",
+      title: "Amplification & Buzz",
       icon: Megaphone,
       bgIcon: Target,
       color: "#FF6B6B",
-      description: "Generate organic buzz and authentic testimonials"
+      description: "Our team generates organic buzz and authentic testimonials"
     }
   ];
 
   return (
-    <section ref={sectionRef} className="py-20 bg-white">
+    <section id="services" ref={sectionRef} className="py-20 bg-white">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto text-center">
           {/* Section Header */}
           <h2 className={`text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-8 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            Usergy: Your Integrated Engine for 
-            <span className="gradient-text"> Undeniable Momentum</span>
+            What We Do 
+            <span className="gradient-text"> For You</span>
           </h2>
 
           <p className={`text-xl text-gray-600 mb-16 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            We move beyond basic feedback. Usergy is your complete 'Traction in a Box' solution, 
-            integrating three critical pillars into one powerful, seamless loop. 
-            <span className="font-semibold text-usergy-dark">This is the alchemy of real growth.</span>
+            We deliver comprehensive AI traction consulting that integrates three critical pillars into one powerful, seamless process. 
+            <span className="font-semibold text-usergy-dark">This is our proven methodology for real growth.</span>
           </p>
 
           {/* Enhanced Interactive Diagram */}

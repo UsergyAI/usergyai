@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { Rocket, Gamepad } from 'lucide-react';
+import { Phone, ArrowRight } from 'lucide-react';
 
 const HeroSection = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -169,8 +169,15 @@ const HeroSection = () => {
     };
   }, []);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-24 md:pt-28 lg:pt-32">
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32 lg:pt-36">
       {/* Enhanced Animated Background Canvas */}
       <canvas
         ref={canvasRef}
@@ -188,46 +195,47 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="max-w-6xl mx-auto">
-          {/* Main Headline with better sizing */}
+          {/* Main Headline with better sizing and agency messaging */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-usergy-dark mb-4 sm:mb-6 md:mb-8 lg:mb-10 leading-tight animate-fade-in px-2">
             Your Brilliant AI Tool 
-            <span className="block gradient-text mt-2 md:mt-3">Deserves to Be Discovered</span>
+            <span className="block gradient-text mt-2 md:mt-3">Deserves Expert Guidance</span>
           </h1>
           
-          {/* Emphasis with improved sizing */}
+          {/* Emphasis with agency positioning */}
           <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-usergy-turquoise mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-pulse-glow px-2">
-            Get Real Traction, Fast.
+            We Deliver Real Traction, Fast.
           </div>
 
-          {/* Sub-headline with better sizing */}
+          {/* Sub-headline with agency messaging */}
           <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-gray-600 mb-8 sm:mb-10 md:mb-12 lg:mb-14 max-w-4xl mx-auto leading-relaxed animate-slide-up px-4">
-            Usergy connects visionary AI founders with engaged enthusiasts for 
+            Our expert team connects visionary AI founders with engaged enthusiasts to deliver 
             <span className="text-usergy-skyblue"> authentic feedback</span>, 
             <span className="text-usergy-coral"> vibrant community</span>, and 
             <span className="text-usergy-turquoise"> social momentum</span> that matters.
           </p>
 
-          {/* CTA Buttons with better sizing and spacing */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-center mb-8 sm:mb-10 md:mb-12 lg:mb-16 animate-scale-in px-4">
+          {/* Updated CTA Buttons with agency messaging */}
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-center mb-10 sm:mb-12 md:mb-16 lg:mb-20 animate-scale-in px-4">
             <Button 
               size="lg"
               className="w-full sm:w-auto bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-8 sm:px-10 md:px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
             >
-              <Rocket className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-              Launch Your AI Campaign
+              <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+              Book Your Strategy Call
             </Button>
             
             <Button 
               size="lg"
               variant="outline"
+              onClick={() => scrollToSection('how-it-works')}
               className="w-full sm:w-auto border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-8 sm:px-10 md:px-12 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
             >
-              <Gamepad className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-              Explore AI Projects
+              <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+              See Our Founder Process
             </Button>
           </div>
 
-          {/* Trust Indicators with better visibility */}
+          {/* Trust Indicators with enhanced visibility */}
           <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-gray-600 animate-fade-in px-4">
             <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
               <div className="w-2 h-2 bg-usergy-turquoise rounded-full animate-pulse"></div>

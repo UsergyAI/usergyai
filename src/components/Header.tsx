@@ -42,16 +42,16 @@ const Header = () => {
           {/* Navigation - Hidden on mobile, visible on tablet and up */}
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8">
             <button 
-              onClick={() => scrollToSection('for-founders')}
+              onClick={() => scrollToSection('hero')}
               className="text-usergy-dark hover:text-usergy-turquoise transition-colors font-semibold text-sm lg:text-base"
             >
-              For Founders
+              Home
             </button>
             <button 
-              onClick={() => scrollToSection('for-users')}
-              className="text-usergy-dark hover:text-usergy-coral transition-colors font-semibold text-sm lg:text-base"
+              onClick={() => scrollToSection('services')}
+              className="text-usergy-dark hover:text-usergy-turquoise transition-colors font-semibold text-sm lg:text-base"
             >
-              For Users
+              Services
             </button>
             <button 
               onClick={() => scrollToSection('how-it-works')}
@@ -60,27 +60,26 @@ const Header = () => {
               How It Works
             </button>
             <button 
-              onClick={() => scrollToSection('pricing')}
+              onClick={() => scrollToSection('success-stories')}
+              className="text-usergy-dark hover:text-usergy-coral transition-colors font-semibold text-sm lg:text-base"
+            >
+              Success Stories
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
               className="text-usergy-dark hover:text-usergy-turquoise transition-colors font-semibold text-sm lg:text-base"
             >
-              Pricing
+              Contact
             </button>
           </nav>
 
-          {/* Action Buttons - Responsive sizing */}
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="border-usergy-turquoise text-usergy-dark hover:bg-usergy-turquoise hover:text-white transition-all duration-300 text-xs sm:text-sm px-3 sm:px-4 py-1 sm:py-2"
-            >
-              Login
-            </Button>
+          {/* Contact Button - Single CTA */}
+          <div className="flex items-center">
             <Button 
               size="sm"
               className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-4 sm:px-6 py-1 sm:py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xs sm:text-sm"
             >
-              Sign Up
+              Book Strategy Call
             </Button>
           </div>
         </div>
