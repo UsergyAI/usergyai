@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Rocket, Gamepad } from 'lucide-react';
@@ -171,7 +170,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-20 md:pt-24 lg:pt-28">
       {/* Enhanced Animated Background Canvas */}
       <canvas
         ref={canvasRef}
@@ -187,60 +186,60 @@ const HeroSection = () => {
         <div className="floating-element absolute bottom-1/3 right-1/3 w-3 h-3 bg-usergy-gold rounded-full opacity-70 animate-ping"></div>
       </div>
 
-      <div className="container mx-auto px-6 text-center relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Main Headline with enhanced spacing */}
-          <h1 className="text-6xl lg:text-8xl font-black text-usergy-dark mb-8 leading-tight animate-fade-in">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-usergy-dark mb-6 sm:mb-8 md:mb-10 lg:mb-12 leading-tight animate-fade-in px-2">
             Your Brilliant AI Tool 
-            <span className="block gradient-text mt-4">Deserves to Be Discovered</span>
+            <span className="block gradient-text mt-2 md:mt-4">Deserves to Be Discovered</span>
           </h1>
           
           {/* Emphasis with improved spacing */}
-          <div className="text-4xl lg:text-6xl font-black text-usergy-turquoise mb-12 animate-pulse-glow">
+          <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-black text-usergy-turquoise mb-8 sm:mb-10 md:mb-12 lg:mb-16 animate-pulse-glow px-2">
             Get Real Traction, Fast.
           </div>
 
           {/* Sub-headline with enhanced spacing */}
-          <p className="text-xl lg:text-3xl font-semibold text-gray-600 mb-16 max-w-4xl mx-auto leading-relaxed animate-slide-up">
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-gray-600 mb-12 sm:mb-14 md:mb-16 lg:mb-20 max-w-4xl mx-auto leading-relaxed animate-slide-up px-4">
             Usergy connects visionary AI founders with engaged enthusiasts for 
             <span className="text-usergy-skyblue"> authentic feedback</span>, 
             <span className="text-usergy-coral"> vibrant community</span>, and 
             <span className="text-usergy-turquoise"> social momentum</span> that matters.
           </p>
 
-          {/* CTA Buttons with improved spacing */}
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-8 animate-scale-in">
+          {/* CTA Buttons with improved spacing and responsive design */}
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 md:gap-10 justify-center items-center mb-6 sm:mb-8 md:mb-10 animate-scale-in px-4">
             <Button 
               size="lg"
-              className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-xl py-8 px-14 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
+              className="w-full sm:w-auto bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-lg sm:text-xl py-6 sm:py-8 px-10 sm:px-14 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
             >
-              <Rocket className="mr-3 h-6 w-6" />
+              <Rocket className="mr-3 h-5 w-5 sm:h-6 sm:w-6" />
               Launch Your AI Campaign 🚀
             </Button>
             
             <Button 
               size="lg"
               variant="outline"
-              className="border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold text-xl py-8 px-14 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold text-lg sm:text-xl py-6 sm:py-8 px-10 sm:px-14 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
             >
-              <Gamepad className="mr-3 h-6 w-6" />
+              <Gamepad className="mr-3 h-5 w-5 sm:h-6 sm:w-6" />
               Explore AI Projects 🎮
             </Button>
           </div>
 
-          {/* Trust Indicators with enhanced spacing */}
-          <div className="mt-20 flex flex-wrap justify-center gap-8 text-gray-500 animate-fade-in">
-            <div className="flex items-center space-x-2">
+          {/* Trust Indicators with enhanced spacing and responsive design */}
+          <div className="mt-16 sm:mt-18 md:mt-20 lg:mt-24 flex flex-col sm:flex-row flex-wrap justify-center gap-6 sm:gap-8 md:gap-10 text-gray-500 animate-fade-in px-4">
+            <div className="flex items-center justify-center space-x-2">
               <div className="w-2 h-2 bg-usergy-turquoise rounded-full animate-pulse"></div>
-              <span className="font-semibold">1,200+ Campaigns Launched</span>
+              <span className="font-semibold text-sm sm:text-base">1,200+ Campaigns Launched</span>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center justify-center space-x-2">
               <div className="w-2 h-2 bg-usergy-coral rounded-full animate-pulse"></div>
-              <span className="font-semibold">75,000+ AI Enthusiasts</span>
+              <span className="font-semibold text-sm sm:text-base">75,000+ AI Enthusiasts</span>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center justify-center space-x-2">
               <div className="w-2 h-2 bg-usergy-skyblue rounded-full animate-pulse"></div>
-              <span className="font-semibold">92% Feedback Quality Score</span>
+              <span className="font-semibold text-sm sm:text-base">92% Feedback Quality Score</span>
             </div>
           </div>
         </div>
