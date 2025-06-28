@@ -84,7 +84,7 @@ const SolutionSection = () => {
               }`}>
                 <div className="text-center">
                   <Zap className="h-8 w-8 text-white mx-auto mb-1" />
-                  <div className="text-xs font-black text-white">MOMENTUM</div>
+                  <div className="text-xs font-black text-white">OUR CORE METHODOLOGY</div>
                 </div>
               </div>
 

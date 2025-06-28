@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Star, Users, Target, TrendingUp, Award } fro
 const TrustSection = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const [animatedNumbers, setAnimatedNumbers] = useState({
     campaigns: 0,
     users: 0,
@@ -77,8 +78,9 @@ const TrustSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimated) {
           setIsVisible(true);
+          setHasAnimated(true);
           observer.unobserve(sectionRef.current!);
         }
       },
@@ -94,17 +96,17 @@ const TrustSection = () => {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
+  }, [hasAnimated]);
 
   useEffect(() => {
-    if (isVisible) {
+    if (isVisible && !hasAnimated) {
       const animationDuration = 2000; // 2 seconds
       const frameDuration = 10; // Update every 10ms
       const totalFrames = animationDuration / frameDuration;
 
       const animateNumbers = (targetNumbers: any) => {
         let currentFrames = 0;
-        const initialNumbers = { ...animatedNumbers };
+        const initialNumbers = { campaigns: 0, users: 0, feedback: 0, revenue: 0 };
 
         const animationInterval = setInterval(() => {
           currentFrames++;
@@ -132,7 +134,7 @@ const TrustSection = () => {
         revenue: kpis[3].number
       });
     }
-  }, [isVisible, kpis]);
+  }, [isVisible, hasAnimated, kpis]);
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);

@@ -4,13 +4,15 @@ import React, { useEffect, useRef, useState } from 'react';
 const ProblemSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [countUp, setCountUp] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasAnimated) {
           setIsVisible(true);
+          setHasAnimated(true);
           // Start count-up animation
           let start = 0;
           const end = 42;
@@ -36,7 +38,7 @@ const ProblemSection = () => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [hasAnimated]);
 
   return (
     <section ref={sectionRef} className="py-20 bg-gradient-to-br from-gray-50 to-white">

@@ -6,6 +6,13 @@ import { Rocket, Gamepad2, Zap, User, TrendingUp, Target, Lightbulb, Search, Gif
 const DualValueSection = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="for-founders" className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="container mx-auto px-6">
@@ -58,7 +65,7 @@ const DualValueSection = () => {
                 {/* Benefits List */}
                 <div className="space-y-4 mb-8">
                   {[
-                    "Acquire: Your first 100-1,000 'true believers' – not just testers",
+                    "Acquire: Your first 100-1,000 'true believers' – not just users",
                     "Validate: Gain honest, structured, and immediately actionable product feedback",
                     "Cultivate: Build an early, engaged, and loyal user community",
                     "Amplify: Generate authentic, high-impact social media buzz and visibility",
@@ -83,8 +90,11 @@ const DualValueSection = () => {
                   <p className="text-sm text-gray-500 mt-2">Founder → Growth → Success</p>
                 </div>
 
-                <Button className="w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105">
-                  Deep Dive for Founders →
+                <Button 
+                  className="w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={() => scrollToSection('how-it-works')}
+                >
+                  See Our Founder Process →
                 </Button>
               </div>
             </div>
@@ -142,8 +152,11 @@ const DualValueSection = () => {
                   <p className="text-sm text-gray-500 mt-2">Explore → Contribute → Earn</p>
                 </div>
 
-                <Button className="w-full bg-usergy-coral hover:bg-pink-500 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105">
-                  Explore AI Projects Today →
+                <Button 
+                  className="w-full bg-usergy-coral hover:bg-pink-500 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+                  onClick={() => scrollToSection('how-it-works')}
+                >
+                  Join Our AI Enthusiast Community →
                 </Button>
               </div>
             </div>

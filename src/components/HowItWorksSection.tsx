@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { Rocket, Users, BarChart3, Zap, Target, Gift, ChevronDown, ChevronUp } from 'lucide-react';
 
@@ -29,42 +30,42 @@ const HowItWorksSection = () => {
 
   const founderSteps = [
     {
-      title: "Connect & Launch",
+      title: "Strategize & Scope",
       icon: Rocket,
       color: "#4ECDC4",
-      description: "Set up your AI project profile and launch your campaign",
-      details: "Founders create detailed project profiles with demo links, target audience specs, and feedback goals. Our smart matching system connects you with relevant AI enthusiasts within 24 hours."
+      description: "Collaborate with our expert team to define your goals and map your custom traction strategy",
+      details: "We work closely with you to understand your AI product, target market, and growth objectives. Our team develops a comprehensive strategy tailored to your specific needs, ensuring maximum impact and efficient resource allocation."
     },
     {
       title: "Engage & Monitor",
       icon: BarChart3,
       color: "#45B7D1", 
-      description: "Track real-time engagement and gather valuable insights",
-      details: "Monitor user interactions through our comprehensive dashboard. Track engagement metrics, user demographics, and feedback quality scores in real-time as your campaign progresses."
+      description: "Our team manages user engagement, feedback collection, and community activation, providing real-time oversight",
+      details: "We handle all aspects of user engagement while you focus on product development. Our experts monitor interactions, facilitate meaningful conversations, and ensure high-quality feedback collection through proven methodologies."
     },
     {
       title: "Analyze & Optimize",
       icon: Target,
       color: "#FF6B6B",
-      description: "Transform feedback into actionable product improvements",
-      details: "Access detailed analytics reports with sentiment analysis, feature priority rankings, and actionable recommendations. Use AI-powered insights to make data-driven product decisions."
+      description: "Receive tailored reports and strategic recommendations from our experts for continuous optimization and product refinement",
+      details: "Get comprehensive analysis reports with actionable insights, trend identification, and strategic recommendations. Our team provides ongoing consultation to help you implement changes and optimize your product-market fit."
     }
   ];
 
   const userSteps = [
     {
-      title: "Discover & Explore",
+      title: "Register & Vet",
       icon: Zap,
       color: "#4ECDC4",
-      description: "Browse cutting-edge AI projects tailored to your interests",
-      details: "Users explore personalized AI project recommendations based on their interests and expertise. Advanced filtering helps discover projects in specific domains like healthcare, productivity, or creativity."
+      description: "Join our community by registering and completing your profile for expert matching",
+      details: "Complete a detailed profile showcasing your expertise and interests. Our team carefully vets each applicant to ensure we maintain a high-quality community of engaged AI enthusiasts and professionals."
     },
     {
       title: "Test & Contribute",
       icon: Users,
       color: "#45B7D1",
-      description: "Provide meaningful feedback on innovative AI solutions",
-      details: "Engage with AI tools through structured testing sessions. Provide detailed feedback using our guided questionnaires and rating systems designed to capture nuanced user experiences."
+      description: "Receive invitations from our team to test and provide meaningful feedback on innovative AI solutions",
+      details: "Get personally selected by our experts to participate in exclusive testing opportunities. Provide structured feedback through our guided assessment framework designed to capture valuable insights for founders."
     },
     {
       title: "Earn & Redeem",
@@ -87,8 +88,8 @@ const HowItWorksSection = () => {
               How <span className="gradient-text">Usergy Works</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              A streamlined 3-step process designed for maximum impact and minimal friction. 
-              Whether you're launching or exploring, success is just three clicks away.
+              Our streamlined 3-step process ensures maximum impact and minimal friction. 
+              We guide founders through a collaborative journey, and users find impactful ways to contribute.
             </p>
           </div>
 
@@ -101,7 +102,7 @@ const HowItWorksSection = () => {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center space-x-3 bg-usergy-turquoise text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg">
                   <Rocket className="h-6 w-6" />
-                  <span>For AI Founders</span>
+                  <span>How We Partner with Founders</span>
                 </div>
               </div>
 
@@ -200,10 +201,10 @@ const HowItWorksSection = () => {
               <p className="text-lg mb-6 opacity-90">Join thousands of innovators already building the future with Usergy</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <button className="bg-white text-usergy-turquoise font-bold py-3 px-8 rounded-full hover:bg-gray-50 transition-colors duration-300 shadow-lg">
-                  Start Your Campaign
+                  Book Your Strategy Call
                 </button>
                 <button className="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-usergy-turquoise transition-all duration-300">
-                  Explore Projects
+                  See Our Founder Process
                 </button>
               </div>
             </div>
