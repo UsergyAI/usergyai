@@ -48,7 +48,7 @@ const FinalCTASection = () => {
               size="lg"
               variant="outline"
               onClick={() => scrollToSection('how-it-works')}
-              className="border-3 border-white text-white hover:bg-white hover:text-usergy-coral font-black text-xl py-6 px-12 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300"
+              className="border-3 border-white bg-white/10 text-white hover:bg-white hover:text-usergy-coral font-black text-xl py-6 px-12 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 backdrop-blur-sm"
             >
               <ArrowRight className="mr-3 h-6 w-6" />
               See Our Founder Process

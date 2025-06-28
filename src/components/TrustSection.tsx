@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, Star, Users, Target, TrendingUp, Award } from 'lucide-react';
 
@@ -81,7 +82,29 @@ const TrustSection = () => {
         if (entry.isIntersecting && !hasAnimated) {
           setIsVisible(true);
           setHasAnimated(true);
-          observer.unobserve(sectionRef.current!);
+          
+          // Start count-up animation for each number
+          const animateNumber = (targetValue: number, key: keyof typeof animatedNumbers) => {
+            let start = 0;
+            const duration = 2000;
+            const increment = targetValue / (duration / 16);
+
+            const counter = setInterval(() => {
+              start += increment;
+              if (start >= targetValue) {
+                setAnimatedNumbers(prev => ({ ...prev, [key]: targetValue }));
+                clearInterval(counter);
+              } else {
+                setAnimatedNumbers(prev => ({ ...prev, [key]: Math.floor(start) }));
+              }
+            }, 16);
+          };
+
+          // Animate each KPI number
+          animateNumber(1200, 'campaigns');
+          animateNumber(75000, 'users');
+          animateNumber(92, 'feedback');
+          animateNumber(500, 'revenue');
         }
       },
       { threshold: 0.3 }
@@ -91,50 +114,8 @@ const TrustSection = () => {
       observer.observe(sectionRef.current);
     }
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    return () => observer.disconnect();
   }, [hasAnimated]);
-
-  useEffect(() => {
-    if (isVisible && !hasAnimated) {
-      const animationDuration = 2000; // 2 seconds
-      const frameDuration = 10; // Update every 10ms
-      const totalFrames = animationDuration / frameDuration;
-
-      const animateNumbers = (targetNumbers: any) => {
-        let currentFrames = 0;
-        const initialNumbers = { campaigns: 0, users: 0, feedback: 0, revenue: 0 };
-
-        const animationInterval = setInterval(() => {
-          currentFrames++;
-          if (currentFrames >= totalFrames) {
-            clearInterval(animationInterval);
-            setAnimatedNumbers(targetNumbers);
-            return;
-          }
-
-          const progress = currentFrames / totalFrames;
-
-          setAnimatedNumbers(prevNumbers => ({
-            campaigns: Math.floor(initialNumbers.campaigns + (targetNumbers.campaigns - initialNumbers.campaigns) * progress),
-            users: Math.floor(initialNumbers.users + (targetNumbers.users - initialNumbers.users) * progress),
-            feedback: Math.floor(initialNumbers.feedback + (targetNumbers.feedback - initialNumbers.feedback) * progress),
-            revenue: Math.floor(initialNumbers.revenue + (targetNumbers.revenue - initialNumbers.revenue) * progress)
-          }));
-        }, frameDuration);
-      };
-
-      animateNumbers({
-        campaigns: kpis[0].number,
-        users: kpis[1].number,
-        feedback: kpis[2].number,
-        revenue: kpis[3].number
-      });
-    }
-  }, [isVisible, hasAnimated, kpis]);
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
@@ -176,9 +157,9 @@ const TrustSection = () => {
                   />
                 </div>
                 <div className="text-3xl font-black text-usergy-dark mb-2">
-                  {kpi.number === 75000 ? animatedNumbers.users.toLocaleString() : 
-                   kpi.number === 1200 ? animatedNumbers.campaigns.toLocaleString() :
-                   kpi.number === 92 ? animatedNumbers.feedback :
+                  {index === 0 ? animatedNumbers.campaigns.toLocaleString() :
+                   index === 1 ? animatedNumbers.users.toLocaleString() :
+                   index === 2 ? animatedNumbers.feedback :
                    animatedNumbers.revenue.toLocaleString()}{kpi.suffix}
                 </div>
                 <div className="text-gray-600 font-semibold">{kpi.label}</div>
