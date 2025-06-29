@@ -10,9 +10,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="flex items-center group">
             <img 
-              src="/lovable-uploads/faa37370-c81e-48f9-b23e-922deed9bddc.png" 
+              src="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" 
               alt="Usergy" 
-              className="h-12 w-auto filter brightness-0 invert transition-all duration-300 group-hover:scale-110 group-hover:brightness-150 group-hover:drop-shadow-lg cursor-pointer"
+              className="h-12 w-auto transition-opacity duration-200 group-hover:opacity-80 cursor-pointer"
             />
           </div>
 
