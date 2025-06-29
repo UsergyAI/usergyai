@@ -34,7 +34,7 @@ const ContactMethods = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
           {/* Strategy Call Card */}
           <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-usergy-turquoise/30 bg-white/90 backdrop-blur-sm">
             <CardContent className="p-6 md:p-8 text-center">
@@ -114,7 +114,7 @@ const ContactMethods = () => {
           </Card>
 
           {/* Community Card */}
-          <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-usergy-gold/30 bg-white/90 backdrop-blur-sm">
+          <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-usergy-gold/30 bg-white/90 backdrop-blur-sm md:col-span-2 xl:col-span-3">
             <CardContent className="p-6 md:p-8 text-center">
               <div className="mb-4 md:mb-6 flex justify-center">
                 <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-usergy-gold to-usergy-turquoise rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
@@ -126,13 +126,15 @@ const ContactMethods = () => {
               <h3 className="text-lg md:text-xl font-bold text-usergy-dark mb-3 md:mb-4">
                 Join Our AI Explorer Community
               </h3>
-              <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed max-w-2xl mx-auto">
                 Are you an AI enthusiast eager to explore groundbreaking tools and contribute? 
                 Connect with our vibrant community on Discord – a hub for innovation.
               </p>
-              <Button className="w-full bg-usergy-coral hover:bg-usergy-turquoise text-white font-bold py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg text-sm">
-                Join Discord Now! →
-              </Button>
+              <div className="flex justify-center">
+                <Button className="bg-usergy-coral hover:bg-usergy-turquoise text-white font-bold py-2 px-6 rounded-full transition-all duration-300 hover:shadow-lg text-sm">
+                  Join Discord Now! →
+                </Button>
+              </div>
             </CardContent>
           </Card>
         </div>

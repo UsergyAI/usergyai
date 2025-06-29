@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Calendar, MessageSquare, Phone } from 'lucide-react';
+import { Calendar, MessageSquare } from 'lucide-react';
 
 const ContactHero = () => {
   const handleCalendlyRedirect = () => {
@@ -28,8 +29,8 @@ const ContactHero = () => {
             Ready to transform your AI vision into reality? Our team is here to provide expert guidance and support. Reach out today!
           </p>
 
-          {/* Fixed contact method cards with proper button alignment */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+          {/* Fixed contact method cards with proper button alignment - Removed Direct Contact card */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16 max-w-4xl mx-auto">
             {/* Strategy Call Card */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-turquoise/20">
               {/* Icon and Title */}
@@ -69,27 +70,6 @@ const ContactHero = () => {
               >
                 <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
                 <span className="truncate">Start Form</span>
-              </Button>
-            </div>
-
-            {/* Direct Contact Card */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-skyblue/20 sm:col-span-2 lg:col-span-1">
-              {/* Icon and Title */}
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-usergy-skyblue/20 text-usergy-skyblue mx-auto mb-4">
-                <Phone className="w-8 h-8" />
-              </div>
-              <h3 className="text-lg sm:text-xl font-bold text-usergy-dark mb-4 text-center">
-                Direct Contact
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center">
-                Call us directly for immediate assistance.
-              </p>
-              <Button
-                variant="outline"
-                className="w-full border-2 border-usergy-skyblue text-usergy-skyblue hover:bg-usergy-skyblue hover:text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
-              >
-                <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
-                <span className="truncate">Direct Contact</span>
               </Button>
             </div>
           </div>

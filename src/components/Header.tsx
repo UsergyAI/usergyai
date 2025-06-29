@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
@@ -8,6 +9,7 @@ const Header = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,12 +20,14 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes or when clicking anywhere outside menu
+  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    // Scroll to top when navigating to a new page
+    window.scrollTo(0, 0);
   }, [location]);
 
-  // Close menu when clicking outside or on menu items
+  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as Element;
@@ -41,16 +45,24 @@ const Header = () => {
   const scrollToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
     if (location.pathname !== '/') {
-      window.location.href = `/#${sectionId}`;
-      return;
-    }
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      // Navigate to homepage first, then scroll to section
+      navigate('/');
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
-  const toggleMobileMenu = () => {
+  const toggleMobileMenu = (e: React.MouseEvent) => {
+    e.stopPropagation();
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
@@ -58,8 +70,12 @@ const Header = () => {
     window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
   };
 
-  const handleMenuItemClick = () => {
+  const handleMenuItemClick = (path: string) => {
     setIsMobileMenuOpen(false);
+    // Ensure we scroll to top when navigating
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 0);
   };
 
   return (
@@ -73,7 +89,7 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo with optimized loading */}
-          <Link to="/" className="flex items-center group" onClick={handleMenuItemClick}>
+          <Link to="/" className="flex items-center group" onClick={() => handleMenuItemClick('/')}>
             <div className="relative">
               {!imageLoaded && (
                 <div className="h-8 sm:h-10 md:h-12 w-24 sm:w-28 md:w-32 bg-gray-200 animate-pulse rounded"></div>
@@ -137,18 +153,19 @@ const Header = () => {
             <Button 
               size="sm"
               onClick={handleCalendlyRedirect}
-              className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xs sm:text-sm lg:text-base will-change-transform min-w-[80px] sm:min-w-[100px] md:min-w-[120px]"
+              className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xs sm:text-sm lg:text-base will-change-transform min-w-[70px] sm:min-w-[90px] md:min-w-[110px]"
             >
               <span className="hidden md:inline">Book Strategy Call</span>
               <span className="hidden sm:inline md:hidden">Book Call</span>
               <span className="sm:hidden">Call</span>
             </Button>
 
-            {/* Mobile Menu Button - Proper touch target */}
+            {/* Mobile Menu Button - Improved touch target and event handling */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 sm:p-2.5 rounded-md text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-100 transition-colors menu-button min-w-[44px] min-h-[44px] flex items-center justify-center"
+              className="lg:hidden p-2 sm:p-2.5 rounded-md text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-100 transition-colors menu-button min-w-[44px] min-h-[44px] flex items-center justify-center touch-manipulation"
               aria-label="Toggle menu"
+              type="button"
             >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -159,46 +176,49 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu Dropdown */}
+        {/* Mobile Menu Dropdown - Improved functionality */}
         {isMobileMenuOpen && (
           <div className="lg:hidden mt-4 py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg mobile-menu">
             <nav className="flex flex-col space-y-3">
               <button 
                 onClick={() => scrollToSection('hero')}
-                className="text-left px-4 py-2 text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-50 transition-colors font-semibold rounded-md"
+                className="text-left px-4 py-3 text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-50 transition-colors font-semibold rounded-md touch-manipulation"
+                type="button"
               >
                 Home
               </button>
               <Link 
                 to="/services"
-                onClick={handleMenuItemClick}
-                className="px-4 py-2 text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-50 transition-colors font-semibold rounded-md"
+                onClick={() => handleMenuItemClick('/services')}
+                className="px-4 py-3 text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-50 transition-colors font-semibold rounded-md block"
               >
                 Services
               </Link>
               <Link 
                 to="/community"
-                onClick={handleMenuItemClick}
-                className="px-4 py-2 text-usergy-dark hover:text-usergy-skyblue hover:bg-gray-50 transition-colors font-semibold rounded-md"
+                onClick={() => handleMenuItemClick('/community')}
+                className="px-4 py-3 text-usergy-dark hover:text-usergy-skyblue hover:bg-gray-50 transition-colors font-semibold rounded-md block"
               >
                 Community
               </Link>
               <Link 
                 to="/contact"
-                onClick={handleMenuItemClick}
-                className="px-4 py-2 text-usergy-dark hover:text-usergy-coral hover:bg-gray-50 transition-colors font-semibold rounded-md"
+                onClick={() => handleMenuItemClick('/contact')}
+                className="px-4 py-3 text-usergy-dark hover:text-usergy-coral hover:bg-gray-50 transition-colors font-semibold rounded-md block"
               >
                 Contact
               </Link>
               <button 
                 onClick={() => scrollToSection('how-it-works')}
-                className="text-left px-4 py-2 text-usergy-dark hover:text-usergy-skyblue hover:bg-gray-50 transition-colors font-semibold rounded-md"
+                className="text-left px-4 py-3 text-usergy-dark hover:text-usergy-skyblue hover:bg-gray-50 transition-colors font-semibold rounded-md touch-manipulation"
+                type="button"
               >
                 How It Works
               </button>
               <button 
                 onClick={() => scrollToSection('success-stories')}
-                className="text-left px-4 py-2 text-usergy-dark hover:text-usergy-coral hover:bg-gray-50 transition-colors font-semibold rounded-md"
+                className="text-left px-4 py-3 text-usergy-dark hover:text-usergy-coral hover:bg-gray-50 transition-colors font-semibold rounded-md touch-manipulation"
+                type="button"
               >
                 Success Stories
               </button>
