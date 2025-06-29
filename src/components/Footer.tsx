@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="flex items-center">
             <img 
-              src="/lovable-uploads/a7371db2-b47c-4477-b545-3f06335e0cf2.png" 
+              src="/lovable-uploads/52a4e00d-238d-4c00-9dd6-aece35e81b11.png" 
               alt="Usergy" 
               className="h-10 w-auto filter brightness-0 invert"
             />
