@@ -59,6 +59,12 @@ const Header = () => {
             >
               Services
             </Link>
+            <Link 
+              to="/community"
+              className="text-usergy-dark hover:text-usergy-skyblue transition-colors font-semibold text-sm lg:text-base"
+            >
+              Community
+            </Link>
             <button 
               onClick={() => scrollToSection('how-it-works')}
               className="text-usergy-dark hover:text-usergy-skyblue transition-colors font-semibold text-sm lg:text-base"
