@@ -1,19 +1,31 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   return (
     <footer className="bg-usergy-dark text-white py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Brand */}
+          {/* Brand with optimized loading */}
           <div className="flex items-center group">
-            <img 
-              src="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" 
-              alt="Usergy" 
-              className="h-12 w-auto transition-opacity duration-200 group-hover:opacity-80 cursor-pointer"
-            />
+            <div className="relative">
+              {!imageLoaded && (
+                <div className="h-12 w-32 bg-gray-600 animate-pulse rounded"></div>
+              )}
+              <img 
+                src="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" 
+                alt="Usergy" 
+                className={`h-12 w-auto transition-all duration-300 group-hover:opacity-80 cursor-pointer ${
+                  imageLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                }`}
+                onLoad={() => setImageLoaded(true)}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
 
           {/* Key Links */}

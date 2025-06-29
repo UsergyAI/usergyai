@@ -5,6 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -12,7 +13,7 @@ const Header = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -37,13 +38,23 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo with optimized loading */}
           <Link to="/" className="flex items-center group">
-            <img 
-              src="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" 
-              alt="Usergy" 
-              className="h-10 sm:h-12 w-auto transition-opacity duration-200 group-hover:opacity-80"
-            />
+            <div className="relative">
+              {!imageLoaded && (
+                <div className="h-10 sm:h-12 w-32 bg-gray-200 animate-pulse rounded"></div>
+              )}
+              <img 
+                src="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" 
+                alt="Usergy" 
+                className={`h-10 sm:h-12 w-auto transition-all duration-300 group-hover:opacity-80 ${
+                  imageLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
+                }`}
+                onLoad={() => setImageLoaded(true)}
+                loading="eager"
+                decoding="async"
+              />
+            </div>
           </Link>
 
           {/* Navigation - Hidden on mobile, visible on tablet and up */}
@@ -90,7 +101,7 @@ const Header = () => {
           <div className="flex items-center">
             <Button 
               size="sm"
-              className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-4 sm:px-6 py-1 sm:py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xs sm:text-sm"
+              className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-4 sm:px-6 py-1 sm:py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xs sm:text-sm will-change-transform"
             >
               Book Strategy Call
             </Button>
