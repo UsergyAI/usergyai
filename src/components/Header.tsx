@@ -40,7 +40,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/lovable-uploads/bd806045-5aef-4bc5-a6e6-bfaff9a725f2.png" 
+              src="/lovable-uploads/15033d4a-448f-4627-94d7-148a0449aaa9.png" 
               alt="Usergy" 
               className="h-8 sm:h-10 w-auto"
             />
