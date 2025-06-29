@@ -114,7 +114,7 @@ const ContactMethods = () => {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6 sm:mt-8">
               <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-usergy-turquoise/10 to-usergy-skyblue/10 rounded-lg">
-                <div className="text-lg sm:text-xl font-bold text-usergy-turquoise mb-1">< 24hrs</div>
+                <div className="text-lg sm:text-xl font-bold text-usergy-turquoise mb-1">Less than 24hrs</div>
                 <div className="text-sm sm:text-base text-gray-600">Email Response</div>
               </div>
               <div className="text-center p-3 sm:p-4 bg-gradient-to-br from-usergy-skyblue/10 to-usergy-coral/10 rounded-lg">
