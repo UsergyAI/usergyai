@@ -123,7 +123,7 @@ const ContactMethods = () => {
                 Are you an AI enthusiast eager to explore groundbreaking tools and contribute? 
                 Connect with our vibrant community on Discord – a hub for innovation.
               </p>
-              <Button className="w-full bg-usergy-gold hover:bg-usergy-coral text-white font-bold py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg">
+              <Button className="w-full bg-usergy-coral hover:bg-usergy-turquoise text-white font-bold py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg">
                 Join Discord Now! →
               </Button>
             </CardContent>

@@ -12,7 +12,7 @@ const ContactHero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
-      {/* Dynamic animated background elements */}
+      {/* Dynamic animated background elements - identical to homepage */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/6 w-64 h-64 bg-white rounded-full blur-3xl animate-float opacity-30"></div>
         <div className="absolute bottom-1/4 right-1/6 w-48 h-48 bg-white rounded-full blur-2xl animate-pulse opacity-40"></div>
