@@ -19,12 +19,28 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
+  // Close mobile menu when route changes or when clicking anywhere outside menu
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [location]);
 
+  // Close menu when clicking outside or on menu items
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      if (isMobileMenuOpen && !target.closest('.mobile-menu') && !target.closest('.menu-button')) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [isMobileMenuOpen]);
+
   const scrollToSection = (sectionId: string) => {
+    setIsMobileMenuOpen(false); // Auto-close menu when clicking section links
     if (location.pathname !== '/') {
       window.location.href = `/#${sectionId}`;
       return;
@@ -43,6 +59,10 @@ const Header = () => {
     window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
   };
 
+  const handleMenuItemClick = () => {
+    setIsMobileMenuOpen(false); // Auto-close menu when clicking any menu item
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -54,7 +74,7 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo with optimized loading */}
-          <Link to="/" className="flex items-center group">
+          <Link to="/" className="flex items-center group" onClick={handleMenuItemClick}>
             <div className="relative">
               {!imageLoaded && (
                 <div className="h-8 sm:h-10 md:h-12 w-24 sm:w-28 md:w-32 bg-gray-200 animate-pulse rounded"></div>
@@ -127,7 +147,7 @@ const Header = () => {
             {/* Mobile Menu Button - Visible on mobile and tablets */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 rounded-md text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-100 transition-colors"
+              className="lg:hidden p-2 rounded-md text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-100 transition-colors menu-button"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (
@@ -141,7 +161,7 @@ const Header = () => {
 
         {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg">
+          <div className="lg:hidden mt-4 py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg mobile-menu">
             <nav className="flex flex-col space-y-3">
               <button 
                 onClick={() => scrollToSection('hero')}
@@ -151,18 +171,21 @@ const Header = () => {
               </button>
               <Link 
                 to="/services"
+                onClick={handleMenuItemClick}
                 className="px-4 py-2 text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-50 transition-colors font-semibold rounded-md"
               >
                 Services
               </Link>
               <Link 
                 to="/community"
+                onClick={handleMenuItemClick}
                 className="px-4 py-2 text-usergy-dark hover:text-usergy-skyblue hover:bg-gray-50 transition-colors font-semibold rounded-md"
               >
                 Community
               </Link>
               <Link 
                 to="/contact"
+                onClick={handleMenuItemClick}
                 className="px-4 py-2 text-usergy-dark hover:text-usergy-coral hover:bg-gray-50 transition-colors font-semibold rounded-md"
               >
                 Contact
