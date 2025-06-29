@@ -3,6 +3,13 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 
 const ContactHero = () => {
+  const scrollToForm = () => {
+    const formElement = document.getElementById('contact-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
       {/* Dynamic animated background elements */}
@@ -44,6 +51,7 @@ const ContactHero = () => {
               size="lg"
               variant="outline"
               className="border-2 border-white text-white hover:bg-white hover:text-usergy-dark font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              onClick={scrollToForm}
             >
               Quick Inquiry Form
             </Button>
