@@ -82,178 +82,183 @@ const SolutionSection = () => {
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             <div className="relative h-96 flex items-center justify-center">
-              {/* Enhanced Connection Lines with AI data flow animation - PROPERLY BEHIND the central node */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
-                <defs>
-                  <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#4ECDC4" stopOpacity="0.8" />
-                    <stop offset="50%" stopColor="#FED766" stopOpacity="1" />
-                    <stop offset="100%" stopColor="#FF6B6B" stopOpacity="0.8" />
-                  </linearGradient>
-                  <linearGradient id="pulseGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#4ECDC4" stopOpacity="1" />
-                    <stop offset="50%" stopColor="#FED766" stopOpacity="0.8" />
-                    <stop offset="100%" stopColor="#FF6B6B" stopOpacity="1" />
-                  </linearGradient>
-                  <filter id="glow">
-                    <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-                    <feMerge> 
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                  <filter id="strongGlow">
-                    <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
-                    <feMerge> 
-                      <feMergeNode in="coloredBlur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                </defs>
-                {nodes.map((node, index) => {
-                  const angle = (index * 120 - 90) * (Math.PI / 180);
-                  const startX = 200;
-                  const startY = 200;
-                  const endX = 200 + Math.cos(angle) * 120;
-                  const endY = 200 + Math.sin(angle) * 120;
+              {/* Connection Lines Layer - Bottom Layer (z-index: 1) */}
+              <div className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+                <svg className="w-full h-full pointer-events-none">
+                  <defs>
+                    <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#4ECDC4" stopOpacity="0.8" />
+                      <stop offset="50%" stopColor="#FED766" stopOpacity="1" />
+                      <stop offset="100%" stopColor="#FF6B6B" stopOpacity="0.8" />
+                    </linearGradient>
+                    <linearGradient id="pulseGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#4ECDC4" stopOpacity="1" />
+                      <stop offset="50%" stopColor="#FED766" stopOpacity="0.8" />
+                      <stop offset="100%" stopColor="#FF6B6B" stopOpacity="1" />
+                    </linearGradient>
+                    <filter id="glow">
+                      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                      <feMerge> 
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                    <filter id="strongGlow">
+                      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                      <feMerge> 
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                  </defs>
+                  {nodes.map((node, index) => {
+                    const angle = (index * 120 - 90) * (Math.PI / 180);
+                    const startX = 200;
+                    const startY = 200;
+                    const endX = 200 + Math.cos(angle) * 120;
+                    const endY = 200 + Math.sin(angle) * 120;
+                    
+                    return (
+                      <g key={node.id}>
+                        {/* Main connection line */}
+                        <line
+                          x1={startX}
+                          y1={startY}
+                          x2={endX}
+                          y2={endY}
+                          stroke={activeNode === node.id ? node.color : "url(#flowGradient)"}
+                          strokeWidth={activeNode === node.id ? "5" : "3"}
+                          strokeDasharray="12,6"
+                          filter={activeNode === node.id ? "url(#strongGlow)" : "url(#glow)"}
+                          className={`transition-all duration-500 ${
+                            activeNode === node.id ? 'opacity-100' : animationComplete ? 'opacity-80' : 'opacity-0'
+                          }`}
+                          style={{
+                            animation: animationComplete 
+                              ? activeNode === node.id 
+                                ? 'dashFlow 0.8s linear infinite, connectionPulse 2s ease-in-out infinite' 
+                                : 'dashFlow 2.5s linear infinite'
+                              : 'none',
+                            animationDelay: `${index * 0.3}s`
+                          }}
+                        />
+                        
+                        {/* Pulse waves on active connection */}
+                        {activeNode === node.id && animationComplete && (
+                          <>
+                            <line
+                              x1={startX}
+                              y1={startY}
+                              x2={endX}
+                              y2={endY}
+                              stroke="url(#pulseGradient)"
+                              strokeWidth="8"
+                              strokeOpacity="0.4"
+                              className="animate-pulse"
+                              filter="url(#strongGlow)"
+                            />
+                            <line
+                              x1={startX}
+                              y1={startY}
+                              x2={endX}
+                              y2={endY}
+                              stroke={node.color}
+                              strokeWidth="2"
+                              strokeOpacity="0.8"
+                              strokeDasharray="4,2"
+                              style={{
+                                animation: 'dashFlow 0.4s linear infinite reverse'
+                              }}
+                            />
+                          </>
+                        )}
+                        
+                        {/* Enhanced data flow particles */}
+                        {animationComplete && (
+                          <>
+                            <circle
+                              cx={startX + Math.cos(angle) * 30}
+                              cy={startY + Math.sin(angle) * 30}
+                              r={activeNode === node.id ? "4" : "3"}
+                              fill={node.color}
+                              className="opacity-90"
+                              filter="url(#glow)"
+                              style={{
+                                animation: `flowParticle 1.8s ease-in-out infinite`,
+                                animationDelay: `${index * 0.4}s`
+                              }}
+                            />
+                            <circle
+                              cx={startX + Math.cos(angle) * 70}
+                              cy={startY + Math.sin(angle) * 70}
+                              r={activeNode === node.id ? "3" : "2"}
+                              fill={node.color}
+                              className="opacity-70"
+                              style={{
+                                animation: `flowParticle 1.8s ease-in-out infinite`,
+                                animationDelay: `${index * 0.4 + 0.6}s`
+                              }}
+                            />
+                            <circle
+                              cx={startX + Math.cos(angle) * 100}
+                              cy={startY + Math.sin(angle) * 100}
+                              r="2"
+                              fill={node.color}
+                              className="opacity-50"
+                              style={{
+                                animation: `flowParticle 1.8s ease-in-out infinite`,
+                                animationDelay: `${index * 0.4 + 1.2}s`
+                              }}
+                            />
+                          </>
+                        )}
+                      </g>
+                    );
+                  })}
                   
-                  return (
-                    <g key={node.id}>
-                      {/* Main connection line */}
-                      <line
-                        x1={startX}
-                        y1={startY}
-                        x2={endX}
-                        y2={endY}
-                        stroke={activeNode === node.id ? node.color : "url(#flowGradient)"}
-                        strokeWidth={activeNode === node.id ? "5" : "3"}
-                        strokeDasharray="12,6"
-                        filter={activeNode === node.id ? "url(#strongGlow)" : "url(#glow)"}
-                        className={`transition-all duration-500 ${
-                          activeNode === node.id ? 'opacity-100' : animationComplete ? 'opacity-80' : 'opacity-0'
-                        }`}
+                  {/* Central energy rings - behind the central node */}
+                  {pulseCenter && (
+                    <>
+                      <circle
+                        cx="200"
+                        cy="200"
+                        r="80"
+                        fill="none"
+                        stroke="url(#flowGradient)"
+                        strokeWidth="2"
+                        strokeOpacity="0.3"
+                        strokeDasharray="8,4"
                         style={{
-                          animation: animationComplete 
-                            ? activeNode === node.id 
-                              ? 'dashFlow 0.8s linear infinite, connectionPulse 2s ease-in-out infinite' 
-                              : 'dashFlow 2.5s linear infinite'
-                            : 'none',
-                          animationDelay: `${index * 0.3}s`
+                          animation: 'dashFlow 3s linear infinite, expandRing 4s ease-in-out infinite'
                         }}
                       />
-                      
-                      {/* Pulse waves on active connection */}
-                      {activeNode === node.id && animationComplete && (
-                        <>
-                          <line
-                            x1={startX}
-                            y1={startY}
-                            x2={endX}
-                            y2={endY}
-                            stroke="url(#pulseGradient)"
-                            strokeWidth="8"
-                            strokeOpacity="0.4"
-                            className="animate-pulse"
-                            filter="url(#strongGlow)"
-                          />
-                          <line
-                            x1={startX}
-                            y1={startY}
-                            x2={endX}
-                            y2={endY}
-                            stroke={node.color}
-                            strokeWidth="2"
-                            strokeOpacity="0.8"
-                            strokeDasharray="4,2"
-                            style={{
-                              animation: 'dashFlow 0.4s linear infinite reverse'
-                            }}
-                          />
-                        </>
-                      )}
-                      
-                      {/* Enhanced data flow particles */}
-                      {animationComplete && (
-                        <>
-                          <circle
-                            cx={startX + Math.cos(angle) * 30}
-                            cy={startY + Math.sin(angle) * 30}
-                            r={activeNode === node.id ? "4" : "3"}
-                            fill={node.color}
-                            className="opacity-90"
-                            filter="url(#glow)"
-                            style={{
-                              animation: `flowParticle 1.8s ease-in-out infinite`,
-                              animationDelay: `${index * 0.4}s`
-                            }}
-                          />
-                          <circle
-                            cx={startX + Math.cos(angle) * 70}
-                            cy={startY + Math.sin(angle) * 70}
-                            r={activeNode === node.id ? "3" : "2"}
-                            fill={node.color}
-                            className="opacity-70"
-                            style={{
-                              animation: `flowParticle 1.8s ease-in-out infinite`,
-                              animationDelay: `${index * 0.4 + 0.6}s`
-                            }}
-                          />
-                          <circle
-                            cx={startX + Math.cos(angle) * 100}
-                            cy={startY + Math.sin(angle) * 100}
-                            r="2"
-                            fill={node.color}
-                            className="opacity-50"
-                            style={{
-                              animation: `flowParticle 1.8s ease-in-out infinite`,
-                              animationDelay: `${index * 0.4 + 1.2}s`
-                            }}
-                          />
-                        </>
-                      )}
-                    </g>
-                  );
-                })}
-                
-                {/* Central energy rings - behind the central node */}
-                {pulseCenter && (
-                  <>
-                    <circle
-                      cx="200"
-                      cy="200"
-                      r="80"
-                      fill="none"
-                      stroke="url(#flowGradient)"
-                      strokeWidth="2"
-                      strokeOpacity="0.3"
-                      strokeDasharray="8,4"
-                      style={{
-                        animation: 'dashFlow 3s linear infinite, expandRing 4s ease-in-out infinite'
-                      }}
-                    />
-                    <circle
-                      cx="200"
-                      cy="200"
-                      r="100"
-                      fill="none"
-                      stroke="url(#flowGradient)"
-                      strokeWidth="1"
-                      strokeOpacity="0.2"
-                      strokeDasharray="6,6"
-                      style={{
-                        animation: 'dashFlow 4s linear infinite reverse, expandRing 5s ease-in-out infinite'
-                      }}
-                    />
-                  </>
-                )}
-              </svg>
+                      <circle
+                        cx="200"
+                        cy="200"
+                        r="100"
+                        fill="none"
+                        stroke="url(#flowGradient)"
+                        strokeWidth="1"
+                        strokeOpacity="0.2"
+                        strokeDasharray="6,6"
+                        style={{
+                          animation: 'dashFlow 4s linear infinite reverse, expandRing 5s ease-in-out infinite'
+                        }}
+                      />
+                    </>
+                  )}
+                </svg>
+              </div>
 
-              {/* Central Momentum Node - ABOVE the connection lines but positioned correctly */}
-              <div className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center shadow-2xl transition-all duration-1000 ${
-                animationComplete ? 'animate-pulse-glow scale-110' : 'scale-100'
-              } ${
-                activeNode ? 'scale-125' : ''
-              }`} style={{ zIndex: 10 }}>
+              {/* Central Methodology Node - Middle Layer (z-index: 10) */}
+              <div 
+                className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 ${
+                  animationComplete ? 'animate-pulse-glow scale-110' : 'scale-100'
+                } ${
+                  activeNode ? 'scale-125' : ''
+                }`} 
+                style={{ zIndex: 10 }}
+              >
                 <div className={`bg-gradient-to-br from-usergy-gold via-yellow-400 to-usergy-gold rounded-full w-32 h-32 flex items-center justify-center transition-all duration-500 ${
                   pulseCenter ? 'shadow-2xl' : 'shadow-lg'
                 }`} style={{
@@ -274,7 +279,7 @@ const SolutionSection = () => {
                 </div>
               </div>
 
-              {/* Enhanced Node Elements - ABOVE everything */}
+              {/* Outer Node Elements - Top Layer (z-index: 20) */}
               {nodes.map((node, index) => {
                 const angle = (index * 120 - 90) * (Math.PI / 180);
                 const x = Math.cos(angle) * 120;
@@ -286,7 +291,7 @@ const SolutionSection = () => {
                     className={`absolute w-28 h-28 rounded-full flex items-center justify-center cursor-pointer transform transition-all duration-500 shadow-xl ${
                       animationComplete ? 'scale-100 opacity-100' : 'scale-75 opacity-60'
                     } ${
-                      activeNode === node.id ? 'scale-125 z-30' : 'hover:scale-115 z-20'
+                      activeNode === node.id ? 'scale-125' : 'hover:scale-115'
                     }`}
                     style={{
                       left: `calc(50% + ${x}px - 56px)`,
