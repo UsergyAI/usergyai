@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
@@ -40,7 +39,7 @@ const Header = () => {
   }, [isMobileMenuOpen]);
 
   const scrollToSection = (sectionId: string) => {
-    setIsMobileMenuOpen(false); // Auto-close menu when clicking section links
+    setIsMobileMenuOpen(false);
     if (location.pathname !== '/') {
       window.location.href = `/#${sectionId}`;
       return;
@@ -60,7 +59,7 @@ const Header = () => {
   };
 
   const handleMenuItemClick = () => {
-    setIsMobileMenuOpen(false); // Auto-close menu when clicking any menu item
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -132,22 +131,23 @@ const Header = () => {
             </button>
           </nav>
 
-          {/* Mobile/Tablet Layout */}
-          <div className="flex items-center gap-2 sm:gap-4">
-            {/* Contact Button - Always visible but responsive */}
+          {/* Fixed Mobile/Tablet Layout with proper spacing */}
+          <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
+            {/* Contact Button - Responsive sizing and text */}
             <Button 
               size="sm"
               onClick={handleCalendlyRedirect}
-              className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-3 sm:px-4 md:px-6 py-1 sm:py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xs sm:text-sm will-change-transform"
+              className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xs sm:text-sm lg:text-base will-change-transform min-w-[80px] sm:min-w-[100px] md:min-w-[120px]"
             >
-              <span className="hidden sm:inline">Book Strategy Call</span>
-              <span className="sm:hidden">Book Call</span>
+              <span className="hidden md:inline">Book Strategy Call</span>
+              <span className="hidden sm:inline md:hidden">Book Call</span>
+              <span className="sm:hidden">Call</span>
             </Button>
 
-            {/* Mobile Menu Button - Visible on mobile and tablets */}
+            {/* Mobile Menu Button - Proper touch target */}
             <button
               onClick={toggleMobileMenu}
-              className="lg:hidden p-2 rounded-md text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-100 transition-colors menu-button"
+              className="lg:hidden p-2 sm:p-2.5 rounded-md text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-100 transition-colors menu-button min-w-[44px] min-h-[44px] flex items-center justify-center"
               aria-label="Toggle menu"
             >
               {isMobileMenuOpen ? (

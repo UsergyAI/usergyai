@@ -19,7 +19,6 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
 
   const handleBookCall = (packageType: string) => {
     console.log(`Booking call for: ${selectedUsers} users - ${packageType}`);
-    // Redirect to Calendly with the package information
     const calendlyUrl = `https://calendly.com/swaroop-usergy/30min?a1=${selectedUsers}%20users&a2=${packageType}`;
     window.open(calendlyUrl, '_blank');
   };
@@ -28,10 +27,10 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
     <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 animate-fade-in relative">
       {/* Mobile/Tablet: Stack cards vertically, Desktop: Grid layout */}
       <div className="block md:hidden">
-        {/* Mobile Stack Layout */}
+        {/* Mobile Stack Layout with fixed button sizing */}
         <div className="space-y-6 p-4">
           {/* Feedback Only Plan - Mobile */}
-          <div className="bg-gradient-to-b from-red-50 to-white border-2 border-red-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300">
+          <div className="bg-gradient-to-b from-red-50 to-white border-2 border-red-200 rounded-xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300">
             <div className="text-center mb-4">
               <div className="bg-gradient-to-b from-red-400 via-usergy-coral to-red-600 text-white py-3 px-4 rounded-lg mb-4">
                 <div className="font-bold text-lg">Feedback Only</div>
@@ -58,15 +57,15 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
             </ul>
             <Button 
               onClick={() => handleBookCall('Feedback Only')}
-              className="w-full bg-gradient-to-r from-usergy-coral to-red-500 hover:from-red-500 hover:to-usergy-coral text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-3 text-base"
+              className="w-full bg-gradient-to-r from-usergy-coral to-red-500 hover:from-red-500 hover:to-usergy-coral text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-3 sm:py-4 text-sm sm:text-base min-h-[48px] rounded-lg"
             >
-              <Phone className="w-4 h-4 mr-2" />
-              Book Your Strategy Call 📞
+              <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+              <span className="truncate">Book Your Strategy Call 📞</span>
             </Button>
           </div>
 
           {/* Feedback + Community Plan - Mobile (Most Popular) */}
-          <div className="bg-gradient-to-b from-teal-50 to-white border-4 border-usergy-gold rounded-xl p-6 hover:shadow-xl transition-all duration-300 relative">
+          <div className="bg-gradient-to-b from-teal-50 to-white border-4 border-usergy-gold rounded-xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300 relative">
             {/* Most Popular Badge */}
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
               <div className="bg-gradient-to-r from-yellow-400 via-usergy-gold to-yellow-500 text-usergy-dark px-4 py-2 rounded-full text-xs font-black shadow-xl border-2 border-white uppercase tracking-wide">
@@ -99,15 +98,15 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
             </ul>
             <Button 
               onClick={() => handleBookCall('Feedback + Community')}
-              className="w-full bg-gradient-to-r from-usergy-turquoise to-teal-500 hover:from-teal-500 hover:to-usergy-turquoise text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-3 text-base border-2 border-usergy-gold/30"
+              className="w-full bg-gradient-to-r from-usergy-turquoise to-teal-500 hover:from-teal-500 hover:to-usergy-turquoise text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-3 sm:py-4 text-sm sm:text-base border-2 border-usergy-gold/30 min-h-[48px] rounded-lg"
             >
-              <Phone className="w-4 h-4 mr-2" />
-              Book Your Strategy Call 📞
+              <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+              <span className="truncate">Book Your Strategy Call 📞</span>
             </Button>
           </div>
 
           {/* Full Traction Plan - Mobile */}
-          <div className="bg-gradient-to-b from-blue-50 to-white border-2 border-blue-200 rounded-xl p-6 hover:shadow-xl transition-all duration-300">
+          <div className="bg-gradient-to-b from-blue-50 to-white border-2 border-blue-200 rounded-xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300">
             <div className="text-center mb-4">
               <div className="bg-gradient-to-b from-blue-400 via-usergy-skyblue to-blue-600 text-white py-3 px-4 rounded-lg mb-4">
                 <div className="font-bold text-lg">Full Traction</div>
@@ -134,16 +133,16 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
             </ul>
             <Button 
               onClick={() => handleBookCall('Full Traction')}
-              className="w-full bg-gradient-to-r from-usergy-skyblue to-blue-500 hover:from-blue-500 hover:to-usergy-skyblue text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-3 text-base"
+              className="w-full bg-gradient-to-r from-usergy-skyblue to-blue-500 hover:from-blue-500 hover:to-usergy-skyblue text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-3 sm:py-4 text-sm sm:text-base min-h-[48px] rounded-lg"
             >
-              <Phone className="w-4 h-4 mr-2" />
-              Book Your Strategy Call 📞
+              <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
+              <span className="truncate">Book Your Strategy Call 📞</span>
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Desktop Grid Layout (unchanged for desktop) */}
+      {/* Desktop Grid Layout - keep existing desktop layout unchanged */}
       <div className="hidden md:block">
         {/* Enhanced Table Header with Better Spacing for Badge */}
         <div className="grid grid-cols-3 relative pt-4">
@@ -198,8 +197,8 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
               onClick={() => handleBookCall('Feedback Only')}
               className="w-full bg-gradient-to-r from-usergy-coral to-red-500 hover:from-red-500 hover:to-usergy-coral text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-4 text-lg"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Book Your Strategy Call 📞
+              <Phone className="w-5 h-5 mr-2 flex-shrink-0" />
+              <span className="truncate">Book Your Strategy Call 📞</span>
             </Button>
           </div>
 
@@ -231,8 +230,8 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
                 onClick={() => handleBookCall('Feedback + Community')}
                 className="w-full bg-gradient-to-r from-usergy-turquoise to-teal-500 hover:from-teal-500 hover:to-usergy-turquoise text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-4 text-lg border-2 border-usergy-gold/30"
               >
-                <Phone className="w-5 h-5 mr-2" />
-                Book Your Strategy Call 📞
+                <Phone className="w-5 h-5 mr-2 flex-shrink-0" />
+                <span className="truncate">Book Your Strategy Call 📞</span>
               </Button>
             </div>
           </div>
@@ -261,8 +260,8 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
               onClick={() => handleBookCall('Full Traction')}
               className="w-full bg-gradient-to-r from-usergy-skyblue to-blue-500 hover:from-blue-500 hover:to-usergy-skyblue text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-4 text-lg"
             >
-              <Phone className="w-5 h-5 mr-2" />
-              Book Your Strategy Call 📞
+              <Phone className="w-5 h-5 mr-2 flex-shrink-0" />
+              <span className="truncate">Book Your Strategy Call 📞</span>
             </Button>
           </div>
         </div>

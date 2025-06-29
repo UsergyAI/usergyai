@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, ArrowRight } from 'lucide-react';
@@ -38,25 +37,27 @@ const FinalCTASection = () => {
             <span className="font-bold"> our expert team is your strategic advantage</span>. Join the movement that's transforming AI development through professional guidance.
           </p>
 
-          {/* Dual CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 sm:mb-10 lg:mb-12 px-4">
+          {/* Fixed Dual CTAs with proper mobile spacing */}
+          <div className="flex flex-col gap-4 sm:gap-5 md:gap-6 justify-center items-center mb-8 sm:mb-10 lg:mb-12 px-4 max-w-3xl mx-auto">
+            {/* Primary CTA */}
             <Button 
               size="lg"
               onClick={handleCalendlyRedirect}
-              className="w-full sm:w-auto bg-white text-usergy-turquoise hover:bg-usergy-light font-black text-lg sm:text-xl py-5 sm:py-6 px-8 sm:px-12 rounded-full shadow-2xl hover:shadow-white/30 transform hover:scale-110 transition-all duration-300 animate-pulse-glow"
+              className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] bg-white text-usergy-turquoise hover:bg-usergy-light font-black text-base sm:text-lg lg:text-xl py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-12 rounded-full shadow-2xl hover:shadow-white/30 transform hover:scale-110 transition-all duration-300 animate-pulse-glow"
             >
-              <Phone className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />
-              Book Your Strategy Call
+              <Phone className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 flex-shrink-0" />
+              <span className="truncate">Book Your Strategy Call</span>
             </Button>
             
+            {/* Secondary CTA */}
             <Button 
               size="lg"
               variant="outline"
               onClick={() => scrollToSection('how-it-works')}
-              className="w-full sm:w-auto border-2 sm:border-3 border-white bg-white/20 text-white hover:bg-white hover:text-usergy-coral font-black text-lg sm:text-xl py-5 sm:py-6 px-8 sm:px-12 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 backdrop-blur-sm"
+              className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] border-2 sm:border-3 border-white bg-white/20 text-white hover:bg-white hover:text-usergy-coral font-black text-base sm:text-lg lg:text-xl py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-12 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 backdrop-blur-sm"
             >
-              <ArrowRight className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />
-              See Our Founder Process
+              <ArrowRight className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 flex-shrink-0" />
+              <span className="truncate">See Our Founder Process</span>
             </Button>
           </div>
 

@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, ArrowRight } from 'lucide-react';
@@ -219,25 +218,27 @@ const HeroSection = () => {
             <span className="text-usergy-turquoise"> social momentum</span> that matters.
           </p>
 
-          {/* Updated CTA Buttons with agency messaging */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-center mb-10 sm:mb-12 md:mb-16 lg:mb-20 animate-scale-in px-4">
+          {/* Fixed CTA Buttons with proper mobile/tablet spacing */}
+          <div className="flex flex-col gap-4 sm:gap-5 md:gap-6 lg:gap-8 justify-center items-center mb-10 sm:mb-12 md:mb-16 lg:mb-20 animate-scale-in px-4 max-w-4xl mx-auto">
+            {/* Primary CTA - Full width on mobile, auto on larger screens */}
             <Button 
               size="lg"
               onClick={handleCalendlyRedirect}
-              className="w-full sm:w-auto bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-8 sm:px-10 md:px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
+              className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-6 sm:px-8 md:px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
             >
-              <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-              Book Your Strategy Call
+              <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+              <span className="truncate">Book Your Strategy Call</span>
             </Button>
             
+            {/* Secondary CTA - Full width on mobile, auto on larger screens */}
             <Button 
               size="lg"
               variant="outline"
               onClick={() => scrollToSection('how-it-works')}
-              className="w-full sm:w-auto border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-8 sm:px-10 md:px-12 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-6 sm:px-8 md:px-12 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
             >
-              <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-              See Our Founder Process
+              <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+              <span className="truncate">See Our Founder Process</span>
             </Button>
           </div>
 

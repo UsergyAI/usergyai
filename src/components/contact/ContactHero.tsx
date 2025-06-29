@@ -1,122 +1,108 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Calendar, MessageSquare, Phone } from 'lucide-react';
 
 const ContactHero = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      opacity: number;
-      color: string;
-    }> = [];
-
-    const colors = ['#4ECDC4', '#45B7D1', '#FF6B6B', '#FED766'];
-
-    for (let i = 0; i < 50; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.8,
-        vy: (Math.random() - 0.5) * 0.8,
-        size: Math.random() * 4 + 2,
-        opacity: Math.random() * 0.6 + 0.2,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      });
-    }
-
-    const animate = () => {
-      if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach(particle => {
-        particle.x += particle.vx;
-        particle.y += particle.vy;
-
-        if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-
-        ctx.globalAlpha = particle.opacity;
-        ctx.fillStyle = particle.color;
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-    };
-  }, []);
-
-  const scrollToForm = () => {
-    const formElement = document.getElementById('contact-form');
-    if (formElement) {
-      formElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   const handleCalendlyRedirect = () => {
     window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
   };
 
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32">
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{ zIndex: 1 }}
-      />
-      
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="max-w-5xl mx-auto">
-          <h1 className="text-5xl md:text-6xl font-black text-usergy-dark mb-6 leading-tight animate-fade-in">
-            Let's Ignite Your AI's Future:<br />
-            <span className="text-usergy-gold">Connect with Our Experts</span>
+    <section className="pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 bg-gradient-to-br from-usergy-light via-white to-usergy-light relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-full blur-xl animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-16 h-16 sm:w-24 sm:h-24 bg-white rounded-full blur-lg animate-float" style={{ animationDelay: '-2s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-full blur-md animate-float" style={{ animationDelay: '-4s' }}></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Header */}
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-usergy-dark mb-6 sm:mb-8 leading-tight px-2">
+            Connect with Our AI Growth Experts
           </h1>
-          
-          <p className="text-2xl md:text-3xl font-semibold text-gray-600 mb-12 leading-relaxed animate-slide-up max-w-4xl mx-auto">
-            Whether you're ready to amplify your AI product's impact or have a question about our services, 
-            our dedicated team is here to guide you. Your journey to undeniable traction starts now.
+
+          {/* Sub-header */}
+          <p className="text-lg sm:text-xl text-gray-600 mb-8 sm:mb-10 leading-relaxed px-4">
+            Ready to transform your AI vision into reality? Our team is here to provide expert guidance and support. Reach out today!
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in">
-            <Button 
+          {/* Fixed contact method cards with proper button alignment */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12 sm:mb-16">
+            {/* Strategy Call Card */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-turquoise/20">
+              {/* Icon and Title */}
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-usergy-turquoise/20 text-usergy-turquoise mx-auto mb-4">
+                <Calendar className="w-8 h-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-usergy-dark mb-4 text-center">
+                Schedule a Strategy Call
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center">
+                Discuss your AI growth strategy with our experts.
+              </p>
+              <Button
+                onClick={handleCalendlyRedirect}
+                className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
+              >
+                <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
+                <span className="truncate">Schedule Free Strategy Call</span>
+              </Button>
+            </div>
+
+            {/* Quick Form Card */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-coral/20">
+              {/* Icon and Title */}
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-usergy-coral/20 text-usergy-coral mx-auto mb-4">
+                <MessageSquare className="w-8 h-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-usergy-dark mb-4 text-center">
+                Quick Contact Form
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center">
+                Fill out our form for a prompt response.
+              </p>
+              <Button
+                variant="outline"
+                className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
+              >
+                <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
+                <span className="truncate">Start Form</span>
+              </Button>
+            </div>
+
+            {/* Direct Contact Card */}
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-skyblue/20 sm:col-span-2 lg:col-span-1">
+              {/* Icon and Title */}
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-usergy-skyblue/20 text-usergy-skyblue mx-auto mb-4">
+                <Phone className="w-8 h-8" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-usergy-dark mb-4 text-center">
+                Direct Contact
+              </h3>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center">
+                Call us directly for immediate assistance.
+              </p>
+              <Button
+                variant="outline"
+                className="w-full border-2 border-usergy-skyblue text-usergy-skyblue hover:bg-usergy-skyblue hover:text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
+              >
+                <Phone className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
+                <span className="truncate">Direct Contact</span>
+              </Button>
+            </div>
+          </div>
+
+          {/* Fixed primary CTA */}
+          <div className="flex justify-center px-4">
+            <Button
               size="lg"
               onClick={handleCalendlyRedirect}
-              className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto max-w-md bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-black text-base sm:text-lg lg:text-xl py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-110 transition-all duration-300 animate-pulse-glow min-h-[56px]"
             >
-              Schedule Free Strategy Call
-            </Button>
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-              onClick={scrollToForm}
-            >
-              Quick Inquiry Form
+              <Calendar className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0" />
+              <span className="truncate">Schedule Free Strategy Call</span>
             </Button>
           </div>
         </div>
