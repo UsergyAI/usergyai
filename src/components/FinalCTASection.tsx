@@ -11,6 +11,10 @@ const FinalCTASection = () => {
     }
   };
 
+  const handleCalendlyRedirect = () => {
+    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
+  };
+
   return (
     <section id="contact" className="py-16 sm:py-20 bg-gradient-to-br from-usergy-turquoise via-usergy-skyblue to-usergy-coral relative overflow-hidden">
       {/* Background Effects */}
@@ -38,6 +42,7 @@ const FinalCTASection = () => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mb-8 sm:mb-10 lg:mb-12 px-4">
             <Button 
               size="lg"
+              onClick={handleCalendlyRedirect}
               className="w-full sm:w-auto bg-white text-usergy-turquoise hover:bg-usergy-light font-black text-lg sm:text-xl py-5 sm:py-6 px-8 sm:px-12 rounded-full shadow-2xl hover:shadow-white/30 transform hover:scale-110 transition-all duration-300 animate-pulse-glow"
             >
               <Phone className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6" />

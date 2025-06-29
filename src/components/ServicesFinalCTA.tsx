@@ -4,6 +4,10 @@ import { Button } from '@/components/ui/button';
 import { Phone } from 'lucide-react';
 
 const ServicesFinalCTA = () => {
+  const handleCalendlyRedirect = () => {
+    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
+  };
+
   return (
     <section className="py-20 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -15,6 +19,7 @@ const ServicesFinalCTA = () => {
         </p>
         <Button 
           size="lg"
+          onClick={handleCalendlyRedirect}
           className="bg-white text-usergy-turquoise hover:bg-usergy-light font-bold text-lg py-6 px-12 rounded-full shadow-2xl hover:shadow-white/30 transform hover:scale-105 transition-all duration-300"
         >
           <Phone className="mr-3 h-6 w-6" />

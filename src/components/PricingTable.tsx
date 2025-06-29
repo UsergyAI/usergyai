@@ -20,7 +20,9 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
 
   const handleBookCall = (packageType: string) => {
     console.log(`Booking call for: ${selectedUsers} users - ${packageType}`);
-    // This would integrate with your booking system with pre-filled data
+    // Redirect to Calendly with the package information
+    const calendlyUrl = `https://calendly.com/swaroop-usergy/30min?a1=${selectedUsers}%20users&a2=${packageType}`;
+    window.open(calendlyUrl, '_blank');
   };
 
   return (

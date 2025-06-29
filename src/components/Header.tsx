@@ -39,6 +39,10 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const handleCalendlyRedirect = () => {
+    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -113,6 +117,7 @@ const Header = () => {
             {/* Contact Button - Always visible but responsive */}
             <Button 
               size="sm"
+              onClick={handleCalendlyRedirect}
               className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-3 sm:px-4 md:px-6 py-1 sm:py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xs sm:text-sm will-change-transform"
             >
               <span className="hidden sm:inline">Book Strategy Call</span>

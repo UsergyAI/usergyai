@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, ArrowRight } from 'lucide-react';
@@ -176,6 +177,10 @@ const HeroSection = () => {
     }
   };
 
+  const handleCalendlyRedirect = () => {
+    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
+  };
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32 lg:pt-36">
       {/* Enhanced Animated Background Canvas */}
@@ -218,6 +223,7 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 md:gap-8 justify-center items-center mb-10 sm:mb-12 md:mb-16 lg:mb-20 animate-scale-in px-4">
             <Button 
               size="lg"
+              onClick={handleCalendlyRedirect}
               className="w-full sm:w-auto bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-8 sm:px-10 md:px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
             >
               <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />

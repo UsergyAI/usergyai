@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone } from 'lucide-react';
@@ -102,6 +101,10 @@ const ServicesHero = () => {
     return cleanup;
   }, [initializeCanvas]);
 
+  const handleCalendlyRedirect = () => {
+    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
+  };
+
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32">
       <canvas
@@ -123,6 +126,7 @@ const ServicesHero = () => {
 
           <Button 
             size="lg"
+            onClick={handleCalendlyRedirect}
             className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-lg py-6 px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 will-change-transform"
           >
             <Phone className="mr-3 h-6 w-6" />

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -79,6 +78,10 @@ const ContactHero = () => {
     }
   };
 
+  const handleCalendlyRedirect = () => {
+    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
+  };
+
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32">
       <canvas
@@ -102,6 +105,7 @@ const ContactHero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-scale-in">
             <Button 
               size="lg"
+              onClick={handleCalendlyRedirect}
               className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-8 py-4 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
             >
               Schedule Free Strategy Call
