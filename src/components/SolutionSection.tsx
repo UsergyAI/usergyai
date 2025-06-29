@@ -82,8 +82,8 @@ const SolutionSection = () => {
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             <div className="relative h-96 flex items-center justify-center">
-              {/* Connection Lines Layer - Bottom Layer (z-index: 0) */}
-              <div className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
+              {/* Connection Lines Layer - Positioned behind everything with z-index 1 */}
+              <div className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
                 <svg className="w-full h-full pointer-events-none">
                   <defs>
                     <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -250,7 +250,7 @@ const SolutionSection = () => {
                 </svg>
               </div>
 
-              {/* Central Methodology Node - Middle Layer (z-index: 50) */}
+              {/* Central Methodology Node - Elevated with higher z-index 50 */}
               <div 
                 className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-1000 ${
                   animationComplete ? 'animate-pulse-glow scale-110' : 'scale-100'
@@ -279,7 +279,7 @@ const SolutionSection = () => {
                 </div>
               </div>
 
-              {/* Outer Node Elements - Top Layer (z-index: 100) */}
+              {/* Outer Node Elements - Highest z-index 100 */}
               {nodes.map((node, index) => {
                 const angle = (index * 120 - 90) * (Math.PI / 180);
                 const x = Math.cos(angle) * 120;
