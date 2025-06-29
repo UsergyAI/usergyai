@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Lock, Star, BalanceScale, Handshake } from 'lucide-react';
+import { Lock, Star, Scale, Handshake } from 'lucide-react';
 
 const UsergyDifference = () => {
   const CustomEnvelopeIcon = ({ className }: { className?: string }) => (
@@ -24,7 +23,7 @@ const UsergyDifference = () => {
       description: 'We partner only with innovative AI founders, ensuring exciting and meaningful testing opportunities.'
     },
     {
-      icon: BalanceScale,
+      icon: Scale,
       title: 'Fair & Transparent Rewards',
       description: 'Our point system is clear, and rewards are always tangible and valuable.'
     },
