@@ -17,7 +17,7 @@ const Footer = () => {
 
           {/* Key Links */}
           <div className="flex items-center space-x-6 text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
             <span className="text-gray-600">•</span>
             <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
             <span className="text-gray-600">•</span>
