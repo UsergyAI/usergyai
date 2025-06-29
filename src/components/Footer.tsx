@@ -8,11 +8,11 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
-          <div className="flex items-center">
+          <div className="flex items-center group">
             <img 
               src="/lovable-uploads/faa37370-c81e-48f9-b23e-922deed9bddc.png" 
               alt="Usergy" 
-              className="h-12 w-auto filter brightness-0 invert"
+              className="h-12 w-auto filter brightness-0 invert transition-all duration-300 group-hover:scale-110 group-hover:brightness-150 group-hover:drop-shadow-lg cursor-pointer"
             />
           </div>
 

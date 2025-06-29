@@ -38,11 +38,11 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link to="/" className="flex items-center group">
             <img 
               src="/lovable-uploads/faa37370-c81e-48f9-b23e-922deed9bddc.png" 
               alt="Usergy" 
-              className="h-10 sm:h-12 w-auto"
+              className="h-10 sm:h-12 w-auto transition-all duration-300 group-hover:scale-110 group-hover:brightness-110 group-hover:drop-shadow-lg"
             />
           </Link>
 
