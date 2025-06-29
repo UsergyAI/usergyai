@@ -65,6 +65,12 @@ const Header = () => {
             >
               Community
             </Link>
+            <Link 
+              to="/contact"
+              className="text-usergy-dark hover:text-usergy-coral transition-colors font-semibold text-sm lg:text-base"
+            >
+              Contact
+            </Link>
             <button 
               onClick={() => scrollToSection('how-it-works')}
               className="text-usergy-dark hover:text-usergy-skyblue transition-colors font-semibold text-sm lg:text-base"
@@ -76,12 +82,6 @@ const Header = () => {
               className="text-usergy-dark hover:text-usergy-coral transition-colors font-semibold text-sm lg:text-base"
             >
               Success Stories
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-usergy-dark hover:text-usergy-turquoise transition-colors font-semibold text-sm lg:text-base"
-            >
-              Contact
             </button>
           </nav>
 
