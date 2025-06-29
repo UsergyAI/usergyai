@@ -45,7 +45,7 @@ const ContactMethods = () => {
                 Book a Free 30-Minute Strategy Call
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
-                Schedule an instant, direct consultation with Swaroop, our founder and lead expert. 
+                Schedule an instant, direct consultation with Vedaswaroop, our founder and lead expert. 
                 Share your AI product's vision, challenges, and let's map your path to undeniable traction.
               </p>
               <Button className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg">
@@ -72,10 +72,10 @@ const ContactMethods = () => {
                 or anything else, drop us a note. We're eager to learn and help.
               </p>
               <a 
-                href="mailto:hello@usergy.ai" 
+                href="mailto:swaroop@usergy.ai" 
                 className="inline-block w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg text-center"
               >
-                hello@usergy.ai
+                swaroop@usergy.ai
               </a>
             </CardContent>
           </Card>

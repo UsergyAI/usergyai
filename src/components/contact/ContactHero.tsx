@@ -32,14 +32,14 @@ const ContactHero = () => {
 
     const colors = ['#4ECDC4', '#45B7D1', '#FF6B6B', '#FED766'];
 
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 50; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5,
-        size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.5 + 0.1,
+        vx: (Math.random() - 0.5) * 0.8,
+        vy: (Math.random() - 0.5) * 0.8,
+        size: Math.random() * 4 + 2,
+        opacity: Math.random() * 0.6 + 0.2,
         color: colors[Math.floor(Math.random() * colors.length)]
       });
     }
@@ -115,13 +115,6 @@ const ContactHero = () => {
               Quick Inquiry Form
             </Button>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-usergy-dark/60 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-usergy-dark/60 rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
