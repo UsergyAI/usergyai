@@ -8,11 +8,12 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           {/* Brand */}
-          <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-lg flex items-center justify-center">
-              <span className="text-white font-black text-xl">U</span>
-            </div>
-            <span className="text-3xl font-black">Usergy</span>
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/0ef483ca-bf58-4030-a29e-4dcfb93dea39.png" 
+              alt="Usergy" 
+              className="h-10 w-auto filter brightness-0 invert"
+            />
           </div>
 
           {/* Key Links */}

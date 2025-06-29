@@ -38,11 +38,12 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-lg flex items-center justify-center">
-              <span className="text-white font-black text-lg">U</span>
-            </div>
-            <span className="text-xl sm:text-2xl font-black text-usergy-dark">Usergy</span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/0ef483ca-bf58-4030-a29e-4dcfb93dea39.png" 
+              alt="Usergy" 
+              className="h-8 sm:h-10 w-auto"
+            />
           </Link>
 
           {/* Navigation - Hidden on mobile, visible on tablet and up */}
