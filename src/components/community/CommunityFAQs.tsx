@@ -10,12 +10,12 @@ import {
 const CommunityFAQs = () => {
   const faqs = [
     {
-      question: "How do I get invited to projects?",
-      answer: "After completing your profile, our matching algorithm connects you with relevant AI projects based on your interests and skills. You'll receive personalized email invitations with project details and participation requirements."
-    },
-    {
       question: "Do I need to pay to join?",
       answer: "No, it's completely free for enthusiasts. In fact, you might earn rewards for participating. Our platform charges companies (founders) for campaign support, not community members."
+    },
+    {
+      question: "How do I get invited to projects?",
+      answer: "After completing your profile, our matching algorithm connects you with relevant AI projects based on your interests and skills. You'll receive personalized email invitations with project details and participation requirements."
     },
     {
       question: "How much time do I need to commit?",
@@ -30,30 +30,20 @@ const CommunityFAQs = () => {
       answer: "Absolutely. If you're building an AI product, check out our Services page to see how Usergy can help you get feedback and users. Many founders also hang out in the community to interact with users - you're welcome to do the same!"
     },
     {
-      question: "What exactly does 'Community Setup & Onboarding' involve?",
-      answer: "We create dedicated spaces (Discord servers, Slack channels, or forums) where your users can interact, ask questions, and provide feedback. Our team manages the setup, moderation, and initial engagement to ensure a thriving community."
-    },
-    {
-      question: "How quickly can a campaign launch after booking?",
-      answer: "Most campaigns can launch within 3-5 business days after booking and providing necessary project details. Complex campaigns requiring custom development may take 7-10 days."
-    },
-    {
-      question: "Do you offer refunds?",
-      answer: "Yes, we offer a satisfaction guarantee. If you're not completely satisfied with our service within the first 30 days, we'll provide a full refund."
-    },
-    {
-      question: "What makes Usergy different from other agencies?",
-      answer: "We specialize exclusively in AI products and maintain a curated community of genuine AI enthusiasts. Our focus on quality over quantity, combined with our founder-centric approach, ensures authentic feedback and meaningful traction."
-    },
-    {
       question: "How do you ensure participant quality?",
       answer: "We use a multi-step vetting process including profile verification, skill assessments, and ongoing quality monitoring. Participants who consistently provide valuable feedback earn higher ratings and access to premium opportunities."
     }
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-usergy-light to-white">
-      <div className="container mx-auto px-6">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-usergy-light to-white relative overflow-hidden">
+      {/* Subtle animated background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-usergy-skyblue rounded-full blur-3xl animate-pulse opacity-30"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-36 h-36 bg-usergy-turquoise rounded-full blur-2xl animate-float opacity-40"></div>
+      </div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black text-usergy-dark mb-6">
             Questions? We've Got Answers
@@ -66,10 +56,12 @@ const CommunityFAQs = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="border-2 border-gray-200 rounded-lg px-6 hover:border-usergy-turquoise/30 transition-colors"
+                className="border-2 border-gray-200 rounded-lg px-6 hover:border-usergy-turquoise/30 transition-colors bg-white/80 backdrop-blur-sm hover:shadow-lg"
               >
-                <AccordionTrigger className="text-left text-lg font-semibold text-usergy-dark hover:text-usergy-turquoise py-6">
-                  {faq.question}
+                <AccordionTrigger className="text-left text-lg font-semibold text-usergy-dark hover:text-usergy-turquoise py-6 group">
+                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                    {faq.question}
+                  </span>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
                   {faq.answer}
@@ -79,6 +71,9 @@ const CommunityFAQs = () => {
           </Accordion>
         </div>
       </div>
+
+      {/* Elegant section divider */}
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-usergy-skyblue/30 to-transparent"></div>
     </section>
   );
 };
