@@ -1,158 +1,75 @@
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star, Zap, Gift } from 'lucide-react';
 
 const CommunityHero = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // AI-themed animated background particles
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      opacity: number;
-      color: string;
-      pulse: number;
-    }> = [];
-
-    const colors = ['#4ECDC4', '#45B7D1', '#FF6B6B', '#FED766'];
-
-    for (let i = 0; i < 50; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-        size: Math.random() * 3 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        pulse: Math.random() * Math.PI * 2
-      });
-    }
-
-    let time = 0;
-
-    const animate = () => {
-      if (!ctx || !canvas) return;
-
-      time += 0.01;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      particles.forEach((particle, index) => {
-        particle.x += particle.vx + Math.sin(time + particle.pulse) * 0.2;
-        particle.y += particle.vy + Math.cos(time + particle.pulse) * 0.2;
-        particle.pulse += 0.02;
-
-        if (particle.x < -10) particle.x = canvas.width + 10;
-        if (particle.x > canvas.width + 10) particle.x = -10;
-        if (particle.y < -10) particle.y = canvas.height + 10;
-        if (particle.y > canvas.height + 10) particle.y = -10;
-
-        ctx.globalAlpha = particle.opacity;
-        const pulseSize = particle.size + Math.sin(particle.pulse) * 0.5;
-        ctx.fillStyle = particle.color;
-        ctx.beginPath();
-        ctx.arc(particle.x, particle.y, pulseSize, 0, Math.PI * 2);
-        ctx.fill();
-
-        // Draw connections
-        particles.slice(index + 1).forEach(otherParticle => {
-          const dx = particle.x - otherParticle.x;
-          const dy = particle.y - otherParticle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 100) {
-            const connectionOpacity = (100 - distance) / 100 * 0.1;
-            ctx.globalAlpha = connectionOpacity;
-            ctx.strokeStyle = particle.color;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.stroke();
-          }
-        });
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-    };
-  }, []);
-
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32 lg:pt-36">
-      {/* Animated Background Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{ zIndex: 1 }}
-      />
-
-      {/* Floating Elements */}
-      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-        <div className="floating-element absolute top-1/4 left-1/4 w-4 h-4 bg-usergy-turquoise rounded-full opacity-60 animate-pulse"></div>
-        <div className="floating-element absolute top-1/3 right-1/4 w-6 h-6 bg-usergy-coral rounded-full opacity-40 animate-bounce"></div>
-        <div className="floating-element absolute bottom-1/4 left-1/3 w-5 h-5 bg-usergy-skyblue rounded-full opacity-50 animate-pulse"></div>
+    <section className="relative pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 bg-gradient-to-br from-usergy-light via-white to-usergy-light overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-1/4 left-1/4 w-32 sm:w-48 md:w-64 h-32 sm:h-48 md:h-64 bg-usergy-turquoise rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-24 sm:w-36 md:w-48 h-24 sm:h-36 md:h-48 bg-usergy-skyblue rounded-full blur-2xl animate-float"></div>
+        <div className="absolute top-1/2 right-1/3 w-16 sm:w-24 md:w-32 h-16 sm:h-24 md:h-32 bg-usergy-coral rounded-full blur-xl animate-pulse opacity-60"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-usergy-dark mb-6 md:mb-8 leading-tight animate-fade-in">
-            Shape Tomorrow's AI:
-            <span className="block gradient-text mt-2 md:mt-3">Join the Usergy Explorer Community</span>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center max-w-5xl mx-auto">
+          {/* Main heading with better mobile spacing */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-usergy-dark mb-4 sm:mb-6 md:mb-8 leading-tight">
+            Join the Future of AI Innovation
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-usergy-turquoise via-usergy-skyblue to-usergy-coral animate-pulse-glow mt-2">
+              As an AI Explorer
+            </span>
           </h1>
-          
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-600 mb-8 md:mb-12 max-w-4xl mx-auto leading-relaxed animate-slide-up">
-            Unlock exclusive early access to groundbreaking AI tools, contribute meaningful insights, 
-            and earn rewards while directly influencing the next wave of innovation.
-          </h2>
 
-          <div className="flex justify-center mb-16 animate-scale-in">
+          {/* Subheading with improved mobile readability */}
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-8 sm:mb-10 md:mb-12 leading-relaxed max-w-4xl mx-auto px-2">
+            Get exclusive early access to cutting-edge AI tools, earn rewards for your valuable feedback, 
+            and help shape the future of artificial intelligence. Join thousands of AI enthusiasts worldwide.
+          </p>
+
+          {/* Key benefits with better mobile layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-12 max-w-4xl mx-auto">
+            <div className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 bg-white/60 backdrop-blur-sm rounded-lg p-3 sm:p-4 shadow-sm">
+              <Star className="h-5 w-5 sm:h-6 sm:w-6 text-usergy-turquoise flex-shrink-0" />
+              <span className="text-sm sm:text-base font-semibold text-usergy-dark">Early Access</span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 bg-white/60 backdrop-blur-sm rounded-lg p-3 sm:p-4 shadow-sm">
+              <Gift className="h-5 w-5 sm:h-6 sm:w-6 text-usergy-skyblue flex-shrink-0" />
+              <span className="text-sm sm:text-base font-semibold text-usergy-dark">Earn Rewards</span>
+            </div>
+            <div className="flex items-center justify-center sm:justify-start space-x-2 sm:space-x-3 bg-white/60 backdrop-blur-sm rounded-lg p-3 sm:p-4 shadow-sm">
+              <Zap className="h-5 w-5 sm:h-6 sm:w-6 text-usergy-coral flex-shrink-0" />
+              <span className="text-sm sm:text-base font-semibold text-usergy-dark">Shape Innovation</span>
+            </div>
+          </div>
+
+          {/* CTA buttons with better mobile stacking */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
             <Button 
               size="lg"
-              className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-lg py-6 px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300"
+              className="w-full sm:w-auto bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-6 sm:px-8 py-3 sm:py-4 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-base sm:text-lg group"
             >
-              <ArrowRight className="mr-2 h-5 w-5" />
-              Join Our AI Explorer Community
+              Join the Community Free
+              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button 
+              variant="outline"
+              size="lg"
+              className="w-full sm:w-auto border-2 border-usergy-dark text-usergy-dark hover:bg-usergy-dark hover:text-white font-semibold px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-300 text-base sm:text-lg"
+            >
+              Learn How It Works
             </Button>
           </div>
 
-          {/* Trust Indicators */}
-          <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 text-gray-600 animate-fade-in">
-            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-              <div className="w-2 h-2 bg-usergy-turquoise rounded-full animate-pulse"></div>
-              <span className="font-semibold">5,000+ Active Explorers</span>
-            </div>
-            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-              <div className="w-2 h-2 bg-usergy-coral rounded-full animate-pulse"></div>
-              <span className="font-semibold">200+ AI Tools Tested</span>
-            </div>
-            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-              <div className="w-2 h-2 bg-usergy-skyblue rounded-full animate-pulse"></div>
-              <span className="font-semibold">$50K+ Rewards Distributed</span>
+          {/* Trust indicator with mobile optimization */}
+          <div className="mt-8 sm:mt-12 md:mt-16 text-center">
+            <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">Join thousands of AI enthusiasts worldwide</p>
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-6 md:gap-8 opacity-60">
+              <div className="text-xs sm:text-sm font-semibold text-gray-400 bg-white/40 px-3 sm:px-4 py-1 sm:py-2 rounded-full">10,000+ Active Members</div>
+              <div className="text-xs sm:text-sm font-semibold text-gray-400 bg-white/40 px-3 sm:px-4 py-1 sm:py-2 rounded-full">500+ AI Tools Tested</div>
+              <div className="text-xs sm:text-sm font-semibold text-gray-400 bg-white/40 px-3 sm:px-4 py-1 sm:py-2 rounded-full">$50K+ Rewards Earned</div>
             </div>
           </div>
         </div>
