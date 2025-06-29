@@ -82,8 +82,8 @@ const SolutionSection = () => {
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             <div className="relative h-96 flex items-center justify-center">
-              {/* Enhanced Connection Lines with AI data flow animation - BEHIND the central node */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 5 }}>
+              {/* Enhanced Connection Lines with AI data flow animation - PROPERLY BEHIND the central node */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
                 <defs>
                   <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                     <stop offset="0%" stopColor="#4ECDC4" stopOpacity="0.8" />
@@ -215,7 +215,7 @@ const SolutionSection = () => {
                   );
                 })}
                 
-                {/* Central energy rings */}
+                {/* Central energy rings - behind the central node */}
                 {pulseCenter && (
                   <>
                     <circle
@@ -248,12 +248,12 @@ const SolutionSection = () => {
                 )}
               </svg>
 
-              {/* Central Momentum Node with enhanced AI theme - ABOVE the connection lines */}
-              <div className={`absolute flex items-center justify-center shadow-2xl transition-all duration-1000 ${
+              {/* Central Momentum Node - ABOVE the connection lines but positioned correctly */}
+              <div className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center shadow-2xl transition-all duration-1000 ${
                 animationComplete ? 'animate-pulse-glow scale-110' : 'scale-100'
               } ${
                 activeNode ? 'scale-125' : ''
-              }`} style={{ zIndex: 15 }}>
+              }`} style={{ zIndex: 10 }}>
                 <div className={`bg-gradient-to-br from-usergy-gold via-yellow-400 to-usergy-gold rounded-full w-32 h-32 flex items-center justify-center transition-all duration-500 ${
                   pulseCenter ? 'shadow-2xl' : 'shadow-lg'
                 }`} style={{
@@ -274,7 +274,7 @@ const SolutionSection = () => {
                 </div>
               </div>
 
-              {/* Enhanced Node Elements with tech icons - ABOVE everything */}
+              {/* Enhanced Node Elements - ABOVE everything */}
               {nodes.map((node, index) => {
                 const angle = (index * 120 - 90) * (Math.PI / 180);
                 const x = Math.cos(angle) * 120;
@@ -295,7 +295,8 @@ const SolutionSection = () => {
                       boxShadow: activeNode === node.id 
                         ? `0 0 50px ${node.color}90, 0 0 25px ${node.color}60, 0 0 12px ${node.color}40` 
                         : `0 0 25px ${node.color}50, 0 0 12px ${node.color}30`,
-                      animationDelay: `${index * 0.2}s`
+                      animationDelay: `${index * 0.2}s`,
+                      zIndex: 20
                     }}
                     onMouseEnter={() => setActiveNode(node.id)}
                     onMouseLeave={() => setActiveNode(null)}
