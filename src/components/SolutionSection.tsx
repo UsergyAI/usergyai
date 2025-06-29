@@ -82,8 +82,8 @@ const SolutionSection = () => {
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             <div className="relative h-96 flex items-center justify-center">
-              {/* Connection Lines Layer - Bottom Layer (z-index: 1) */}
-              <div className="absolute inset-0 w-full h-full" style={{ zIndex: 1 }}>
+              {/* Connection Lines Layer - Bottom Layer (z-index: 0) */}
+              <div className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }}>
                 <svg className="w-full h-full pointer-events-none">
                   <defs>
                     <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -250,14 +250,14 @@ const SolutionSection = () => {
                 </svg>
               </div>
 
-              {/* Central Methodology Node - Middle Layer (z-index: 10) */}
+              {/* Central Methodology Node - Middle Layer (z-index: 50) */}
               <div 
-                className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 ${
+                className={`absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-all duration-1000 ${
                   animationComplete ? 'animate-pulse-glow scale-110' : 'scale-100'
                 } ${
                   activeNode ? 'scale-125' : ''
                 }`} 
-                style={{ zIndex: 10 }}
+                style={{ zIndex: 50 }}
               >
                 <div className={`bg-gradient-to-br from-usergy-gold via-yellow-400 to-usergy-gold rounded-full w-32 h-32 flex items-center justify-center transition-all duration-500 ${
                   pulseCenter ? 'shadow-2xl' : 'shadow-lg'
@@ -279,7 +279,7 @@ const SolutionSection = () => {
                 </div>
               </div>
 
-              {/* Outer Node Elements - Top Layer (z-index: 20) */}
+              {/* Outer Node Elements - Top Layer (z-index: 100) */}
               {nodes.map((node, index) => {
                 const angle = (index * 120 - 90) * (Math.PI / 180);
                 const x = Math.cos(angle) * 120;
@@ -301,7 +301,7 @@ const SolutionSection = () => {
                         ? `0 0 50px ${node.color}90, 0 0 25px ${node.color}60, 0 0 12px ${node.color}40` 
                         : `0 0 25px ${node.color}50, 0 0 12px ${node.color}30`,
                       animationDelay: `${index * 0.2}s`,
-                      zIndex: 20
+                      zIndex: 100
                     }}
                     onMouseEnter={() => setActiveNode(node.id)}
                     onMouseLeave={() => setActiveNode(null)}
