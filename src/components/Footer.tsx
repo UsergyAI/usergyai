@@ -17,7 +17,7 @@ const Footer = () => {
                 <div className="h-12 w-32 bg-gray-600 animate-pulse rounded"></div>
               )}
               <img 
-                src="/lovable-uploads/bd806045-5aef-4bc5-a6e6-bfaff9a725f2.png" 
+                src="/lovable-uploads/c533a763-8e7e-4ac3-9731-1836179966aa.png" 
                 alt="Usergy" 
                 className={`h-12 w-auto transition-all duration-300 group-hover:opacity-80 cursor-pointer ${
                   imageLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
