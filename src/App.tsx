@@ -30,7 +30,7 @@ const AppContent = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/services" element={<Services />} />
+        <Route path="/pricing" element={<Services />} />
         <Route path="/community" element={<Community />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/user-signup" element={<UserSignup />} />

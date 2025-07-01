@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -116,10 +115,10 @@ const Header = () => {
               Home
             </button>
             <Link 
-              to="/services"
+              to="/pricing"
               className="text-usergy-dark hover:text-usergy-turquoise transition-colors font-semibold text-sm xl:text-base"
             >
-              Services
+              Pricing
             </Link>
             <Link 
               to="/community"
@@ -188,11 +187,11 @@ const Header = () => {
                 Home
               </button>
               <Link 
-                to="/services"
-                onClick={() => handleMenuItemClick('/services')}
+                to="/pricing"
+                onClick={() => handleMenuItemClick('/pricing')}
                 className="px-4 py-3 text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-50 transition-colors font-semibold rounded-md block"
               >
-                Services
+                Pricing
               </Link>
               <Link 
                 to="/community"

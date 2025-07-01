@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Phone } from 'lucide-react';
+import { Phone, Check, Star } from 'lucide-react';
 
 interface PricingTableProps {
   selectedUsers: number;
@@ -23,247 +24,166 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
     window.open(calendlyUrl, '_blank');
   };
 
+  const plans = [
+    {
+      name: 'Feedback Only',
+      subtitle: 'Basic Insight',
+      price: prices.feedback,
+      color: 'coral',
+      gradient: 'from-red-50 to-orange-50',
+      borderColor: 'border-red-200/50',
+      hoverBorder: 'hover:border-red-300',
+      buttonGradient: 'from-usergy-coral to-red-500',
+      buttonHover: 'hover:from-red-500 hover:to-usergy-coral',
+      iconColor: 'text-usergy-coral',
+      features: [
+        'Recruit & incentivize high-quality users; all incentives included',
+        'Comprehensive feedback analysis report with actionable insights',
+        'Dedicated email support throughout campaign'
+      ]
+    },
+    {
+      name: 'Feedback + Community',
+      subtitle: 'Core Activation',
+      price: prices.community,
+      color: 'turquoise',
+      gradient: 'from-teal-50 to-cyan-50',
+      borderColor: 'border-teal-200/50',
+      hoverBorder: 'hover:border-usergy-gold',
+      buttonGradient: 'from-usergy-turquoise to-teal-500',
+      buttonHover: 'hover:from-teal-500 hover:to-usergy-turquoise',
+      iconColor: 'text-usergy-turquoise',
+      popular: true,
+      features: [
+        'Everything in Feedback Only package',
+        'Expert community setup & nurturing strategies',
+        'Real-time engagement tracking & optimization'
+      ]
+    },
+    {
+      name: 'Full Traction',
+      subtitle: 'Amplify & Buzz',
+      price: prices.full,
+      color: 'skyblue',
+      gradient: 'from-blue-50 to-sky-50',
+      borderColor: 'border-blue-200/50',
+      hoverBorder: 'hover:border-blue-300',
+      buttonGradient: 'from-usergy-skyblue to-blue-500',
+      buttonHover: 'hover:from-blue-500 hover:to-usergy-skyblue',
+      iconColor: 'text-usergy-skyblue',
+      features: [
+        'Everything in Community package included',
+        'Strategic social media task management & execution',
+        'Comprehensive UGC analysis report with market insights'
+      ]
+    }
+  ];
+
   return (
-    <div className="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-100 animate-fade-in relative">
-      {/* Mobile/Tablet: Stack cards vertically, Desktop: Grid layout */}
-      <div className="block md:hidden">
-        {/* Mobile Stack Layout with fixed button sizing */}
-        <div className="space-y-6 p-4">
-          {/* Feedback Only Plan - Mobile */}
-          <div className="bg-gradient-to-b from-red-50 to-white border-2 border-red-200 rounded-xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300">
-            <div className="text-center mb-4">
-              <div className="bg-gradient-to-b from-red-400 via-usergy-coral to-red-600 text-white py-3 px-4 rounded-lg mb-4">
-                <div className="font-bold text-lg">Feedback Only</div>
-                <div className="text-sm font-normal mt-1 opacity-90">Basic Insight</div>
-              </div>
-              <div className="text-3xl font-black text-usergy-dark mb-3">
-                ${prices.feedback.toLocaleString()}
-              </div>
-              <div className="text-sm text-gray-500 mb-4 font-semibold">for {selectedUsers} users</div>
-            </div>
-            <ul className="text-sm text-gray-600 mb-6 space-y-3">
-              <li className="flex items-start">
-                <span className="text-usergy-coral mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Recruit & incentivize high-quality users; all incentives included</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-coral mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Comprehensive feedback analysis report with actionable insights</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-coral mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Dedicated email support throughout campaign</span>
-              </li>
-            </ul>
-            <Button 
-              onClick={() => handleBookCall('Feedback Only')}
-              className="w-full bg-gradient-to-r from-usergy-coral to-red-500 hover:from-red-500 hover:to-usergy-coral text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-3 sm:py-4 text-sm sm:text-base min-h-[48px] rounded-lg"
+    <div className="w-full max-w-7xl mx-auto px-4">
+      {/* Mobile and Tablet: Card Stack */}
+      <div className="block lg:hidden">
+        <div className="space-y-6">
+          {plans.map((plan, index) => (
+            <div
+              key={plan.name}
+              className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 ${
+                plan.popular ? 'ring-2 ring-usergy-gold/30' : ''
+              }`}
             >
-              <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
-              <span className="truncate">Book Your Strategy Call 📞</span>
-            </Button>
-          </div>
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-gradient-to-r from-yellow-400 via-usergy-gold to-yellow-500 text-usergy-dark px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-current" />
+                    Most Popular
+                  </div>
+                </div>
+              )}
+              
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-usergy-dark mb-2">{plan.name}</h3>
+                <p className="text-gray-600 text-sm mb-4">{plan.subtitle}</p>
+                <div className="mb-4">
+                  <span className="text-4xl font-black text-usergy-dark">
+                    ${plan.price.toLocaleString()}
+                  </span>
+                  <p className="text-sm text-gray-500 mt-1">for {selectedUsers} users</p>
+                </div>
+              </div>
 
-          {/* Feedback + Community Plan - Mobile (Most Popular) */}
-          <div className="bg-gradient-to-b from-teal-50 to-white border-4 border-usergy-gold rounded-xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300 relative">
-            {/* Most Popular Badge */}
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-              <div className="bg-gradient-to-r from-yellow-400 via-usergy-gold to-yellow-500 text-usergy-dark px-4 py-2 rounded-full text-xs font-black shadow-xl border-2 border-white uppercase tracking-wide">
-                ⭐ Most Popular ⭐
+              <div className="mb-6">
+                {plan.features.map((feature, idx) => (
+                  <div key={idx} className="flex items-start gap-3 mb-3">
+                    <Check className={`w-5 h-5 ${plan.iconColor} flex-shrink-0 mt-0.5`} />
+                    <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
+                  </div>
+                ))}
               </div>
-            </div>
-            <div className="text-center mb-4 mt-4">
-              <div className="bg-gradient-to-b from-teal-400 via-usergy-turquoise to-teal-600 text-white py-3 px-4 rounded-lg mb-4">
-                <div className="font-bold text-lg">Feedback + Community</div>
-                <div className="text-sm font-normal mt-1 opacity-90">Core Activation</div>
-              </div>
-              <div className="text-3xl font-black text-usergy-dark mb-3">
-                ${prices.community.toLocaleString()}
-              </div>
-              <div className="text-sm text-gray-500 mb-4 font-semibold">for {selectedUsers} users</div>
-            </div>
-            <ul className="text-sm text-gray-600 mb-6 space-y-3">
-              <li className="flex items-start">
-                <span className="text-usergy-turquoise mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Everything in Feedback Only package</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-turquoise mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Expert community setup & nurturing strategies</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-turquoise mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Real-time engagement tracking & optimization</span>
-              </li>
-            </ul>
-            <Button 
-              onClick={() => handleBookCall('Feedback + Community')}
-              className="w-full bg-gradient-to-r from-usergy-turquoise to-teal-500 hover:from-teal-500 hover:to-usergy-turquoise text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-3 sm:py-4 text-sm sm:text-base border-2 border-usergy-gold/30 min-h-[48px] rounded-lg"
-            >
-              <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
-              <span className="truncate">Book Your Strategy Call 📞</span>
-            </Button>
-          </div>
 
-          {/* Full Traction Plan - Mobile */}
-          <div className="bg-gradient-to-b from-blue-50 to-white border-2 border-blue-200 rounded-xl p-4 sm:p-6 hover:shadow-xl transition-all duration-300">
-            <div className="text-center mb-4">
-              <div className="bg-gradient-to-b from-blue-400 via-usergy-skyblue to-blue-600 text-white py-3 px-4 rounded-lg mb-4">
-                <div className="font-bold text-lg">Full Traction</div>
-                <div className="text-sm font-normal mt-1 opacity-90">Amplify & Buzz</div>
-              </div>
-              <div className="text-3xl font-black text-usergy-dark mb-3">
-                ${prices.full.toLocaleString()}
-              </div>
-              <div className="text-sm text-gray-500 mb-4 font-semibold">for {selectedUsers} users</div>
+              <Button
+                onClick={() => handleBookCall(plan.name)}
+                className={`w-full bg-gradient-to-r ${plan.buttonGradient} ${plan.buttonHover} text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-base`}
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Book Strategy Call
+              </Button>
             </div>
-            <ul className="text-sm text-gray-600 mb-6 space-y-3">
-              <li className="flex items-start">
-                <span className="text-usergy-skyblue mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Everything in Community package included</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-skyblue mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Strategic social media task management & execution</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-skyblue mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Comprehensive UGC analysis report with market insights</span>
-              </li>
-            </ul>
-            <Button 
-              onClick={() => handleBookCall('Full Traction')}
-              className="w-full bg-gradient-to-r from-usergy-skyblue to-blue-500 hover:from-blue-500 hover:to-usergy-skyblue text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-3 sm:py-4 text-sm sm:text-base min-h-[48px] rounded-lg"
-            >
-              <Phone className="w-4 h-4 mr-2 flex-shrink-0" />
-              <span className="truncate">Book Your Strategy Call 📞</span>
-            </Button>
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Desktop Grid Layout - keep existing desktop layout unchanged */}
-      <div className="hidden md:block">
-        {/* Enhanced Table Header with Better Spacing for Badge */}
-        <div className="grid grid-cols-3 relative pt-4">
-          {/* Feedback Only Header */}
-          <div className="p-6 pb-8 text-center font-bold text-lg bg-gradient-to-b from-red-400 via-usergy-coral to-red-600 text-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative">
-            <div className="font-bold text-lg">Feedback Only</div>
-            <div className="text-sm font-normal mt-1 opacity-90">Basic Insight</div>
-          </div>
+      {/* Desktop: Grid Layout */}
+      <div className="hidden lg:block">
+        <div className="grid grid-cols-3 gap-8 relative">
+          {plans.map((plan, index) => (
+            <div
+              key={plan.name}
+              className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${
+                plan.popular ? 'ring-2 ring-usergy-gold/30 scale-105' : ''
+              }`}
+            >
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-yellow-400 via-usergy-gold to-yellow-500 text-usergy-dark px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-current" />
+                    Most Popular
+                  </div>
+                </div>
+              )}
 
-          {/* Feedback + Community Header with Integrated Badge */}
-          <div className="p-6 pb-8 text-center font-bold text-lg bg-gradient-to-b from-teal-400 via-usergy-turquoise to-teal-600 text-white relative hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
-            {/* Integrated "MOST POPULAR" Ribbon Badge */}
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-30">
-              <div className="bg-gradient-to-r from-yellow-400 via-usergy-gold to-yellow-500 text-usergy-dark px-6 py-2 rounded-full text-xs font-black shadow-xl border-2 border-white uppercase tracking-wide">
-                ⭐ Most Popular ⭐
+              <div className="p-8">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-usergy-dark mb-2">{plan.name}</h3>
+                  <p className="text-gray-600 mb-6">{plan.subtitle}</p>
+                  <div className="mb-6">
+                    <span className="text-5xl font-black text-usergy-dark">
+                      ${plan.price.toLocaleString()}
+                    </span>
+                    <p className="text-gray-500 mt-2">for {selectedUsers} users</p>
+                  </div>
+                </div>
+
+                <div className="mb-8 space-y-4">
+                  {plan.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <Check className={`w-5 h-5 ${plan.iconColor} flex-shrink-0 mt-1`} />
+                      <span className="text-gray-700 leading-relaxed">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Button
+                  onClick={() => handleBookCall(plan.name)}
+                  className={`w-full bg-gradient-to-r ${plan.buttonGradient} ${plan.buttonHover} text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-lg ${
+                    plan.popular ? 'ring-2 ring-usergy-gold/50' : ''
+                  }`}
+                >
+                  <Phone className="w-5 h-5 mr-2" />
+                  Book Strategy Call
+                </Button>
               </div>
             </div>
-            <div className="font-bold text-lg mt-2">Feedback + Community</div>
-            <div className="text-sm font-normal mt-1 opacity-90">Core Activation</div>
-          </div>
-
-          {/* Full Traction Header */}
-          <div className="p-6 pb-8 text-center font-bold text-lg bg-gradient-to-b from-blue-400 via-usergy-skyblue to-blue-600 text-white hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative">
-            <div className="font-bold text-lg">Full Traction</div>
-            <div className="text-sm font-normal mt-1 opacity-90">Amplify & Buzz</div>
-          </div>
-        </div>
-
-        {/* Enhanced Pricing Row with Active State Highlighting */}
-        <div className="grid grid-cols-3 border-b-2 border-usergy-turquoise bg-gradient-to-r from-usergy-turquoise/10 via-white to-usergy-skyblue/10 shadow-inner">
-          {/* Feedback Only Plan */}
-          <div className="p-8 text-center border-r border-gray-200 bg-white hover:shadow-2xl hover:bg-gradient-to-b hover:from-white hover:to-red-50 transition-all duration-300 hover:-translate-y-3 transform group hover:border-usergy-coral hover:border-2 hover:z-10 relative">
-            <div className="text-4xl font-black text-usergy-dark mb-4 group-hover:text-usergy-coral transition-colors group-hover:scale-110 transform duration-300">
-              ${prices.feedback.toLocaleString()}
-            </div>
-            <div className="text-sm text-gray-500 mb-6 font-semibold">for {selectedUsers} users</div>
-            <ul className="text-sm text-gray-600 mb-8 space-y-3 text-left">
-              <li className="flex items-start">
-                <span className="text-usergy-coral mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Recruit & incentivize high-quality users; all incentives included</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-coral mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Comprehensive feedback analysis report with actionable insights</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-coral mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Dedicated email support throughout campaign</span>
-              </li>
-            </ul>
-            <Button 
-              onClick={() => handleBookCall('Feedback Only')}
-              className="w-full bg-gradient-to-r from-usergy-coral to-red-500 hover:from-red-500 hover:to-usergy-coral text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-4 text-lg"
-            >
-              <Phone className="w-5 h-5 mr-2 flex-shrink-0" />
-              <span className="truncate">Book Your Strategy Call 📞</span>
-            </Button>
-          </div>
-
-          {/* Feedback + Community Plan (Most Popular) */}
-          <div className="p-8 text-center bg-gradient-to-b from-teal-50 via-white to-teal-50 border-2 border-usergy-turquoise relative hover:shadow-2xl hover:bg-gradient-to-b hover:from-teal-50 hover:to-usergy-turquoise/10 transition-all duration-300 hover:-translate-y-3 transform group hover:border-usergy-gold hover:border-4 hover:z-20">
-            {/* Highlight border for most popular */}
-            <div className="absolute inset-0 bg-gradient-to-r from-usergy-gold/20 to-transparent rounded-lg opacity-50"></div>
-            
-            <div className="relative z-10">
-              <div className="text-4xl font-black text-usergy-dark mb-4 group-hover:text-usergy-turquoise transition-colors group-hover:scale-110 transform duration-300">
-                ${prices.community.toLocaleString()}
-              </div>
-              <div className="text-sm text-gray-500 mb-6 font-semibold">for {selectedUsers} users</div>
-              <ul className="text-sm text-gray-600 mb-8 space-y-3 text-left">
-                <li className="flex items-start">
-                  <span className="text-usergy-turquoise mr-3 font-bold text-lg">•</span>
-                  <span className="leading-relaxed">Everything in Feedback Only package</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-usergy-turquoise mr-3 font-bold text-lg">•</span>
-                  <span className="leading-relaxed">Expert community setup & nurturing strategies</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-usergy-turquoise mr-3 font-bold text-lg">•</span>
-                  <span className="leading-relaxed">Real-time engagement tracking & optimization</span>
-                </li>
-              </ul>
-              <Button 
-                onClick={() => handleBookCall('Feedback + Community')}
-                className="w-full bg-gradient-to-r from-usergy-turquoise to-teal-500 hover:from-teal-500 hover:to-usergy-turquoise text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-4 text-lg border-2 border-usergy-gold/30"
-              >
-                <Phone className="w-5 h-5 mr-2 flex-shrink-0" />
-                <span className="truncate">Book Your Strategy Call 📞</span>
-              </Button>
-            </div>
-          </div>
-
-          {/* Full Traction Plan */}
-          <div className="p-8 text-center bg-white hover:shadow-2xl hover:bg-gradient-to-b hover:from-white hover:to-blue-50 transition-all duration-300 hover:-translate-y-3 transform group hover:border-usergy-skyblue hover:border-2 hover:z-10 relative">
-            <div className="text-4xl font-black text-usergy-dark mb-4 group-hover:text-usergy-skyblue transition-colors group-hover:scale-110 transform duration-300">
-              ${prices.full.toLocaleString()}
-            </div>
-            <div className="text-sm text-gray-500 mb-6 font-semibold">for {selectedUsers} users</div>
-            <ul className="text-sm text-gray-600 mb-8 space-y-3 text-left">
-              <li className="flex items-start">
-                <span className="text-usergy-skyblue mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Everything in Community package included</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-skyblue mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Strategic social media task management & execution</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-usergy-skyblue mr-3 font-bold text-lg">•</span>
-                <span className="leading-relaxed">Comprehensive UGC analysis report with market insights</span>
-              </li>
-            </ul>
-            <Button 
-              onClick={() => handleBookCall('Full Traction')}
-              className="w-full bg-gradient-to-r from-usergy-skyblue to-blue-500 hover:from-blue-500 hover:to-usergy-skyblue text-white font-bold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-2xl py-4 text-lg"
-            >
-              <Phone className="w-5 h-5 mr-2 flex-shrink-0" />
-              <span className="truncate">Book Your Strategy Call 📞</span>
-            </Button>
-          </div>
+          ))}
         </div>
       </div>
     </div>
