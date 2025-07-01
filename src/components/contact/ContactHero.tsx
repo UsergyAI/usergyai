@@ -9,6 +9,13 @@ const ContactHero = () => {
     window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
   };
 
+  const scrollToForm = () => {
+    const formElement = document.getElementById('contact-form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32">
       <AnimatedBackground particleCount={50} />
@@ -69,6 +76,7 @@ const ContactHero = () => {
                 Fill out our form for a prompt response.
               </p>
               <Button
+                onClick={scrollToForm}
                 variant="outline"
                 className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
               >
@@ -77,16 +85,6 @@ const ContactHero = () => {
               </Button>
             </div>
           </div>
-
-          {/* Primary CTA */}
-          <Button
-            size="lg"
-            onClick={handleCalendlyRedirect}
-            className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-lg py-6 px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 will-change-transform animate-scale-in"
-          >
-            <Calendar className="mr-3 h-6 w-6" />
-            Book Your Strategy Call
-          </Button>
         </div>
       </div>
     </section>

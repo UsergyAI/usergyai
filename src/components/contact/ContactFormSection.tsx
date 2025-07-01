@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -33,7 +32,7 @@ const ContactFormSection = () => {
 
   if (isSubmitted) {
     return (
-      <section id="contact-form" className="py-16 md:py-24 bg-white relative overflow-hidden">
+      <section id="contact-form" className="py-12 md:py-16 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center">
             <div className="w-24 h-24 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-full flex items-center justify-center mx-auto mb-8">
@@ -53,7 +52,7 @@ const ContactFormSection = () => {
   }
 
   return (
-    <section id="contact-form" className="py-16 md:py-24 bg-white relative overflow-hidden">
+    <section id="contact-form" className="py-12 md:py-16 bg-white relative overflow-hidden">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/3 left-1/6 w-40 h-40 bg-usergy-coral rounded-full blur-3xl animate-pulse opacity-30"></div>
