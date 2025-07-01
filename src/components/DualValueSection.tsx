@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Rocket, Gamepad2, Zap, User, TrendingUp, Target, Lightbulb, Search, Gift } from 'lucide-react';
+import { Rocket, Gamepad2, User, TrendingUp, Target, Lightbulb, Search, Gift, ArrowLeftRight, Zap } from 'lucide-react';
 
 const DualValueSection = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -35,12 +34,32 @@ const DualValueSection = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 relative">
-            {/* Connection Flow */}
+            {/* Enhanced Connection Flow */}
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 hidden lg:block">
-              <div className="w-16 h-16 bg-gradient-to-br from-usergy-turquoise to-usergy-coral rounded-full flex items-center justify-center animate-pulse-glow">
-                <Zap className="h-8 w-8 text-white" />
+              {/* Main connection circle */}
+              <div className="relative">
+                <div className="w-20 h-20 bg-gradient-to-br from-usergy-turquoise via-usergy-skyblue to-usergy-coral rounded-full flex items-center justify-center shadow-2xl animate-pulse-glow">
+                  <ArrowLeftRight className="h-8 w-8 text-white animate-pulse" />
+                </div>
+                
+                {/* Connecting lines with gradient */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-y-1/2">
+                  <div className="w-40 h-1 bg-gradient-to-r from-usergy-turquoise via-transparent to-usergy-coral -translate-x-1/2 animate-pulse"></div>
+                </div>
+                
+                {/* Flowing particles */}
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-2 h-2 bg-usergy-turquoise rounded-full animate-ping absolute -left-20"></div>
+                  <div className="w-2 h-2 bg-usergy-coral rounded-full animate-ping absolute -right-20" style={{ animationDelay: '0.5s' }}></div>
+                </div>
+                
+                {/* Synergy text */}
+                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+                  <span className="text-sm font-bold text-gray-600 bg-white px-3 py-1 rounded-full shadow-lg">
+                    Mutual Success
+                  </span>
+                </div>
               </div>
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-1 bg-gradient-to-r from-usergy-turquoise to-usergy-coral opacity-50 animate-pulse"></div>
             </div>
 
             {/* Founders Card */}

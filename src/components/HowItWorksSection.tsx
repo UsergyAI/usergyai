@@ -108,36 +108,38 @@ const HowItWorksSection = () => {
 
               <div className="space-y-6">
                 {founderSteps.map((step, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl min-h-[120px] flex flex-col">
+                  <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
                     <div 
-                      className="p-6 cursor-pointer flex-grow"
+                      className="p-6 cursor-pointer"
                       onClick={() => toggleStep(index)}
                     >
-                      <div className="flex items-center space-x-4 h-full">
+                      <div className="flex items-center space-x-4">
                         <div 
                           className="w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
                           style={{ backgroundColor: step.color }}
                         >
                           <step.icon className="h-6 w-6 text-white" />
                         </div>
-                        <div className="flex-1 min-h-[60px] flex flex-col justify-center">
+                        <div className="flex-1">
                           <h3 className="text-xl font-bold text-usergy-dark mb-1">{step.title}</h3>
                           <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
                         </div>
-                        <div className="text-gray-400 flex-shrink-0">
+                        <div className="text-gray-400 flex-shrink-0 transition-transform duration-300">
                           {expandedStep === index ? 
-                            <ChevronUp className="h-5 w-5" /> : 
+                            <ChevronUp className="h-5 w-5 transform rotate-180" /> : 
                             <ChevronDown className="h-5 w-5" />
                           }
                         </div>
                       </div>
                     </div>
                     
-                    {expandedStep === index && (
-                      <div className="px-6 pb-6 border-t border-gray-100 pt-4 animate-accordion-down">
+                    <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                      expandedStep === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      <div className="px-6 pb-6 border-t border-gray-100 pt-4">
                         <p className="text-gray-700 leading-relaxed text-sm">{step.details}</p>
                       </div>
-                    )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -156,36 +158,38 @@ const HowItWorksSection = () => {
 
               <div className="space-y-6">
                 {userSteps.map((step, index) => (
-                  <div key={index + 100} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl min-h-[120px] flex flex-col">
+                  <div key={index + 100} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
                     <div 
-                      className="p-6 cursor-pointer flex-grow"
+                      className="p-6 cursor-pointer"
                       onClick={() => toggleStep(index + 100)}
                     >
-                      <div className="flex items-center space-x-4 h-full">
+                      <div className="flex items-center space-x-4">
                         <div 
                           className="w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
                           style={{ backgroundColor: step.color }}
                         >
                           <step.icon className="h-6 w-6 text-white" />
                         </div>
-                        <div className="flex-1 min-h-[60px] flex flex-col justify-center">
+                        <div className="flex-1">
                           <h3 className="text-xl font-bold text-usergy-dark mb-1">{step.title}</h3>
                           <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
                         </div>
-                        <div className="text-gray-400 flex-shrink-0">
+                        <div className="text-gray-400 flex-shrink-0 transition-transform duration-300">
                           {expandedStep === index + 100 ? 
-                            <ChevronUp className="h-5 w-5" /> : 
+                            <ChevronUp className="h-5 w-5 transform rotate-180" /> : 
                             <ChevronDown className="h-5 w-5" />
                           }
                         </div>
                       </div>
                     </div>
                     
-                    {expandedStep === index + 100 && (
-                      <div className="px-6 pb-6 border-t border-gray-100 pt-4 animate-accordion-down">
+                    <div className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                      expandedStep === index + 100 ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                    }`}>
+                      <div className="px-6 pb-6 border-t border-gray-100 pt-4">
                         <p className="text-gray-700 leading-relaxed text-sm">{step.details}</p>
                       </div>
-                    )}
+                    </div>
                   </div>
                 ))}
               </div>

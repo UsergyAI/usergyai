@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { AlertTriangle, TrendingDown, Users, Zap } from 'lucide-react';
+import { AlertTriangle, TrendingDown, Users, Zap, ExternalLink } from 'lucide-react';
 
 const ProblemSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,7 +24,7 @@ const ProblemSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-red-50 to-orange-50">
+    <section ref={sectionRef} className="py-20 bg-gradient-to-br from-red-50 via-orange-50 to-red-100">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto text-center">
           {/* Section Header */}
@@ -41,32 +41,50 @@ const ProblemSection = () => {
             </p>
           </div>
 
-          {/* Central Statistic with enhanced styling */}
+          {/* Central Statistic with enhanced emotional impact */}
           <div className={`relative mb-16 transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
-            <div className="relative inline-flex items-center justify-center">
-              {/* Enhanced gradient background with multiple layers */}
-              <div className="absolute inset-0 bg-gradient-to-br from-red-100 via-orange-100 to-red-50 rounded-full transform scale-110 animate-pulse-glow"></div>
-              <div className="absolute inset-0 bg-gradient-to-tr from-red-200/50 via-transparent to-orange-200/50 rounded-full transform scale-105"></div>
-              
-              {/* Main content container - no white background */}
-              <div className="relative z-10 text-center py-12 px-16 rounded-full">
-                <div className="text-6xl lg:text-7xl font-black text-red-600 mb-4 animate-pulse">
-                  42%
-                </div>
-                <p className="text-lg font-semibold text-gray-700 max-w-xs leading-tight">
-                  of AI startups fail within their first 2 years due to poor market traction
-                </p>
-                <div className="mt-4 text-sm text-gray-500 font-medium">
-                  * CBInsights AI Startup Report 2024
+            <div className="relative max-w-2xl mx-auto">
+              {/* Enhanced circular design with multiple gradient layers */}
+              <div className="relative">
+                {/* Outer glow ring */}
+                <div className="absolute inset-0 bg-gradient-to-br from-red-400 via-orange-400 to-red-500 rounded-full blur-3xl opacity-30 animate-pulse scale-110"></div>
+                
+                {/* Main circular container */}
+                <div className="relative bg-gradient-to-br from-red-500 via-orange-500 to-red-600 rounded-full p-16 shadow-2xl">
+                  {/* Inner circle with statistic */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-full p-12 border border-white/20">
+                    <div className="text-center">
+                      <div className="text-7xl lg:text-8xl font-black text-white mb-4 drop-shadow-lg">
+                        42%
+                      </div>
+                      <p className="text-lg font-bold text-white/90 mb-2 leading-tight">
+                        of AI startups fail within their first 2 years
+                      </p>
+                      <p className="text-base font-semibold text-white/80 mb-4">
+                        due to poor market traction
+                      </p>
+                      
+                      {/* Forbes Source Link */}
+                      <a 
+                        href="https://www.forbes.com/councils/forbestechcouncil/2023/05/02/why-it-startups-fail-reasons-trends-and-solutions/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-sm text-white/70 hover:text-white transition-colors duration-300 underline decoration-white/50 hover:decoration-white"
+                      >
+                        <span className="mr-1">Source: Forbes Tech Council</span>
+                        <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               {/* Floating warning icons around the statistic */}
-              <AlertTriangle className="absolute -top-4 -left-4 h-8 w-8 text-red-500 animate-float" style={{ animationDelay: '0s' }} />
-              <TrendingDown className="absolute -bottom-4 -right-4 h-8 w-8 text-orange-500 animate-float" style={{ animationDelay: '1s' }} />
-              <AlertTriangle className="absolute -top-4 -right-4 h-8 w-8 text-red-400 animate-float" style={{ animationDelay: '2s' }} />
+              <AlertTriangle className="absolute -top-6 -left-6 h-10 w-10 text-red-500 animate-float opacity-80" style={{ animationDelay: '0s' }} />
+              <TrendingDown className="absolute -bottom-6 -right-6 h-10 w-10 text-orange-500 animate-float opacity-80" style={{ animationDelay: '1s' }} />
+              <AlertTriangle className="absolute -top-6 -right-6 h-10 w-10 text-red-400 animate-float opacity-80" style={{ animationDelay: '2s' }} />
             </div>
           </div>
 

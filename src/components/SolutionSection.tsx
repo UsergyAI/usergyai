@@ -1,10 +1,11 @@
 
 import React, { useEffect, useRef, useState } from 'react';
-import { MessageSquare, Users, Megaphone, Zap, Brain, Network, Target } from 'lucide-react';
+import { MessageSquare, Users, Megaphone, Zap, Brain, Network, Target, ArrowRight } from 'lucide-react';
 
 const SolutionSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeNode, setActiveNode] = useState<number | null>(null);
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -31,7 +32,8 @@ const SolutionSection = () => {
       icon: MessageSquare,
       bgIcon: Brain,
       color: "#4ECDC4",
-      description: "Our experts guide you through strategic planning and optimization"
+      description: "Our experts guide you through strategic planning and optimization",
+      details: "Deep dive analysis, market positioning, and growth strategy development"
     },
     {
       id: 2,
@@ -39,7 +41,8 @@ const SolutionSection = () => {
       icon: Users,
       bgIcon: Network,
       color: "#45B7D1",
-      description: "We build and nurture passionate communities around your AI solution"
+      description: "We build and nurture passionate communities around your AI solution",
+      details: "User engagement, feedback collection, and community management"
     },
     {
       id: 3,
@@ -47,7 +50,8 @@ const SolutionSection = () => {
       icon: Megaphone,
       bgIcon: Target,
       color: "#FF6B6B",
-      description: "Our team generates organic buzz and authentic testimonials"
+      description: "Our team generates organic buzz and authentic testimonials",
+      details: "Social media strategy, influencer outreach, and viral marketing"
     }
   ];
 
@@ -70,85 +74,128 @@ const SolutionSection = () => {
             <span className="font-semibold text-usergy-dark">This is our proven methodology for real growth.</span>
           </p>
 
-          {/* Simplified Diagram without animations */}
+          {/* Interactive Methodology Center */}
           <div className={`relative max-w-5xl mx-auto mb-16 transition-all duration-1000 delay-600 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             <div className="relative h-96 flex items-center justify-center">
-              {/* Central Methodology Node */}
+              {/* Central Methodology Node with enhanced interactivity */}
               <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
-                <div className="bg-gradient-to-br from-usergy-gold via-yellow-400 to-usergy-gold rounded-full w-32 h-32 flex items-center justify-center shadow-2xl" style={{
-                  boxShadow: `0 0 40px #FED76660, 0 0 20px #FED76630`
+                <div className={`bg-gradient-to-br from-usergy-gold via-yellow-400 to-usergy-gold rounded-full w-40 h-40 flex items-center justify-center shadow-2xl transition-all duration-500 ${
+                  activeNode ? 'scale-110' : 'scale-100'
+                }`} style={{
+                  boxShadow: activeNode ? `0 0 60px #FED76680, 0 0 30px #FED76660` : `0 0 40px #FED76660, 0 0 20px #FED76630`
                 }}>
                   <div className="text-center">
-                    <Zap className="h-8 w-8 text-white mx-auto mb-1" />
-                    <div className="text-xs font-black text-white">OUR CORE METHODOLOGY</div>
+                    <Zap className={`h-10 w-10 text-white mx-auto mb-2 transition-transform duration-300 ${
+                      activeNode ? 'scale-125' : ''
+                    }`} />
+                    <div className="text-xs font-black text-white leading-tight">OUR CORE<br/>METHODOLOGY</div>
                   </div>
                 </div>
               </div>
 
-              {/* Outer Node Elements */}
+              {/* Interactive Service Nodes */}
               {nodes.map((node, index) => {
                 const angle = (index * 120 - 90) * (Math.PI / 180);
-                const x = Math.cos(angle) * 120;
-                const y = Math.sin(angle) * 120;
+                const x = Math.cos(angle) * 140;
+                const y = Math.sin(angle) * 140;
                 
                 return (
                   <div
                     key={node.id}
-                    className={`absolute w-28 h-28 rounded-full flex items-center justify-center cursor-pointer transform transition-all duration-500 shadow-xl hover:scale-115`}
+                    className={`absolute w-32 h-32 rounded-full flex items-center justify-center cursor-pointer transform transition-all duration-500 shadow-xl ${
+                      activeNode === node.id ? 'scale-125 z-40' : 'hover:scale-110 z-30'
+                    }`}
                     style={{
-                      left: `calc(50% + ${x}px - 56px)`,
-                      top: `calc(50% + ${y}px - 56px)`,
+                      left: `calc(50% + ${x}px - 64px)`,
+                      top: `calc(50% + ${y}px - 64px)`,
                       backgroundColor: node.color,
                       boxShadow: activeNode === node.id 
-                        ? `0 0 50px ${node.color}90, 0 0 25px ${node.color}60, 0 0 12px ${node.color}40` 
-                        : `0 0 25px ${node.color}50, 0 0 12px ${node.color}30`,
-                      zIndex: 100
+                        ? `0 0 60px ${node.color}90, 0 0 30px ${node.color}60, 0 0 15px ${node.color}40` 
+                        : `0 0 30px ${node.color}50, 0 0 15px ${node.color}30`,
                     }}
                     onMouseEnter={() => setActiveNode(node.id)}
                     onMouseLeave={() => setActiveNode(null)}
                   >
                     <div className="relative">
-                      <node.bgIcon className={`absolute inset-0 h-12 w-12 text-white/20 transform transition-all duration-300 ${
-                        activeNode === node.id ? 'scale-175 rotate-12' : 'scale-150'
+                      <node.bgIcon className={`absolute inset-0 h-16 w-16 text-white/20 transform transition-all duration-300 ${
+                        activeNode === node.id ? 'scale-200 rotate-12' : 'scale-175'
                       }`} />
-                      <node.icon className={`h-8 w-8 text-white relative z-10 transition-transform duration-300 ${
+                      <node.icon className={`h-10 w-10 text-white relative z-10 transition-transform duration-300 ${
                         activeNode === node.id ? 'scale-125' : ''
                       }`} />
                     </div>
                   </div>
                 );
               })}
+
+              {/* Dynamic connection indicators */}
+              {activeNode && (
+                <div className="absolute inset-0 pointer-events-none">
+                  {[...Array(3)].map((_, i) => (
+                    <div
+                      key={i}
+                      className={`absolute w-1 bg-gradient-to-r from-usergy-gold to-transparent rounded-full animate-pulse ${
+                        i === 0 ? 'h-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-full' :
+                        i === 1 ? 'h-20 top-1/2 left-1/2 -translate-x-1/2 translate-y-full rotate-180' :
+                        'w-20 h-1 top-1/2 left-1/2 -translate-y-1/2 translate-x-full'
+                      }`}
+                      style={{ animationDelay: `${i * 0.2}s` }}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
 
-            {/* Node Descriptions */}
+            {/* Enhanced Service Descriptions */}
             <div className="grid md:grid-cols-3 gap-8 mt-12">
-              {nodes.map((node) => (
+              {nodes.map((node, index) => (
                 <div
                   key={node.id}
-                  className={`text-center p-6 rounded-xl transition-all duration-300 cursor-pointer ${
+                  className={`text-center p-8 rounded-2xl transition-all duration-500 cursor-pointer ${
                     activeNode === node.id 
-                      ? 'bg-gray-50 shadow-xl scale-105 transform' 
+                      ? 'bg-white shadow-2xl scale-105 transform border-2' 
+                      : hoveredService === index
+                      ? 'bg-gray-50 shadow-xl scale-102 transform'
                       : 'hover:bg-gray-50 hover:scale-102 hover:shadow-lg'
                   }`}
-                  onMouseEnter={() => setActiveNode(node.id)}
-                  onMouseLeave={() => setActiveNode(null)}
+                  style={{ 
+                    borderColor: activeNode === node.id ? node.color : 'transparent',
+                    boxShadow: activeNode === node.id ? `0 0 30px ${node.color}30` : undefined
+                  }}
+                  onMouseEnter={() => {
+                    setActiveNode(node.id);
+                    setHoveredService(index);
+                  }}
+                  onMouseLeave={() => {
+                    setActiveNode(null);
+                    setHoveredService(null);
+                  }}
                 >
-                  <div className={`transition-transform duration-300 mb-3 ${
+                  <div className={`transition-transform duration-300 mb-4 ${
                     activeNode === node.id ? 'scale-125' : ''
                   }`}>
                     <node.icon 
-                      className="h-10 w-10 mx-auto" 
+                      className="h-12 w-12 mx-auto" 
                       style={{ color: node.color }}
                     />
                   </div>
-                  <h3 className={`text-xl font-bold mb-2 transition-colors duration-300`} style={{ 
+                  <h3 className={`text-xl font-bold mb-3 transition-colors duration-300`} style={{ 
                     color: node.color 
                   }}>
                     {node.title}
                   </h3>
-                  <p className="text-gray-600">{node.description}</p>
+                  <p className="text-gray-600 mb-4">{node.description}</p>
+                  
+                  {/* Expandable details */}
+                  <div className={`transition-all duration-500 overflow-hidden ${
+                    activeNode === node.id ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
+                  }`}>
+                    <div className="pt-4 border-t border-gray-200">
+                      <p className="text-sm text-gray-500 italic">{node.details}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
