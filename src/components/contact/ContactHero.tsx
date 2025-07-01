@@ -42,22 +42,22 @@ const ContactHero = () => {
             Ready to transform your AI vision into reality? Our team is here to provide expert guidance and support. Reach out today!
           </h2>
 
-          {/* Contact method cards with uniform design */}
+          {/* Contact method cards with uniform design and fixed alignment */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16 max-w-4xl mx-auto animate-scale-in">
             {/* Strategy Call Card */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-turquoise/20">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-turquoise/20 flex flex-col h-full">
               <div className="flex items-center justify-center w-16 h-16 rounded-full bg-usergy-turquoise/20 text-usergy-turquoise mx-auto mb-4">
                 <Calendar className="w-8 h-8" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-usergy-dark mb-4 text-center">
                 Schedule a Strategy Call
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center flex-grow">
                 Discuss your AI growth strategy with our experts.
               </p>
               <Button
                 onClick={handleCalendlyRedirect}
-                className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
+                className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px] mt-auto"
               >
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
                 <span className="truncate">Schedule Free Strategy Call</span>
@@ -65,20 +65,20 @@ const ContactHero = () => {
             </div>
 
             {/* Quick Form Card */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-coral/20">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-coral/20 flex flex-col h-full">
               <div className="flex items-center justify-center w-16 h-16 rounded-full bg-usergy-coral/20 text-usergy-coral mx-auto mb-4">
                 <MessageSquare className="w-8 h-8" />
               </div>
               <h3 className="text-lg sm:text-xl font-bold text-usergy-dark mb-4 text-center">
                 Quick Contact Form
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center">
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center flex-grow">
                 Fill out our form for a prompt response.
               </p>
               <Button
                 onClick={scrollToForm}
                 variant="outline"
-                className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
+                className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px] mt-auto"
               >
                 <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
                 <span className="truncate">Start Form</span>
