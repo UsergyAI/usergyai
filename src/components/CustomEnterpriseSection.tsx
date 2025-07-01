@@ -1,95 +1,83 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight, Zap, Users, Target } from 'lucide-react';
 
 const CustomEnterpriseSection = () => {
-  const handleCalendlyRedirect = () => {
+  const handleContactUs = () => {
     window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
   };
 
+  const enterpriseFeatures = [
+    {
+      icon: <Users className="w-6 h-6" />,
+      title: "Unlimited Scale",
+      description: "No user limits"
+    },
+    {
+      icon: <Target className="w-6 h-6" />,
+      title: "Custom Strategy",
+      description: "Tailored approach"
+    },
+    {
+      icon: <Zap className="w-6 h-6" />,
+      title: "Priority Support",
+      description: "Dedicated team"
+    }
+  ];
+
   return (
-    <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-br from-usergy-light to-white relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-1/4 left-1/4 w-24 h-24 sm:w-32 sm:h-32 bg-usergy-gold rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-16 h-16 sm:w-24 sm:h-24 bg-usergy-coral rounded-full blur-lg animate-float" style={{ animationDelay: '-2s' }}></div>
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-usergy-dark mb-4 sm:mb-6 px-2">
-              Scale Beyond Tiers: Custom Enterprise Solutions
-            </h2>
-            <p className="text-base sm:text-lg text-gray-600 leading-relaxed px-4 max-w-3xl mx-auto">
-              Need more than 100 participants or custom features? Our enterprise solutions are tailored to your unique requirements, 
-              with dedicated account management and premium support.
-            </p>
-          </div>
-
-          {/* Enterprise Features Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-12">
-            {/* Custom Scale Feature */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-usergy-gold/20">
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-usergy-gold/20 text-usergy-gold mx-auto mb-4">
-                <Star className="w-6 h-6" />
-              </div>
-              <h3 className="text-lg font-bold text-usergy-dark mb-3 text-center">Custom Scale</h3>
-              <p className="text-sm text-gray-600 text-center leading-relaxed">
-                From 100+ to 10,000+ participants. We scale with your ambitions.
-              </p>
+    <section className="py-16 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-usergy-dark via-gray-800 to-usergy-dark rounded-3xl p-8 lg:p-12 shadow-2xl relative overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-0 w-40 h-40 bg-usergy-turquoise rounded-full -translate-x-20 -translate-y-20"></div>
+              <div className="absolute bottom-0 right-0 w-60 h-60 bg-usergy-skyblue rounded-full translate-x-30 translate-y-30"></div>
             </div>
+            
+            <div className="relative z-10">
+              <div className="text-center lg:text-left lg:flex lg:items-center lg:justify-between">
+                <div className="lg:flex-1 lg:pr-8">
+                  <div className="inline-flex items-center gap-2 bg-usergy-gold/20 text-usergy-gold px-4 py-2 rounded-full text-sm font-bold mb-6">
+                    <Zap className="w-4 h-4" />
+                    Scale Beyond Tiers
+                  </div>
+                  
+                  <h2 className="text-3xl lg:text-4xl font-black text-white mb-4 leading-tight">
+                    Enterprise Solutions
+                  </h2>
+                  
+                  <p className="text-gray-300 text-lg font-medium mb-8 leading-relaxed">
+                    Need more than 100 users or custom features? Let's build something extraordinary together.
+                  </p>
 
-            {/* Dedicated Support Feature */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-usergy-turquoise/20">
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-usergy-turquoise/20 text-usergy-turquoise mx-auto mb-4">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-usergy-dark mb-3 text-center">Dedicated Support</h3>
-              <p className="text-sm text-gray-600 text-center leading-relaxed">
-                Priority access to our expert team with dedicated account management.
-              </p>
-            </div>
+                  {/* Enterprise Features */}
+                  <div className="flex flex-wrap gap-6 mb-8 lg:mb-0">
+                    {enterpriseFeatures.map((feature, index) => (
+                      <div key={index} className="flex items-center gap-3 text-white">
+                        <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue rounded-full flex items-center justify-center">
+                          {feature.icon}
+                        </div>
+                        <div>
+                          <div className="font-bold text-sm">{feature.title}</div>
+                          <div className="text-gray-400 text-xs">{feature.description}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-            {/* Custom Features */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-usergy-coral/20 md:col-span-2 lg:col-span-1">
-              <div className="flex items-center justify-center w-12 h-12 rounded-full bg-usergy-coral/20 text-usergy-coral mx-auto mb-4">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </div>
-              <h3 className="text-lg font-bold text-usergy-dark mb-3 text-center">Custom Features</h3>
-              <p className="text-sm text-gray-600 text-center leading-relaxed">
-                Tailored integrations, custom reporting, and specialized workflows.
-              </p>
-            </div>
-          </div>
-
-          {/* CTA Section - Fixed mobile alignment */}
-          <div className="text-center">
-            <div className="bg-gradient-to-r from-usergy-gold/10 to-usergy-coral/10 rounded-2xl p-6 sm:p-8 border border-usergy-gold/30">
-              <h3 className="text-xl sm:text-2xl font-bold text-usergy-dark mb-4 sm:mb-6">
-                Ready for Enterprise-Level Growth?
-              </h3>
-              <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8 leading-relaxed max-w-2xl mx-auto px-2">
-                Let's discuss your unique requirements and design a custom solution that delivers exceptional results at scale.
-              </p>
-              
-              {/* Fixed button container for mobile */}
-              <div className="flex justify-center px-2 sm:px-4">
-                <Button
-                  size="lg"
-                  onClick={handleCalendlyRedirect}
-                  className="w-full sm:w-auto max-w-xs sm:max-w-md bg-gradient-to-r from-usergy-gold to-usergy-coral hover:from-usergy-coral hover:to-usergy-gold text-white font-bold py-3 sm:py-4 px-4 sm:px-6 lg:px-8 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-sm sm:text-base lg:text-lg min-h-[48px] sm:min-h-[56px]"
-                >
-                  <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
-                  <span className="truncate">Design My Custom Plan</span>
-                </Button>
+                <div className="lg:flex-shrink-0 lg:ml-8">
+                  <Button
+                    onClick={handleContactUs}
+                    className="w-full lg:w-auto bg-gradient-to-r from-usergy-gold to-yellow-500 hover:from-yellow-500 hover:to-usergy-gold text-usergy-dark font-bold py-4 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-lg group"
+                  >
+                    Let's Talk Enterprise
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
