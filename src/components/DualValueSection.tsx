@@ -1,16 +1,22 @@
 
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Rocket, Gamepad2, Zap, User, TrendingUp, Target, Lightbulb, Search, Gift } from 'lucide-react';
 
 const DualValueSection = () => {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const navigate = useNavigate();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  const handleUserSignupNavigation = () => {
+    navigate('/user-signup');
   };
 
   return (
@@ -154,7 +160,7 @@ const DualValueSection = () => {
 
                 <Button 
                   className="w-full bg-usergy-coral hover:bg-pink-500 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
-                  onClick={() => scrollToSection('how-it-works')}
+                  onClick={handleUserSignupNavigation}
                 >
                   Join Our AI Enthusiast Community →
                 </Button>
