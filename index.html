@@ -33,24 +33,6 @@
     <meta property="twitter:description" content="Transform your AI vision into reality with expert guidance. Get authentic feedback, vibrant community, and social momentum for your AI tool." />
     <meta property="twitter:image" content="https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" />
     
-    <!-- Enhanced Performance Optimizations -->
-    <link rel="preload" href="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" as="image" fetchpriority="high" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
-    
-    <!-- DNS prefetch for performance -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="//calendly.com" />
-    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="//www.clarity.ms" />
-    
-    <!-- Resource hints for better loading -->
-    <link rel="prefetch" href="/src/components/ProblemSection.tsx" />
-    <link rel="prefetch" href="/src/components/SolutionSection.tsx" />
-    
     <!-- Structured Data -->
     <script type="application/ld+json">
     {
@@ -74,19 +56,16 @@
     }
     </script>
     
-    <!-- Google Analytics 4 - Async loading -->
+    <!-- Google Analytics 4 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-61825KRLWX"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-61825KRLWX', {
-        page_title: document.title,
-        page_location: window.location.href
-      });
+      gtag('config', 'G-61825KRLWX');
     </script>
     
-    <!-- Microsoft Clarity - Async loading -->
+    <!-- Microsoft Clarity -->
     <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -95,14 +74,20 @@
         })(window, document, "clarity", "script", "s81tzqonjo");
     </script>
     
-    <!-- Theme and app colors -->
+    <!-- Performance Optimizations -->
+    <link rel="preload" href="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" as="image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- DNS prefetch for better performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//calendly.com" />
+    
+    <!-- Theme color -->
     <meta name="theme-color" content="#4ECDC4" />
     <meta name="msapplication-TileColor" content="#4ECDC4" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    
-    <!-- Cache control headers -->
-    <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
   </head>
   <body>
     <div id="root"></div>

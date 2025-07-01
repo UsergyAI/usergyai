@@ -2,48 +2,31 @@
 import React from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
+import ProblemSection from '@/components/ProblemSection';
+import SolutionSection from '@/components/SolutionSection';
+import DualValueSection from '@/components/DualValueSection';
+import HowItWorksSection from '@/components/HowItWorksSection';
+import TrustSection from '@/components/TrustSection';
+import FinalCTASection from '@/components/FinalCTASection';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import AccessibilityImprovements from '@/components/AccessibilityImprovements';
-import CriticalCSS from '@/components/CriticalCSS';
-import PerformanceOptimizer from '@/components/PerformanceOptimizer';
-import { 
-  LazyProblemSection, 
-  LazySolutionSection, 
-  LazyDualValueSection, 
-  LazyHowItWorksSection, 
-  LazyTrustSection, 
-  LazyFinalCTASection 
-} from '@/components/LazyComponents';
 
 const Index = () => {
   return (
     <>
       <SEOHead />
-      <CriticalCSS />
       <AccessibilityImprovements />
       <div className="min-h-screen bg-background">
         <Header />
-        <main role="main" id="main-content">
+        <main role="main">
           <HeroSection />
-          <PerformanceOptimizer>
-            <LazyProblemSection />
-          </PerformanceOptimizer>
-          <PerformanceOptimizer>
-            <LazySolutionSection />
-          </PerformanceOptimizer>
-          <PerformanceOptimizer>
-            <LazyDualValueSection />
-          </PerformanceOptimizer>
-          <PerformanceOptimizer>
-            <LazyHowItWorksSection />
-          </PerformanceOptimizer>
-          <PerformanceOptimizer>
-            <LazyTrustSection />
-          </PerformanceOptimizer>
-          <PerformanceOptimizer>
-            <LazyFinalCTASection />
-          </PerformanceOptimizer>
+          <ProblemSection />
+          <SolutionSection />
+          <DualValueSection />
+          <HowItWorksSection />
+          <TrustSection />
+          <FinalCTASection />
         </main>
         <Footer />
       </div>

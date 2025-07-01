@@ -3,16 +3,12 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactHero from '@/components/contact/ContactHero';
+import TrustStatement from '@/components/contact/TrustStatement';
+import ContactFormSection from '@/components/contact/ContactFormSection';
 import ContactMethods from '@/components/contact/ContactMethods';
+import ClosingStatement from '@/components/contact/ClosingStatement';
 import SEOHead from '@/components/SEOHead';
 import AccessibilityImprovements from '@/components/AccessibilityImprovements';
-import CriticalCSS from '@/components/CriticalCSS';
-import PerformanceOptimizer from '@/components/PerformanceOptimizer';
-import { 
-  LazyTrustStatement, 
-  LazyContactFormSection, 
-  LazyClosingStatement 
-} from '@/components/LazyComponents';
 
 const Contact = () => {
   return (
@@ -23,22 +19,15 @@ const Contact = () => {
         keywords="contact usergy, AI growth consultation, strategy call, AI experts, AI tool feedback, AI community building"
         canonicalUrl="https://usergy.ai/contact"
       />
-      <CriticalCSS />
       <AccessibilityImprovements />
       <div className="min-h-screen bg-background">
         <Header />
-        <main role="main" id="main-content">
+        <main role="main">
           <ContactHero />
-          <PerformanceOptimizer>
-            <LazyTrustStatement />
-          </PerformanceOptimizer>
-          <PerformanceOptimizer>
-            <LazyContactFormSection />
-          </PerformanceOptimizer>
+          <TrustStatement />
+          <ContactFormSection />
           <ContactMethods />
-          <PerformanceOptimizer>
-            <LazyClosingStatement />
-          </PerformanceOptimizer>
+          <ClosingStatement />
         </main>
         <Footer />
       </div>

@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optimized CSS Variables */
+/* CSS Variables */
 :root {
   --usergy-turquoise: #4ECDC4;
   --usergy-skyblue: #45B7D1;
@@ -15,47 +15,113 @@
   --usergy-purple: #8E44AD;
   --usergy-green: #27AE60;
   --usergy-orange: #E67E22;
+
+  --color-usergy-turquoise: #4ECDC4;
+  --color-usergy-skyblue: #45B7D1;
+  --color-usergy-coral: #FF6B6B;
+  --color-usergy-gold: #FED766;
+  --color-usergy-dark: #2C3E50;
+  --color-usergy-light: #F8FFFE;
+  --color-usergy-purple: #8E44AD;
+  --color-usergy-green: #27AE60;
+  --color-usergy-orange: #E67E22;
 }
 
 @layer utilities {
-  /* Optimized Animations - Reduced for better performance */
+  /* Enhanced Floating Animation for Bubbles */
   @keyframes float-enhanced {
-    0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.6; }
-    50% { transform: translate3d(-5px, -10px, 0) scale(1.05); opacity: 0.8; }
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+      opacity: 0.6;
+    }
+    25% {
+      transform: translateY(-15px) translateX(5px) scale(1.05);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translateY(-8px) translateX(-8px) scale(0.95);
+      opacity: 1;
+    }
+    75% {
+      transform: translateY(-20px) translateX(10px) scale(1.1);
+      opacity: 0.7;
+    }
   }
 
   @keyframes float {
-    0%, 100% { transform: translate3d(0, 0, 0); }
-    50% { transform: translate3d(0, -10px, 0); }
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(78, 205, 196, 0.3); }
-    50% { box-shadow: 0 0 30px rgba(78, 205, 196, 0.6); }
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(78, 205, 196, 0.6);
+    }
   }
 
   @keyframes slide-up {
-    from { opacity: 0; transform: translate3d(0, 30px, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes fade-in {
-    from { opacity: 0; transform: translate3d(0, 10px, 0); }
-    to { opacity: 1; transform: translate3d(0, 0, 0); }
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   @keyframes scale-in {
-    from { opacity: 0; transform: scale3d(0.9, 0.9, 1); }
-    to { opacity: 1; transform: scale3d(1, 1, 1); }
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
-  /* Optimized Animation Classes */
-  .animate-float-enhanced { animation: float-enhanced 6s ease-in-out infinite; }
-  .animate-float { animation: float 3s ease-in-out infinite; }
-  .animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-  .animate-slide-up { animation: slide-up 0.8s ease-out; }
-  .animate-fade-in { animation: fade-in 0.6s ease-out; }
-  .animate-scale-in { animation: scale-in 0.5s ease-out; }
+  .animate-float-enhanced {
+    animation: float-enhanced 6s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.8s ease-out;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.5s ease-out;
+  }
 
   .gradient-text {
     background: linear-gradient(135deg, var(--usergy-turquoise), var(--usergy-skyblue));
@@ -67,23 +133,26 @@
   .floating-element {
     will-change: transform;
     backface-visibility: hidden;
-    transform: translate3d(0, 0, 0);
   }
 }
 
-/* Performance Optimizations */
+/* Performance Optimization */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  box-sizing: border-box;
 }
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-display: swap;
 }
 
-/* Reduce motion for better performance */
+/* Responsive Design Improvements */
+@media (max-width: 640px) {
+  .floating-element {
+    animation-duration: 8s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-float-enhanced,
   .animate-float,
@@ -93,13 +162,7 @@ body {
   }
 }
 
-/* Mobile-first optimizations */
-@media (max-width: 640px) {
-  .floating-element { animation-duration: 8s; }
-  .animate-float-enhanced { animation-duration: 8s; }
-}
-
-/* Enhanced Accessibility */
+/* Accessibility Improvements */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -123,57 +186,28 @@ body {
   white-space: normal;
 }
 
-/* Enhanced focus indicators for better accessibility */
-*:focus-visible {
-  outline: 3px solid #4ECDC4 !important;
+/* Focus indicators */
+*:focus {
+  outline: 2px solid #4ECDC4 !important;
   outline-offset: 2px !important;
-  border-radius: 4px;
 }
 
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-textarea:focus-visible,
-select:focus-visible {
-  outline: 3px solid #4ECDC4 !important;
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #4ECDC4 !important;
   outline-offset: 2px !important;
 }
 
 /* High contrast mode support */
 @media (prefers-contrast: high) {
-  .text-gray-600 { color: #000 !important; }
-  .bg-white\/80 { background-color: white !important; }
-  .gradient-text {
-    -webkit-text-fill-color: unset;
-    color: #2C3E50;
+  .text-gray-600 {
+    color: #000 !important;
   }
-}
-
-/* Skip link styling */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: #4ECDC4;
-  color: white;
-  padding: 8px;
-  text-decoration: none;
-  border-radius: 4px;
-  z-index: 1000;
-  font-weight: 600;
-}
-
-.skip-link:focus {
-  top: 6px;
-}
-
-/* Performance optimized button styles */
-.btn-optimized {
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-optimized:hover {
-  transform: translate3d(0, -2px, 0);
+  
+  .bg-white\/80 {
+    background-color: white !important;
+  }
 }
