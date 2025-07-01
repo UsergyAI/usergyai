@@ -120,9 +120,9 @@ const ContactMethods = () => {
                 className="w-full border-2 border-usergy-purple text-usergy-purple hover:bg-usergy-purple hover:text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group-hover:shadow-usergy-purple/25 focus:ring-2 focus:ring-usergy-purple focus:ring-offset-2"
                 aria-label="Send email to Usergy team"
               >
-                <Mail className="w-4 h-4 mr-2 text-usergy-purple group-hover:text-white transition-colors duration-300" aria-hidden="true" />
+                <Mail className="w-4 h-4 mr-2" aria-hidden="true" />
                 Send Email
-                <ArrowRight className="w-4 h-4 ml-2 text-usergy-purple group-hover:text-white transition-colors duration-300" aria-hidden="true" />
+                <ArrowRight className="w-4 h-4 ml-2" aria-hidden="true" />
               </Button>
             </article>
           </div>
