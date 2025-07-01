@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Calendar, MessageSquare, Mail, Phone, ArrowRight } from 'lucide-react';
+import { Calendar, MessageSquare, Mail, ArrowRight } from 'lucide-react';
 
 const ContactMethods = () => {
   const handleCalendlyRedirect = () => {
@@ -29,98 +29,83 @@ const ContactMethods = () => {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black text-usergy-dark mb-6 leading-tight">
-              Choose Your Path: Let's Connect
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-black text-usergy-dark mb-4 leading-tight">
+              Choose Your Path
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Multiple ways to reach our AI growth experts. Pick the method that works best for you.
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Multiple ways to connect with our AI growth experts
             </p>
           </div>
 
           {/* Contact Methods Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Strategy Call Method */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-turquoise/10 hover:border-usergy-turquoise/30">
-              <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Calendar className="w-10 h-10" />
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 text-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue flex items-center justify-center mx-auto mb-4">
+                <Calendar className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-usergy-dark mb-4 text-center">
+              <h3 className="text-xl font-bold text-usergy-dark mb-3">
                 Strategy Call
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-6 text-center">
-                Book a free 30-minute consultation to discuss your AI growth strategy with our experts.
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Book a free 30-minute consultation to discuss your AI growth strategy
               </p>
               <Button
                 onClick={handleCalendlyRedirect}
-                className="w-full bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue hover:from-usergy-skyblue hover:to-usergy-turquoise text-white font-bold py-4 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+                className="w-full bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue hover:from-usergy-skyblue hover:to-usergy-turquoise text-white font-semibold py-3 px-4 rounded-xl shadow-md transition-all duration-300"
               >
-                <Calendar className="w-5 h-5 mr-2" />
-                Schedule Free Call
+                <Calendar className="w-4 h-4 mr-2" />
+                Schedule Call
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
 
             {/* Contact Form Method */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-coral/10 hover:border-usergy-coral/30">
-              <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-usergy-coral to-usergy-gold text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <MessageSquare className="w-10 h-10" />
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 text-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-usergy-coral to-usergy-gold flex items-center justify-center mx-auto mb-4">
+                <MessageSquare className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-usergy-dark mb-4 text-center">
+              <h3 className="text-xl font-bold text-usergy-dark mb-3">
                 Quick Form
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-6 text-center">
-                Fill out our detailed form and get a personalized response within one business day.
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Fill out our form and get a personalized response within one business day
               </p>
               <Button
                 onClick={scrollToForm}
                 variant="outline"
-                className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold py-4 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+                className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300"
               >
-                <MessageSquare className="w-5 h-5 mr-2" />
+                <MessageSquare className="w-4 h-4 mr-2" />
                 Start Form
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
 
             {/* Direct Email Method */}
-            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-purple/10 hover:border-usergy-purple/30 md:col-span-2 lg:col-span-1">
-              <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-usergy-purple to-usergy-skyblue text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Mail className="w-10 h-10" />
+            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 text-center">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-usergy-purple to-usergy-skyblue flex items-center justify-center mx-auto mb-4">
+                <Mail className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-usergy-dark mb-4 text-center">
+              <h3 className="text-xl font-bold text-usergy-dark mb-3">
                 Direct Email
               </h3>
-              <p className="text-gray-600 leading-relaxed mb-6 text-center">
-                Prefer email? Send us your inquiry directly and we'll respond promptly.
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Send us your inquiry directly and we'll respond promptly
               </p>
               <Button
                 onClick={handleEmailContact}
                 variant="outline"
-                className="w-full border-2 border-usergy-purple text-usergy-purple hover:bg-usergy-purple hover:text-white font-bold py-4 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+                className="w-full border-2 border-usergy-purple text-usergy-purple hover:bg-usergy-purple hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300"
               >
-                <Mail className="w-5 h-5 mr-2" />
+                <Mail className="w-4 h-4 mr-2" />
                 Send Email
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
-          </div>
-
-          {/* Bottom CTA */}
-          <div className="text-center">
-            <p className="text-lg text-gray-600 mb-6">
-              Not sure which option to choose? Start with a quick strategy call!
-            </p>
-            <Button
-              onClick={handleCalendlyRedirect}
-              size="lg"
-              className="bg-gradient-to-r from-usergy-turquoise via-usergy-skyblue to-usergy-coral hover:from-usergy-coral hover:via-usergy-gold hover:to-usergy-turquoise text-white font-bold py-4 px-8 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
-            >
-              <Calendar className="w-5 h-5 mr-2" />
-              Book Free Strategy Call Now
-            </Button>
           </div>
         </div>
       </div>
