@@ -1,182 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import AnimatedBackground from './AnimatedBackground';
 
 const HeroSection = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    const resizeCanvas = () => {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    };
-
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Enhanced animated background particles with AI-themed elements
-    const particles: Array<{
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      size: number;
-      opacity: number;
-      color: string;
-      type: 'node' | 'data' | 'connection';
-      pulse: number;
-    }> = [];
-
-    const colors = ['#4ECDC4', '#45B7D1', '#FF6B6B', '#FED766'];
-
-    // Initialize particles with different types
-    for (let i = 0; i < 60; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.8,
-        vy: (Math.random() - 0.5) * 0.8,
-        size: Math.random() * 4 + 1,
-        opacity: Math.random() * 0.6 + 0.2,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        type: Math.random() > 0.7 ? 'node' : Math.random() > 0.5 ? 'data' : 'connection',
-        pulse: Math.random() * Math.PI * 2
-      });
-    }
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let mouseInfluence = 0;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const rect = canvas.getBoundingClientRect();
-      mouseX = e.clientX - rect.left;
-      mouseY = e.clientY - rect.top;
-      mouseInfluence = 1;
-    };
-
-    const handleMouseLeave = () => {
-      mouseInfluence = 0;
-    };
-
-    canvas.addEventListener('mousemove', handleMouseMove);
-    canvas.addEventListener('mouseleave', handleMouseLeave);
-
-    let time = 0;
-
-    const animate = () => {
-      if (!ctx || !canvas) return;
-
-      time += 0.01;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Update and draw particles
-      particles.forEach((particle, index) => {
-        // Mouse interaction with subtle ripple effect
-        const dx = mouseX - particle.x;
-        const dy = mouseY - particle.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 150 && mouseInfluence > 0) {
-          const force = (150 - distance) / 150;
-          particle.vx += dx * 0.00005 * force;
-          particle.vy += dy * 0.00005 * force;
-          particle.opacity = Math.min(1, particle.opacity + 0.3 * force);
-        } else {
-          particle.opacity = Math.max(0.1, particle.opacity - 0.01);
-        }
-
-        // Update position with flow-like movement
-        particle.x += particle.vx + Math.sin(time + particle.pulse) * 0.2;
-        particle.y += particle.vy + Math.cos(time + particle.pulse) * 0.2;
-        particle.pulse += 0.02;
-
-        // Wrap around edges
-        if (particle.x < -10) particle.x = canvas.width + 10;
-        if (particle.x > canvas.width + 10) particle.x = -10;
-        if (particle.y < -10) particle.y = canvas.height + 10;
-        if (particle.y > canvas.height + 10) particle.y = -10;
-
-        // Draw based on particle type
-        ctx.globalAlpha = particle.opacity;
-        
-        if (particle.type === 'node') {
-          // Draw pulsing nodes
-          const pulseSize = particle.size + Math.sin(particle.pulse) * 1;
-          ctx.fillStyle = particle.color;
-          ctx.beginPath();
-          ctx.arc(particle.x, particle.y, pulseSize, 0, Math.PI * 2);
-          ctx.fill();
-          
-          // Add glow effect
-          ctx.shadowBlur = 10;
-          ctx.shadowColor = particle.color;
-          ctx.beginPath();
-          ctx.arc(particle.x, particle.y, pulseSize * 0.5, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.shadowBlur = 0;
-        } else {
-          // Draw regular particles
-          ctx.fillStyle = particle.color;
-          ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        // Draw dynamic connections between nearby particles
-        particles.slice(index + 1).forEach(otherParticle => {
-          const dx = particle.x - otherParticle.x;
-          const dy = particle.y - otherParticle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
-
-          if (distance < 120) {
-            const connectionOpacity = (120 - distance) / 120 * 0.15;
-            ctx.globalAlpha = connectionOpacity;
-            
-            // Create flowing connection lines
-            const gradient = ctx.createLinearGradient(
-              particle.x, particle.y, 
-              otherParticle.x, otherParticle.y
-            );
-            gradient.addColorStop(0, particle.color);
-            gradient.addColorStop(1, otherParticle.color);
-            
-            ctx.strokeStyle = gradient;
-            ctx.lineWidth = Math.sin(time + distance * 0.1) * 0.5 + 1;
-            ctx.beginPath();
-            ctx.moveTo(particle.x, particle.y);
-            ctx.lineTo(otherParticle.x, otherParticle.y);
-            ctx.stroke();
-          }
-        });
-      });
-
-      requestAnimationFrame(animate);
-    };
-
-    animate();
-
-    return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      canvas.removeEventListener('mousemove', handleMouseMove);
-      canvas.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   const handleCalendlyRedirect = () => {
     window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
@@ -189,11 +19,7 @@ const HeroSection = () => {
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32 lg:pt-36">
       {/* Enhanced Animated Background Canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full pointer-events-none"
-        style={{ zIndex: 1 }}
-      />
+      <AnimatedBackground particleCount={60} />
 
       {/* Floating Elements with improved animation */}
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
