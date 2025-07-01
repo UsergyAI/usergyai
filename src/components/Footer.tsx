@@ -14,12 +14,12 @@ const Footer = () => {
           <div className="flex items-center group">
             <div className="relative">
               {!imageLoaded && (
-                <div className="h-12 w-32 bg-gray-600 animate-pulse rounded"></div>
+                <div className="h-16 w-40 bg-gray-600 animate-pulse rounded"></div>
               )}
               <img 
                 src="/lovable-uploads/c533a763-8e7e-4ac3-9731-1836179966aa.png" 
                 alt="Usergy" 
-                className={`h-12 w-auto transition-all duration-300 group-hover:opacity-80 cursor-pointer ${
+                className={`h-16 w-auto transition-all duration-300 group-hover:opacity-80 cursor-pointer ${
                   imageLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
                 }`}
                 onLoad={() => setImageLoaded(true)}
