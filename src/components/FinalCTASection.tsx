@@ -1,8 +1,12 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const FinalCTASection = () => {
+  const navigate = useNavigate();
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -12,6 +16,10 @@ const FinalCTASection = () => {
 
   const handleCalendlyRedirect = () => {
     window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
+  };
+
+  const handleJoinCommunity = () => {
+    navigate('/user-signup');
   };
 
   return (
@@ -49,15 +57,15 @@ const FinalCTASection = () => {
               <span className="truncate">Book Your Strategy Call</span>
             </Button>
             
-            {/* Secondary CTA */}
+            {/* Secondary CTA - Updated to redirect to user-signup */}
             <Button 
               size="lg"
               variant="outline"
-              onClick={() => scrollToSection('how-it-works')}
+              onClick={handleJoinCommunity}
               className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] border-2 sm:border-3 border-white bg-white/20 text-white hover:bg-white hover:text-usergy-coral font-black text-base sm:text-lg lg:text-xl py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-12 rounded-full shadow-lg transform hover:scale-110 transition-all duration-300 backdrop-blur-sm"
             >
               <ArrowRight className="mr-2 sm:mr-3 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 flex-shrink-0" />
-              <span className="truncate">See Our Founder Process</span>
+              <span className="truncate">Join Our AI Explorer Community Today!</span>
             </Button>
           </div>
 

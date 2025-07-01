@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Phone, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -180,6 +182,10 @@ const HeroSection = () => {
     window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
   };
 
+  const handleJoinCommunity = () => {
+    navigate('/user-signup');
+  };
+
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32 lg:pt-36">
       {/* Enhanced Animated Background Canvas */}
@@ -230,15 +236,15 @@ const HeroSection = () => {
               <span className="truncate">Book Your Strategy Call</span>
             </Button>
             
-            {/* Secondary CTA - Full width on mobile, auto on larger screens */}
+            {/* Secondary CTA - Updated to redirect to user-signup */}
             <Button 
               size="lg"
               variant="outline"
-              onClick={() => scrollToSection('how-it-works')}
+              onClick={handleJoinCommunity}
               className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-6 sm:px-8 md:px-12 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
             >
               <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
-              <span className="truncate">See Our Founder Process</span>
+              <span className="truncate">Join Our AI Explorer Community</span>
             </Button>
           </div>
 

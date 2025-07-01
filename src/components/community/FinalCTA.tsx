@@ -2,8 +2,19 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const FinalCTA = () => {
+  const navigate = useNavigate();
+
+  const handleJoinCommunity = () => {
+    navigate('/user-signup');
+  };
+
+  const handleJoinDiscord = () => {
+    window.open('https://discord.gg/usergy-ai', '_blank');
+  };
+
   return (
     <section className="py-16 md:py-24 bg-gradient-to-br from-usergy-turquoise/10 via-usergy-skyblue/10 to-usergy-coral/10 relative overflow-hidden">
       {/* Subtle animated background effects */}
@@ -27,6 +38,7 @@ const FinalCTA = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button 
               size="lg"
+              onClick={handleJoinCommunity}
               className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-xl py-8 px-16 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
             >
               <ArrowRight className="mr-3 h-6 w-6" />
@@ -36,6 +48,7 @@ const FinalCTA = () => {
             <Button 
               size="lg"
               variant="outline"
+              onClick={handleJoinDiscord}
               className="border-2 border-usergy-skyblue bg-white hover:bg-usergy-skyblue hover:text-white text-usergy-skyblue font-bold text-xl py-8 px-16 rounded-full shadow-xl hover:shadow-usergy-skyblue/30 transform hover:scale-105 transition-all duration-300"
             >
               <svg className="mr-3 h-6 w-6" viewBox="0 0 24 24" fill="currentColor">
