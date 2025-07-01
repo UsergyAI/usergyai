@@ -136,6 +136,16 @@
   }
 }
 
+/* Performance Optimization */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
 /* Responsive Design Improvements */
 @media (max-width: 640px) {
   .floating-element {
@@ -152,12 +162,52 @@
   }
 }
 
-/* Performance Optimization */
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* Accessibility Improvements */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+.focus\:not-sr-only:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* Focus indicators */
+*:focus {
+  outline: 2px solid #4ECDC4 !important;
+  outline-offset: 2px !important;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid #4ECDC4 !important;
+  outline-offset: 2px !important;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-gray-600 {
+    color: #000 !important;
+  }
+  
+  .bg-white\/80 {
+    background-color: white !important;
+  }
 }
