@@ -45,7 +45,7 @@ const DualValueSection = () => {
 
             {/* Founders Card */}
             <div 
-              className={`relative bg-white rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl ${
+              className={`relative bg-white rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl min-h-[600px] flex flex-col ${
                 hoveredCard === 'founders' ? 'scale-105 shadow-usergy-turquoise/20' : ''
               }`}
               onMouseEnter={() => setHoveredCard('founders')}
@@ -53,7 +53,7 @@ const DualValueSection = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-usergy-turquoise/10 to-usergy-skyblue/10 rounded-2xl"></div>
               
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-lg flex items-center justify-center mr-4">
@@ -69,7 +69,7 @@ const DualValueSection = () => {
                 </h4>
 
                 {/* Benefits List */}
-                <div className="space-y-4 mb-8">
+                <div className="space-y-4 mb-8 flex-grow">
                   {[
                     "Acquire: Your first 100-1,000 'true believers' – not just users",
                     "Validate: Gain honest, structured, and immediately actionable product feedback",
@@ -96,18 +96,20 @@ const DualValueSection = () => {
                   <p className="text-sm text-gray-500 mt-2">Founder → Growth → Success</p>
                 </div>
 
-                <Button 
-                  className="w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
-                  onClick={() => scrollToSection('how-it-works')}
-                >
-                  See Our Founder Process →
-                </Button>
+                <div className="mt-auto">
+                  <Button 
+                    className="w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+                    onClick={() => scrollToSection('how-it-works')}
+                  >
+                    See Our Founder Process →
+                  </Button>
+                </div>
               </div>
             </div>
 
             {/* Users Card */}
             <div 
-              className={`relative bg-white rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl ${
+              className={`relative bg-white rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl min-h-[600px] flex flex-col ${
                 hoveredCard === 'users' ? 'scale-105 shadow-usergy-coral/20' : ''
               }`}
               onMouseEnter={() => setHoveredCard('users')}
@@ -115,7 +117,7 @@ const DualValueSection = () => {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-usergy-coral/10 to-pink-100/50 rounded-2xl"></div>
               
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 bg-gradient-to-br from-usergy-coral to-pink-500 rounded-lg flex items-center justify-center mr-4">
@@ -131,7 +133,7 @@ const DualValueSection = () => {
                 </h4>
 
                 {/* Benefits List */}
-                <div className="space-y-4 mb-8">
+                <div className="space-y-4 mb-8 flex-grow">
                   {[
                     "Discover: Get exclusive early access to groundbreaking, unreleased AI tools",
                     "Influence: Shape the future of AI by providing direct, valued insights",
@@ -158,12 +160,14 @@ const DualValueSection = () => {
                   <p className="text-sm text-gray-500 mt-2">Explore → Contribute → Earn</p>
                 </div>
 
-                <Button 
-                  className="w-full bg-usergy-coral hover:bg-pink-500 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
-                  onClick={handleUserSignupNavigation}
-                >
-                  Join Our AI Enthusiast Community →
-                </Button>
+                <div className="mt-auto">
+                  <Button 
+                    className="w-full bg-usergy-coral hover:bg-pink-500 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+                    onClick={handleUserSignupNavigation}
+                  >
+                    Join Our AI Enthusiast Community →
+                  </Button>
+                </div>
               </div>
             </div>
           </div>

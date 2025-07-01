@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Linkedin, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -9,14 +10,14 @@ const Footer = () => {
     <footer className="bg-usergy-dark text-white py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Brand with optimized loading */}
+          {/* Brand with white logo */}
           <div className="flex items-center group">
             <div className="relative">
               {!imageLoaded && (
                 <div className="h-12 w-32 bg-gray-600 animate-pulse rounded"></div>
               )}
               <img 
-                src="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" 
+                src="/lovable-uploads/6c432765-b431-46b2-82b6-a72f8b9830ba.png" 
                 alt="Usergy" 
                 className={`h-12 w-auto transition-all duration-300 group-hover:opacity-80 cursor-pointer ${
                   imageLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
@@ -26,6 +27,41 @@ const Footer = () => {
                 decoding="async"
               />
             </div>
+          </div>
+
+          {/* Social Media Links */}
+          <div className="flex items-center space-x-6">
+            <a 
+              href="https://www.linkedin.com/company/usergy-ai" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform"
+            >
+              <Linkedin className="h-6 w-6" />
+              <span className="hidden sm:inline">LinkedIn</span>
+            </a>
+            
+            <a 
+              href="https://discord.gg/jkeSnkm5ww" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform"
+            >
+              <MessageCircle className="h-6 w-6" />
+              <span className="hidden sm:inline">Discord</span>
+            </a>
+            
+            <a 
+              href="https://www.reddit.com/r/UsergyAI/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform"
+            >
+              <div className="w-6 h-6 bg-current rounded-full flex items-center justify-center">
+                <span className="text-xs font-bold text-usergy-dark">R</span>
+              </div>
+              <span className="hidden sm:inline">Reddit</span>
+            </a>
           </div>
 
           {/* Key Links */}
@@ -38,10 +74,9 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright and Attribution */}
+        {/* Copyright */}
         <div className="border-t border-gray-700 pt-6 mt-8 text-center text-gray-400">
-          <p className="mb-2">&copy; 2025 Usergy. All rights reserved.</p>
-          <p className="text-sm">Built by Vedaswaroop</p>
+          <p>&copy; 2025 Usergy. All rights reserved.</p>
         </div>
       </div>
     </footer>

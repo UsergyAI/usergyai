@@ -108,23 +108,23 @@ const HowItWorksSection = () => {
 
               <div className="space-y-6">
                 {founderSteps.map((step, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                  <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl min-h-[120px] flex flex-col">
                     <div 
-                      className="p-6 cursor-pointer"
+                      className="p-6 cursor-pointer flex-grow"
                       onClick={() => toggleStep(index)}
                     >
-                      <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-4 h-full">
                         <div 
-                          className="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+                          className="w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
                           style={{ backgroundColor: step.color }}
                         >
                           <step.icon className="h-6 w-6 text-white" />
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-1 min-h-[60px] flex flex-col justify-center">
                           <h3 className="text-xl font-bold text-usergy-dark mb-1">{step.title}</h3>
-                          <p className="text-gray-600">{step.description}</p>
+                          <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
                         </div>
-                        <div className="text-gray-400">
+                        <div className="text-gray-400 flex-shrink-0">
                           {expandedStep === index ? 
                             <ChevronUp className="h-5 w-5" /> : 
                             <ChevronDown className="h-5 w-5" />
@@ -135,7 +135,7 @@ const HowItWorksSection = () => {
                     
                     {expandedStep === index && (
                       <div className="px-6 pb-6 border-t border-gray-100 pt-4 animate-accordion-down">
-                        <p className="text-gray-700 leading-relaxed">{step.details}</p>
+                        <p className="text-gray-700 leading-relaxed text-sm">{step.details}</p>
                       </div>
                     )}
                   </div>
@@ -156,23 +156,23 @@ const HowItWorksSection = () => {
 
               <div className="space-y-6">
                 {userSteps.map((step, index) => (
-                  <div key={index + 100} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                  <div key={index + 100} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl min-h-[120px] flex flex-col">
                     <div 
-                      className="p-6 cursor-pointer"
+                      className="p-6 cursor-pointer flex-grow"
                       onClick={() => toggleStep(index + 100)}
                     >
-                      <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-4 h-full">
                         <div 
-                          className="w-12 h-12 rounded-full flex items-center justify-center shadow-md"
+                          className="w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
                           style={{ backgroundColor: step.color }}
                         >
                           <step.icon className="h-6 w-6 text-white" />
                         </div>
-                        <div className="flex-1">
+                        <div className="flex-1 min-h-[60px] flex flex-col justify-center">
                           <h3 className="text-xl font-bold text-usergy-dark mb-1">{step.title}</h3>
-                          <p className="text-gray-600">{step.description}</p>
+                          <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
                         </div>
-                        <div className="text-gray-400">
+                        <div className="text-gray-400 flex-shrink-0">
                           {expandedStep === index + 100 ? 
                             <ChevronUp className="h-5 w-5" /> : 
                             <ChevronDown className="h-5 w-5" />
@@ -183,7 +183,7 @@ const HowItWorksSection = () => {
                     
                     {expandedStep === index + 100 && (
                       <div className="px-6 pb-6 border-t border-gray-100 pt-4 animate-accordion-down">
-                        <p className="text-gray-700 leading-relaxed">{step.details}</p>
+                        <p className="text-gray-700 leading-relaxed text-sm">{step.details}</p>
                       </div>
                     )}
                   </div>
