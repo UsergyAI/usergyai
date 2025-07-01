@@ -32,30 +32,34 @@ const ContactMethods = () => {
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-black text-usergy-dark mb-4 leading-tight">
-              Choose Your Path
-            </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Multiple ways to connect with our AI growth experts
+            <div className="inline-flex items-center gap-3 mb-4">
+              <div className="w-2 h-2 bg-usergy-turquoise rounded-full animate-pulse"></div>
+              <h2 className="text-3xl md:text-4xl font-black text-usergy-dark leading-tight">
+                Choose Your Path: Let's Connect
+              </h2>
+              <div className="w-2 h-2 bg-usergy-coral rounded-full animate-pulse" style={{ animationDelay: '-1s' }}></div>
+            </div>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              Select your preferred way to start the conversation with our AI growth experts
             </p>
           </div>
 
           {/* Contact Methods Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Strategy Call Method */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 text-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue flex items-center justify-center mx-auto mb-4">
-                <Calendar className="w-8 h-8 text-white" />
+            <div className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-usergy-turquoise/30 text-center transform hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <Calendar className="w-9 h-9 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-usergy-dark mb-3">
+              <h3 className="text-xl font-bold text-usergy-dark mb-4 group-hover:text-usergy-turquoise transition-colors duration-300">
                 Strategy Call
               </h3>
-              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                Book a free 30-minute consultation to discuss your AI growth strategy
+              <p className="text-gray-600 mb-8 text-sm leading-relaxed">
+                Book a free 30-minute consultation to discuss your AI growth strategy with our experts
               </p>
               <Button
                 onClick={handleCalendlyRedirect}
-                className="w-full bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue hover:from-usergy-skyblue hover:to-usergy-turquoise text-white font-semibold py-3 px-4 rounded-xl shadow-md transition-all duration-300"
+                className="w-full bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue hover:from-usergy-skyblue hover:to-usergy-turquoise text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group-hover:shadow-usergy-turquoise/25"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Schedule Call
@@ -64,20 +68,20 @@ const ContactMethods = () => {
             </div>
 
             {/* Contact Form Method */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 text-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-usergy-coral to-usergy-gold flex items-center justify-center mx-auto mb-4">
-                <MessageSquare className="w-8 h-8 text-white" />
+            <div className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-usergy-coral/30 text-center transform hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-usergy-coral to-usergy-gold flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <MessageSquare className="w-9 h-9 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-usergy-dark mb-3">
+              <h3 className="text-xl font-bold text-usergy-dark mb-4 group-hover:text-usergy-coral transition-colors duration-300">
                 Quick Form
               </h3>
-              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                Fill out our form and get a personalized response within one business day
+              <p className="text-gray-600 mb-8 text-sm leading-relaxed">
+                Fill out our contact form and get a personalized response within one business day
               </p>
               <Button
                 onClick={scrollToForm}
                 variant="outline"
-                className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300"
+                className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group-hover:shadow-usergy-coral/25"
               >
                 <MessageSquare className="w-4 h-4 mr-2" />
                 Start Form
@@ -86,20 +90,20 @@ const ContactMethods = () => {
             </div>
 
             {/* Direct Email Method */}
-            <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 text-center">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-usergy-purple to-usergy-skyblue flex items-center justify-center mx-auto mb-4">
-                <Mail className="w-8 h-8 text-white" />
+            <div className="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:border-usergy-purple/30 text-center transform hover:-translate-y-2">
+              <div className="w-20 h-20 rounded-full bg-gradient-to-br from-usergy-purple to-usergy-skyblue flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <Mail className="w-9 h-9 text-white" />
               </div>
-              <h3 className="text-xl font-bold text-usergy-dark mb-3">
+              <h3 className="text-xl font-bold text-usergy-dark mb-4 group-hover:text-usergy-purple transition-colors duration-300">
                 Direct Email
               </h3>
-              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                Send us your inquiry directly and we'll respond promptly
+              <p className="text-gray-600 mb-8 text-sm leading-relaxed">
+                Send us your inquiry directly and we'll respond promptly with personalized guidance
               </p>
               <Button
                 onClick={handleEmailContact}
                 variant="outline"
-                className="w-full border-2 border-usergy-purple text-usergy-purple hover:bg-usergy-purple hover:text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300"
+                className="w-full border-2 border-usergy-purple text-usergy-purple hover:bg-usergy-purple hover:text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 group-hover:shadow-usergy-purple/25"
               >
                 <Mail className="w-4 h-4 mr-2" />
                 Send Email
