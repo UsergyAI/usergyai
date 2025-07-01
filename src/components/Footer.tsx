@@ -1,13 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Linkedin, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
+  const [imageLoaded, setImageLoaded] = useState(false);
   const navigate = useNavigate();
-
-  // Base64 embedded logo for footer (white version)
-  const logoBase64White = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiB2aWV3Qm94PSIwIDAgMTUwIDUwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8dGV4dCB4PSI3NSIgeT0iMzAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSJib2xkIj5Vc2VyZ3k8L3RleHQ+Cjwvc3ZnPg==";
 
   const handleLogoClick = () => {
     navigate('/');
@@ -18,15 +16,21 @@ const Footer = () => {
     <footer className="bg-usergy-dark text-white py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Brand with embedded white logo - increased size with 65% opacity */}
+          {/* Brand with white logo - increased size with 65% opacity */}
           <div className="flex items-center group">
             <div className="relative cursor-pointer" onClick={handleLogoClick}>
+              {!imageLoaded && (
+                <div className="h-24 w-56 bg-gray-600 animate-pulse rounded"></div>
+              )}
               <img 
-                src={logoBase64White}
+                src="/lovable-uploads/c533a763-8e7e-4ac3-9731-1836179966aa.png" 
                 alt="Usergy" 
-                className="h-28 w-auto opacity-65 transition-all duration-300 group-hover:opacity-50 cursor-pointer"
-                loading="eager"
-                decoding="sync"
+                className={`h-24 w-auto opacity-65 transition-all duration-300 group-hover:opacity-50 cursor-pointer ${
+                  imageLoaded ? 'opacity-65' : 'opacity-0 absolute inset-0'
+                }`}
+                onLoad={() => setImageLoaded(true)}
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -44,7 +48,7 @@ const Footer = () => {
             </a>
             
             <a 
-              href="https://discord.com/invite/jkeSnkm5ww" 
+              href="https://discord.gg/jkeSnkm5ww" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform"
