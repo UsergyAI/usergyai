@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Phone, Check, Award, Zap } from 'lucide-react';
+import { Phone, Check, Star } from 'lucide-react';
 
 interface PricingTableProps {
   selectedUsers: number;
@@ -27,57 +27,54 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
   const plans = [
     {
       name: 'Feedback Only',
-      subtitle: 'Essential Insights',
+      subtitle: 'Basic Insight',
       price: prices.feedback,
       color: 'coral',
-      gradient: 'from-red-50 via-orange-50 to-red-50',
-      borderColor: 'border-red-200',
+      gradient: 'from-red-50 to-orange-50',
+      borderColor: 'border-red-200/50',
       hoverBorder: 'hover:border-red-300',
       buttonGradient: 'from-usergy-coral to-red-500',
       buttonHover: 'hover:from-red-500 hover:to-usergy-coral',
       iconColor: 'text-usergy-coral',
-      shadowColor: 'hover:shadow-red-100',
       features: [
-        'Recruit & incentivize premium users (all incentives included)',
-        'Comprehensive feedback analysis with actionable insights',
-        'Dedicated email support throughout your campaign'
+        'Recruit & incentivize high-quality users; all incentives included',
+        'Comprehensive feedback analysis report with actionable insights',
+        'Dedicated email support throughout campaign'
       ]
     },
     {
       name: 'Feedback + Community',
-      subtitle: 'Growth Accelerator',
+      subtitle: 'Core Activation',
       price: prices.community,
       color: 'turquoise',
-      gradient: 'from-teal-50 via-cyan-50 to-teal-50',
-      borderColor: 'border-teal-200',
-      hoverBorder: 'hover:border-teal-400',
+      gradient: 'from-teal-50 to-cyan-50',
+      borderColor: 'border-teal-200/50',
+      hoverBorder: 'hover:border-usergy-gold',
       buttonGradient: 'from-usergy-turquoise to-teal-500',
       buttonHover: 'hover:from-teal-500 hover:to-usergy-turquoise',
       iconColor: 'text-usergy-turquoise',
-      shadowColor: 'hover:shadow-teal-100',
       popular: true,
       features: [
-        'Everything in Feedback Only package included',
-        'Expert community setup & advanced nurturing strategies',
-        'Real-time engagement tracking with optimization insights'
+        'Everything in Feedback Only package',
+        'Expert community setup & nurturing strategies',
+        'Real-time engagement tracking & optimization'
       ]
     },
     {
       name: 'Full Traction',
-      subtitle: 'Market Domination',
+      subtitle: 'Amplify & Buzz',
       price: prices.full,
       color: 'skyblue',
-      gradient: 'from-blue-50 via-sky-50 to-blue-50',
-      borderColor: 'border-blue-200',
+      gradient: 'from-blue-50 to-sky-50',
+      borderColor: 'border-blue-200/50',
       hoverBorder: 'hover:border-blue-300',
       buttonGradient: 'from-usergy-skyblue to-blue-500',
       buttonHover: 'hover:from-blue-500 hover:to-usergy-skyblue',
       iconColor: 'text-usergy-skyblue',
-      shadowColor: 'hover:shadow-blue-100',
       features: [
         'Everything in Community package included',
-        'Strategic social media execution & task management',
-        'Comprehensive UGC analysis with market intelligence'
+        'Strategic social media task management & execution',
+        'Comprehensive UGC analysis report with market insights'
       ]
     }
   ];
@@ -86,50 +83,48 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
     <div className="w-full max-w-7xl mx-auto px-4">
       {/* Mobile and Tablet: Card Stack */}
       <div className="block lg:hidden">
-        <div className="space-y-8">
+        <div className="space-y-6">
           {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-3xl p-8 shadow-xl ${plan.shadowColor} hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 ${
-                plan.popular ? 'ring-4 ring-usergy-gold/20 scale-[1.02]' : ''
+              className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 ${
+                plan.popular ? 'ring-2 ring-usergy-gold/30' : ''
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 right-6">
-                  <div className="bg-gradient-to-r from-yellow-400 to-usergy-gold text-usergy-dark px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-white">
-                    <Award className="w-4 h-4" />
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-gradient-to-r from-yellow-400 via-usergy-gold to-yellow-500 text-usergy-dark px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-current" />
                     Most Popular
                   </div>
                 </div>
               )}
               
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-black text-usergy-dark mb-2">{plan.name}</h3>
-                <p className="text-gray-600 font-medium mb-6">{plan.subtitle}</p>
-                <div className="mb-6">
-                  <span className="text-5xl font-black text-usergy-dark tracking-tight">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-usergy-dark mb-2">{plan.name}</h3>
+                <p className="text-gray-600 text-sm mb-4">{plan.subtitle}</p>
+                <div className="mb-4">
+                  <span className="text-4xl font-black text-usergy-dark">
                     ${plan.price.toLocaleString()}
                   </span>
-                  <p className="text-gray-500 font-medium mt-2">for {selectedUsers} users</p>
+                  <p className="text-sm text-gray-500 mt-1">for {selectedUsers} users</p>
                 </div>
               </div>
 
-              <div className="mb-8">
+              <div className="mb-6">
                 {plan.features.map((feature, idx) => (
-                  <div key={idx} className="flex items-start gap-4 mb-4">
-                    <div className={`flex-shrink-0 w-6 h-6 rounded-full bg-gradient-to-r ${plan.buttonGradient} flex items-center justify-center mt-0.5`}>
-                      <Check className="w-4 h-4 text-white" />
-                    </div>
-                    <span className="text-gray-700 font-medium leading-relaxed">{feature}</span>
+                  <div key={idx} className="flex items-start gap-3 mb-3">
+                    <Check className={`w-5 h-5 ${plan.iconColor} flex-shrink-0 mt-0.5`} />
+                    <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
                   </div>
                 ))}
               </div>
 
               <Button
                 onClick={() => handleBookCall(plan.name)}
-                className={`w-full bg-gradient-to-r ${plan.buttonGradient} ${plan.buttonHover} text-white font-bold py-6 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-[1.02] transition-all duration-300 text-lg group`}
+                className={`w-full bg-gradient-to-r ${plan.buttonGradient} ${plan.buttonHover} text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-base`}
               >
-                <Phone className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300" />
+                <Phone className="w-5 h-5 mr-2" />
                 Book Strategy Call
               </Button>
             </div>
@@ -143,49 +138,47 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
           {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-3xl overflow-hidden shadow-xl ${plan.shadowColor} hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 ${
-                plan.popular ? 'ring-4 ring-usergy-gold/20 scale-105' : ''
+              className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 ${
+                plan.popular ? 'ring-2 ring-usergy-gold/30 scale-105' : ''
               }`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 -right-3 z-10">
-                  <div className="bg-gradient-to-r from-yellow-400 to-usergy-gold text-usergy-dark px-5 py-2 rounded-full text-sm font-bold shadow-xl flex items-center gap-2 border-2 border-white transform rotate-12">
-                    <Award className="w-4 h-4" />
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="bg-gradient-to-r from-yellow-400 via-usergy-gold to-yellow-500 text-usergy-dark px-6 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2">
+                    <Star className="w-4 h-4 fill-current" />
                     Most Popular
                   </div>
                 </div>
               )}
 
-              <div className="p-10">
-                <div className="text-center mb-10">
-                  <h3 className="text-3xl font-black text-usergy-dark mb-3">{plan.name}</h3>
-                  <p className="text-gray-600 font-medium text-lg mb-8">{plan.subtitle}</p>
-                  <div className="mb-8">
-                    <span className="text-6xl font-black text-usergy-dark tracking-tight">
+              <div className="p-8">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-usergy-dark mb-2">{plan.name}</h3>
+                  <p className="text-gray-600 mb-6">{plan.subtitle}</p>
+                  <div className="mb-6">
+                    <span className="text-5xl font-black text-usergy-dark">
                       ${plan.price.toLocaleString()}
                     </span>
-                    <p className="text-gray-500 font-medium text-lg mt-3">for {selectedUsers} users</p>
+                    <p className="text-gray-500 mt-2">for {selectedUsers} users</p>
                   </div>
                 </div>
 
-                <div className="mb-10 space-y-5">
+                <div className="mb-8 space-y-4">
                   {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-4">
-                      <div className={`flex-shrink-0 w-7 h-7 rounded-full bg-gradient-to-r ${plan.buttonGradient} flex items-center justify-center mt-0.5`}>
-                        <Check className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-gray-700 font-medium leading-relaxed text-lg">{feature}</span>
+                    <div key={idx} className="flex items-start gap-3">
+                      <Check className={`w-5 h-5 ${plan.iconColor} flex-shrink-0 mt-1`} />
+                      <span className="text-gray-700 leading-relaxed">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 <Button
                   onClick={() => handleBookCall(plan.name)}
-                  className={`w-full bg-gradient-to-r ${plan.buttonGradient} ${plan.buttonHover} text-white font-bold py-6 px-8 rounded-2xl shadow-xl hover:shadow-2xl transform hover:scale-[1.02] transition-all duration-300 text-xl group ${
+                  className={`w-full bg-gradient-to-r ${plan.buttonGradient} ${plan.buttonHover} text-white font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-lg ${
                     plan.popular ? 'ring-2 ring-usergy-gold/50' : ''
                   }`}
                 >
-                  <Phone className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
+                  <Phone className="w-5 h-5 mr-2" />
                   Book Strategy Call
                 </Button>
               </div>
