@@ -1,7 +1,9 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Users, Star, Trophy } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import AnimatedBackground from '@/components/AnimatedBackground';
 
 const CommunityHero = () => {
   const navigate = useNavigate();
@@ -15,12 +17,17 @@ const CommunityHero = () => {
   };
 
   return (
-    <section className="pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20 bg-gradient-to-br from-usergy-light via-white to-usergy-light relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-24 h-24 sm:w-32 sm:h-32 bg-usergy-turquoise rounded-full blur-xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-16 h-16 sm:w-24 sm:h-24 bg-usergy-skyblue rounded-full blur-lg animate-float" style={{ animationDelay: '-2s' }}></div>
-        <div className="absolute top-1/2 right-1/3 w-12 h-12 sm:w-16 sm:h-16 bg-usergy-coral rounded-full blur-md animate-float" style={{ animationDelay: '-4s' }}></div>
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32">
+      <AnimatedBackground particleCount={50} />
+
+      {/* Enhanced Floating Bubbles - Hero Section Only */}
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
+        <div className="floating-element absolute top-1/4 left-1/4 w-6 h-6 bg-usergy-turquoise/30 rounded-full animate-float-enhanced opacity-60"></div>
+        <div className="floating-element absolute top-1/3 right-1/4 w-8 h-8 bg-usergy-coral/25 rounded-full animate-float-enhanced opacity-50" style={{ animationDelay: '-2s' }}></div>
+        <div className="floating-element absolute bottom-1/4 left-1/3 w-5 h-5 bg-usergy-skyblue/35 rounded-full animate-float-enhanced opacity-70" style={{ animationDelay: '-4s' }}></div>
+        <div className="floating-element absolute bottom-1/3 right-1/3 w-4 h-4 bg-usergy-gold/40 rounded-full animate-float-enhanced opacity-80" style={{ animationDelay: '-6s' }}></div>
+        <div className="floating-element absolute top-1/2 left-1/6 w-7 h-7 bg-usergy-turquoise/20 rounded-full animate-float-enhanced opacity-45" style={{ animationDelay: '-3s' }}></div>
+        <div className="floating-element absolute top-3/4 right-1/6 w-3 h-3 bg-usergy-coral/45 rounded-full animate-float-enhanced opacity-65" style={{ animationDelay: '-5s' }}></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

@@ -6,12 +6,11 @@ import AnimatedBackground from '@/components/AnimatedBackground';
 
 const UserSignup = () => {
   useEffect(() => {
-    // Load Tally embeds after component mounts
+    // Enhanced Tally form loading
     const loadTallyEmbeds = () => {
       if (typeof window !== 'undefined' && (window as any).Tally) {
         (window as any).Tally.loadEmbeds();
       } else {
-        // Fallback: manually set src for iframe if Tally script hasn't loaded
         const iframe = document.querySelector('iframe[data-tally-src]:not([src])') as HTMLIFrameElement;
         if (iframe && iframe.dataset.tallySrc) {
           iframe.src = iframe.dataset.tallySrc;
@@ -19,7 +18,6 @@ const UserSignup = () => {
       }
     };
 
-    // Small delay to ensure DOM is ready
     const timer = setTimeout(loadTallyEmbeds, 100);
     return () => clearTimeout(timer);
   }, []);
@@ -28,12 +26,21 @@ const UserSignup = () => {
     <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
       <Header />
       
-      {/* Enhanced Animated background canvas */}
-      <AnimatedBackground particleCount={60} />
-      
-      {/* Main content area with full integration */}
-      <main className="relative pt-28 md:pt-32 lg:pt-36 pb-16 sm:pb-20" style={{ zIndex: 10 }}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section with Enhanced Floating Bubbles */}
+      <section className="relative pt-28 md:pt-32 lg:pt-36 pb-8 sm:pb-12 overflow-hidden">
+        <AnimatedBackground particleCount={60} />
+        
+        {/* Enhanced Floating Bubbles - Hero Section Only */}
+        <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
+          <div className="floating-element absolute top-1/4 left-1/4 w-6 h-6 bg-usergy-turquoise/30 rounded-full animate-float-enhanced opacity-60"></div>
+          <div className="floating-element absolute top-1/3 right-1/4 w-8 h-8 bg-usergy-coral/25 rounded-full animate-float-enhanced opacity-50" style={{ animationDelay: '-2s' }}></div>
+          <div className="floating-element absolute bottom-1/4 left-1/3 w-5 h-5 bg-usergy-skyblue/35 rounded-full animate-float-enhanced opacity-70" style={{ animationDelay: '-4s' }}></div>
+          <div className="floating-element absolute bottom-1/3 right-1/3 w-4 h-4 bg-usergy-gold/40 rounded-full animate-float-enhanced opacity-80" style={{ animationDelay: '-6s' }}></div>
+          <div className="floating-element absolute top-1/2 left-1/6 w-7 h-7 bg-usergy-turquoise/20 rounded-full animate-float-enhanced opacity-45" style={{ animationDelay: '-3s' }}></div>
+          <div className="floating-element absolute top-3/4 right-1/6 w-3 h-3 bg-usergy-coral/45 rounded-full animate-float-enhanced opacity-65" style={{ animationDelay: '-5s' }}></div>
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
             {/* Header section */}
             <div className="text-center mb-8 sm:mb-12">
@@ -44,7 +51,14 @@ const UserSignup = () => {
                 Your Journey to Shaping Tomorrow's AI Starts Here.
               </h2>
             </div>
+          </div>
+        </div>
+      </section>
 
+      {/* Form Section - No floating bubbles here */}
+      <main className="relative pb-16 sm:pb-20" style={{ zIndex: 10 }}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
             {/* Fully integrated form container */}
             <div className="w-full animate-scale-in">
               <div className="relative w-full">
@@ -52,13 +66,13 @@ const UserSignup = () => {
                   data-tally-src="https://tally.so/embed/w4Y1lA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
                   loading="lazy"
                   width="100%" 
-                  height="585" 
+                  height="800" 
                   frameBorder="0" 
                   marginHeight={0} 
                   marginWidth={0} 
                   title="User Sign-Up Form"
                   className="w-full border-0 bg-transparent"
-                  style={{ minHeight: '585px' }}
+                  style={{ minHeight: '800px' }}
                 />
               </div>
             </div>
@@ -84,7 +98,7 @@ const UserSignup = () => {
 
       <Footer />
 
-      {/* Enhanced Tally.so embed script with proper loading */}
+      {/* Enhanced Tally.so embed script */}
       <script 
         src="https://tally.so/widgets/embed.js"
         async
