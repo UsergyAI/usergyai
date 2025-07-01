@@ -1,9 +1,13 @@
 
 import React from 'react';
-import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Calendar, MessageSquare, Mail, Phone, ArrowRight } from 'lucide-react';
 
 const ContactMethods = () => {
+  const handleCalendlyRedirect = () => {
+    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
+  };
+
   const scrollToForm = () => {
     const formElement = document.getElementById('contact-form');
     if (formElement) {
@@ -11,132 +15,113 @@ const ContactMethods = () => {
     }
   };
 
-  const handleCalendlyRedirect = () => {
-    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
+  const handleEmailContact = () => {
+    window.location.href = 'mailto:swaroop@usergy.ai?subject=AI Growth Inquiry';
   };
 
   return (
-    <section className="py-16 md:py-20 bg-gradient-to-br from-usergy-light to-white relative overflow-hidden">
-      {/* Animated background elements */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 md:w-48 md:h-48 bg-usergy-skyblue rounded-full blur-3xl animate-pulse opacity-30"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 md:w-36 md:h-36 bg-usergy-turquoise rounded-full blur-2xl animate-float opacity-40"></div>
+    <section className="py-16 md:py-20 bg-gradient-to-br from-usergy-light via-white to-usergy-light relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-usergy-turquoise/20 rounded-full blur-2xl animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/6 w-40 h-40 bg-usergy-coral/15 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-3/4 left-1/3 w-24 h-24 bg-usergy-skyblue/20 rounded-full blur-xl animate-float" style={{ animationDelay: '-2s' }}></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-usergy-dark mb-4 md:mb-6">
-            Choose Your Path: Let's Connect
-          </h2>
-          <p className="text-base md:text-lg lg:text-xl text-gray-600 max-w-2xl md:max-w-3xl mx-auto leading-relaxed px-4">
-            Select the option that's easiest for you. We cater to your preferences, 
-            ensuring a seamless start to our partnership or quick resolution for your support needs.
-          </p>
-        </div>
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-black text-usergy-dark mb-6 leading-tight">
+              Choose Your Path: Let's Connect
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              Multiple ways to reach our AI growth experts. Pick the method that works best for you.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 max-w-7xl mx-auto">
-          {/* Strategy Call Card */}
-          <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-usergy-turquoise/30 bg-white/90 backdrop-blur-sm">
-            <CardContent className="p-6 md:p-8 text-center">
-              <div className="mb-4 md:mb-6 flex justify-center">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                </div>
+          {/* Contact Methods Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* Strategy Call Method */}
+            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-turquoise/10 hover:border-usergy-turquoise/30">
+              <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Calendar className="w-10 h-10" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-usergy-dark mb-3 md:mb-4">
-                Book a Free 30-Minute Strategy Call
+              <h3 className="text-2xl font-bold text-usergy-dark mb-4 text-center">
+                Strategy Call
               </h3>
-              <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed">
-                Schedule an instant, direct consultation with Vedaswaroop, our founder and lead expert. 
-                Share your AI product's vision, challenges, and let's map your path to undeniable traction.
+              <p className="text-gray-600 leading-relaxed mb-6 text-center">
+                Book a free 30-minute consultation to discuss your AI growth strategy with our experts.
               </p>
-              <Button 
+              <Button
                 onClick={handleCalendlyRedirect}
-                className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg text-sm"
+                className="w-full bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue hover:from-usergy-skyblue hover:to-usergy-turquoise text-white font-bold py-4 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
               >
-                Schedule Now →
+                <Calendar className="w-5 h-5 mr-2" />
+                Schedule Free Call
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </CardContent>
-          </Card>
+            </div>
 
-          {/* Direct Email Card */}
-          <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-usergy-skyblue/30 bg-white/90 backdrop-blur-sm">
-            <CardContent className="p-6 md:p-8 text-center">
-              <div className="mb-4 md:mb-6 flex justify-center">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-usergy-skyblue to-usergy-coral rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </div>
+            {/* Contact Form Method */}
+            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-coral/10 hover:border-usergy-coral/30">
+              <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-usergy-coral to-usergy-gold text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <MessageSquare className="w-10 h-10" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-usergy-dark mb-3 md:mb-4">
-                Email Our Team Directly
+              <h3 className="text-2xl font-bold text-usergy-dark mb-4 text-center">
+                Quick Form
               </h3>
-              <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed">
-                For general questions about our services, partnership opportunities, 
-                or anything else, drop us a note. We're eager to learn and help.
+              <p className="text-gray-600 leading-relaxed mb-6 text-center">
+                Fill out our detailed form and get a personalized response within one business day.
               </p>
-              <a 
-                href="mailto:swaroop@usergy.ai" 
-                className="inline-block w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg text-center text-sm"
-              >
-                swaroop@usergy.ai
-              </a>
-            </CardContent>
-          </Card>
-
-          {/* Quick Inquiry Form Card */}
-          <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-usergy-coral/30 bg-white/90 backdrop-blur-sm">
-            <CardContent className="p-6 md:p-8 text-center">
-              <div className="mb-4 md:mb-6 flex justify-center">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-usergy-coral to-usergy-gold rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                </div>
-              </div>
-              <h3 className="text-lg md:text-xl font-bold text-usergy-dark mb-3 md:mb-4">
-                Fill Our Quick Inquiry Form
-              </h3>
-              <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed">
-                Prefer a brief form? Answer a couple of questions so we can best understand 
-                your needs and respond efficiently. Your information is confidential.
-              </p>
-              <Button 
+              <Button
                 onClick={scrollToForm}
-                className="w-full bg-usergy-coral hover:bg-usergy-gold text-white font-bold py-2 px-4 rounded-full transition-all duration-300 hover:shadow-lg text-sm"
+                variant="outline"
+                className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold py-4 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
               >
-                Start Form →
+                <MessageSquare className="w-5 h-5 mr-2" />
+                Start Form
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-            </CardContent>
-          </Card>
+            </div>
 
-          {/* Community Card */}
-          <Card className="group hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-usergy-gold/30 bg-white/90 backdrop-blur-sm md:col-span-2 xl:col-span-3">
-            <CardContent className="p-6 md:p-8 text-center">
-              <div className="mb-4 md:mb-6 flex justify-center">
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-gradient-to-br from-usergy-gold to-usergy-turquoise rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
+            {/* Direct Email Method */}
+            <div className="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-purple/10 hover:border-usergy-purple/30 md:col-span-2 lg:col-span-1">
+              <div className="flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-usergy-purple to-usergy-skyblue text-white mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Mail className="w-10 h-10" />
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-usergy-dark mb-3 md:mb-4">
-                Join Our AI Explorer Community
+              <h3 className="text-2xl font-bold text-usergy-dark mb-4 text-center">
+                Direct Email
               </h3>
-              <p className="text-sm md:text-base text-gray-600 mb-4 md:mb-6 leading-relaxed max-w-2xl mx-auto">
-                Are you an AI enthusiast eager to explore groundbreaking tools and contribute? 
-                Connect with our vibrant community on Discord – a hub for innovation.
+              <p className="text-gray-600 leading-relaxed mb-6 text-center">
+                Prefer email? Send us your inquiry directly and we'll respond promptly.
               </p>
-              <div className="flex justify-center">
-                <Button className="bg-usergy-coral hover:bg-usergy-turquoise text-white font-bold py-2 px-6 rounded-full transition-all duration-300 hover:shadow-lg text-sm">
-                  Join Discord Now! →
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+              <Button
+                onClick={handleEmailContact}
+                variant="outline"
+                className="w-full border-2 border-usergy-purple text-usergy-purple hover:bg-usergy-purple hover:text-white font-bold py-4 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+              >
+                <Mail className="w-5 h-5 mr-2" />
+                Send Email
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="text-center">
+            <p className="text-lg text-gray-600 mb-6">
+              Not sure which option to choose? Start with a quick strategy call!
+            </p>
+            <Button
+              onClick={handleCalendlyRedirect}
+              size="lg"
+              className="bg-gradient-to-r from-usergy-turquoise via-usergy-skyblue to-usergy-coral hover:from-usergy-coral hover:via-usergy-gold hover:to-usergy-turquoise text-white font-bold py-4 px-8 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+            >
+              <Calendar className="w-5 h-5 mr-2" />
+              Book Free Strategy Call Now
+            </Button>
+          </div>
         </div>
       </div>
     </section>
