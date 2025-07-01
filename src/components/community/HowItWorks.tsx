@@ -2,30 +2,39 @@
 import React from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { User, ArrowRight, CheckCircle } from 'lucide-react';
+import { User, ArrowRight, CheckCircle, Star, MessageCircle } from 'lucide-react';
 
 const HowItWorks = () => {
   const steps = [
     {
-      number: '1',
+      number: '01',
       icon: 'user-profile',
-      title: 'Register & Get Vetted',
-      description: 'Quick profile setup with expert matching for impactful participation.',
-      benefits: ['Instant verification', 'Expert matching', 'Quality community']
+      title: 'Join & Get Verified',
+      subtitle: 'Quick Setup, Expert Matching',
+      description: 'Create your profile in under 2 minutes. Our AI matches you with projects that fit your expertise and interests.',
+      benefits: ['AI-powered matching', 'Instant verification', 'Quality community'],
+      timeEstimate: '2 min setup',
+      color: 'from-usergy-turquoise to-usergy-skyblue'
     },
     {
-      number: '2',
+      number: '02',
       icon: 'invitation',
-      title: 'Test & Explore',
-      description: 'Receive personalized invitations to test groundbreaking AI tools.',
-      benefits: ['Exclusive access', 'Cutting-edge tools', 'Personal invitations']
+      title: 'Explore & Test',
+      subtitle: 'Exclusive Early Access',
+      description: 'Get invited to test cutting-edge AI tools before they launch. Your feedback shapes the future of AI.',
+      benefits: ['Pre-launch access', 'Influence development', 'Learn from founders'],
+      timeEstimate: '15-30 min per test',
+      color: 'from-usergy-skyblue to-usergy-coral'
     },
     {
-      number: '3',
+      number: '03',
       icon: 'trophy',
-      title: 'Contribute & Earn',
-      description: 'Share valuable feedback, complete tasks, and earn fantastic rewards.',
-      benefits: ['Points system', 'Real rewards', 'Meaningful impact']
+      title: 'Impact & Earn',
+      subtitle: 'Meaningful Contributions',
+      description: 'Transform your insights into rewards. Every piece of feedback helps build better AI for everyone.',
+      benefits: ['Real rewards', 'Skill development', 'Network growth'],
+      timeEstimate: 'Ongoing rewards',
+      color: 'from-usergy-coral to-usergy-turquoise'
     }
   ];
 
@@ -43,6 +52,7 @@ const HowItWorks = () => {
           <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
             <polyline points="22,6 12,13 2,6" />
+            <path d="M9 11l3 3 6-6" />
           </svg>
         );
       case 'trophy':
@@ -65,89 +75,113 @@ const HowItWorks = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-br from-usergy-light to-white relative overflow-hidden">
-      {/* Subtle animated background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 right-0 w-48 h-48 bg-usergy-skyblue rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-32 h-32 bg-usergy-coral rounded-full blur-2xl animate-float" style={{ animationDelay: '-2s' }}></div>
+    <section className="py-16 md:py-20 bg-gradient-to-br from-gray-50 via-white to-usergy-light/30 relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 right-0 w-72 h-72 bg-usergy-skyblue rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-usergy-coral rounded-full blur-2xl animate-float" style={{ animationDelay: '-2s' }}></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-black text-usergy-dark mb-4">
-            Your Path to Contribution
+        {/* Enhanced Header */}
+        <div className="text-center mb-16 max-w-4xl mx-auto">
+          <div className="inline-flex items-center space-x-2 bg-usergy-turquoise/10 text-usergy-turquoise px-4 py-2 rounded-full text-sm font-semibold mb-6">
+            <Star className="h-4 w-4" />
+            <span>Your Journey to AI Impact</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-black text-usergy-dark mb-6 leading-tight">
+            From Curious Explorer to 
+            <span className="block bg-gradient-to-r from-usergy-turquoise to-usergy-coral bg-clip-text text-transparent">
+              AI Influence Leader
+            </span>
           </h2>
-          <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Simple, rewarding, and impactful. Our streamlined process makes exploring AI effortless.
+          <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+            Join a community where your curiosity drives innovation. Every test, every insight, 
+            every connection moves AI forward—and rewards you for it.
           </p>
         </div>
 
-        <div className="max-w-5xl mx-auto">
-          {/* Progress Flow */}
-          <div className="grid md:grid-cols-3 gap-6 relative">
-            {/* Connection lines for desktop */}
-            <div className="hidden md:block absolute top-16 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue"></div>
-            <div className="hidden md:block absolute top-16 left-2/3 right-0 h-0.5 bg-gradient-to-r from-usergy-skyblue to-usergy-coral"></div>
-
+        {/* Enhanced Steps */}
+        <div className="max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 relative">
+            {/* Connection arrows for desktop */}
+            <div className="hidden md:block absolute top-24 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-usergy-turquoise via-usergy-skyblue to-usergy-coral z-0"></div>
+            
             {steps.map((step, index) => (
-              <Card 
-                key={index} 
-                className="relative group hover:shadow-xl transition-all duration-300 hover:scale-105 border-2 hover:border-usergy-turquoise/30 bg-white/90 backdrop-blur-sm"
-              >
-                <CardContent className="p-6 text-center">
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-6 h-6 bg-usergy-turquoise text-white rounded-full flex items-center justify-center font-bold text-sm shadow-lg">
-                    {step.number}
-                  </div>
-                  
-                  <div className="mb-4 mt-2 flex justify-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <CustomIcon type={step.icon} className="h-6 w-6 text-white" />
-                    </div>
-                  </div>
-                  
-                  <h3 className="text-lg font-bold text-usergy-dark mb-2">
-                    {step.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    {step.description}
-                  </p>
-
-                  <div className="space-y-1">
-                    {step.benefits.map((benefit, idx) => (
-                      <div key={idx} className="flex items-center justify-center text-xs text-usergy-turquoise">
-                        <CheckCircle className="h-3 w-3 mr-1" />
-                        <span>{benefit}</span>
+              <div key={index} className="relative z-10">
+                <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 border-2 hover:border-usergy-turquoise/30 bg-white/95 backdrop-blur-sm h-full overflow-hidden">
+                  <div className={`h-2 bg-gradient-to-r ${step.color}`}></div>
+                  <CardContent className="p-8">
+                    {/* Step number and time */}
+                    <div className="flex justify-between items-start mb-6">
+                      <div className={`text-3xl font-black bg-gradient-to-r ${step.color} bg-clip-text text-transparent`}>
+                        {step.number}
                       </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                      <div className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded-full">
+                        {step.timeEstimate}
+                      </div>
+                    </div>
+                    
+                    {/* Icon */}
+                    <div className="mb-6 flex justify-center">
+                      <div className={`w-16 h-16 bg-gradient-to-br ${step.color} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                        <CustomIcon type={step.icon} className="h-8 w-8 text-white" />
+                      </div>
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="text-center mb-6">
+                      <h3 className="text-xl font-black text-usergy-dark mb-2">
+                        {step.title}
+                      </h3>
+                      <p className="text-sm font-semibold text-usergy-turquoise mb-3">
+                        {step.subtitle}
+                      </p>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+
+                    {/* Benefits */}
+                    <div className="space-y-2">
+                      {step.benefits.map((benefit, idx) => (
+                        <div key={idx} className="flex items-center text-xs text-gray-600">
+                          <CheckCircle className="h-3 w-3 mr-2 text-usergy-turquoise flex-shrink-0" />
+                          <span>{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Compact Discord CTA */}
-        <div className="text-center mt-12">
-          <div className="bg-gradient-to-r from-usergy-skyblue/10 to-usergy-turquoise/10 rounded-xl p-6 max-w-2xl mx-auto border border-usergy-turquoise/20">
-            <h3 className="text-xl font-bold text-usergy-dark mb-3">Connect with Fellow AI Explorers</h3>
-            <p className="text-gray-600 mb-4 text-sm">Join our Discord for real-time discussions and exclusive updates.</p>
-            <Button 
-              size="lg"
-              onClick={handleDiscordJoin}
-              className="bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold py-3 px-6 rounded-full shadow-xl hover:shadow-usergy-skyblue/30 transform hover:scale-105 transition-all duration-300"
-            >
-              <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
-              </svg>
-              Join Discord Community
-            </Button>
+        {/* Enhanced CTA */}
+        <div className="text-center mt-16">
+          <div className="bg-gradient-to-r from-usergy-turquoise/10 via-usergy-skyblue/10 to-usergy-coral/10 rounded-2xl p-8 max-w-3xl mx-auto border border-usergy-turquoise/20 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent"></div>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-black text-usergy-dark mb-4">
+                Ready to Start Your AI Journey?
+              </h3>
+              <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                Join our Discord community for real-time discussions, exclusive updates, and connect with fellow AI explorers.
+              </p>
+              <Button 
+                size="lg"
+                onClick={handleDiscordJoin}
+                className="bg-gradient-to-r from-usergy-skyblue to-usergy-turquoise hover:from-usergy-turquoise hover:to-usergy-skyblue text-white font-bold py-4 px-8 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Join Our Discord Community
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Elegant section divider */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-usergy-skyblue/30 to-transparent"></div>
     </section>
   );
 };

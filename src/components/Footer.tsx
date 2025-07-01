@@ -15,18 +15,18 @@ const Footer = () => {
     <footer className="bg-usergy-dark text-white py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Brand with embedded white SVG logo */}
+          {/* Brand with embedded white SVG logo - decreased size */}
           <div className="flex items-center group">
             <div className="relative cursor-pointer" onClick={handleLogoClick}>
               <svg 
-                width="224" 
-                height="96" 
-                viewBox="0 0 224 96" 
+                width="180" 
+                height="72" 
+                viewBox="0 0 180 72" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-24 w-auto opacity-65 transition-all duration-300 group-hover:opacity-50 cursor-pointer"
+                className="h-18 w-auto opacity-65 transition-all duration-300 group-hover:opacity-50 cursor-pointer"
               >
-                <text x="20" y="60" fontSize="48" fontWeight="bold" fill="white">Usergy</text>
+                <text x="15" y="45" fontSize="36" fontWeight="bold" fill="white">Usergy</text>
               </svg>
             </div>
           </div>
