@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -5,10 +6,12 @@ import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  // Base64 embedded logo to prevent loading delays
+  const logoBase64 = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjQwIiB2aWV3Qm94PSIwIDAgMTIwIDQwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8dGV4dCB4PSI2MCIgeT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiMxRjJBMzciIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9ImJvbGQiPlVzZXJneTwvdGV4dD4KPC9zdmc+";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -87,23 +90,15 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo with optimized loading */}
+          {/* Logo with embedded base64 */}
           <Link to="/" className="flex items-center group" onClick={() => handleMenuItemClick('/')}>
-            <div className="relative">
-              {!imageLoaded && (
-                <div className="h-8 sm:h-10 md:h-12 w-24 sm:w-28 md:w-32 bg-gray-200 animate-pulse rounded"></div>
-              )}
-              <img 
-                src="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" 
-                alt="Usergy" 
-                className={`h-8 sm:h-10 md:h-12 w-auto transition-all duration-300 group-hover:opacity-80 ${
-                  imageLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
-                }`}
-                onLoad={() => setImageLoaded(true)}
-                loading="eager"
-                decoding="async"
-              />
-            </div>
+            <img 
+              src={logoBase64}
+              alt="Usergy" 
+              className="h-8 sm:h-10 md:h-12 w-auto transition-all duration-300 group-hover:opacity-80"
+              loading="eager"
+              decoding="sync"
+            />
           </Link>
 
           {/* Desktop Navigation - Hidden on mobile and small tablets */}

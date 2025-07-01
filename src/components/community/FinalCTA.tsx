@@ -12,7 +12,7 @@ const FinalCTA = () => {
   };
 
   const handleJoinDiscord = () => {
-    window.open('https://discord.gg/usergy-ai', '_blank');
+    window.open('https://discord.com/invite/jkeSnkm5ww', '_blank');
   };
 
   return (
