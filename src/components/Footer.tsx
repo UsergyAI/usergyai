@@ -1,10 +1,9 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Linkedin, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
-  const [imageLoaded, setImageLoaded] = useState(false);
   const navigate = useNavigate();
 
   const handleLogoClick = () => {
@@ -16,22 +15,19 @@ const Footer = () => {
     <footer className="bg-usergy-dark text-white py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Brand with white logo - increased size with 65% opacity */}
+          {/* Brand with embedded white SVG logo */}
           <div className="flex items-center group">
             <div className="relative cursor-pointer" onClick={handleLogoClick}>
-              {!imageLoaded && (
-                <div className="h-24 w-56 bg-gray-600 animate-pulse rounded"></div>
-              )}
-              <img 
-                src="/lovable-uploads/c533a763-8e7e-4ac3-9731-1836179966aa.png" 
-                alt="Usergy" 
-                className={`h-24 w-auto opacity-65 transition-all duration-300 group-hover:opacity-50 cursor-pointer ${
-                  imageLoaded ? 'opacity-65' : 'opacity-0 absolute inset-0'
-                }`}
-                onLoad={() => setImageLoaded(true)}
-                loading="lazy"
-                decoding="async"
-              />
+              <svg 
+                width="224" 
+                height="96" 
+                viewBox="0 0 224 96" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-24 w-auto opacity-65 transition-all duration-300 group-hover:opacity-50 cursor-pointer"
+              >
+                <text x="20" y="60" fontSize="48" fontWeight="bold" fill="white">Usergy</text>
+              </svg>
             </div>
           </div>
 
@@ -48,7 +44,7 @@ const Footer = () => {
             </a>
             
             <a 
-              href="https://discord.gg/jkeSnkm5ww" 
+              href="https://discord.com/invite/jkeSnkm5ww" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors duration-300 hover:scale-110 transform"

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -5,7 +6,6 @@ import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -87,22 +87,19 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo with optimized loading */}
+          {/* Logo with embedded SVG */}
           <Link to="/" className="flex items-center group" onClick={() => handleMenuItemClick('/')}>
             <div className="relative">
-              {!imageLoaded && (
-                <div className="h-8 sm:h-10 md:h-12 w-24 sm:w-28 md:w-32 bg-gray-200 animate-pulse rounded"></div>
-              )}
-              <img 
-                src="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" 
-                alt="Usergy" 
-                className={`h-8 sm:h-10 md:h-12 w-auto transition-all duration-300 group-hover:opacity-80 ${
-                  imageLoaded ? 'opacity-100' : 'opacity-0 absolute inset-0'
-                }`}
-                onLoad={() => setImageLoaded(true)}
-                loading="eager"
-                decoding="async"
-              />
+              <svg 
+                width="120" 
+                height="40" 
+                viewBox="0 0 120 40" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 sm:h-10 md:h-12 w-auto transition-all duration-300 group-hover:opacity-80"
+              >
+                <text x="10" y="25" fontSize="24" fontWeight="bold" fill="#4ECDC4">Usergy</text>
+              </svg>
             </div>
           </Link>
 

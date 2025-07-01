@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect, useRef } from 'react';
-import { Rocket, Users, BarChart3, Zap, Target, Gift, ChevronDown, ChevronUp } from 'lucide-react';
+import { Rocket, Users, BarChart3, Zap, Target, Gift, ChevronDown, ChevronUp, Phone } from 'lucide-react';
 
 const HowItWorksSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -26,6 +25,10 @@ const HowItWorksSection = () => {
 
   const toggleStep = (stepIndex: number) => {
     setExpandedStep(expandedStep === stepIndex ? null : stepIndex);
+  };
+
+  const handleCalendlyRedirect = () => {
+    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
   };
 
   const founderSteps = [
@@ -196,19 +199,20 @@ const HowItWorksSection = () => {
             </div>
           </div>
 
-          {/* Call to Action */}
+          {/* Call to Action - Updated with single button */}
           <div className={`text-center mt-16 transition-all duration-1000 delay-900 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <div className="bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white rounded-2xl p-8 shadow-2xl">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your AI Journey?</h3>
               <p className="text-lg mb-6 opacity-90">Join thousands of innovators already building the future with Usergy</p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-usergy-turquoise font-bold py-3 px-8 rounded-full hover:bg-gray-50 transition-colors duration-300 shadow-lg">
-                  Book Your Strategy Call
-                </button>
-                <button className="border-2 border-white text-white font-bold py-3 px-8 rounded-full hover:bg-white hover:text-usergy-turquoise transition-all duration-300">
-                  See Our Founder Process
+              <div className="flex justify-center">
+                <button 
+                  onClick={handleCalendlyRedirect}
+                  className="bg-white text-usergy-turquoise font-bold py-4 px-10 rounded-full hover:bg-gray-50 transition-colors duration-300 shadow-lg flex items-center space-x-3 hover:scale-105 transform"
+                >
+                  <Phone className="h-5 w-5" />
+                  <span>Book Your Strategy Call</span>
                 </button>
               </div>
             </div>
