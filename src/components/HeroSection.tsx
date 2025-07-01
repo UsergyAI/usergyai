@@ -39,8 +39,8 @@ const HeroSection = () => {
             <span className="block gradient-text mt-2 md:mt-3">Deserves Expert Guidance</span>
           </h1>
           
-          {/* Emphasis with agency positioning */}
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-usergy-turquoise mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-pulse-glow px-2">
+          {/* Improved emphasis styling without rectangular background */}
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-transparent bg-gradient-to-r from-usergy-turquoise via-usergy-skyblue to-usergy-turquoise bg-clip-text mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-pulse-glow px-2">
             We Deliver Real Traction, Fast.
           </div>
 
@@ -74,22 +74,6 @@ const HeroSection = () => {
               <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
               <span className="truncate">Join Our AI Explorer Community</span>
             </Button>
-          </div>
-
-          {/* Trust Indicators with enhanced visibility */}
-          <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16 flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-gray-600 animate-fade-in px-4">
-            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-              <div className="w-2 h-2 bg-usergy-turquoise rounded-full animate-pulse"></div>
-              <span className="font-semibold text-sm sm:text-base">1,200+ Campaigns Launched</span>
-            </div>
-            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-              <div className="w-2 h-2 bg-usergy-coral rounded-full animate-pulse"></div>
-              <span className="font-semibold text-sm sm:text-base">75,000+ AI Enthusiasts</span>
-            </div>
-            <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-              <div className="w-2 h-2 bg-usergy-skyblue rounded-full animate-pulse"></div>
-              <span className="font-semibold text-sm sm:text-base">92% Feedback Quality Score</span>
-            </div>
           </div>
         </div>
       </div>

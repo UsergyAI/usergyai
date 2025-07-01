@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Plus, Minus } from 'lucide-react';
 
 const FAQAccordion = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -45,28 +46,48 @@ const FAQAccordion = () => {
 
   return (
     <div className="max-w-4xl mx-auto">
-      {faqs.map((faq, index) => (
-        <div key={index} className="border-b border-gray-200 last:border-b-0 bg-white rounded-lg mb-2 shadow-sm">
-          <button
-            className="w-full py-6 px-6 text-left flex justify-between items-center hover:bg-gray-50 transition-colors rounded-lg"
-            onClick={() => toggleFAQ(index)}
+      <div className="space-y-3">
+        {faqs.map((faq, index) => (
+          <div 
+            key={index} 
+            className={`bg-white rounded-2xl border-2 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden ${
+              openIndex === index 
+                ? 'border-usergy-turquoise/30 shadow-usergy-turquoise/10' 
+                : 'border-gray-100 hover:border-usergy-turquoise/20'
+            }`}
           >
-            <span className="text-lg font-semibold text-usergy-dark pr-4">
-              {faq.question}
-            </span>
-            <span className={`text-usergy-turquoise text-2xl transition-transform ${openIndex === index ? 'rotate-45' : ''}`}>
-              +
-            </span>
-          </button>
-          {openIndex === index && (
-            <div className="px-6 pb-6">
-              <p className="text-gray-600 leading-relaxed">
-                {faq.answer}
-              </p>
-            </div>
-          )}
-        </div>
-      ))}
+            <button
+              className="w-full py-6 px-8 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors rounded-2xl group"
+              onClick={() => toggleFAQ(index)}
+            >
+              <span className="text-lg font-bold text-usergy-dark pr-6 group-hover:text-usergy-turquoise transition-colors leading-relaxed">
+                {faq.question}
+              </span>
+              <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                openIndex === index 
+                  ? 'bg-usergy-turquoise text-white rotate-180' 
+                  : 'bg-gray-100 text-usergy-dark group-hover:bg-usergy-turquoise/10'
+              }`}>
+                {openIndex === index ? (
+                  <Minus className="w-4 h-4" />
+                ) : (
+                  <Plus className="w-4 h-4" />
+                )}
+              </div>
+            </button>
+            
+            {openIndex === index && (
+              <div className="px-8 pb-6 animate-accordion-down">
+                <div className="border-t border-gray-100 pt-4">
+                  <p className="text-gray-600 leading-relaxed font-medium">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

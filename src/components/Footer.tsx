@@ -1,26 +1,32 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Linkedin, MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogoClick = () => {
+    navigate('/');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer className="bg-usergy-dark text-white py-12">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Brand with white logo - increased size with 75% opacity */}
+          {/* Brand with white logo - increased size with 65% opacity */}
           <div className="flex items-center group">
-            <div className="relative">
+            <div className="relative cursor-pointer" onClick={handleLogoClick}>
               {!imageLoaded && (
-                <div className="h-20 w-48 bg-gray-600 animate-pulse rounded"></div>
+                <div className="h-24 w-56 bg-gray-600 animate-pulse rounded"></div>
               )}
               <img 
                 src="/lovable-uploads/c533a763-8e7e-4ac3-9731-1836179966aa.png" 
                 alt="Usergy" 
-                className={`h-20 w-auto opacity-75 transition-all duration-300 group-hover:opacity-60 cursor-pointer ${
-                  imageLoaded ? 'opacity-75' : 'opacity-0 absolute inset-0'
+                className={`h-24 w-auto opacity-65 transition-all duration-300 group-hover:opacity-50 cursor-pointer ${
+                  imageLoaded ? 'opacity-65' : 'opacity-0 absolute inset-0'
                 }`}
                 onLoad={() => setImageLoaded(true)}
                 loading="lazy"
