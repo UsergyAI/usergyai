@@ -24,7 +24,7 @@ const UserSignup = () => {
 
             {/* Form embedding container with consistent background */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-usergy-turquoise/20 overflow-hidden animate-scale-in">
-              <div className="relative w-full" style={{ minHeight: '600px', height: '70vh' }}>
+              <div className="relative w-full min-h-[600px] h-[70vh]">
                 <iframe 
                   data-tally-src="https://forms.usergy.ai/user-signup" 
                   width="100%" 
@@ -33,8 +33,7 @@ const UserSignup = () => {
                   marginHeight="0" 
                   marginWidth="0" 
                   title="User Sign-Up Form"
-                  className="w-full h-full border-0"
-                  style={{ minHeight: '600px' }}
+                  className="w-full h-full border-0 min-h-[600px]"
                 />
               </div>
             </div>
