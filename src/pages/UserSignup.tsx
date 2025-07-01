@@ -30,8 +30,8 @@ const UserSignup = () => {
                   width="100%" 
                   height="100%" 
                   frameBorder="0" 
-                  marginHeight="0" 
-                  marginWidth="0" 
+                  marginHeight={0} 
+                  marginWidth={0} 
                   title="User Sign-Up Form"
                   className="w-full h-full border-0 min-h-[600px]"
                 />
