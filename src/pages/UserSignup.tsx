@@ -1,9 +1,28 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const UserSignup = () => {
+  useEffect(() => {
+    // Load Tally embeds after component mounts
+    const loadTallyEmbeds = () => {
+      if (typeof window !== 'undefined' && (window as any).Tally) {
+        (window as any).Tally.loadEmbeds();
+      } else {
+        // Fallback: manually set src for iframe if Tally script hasn't loaded
+        const iframe = document.querySelector('iframe[data-tally-src]:not([src])') as HTMLIFrameElement;
+        if (iframe && iframe.dataset.tallySrc) {
+          iframe.src = iframe.dataset.tallySrc;
+        }
+      }
+    };
+
+    // Small delay to ensure DOM is ready
+    const timer = setTimeout(loadTallyEmbeds, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
       <Header />
@@ -24,16 +43,17 @@ const UserSignup = () => {
 
             {/* Form embedding container with consistent background */}
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-usergy-turquoise/20 overflow-hidden animate-scale-in">
-              <div className="relative w-full min-h-[600px] h-[70vh]">
+              <div className="relative w-full min-h-[585px]">
                 <iframe 
-                  data-tally-src="https://forms.usergy.ai/user-signup" 
+                  data-tally-src="https://tally.so/embed/w4Y1lA?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+                  loading="lazy"
                   width="100%" 
-                  height="100%" 
+                  height="585" 
                   frameBorder="0" 
                   marginHeight={0} 
                   marginWidth={0} 
                   title="User Sign-Up Form"
-                  className="w-full h-full border-0 min-h-[600px]"
+                  className="w-full h-full border-0 min-h-[585px]"
                 />
               </div>
             </div>
@@ -59,8 +79,16 @@ const UserSignup = () => {
 
       <Footer />
 
-      {/* Add the Tally.so embed script */}
-      <script async src="https://tally.so/widgets/embed.js"></script>
+      {/* Tally.so embed script with proper loading */}
+      <script 
+        src="https://tally.so/widgets/embed.js"
+        async
+        onLoad={() => {
+          if (typeof window !== 'undefined' && (window as any).Tally) {
+            (window as any).Tally.loadEmbeds();
+          }
+        }}
+      />
     </div>
   );
 };
