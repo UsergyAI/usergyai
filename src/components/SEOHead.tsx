@@ -15,7 +15,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   description = "Transform your AI vision into reality with expert guidance. Get authentic feedback, vibrant community, and social momentum for your AI tool.",
   keywords = "AI growth, AI traction, AI founders, AI strategy, AI community, AI feedback, AI consultation",
   canonicalUrl = "https://usergy.ai",
-  ogImage = "https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png"
+  ogImage = "https://usergy.ai/lovable-uploads/fee8487a-47c8-459e-b502-edbd4ed47d78.png"
 }) => {
   return (
     <Helmet>
