@@ -4,9 +4,7 @@ const ContactFormSection = () => {
   useEffect(() => {
     // Load Tally.so script
     const script = document.createElement('script');
-    script.innerHTML = `
-      var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
-    `;
+    script.innerHTML = `var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}`;
     document.body.appendChild(script);
     
     return () => {
@@ -38,7 +36,7 @@ const ContactFormSection = () => {
           
           <div className="bg-white rounded-lg shadow-2xl border-2 border-gray-100 p-0 overflow-hidden">
             <iframe 
-              data-tally-src="https://tally.so/embed/mK4djk?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+              data-tally-src="https://tally.so/embed/mK4djk?hideTitle=1&transparentBackground=1&dynamicHeight=1" 
               loading="lazy" 
               width="100%" 
               height="617" 
