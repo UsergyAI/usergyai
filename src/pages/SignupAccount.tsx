@@ -172,7 +172,8 @@ const SignupAccount = () => {
               user_id: authData.user.id,
               full_name: formData.fullName,
               agreed_to_terms: formData.agreeToTerms,
-              agreed_to_privacy: formData.agreeToPrivacy
+              agreed_to_privacy: formData.agreeToPrivacy,
+              profile_completed: false
             }, {
               onConflict: 'user_id'
             });

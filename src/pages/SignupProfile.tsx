@@ -215,16 +215,35 @@ const SignupProfile = () => {
   if (!authChecked) {
     return (
       <div className="min-h-screen bg-usergy-light flex items-center justify-center">
-        <div className="text-center">
-          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-usergy-turquoise" />
-          <p className="text-gray-600">Loading...</p>
-        </div>
+        <Card className="max-w-md mx-auto shadow-xl border-0 bg-white/95 backdrop-blur-sm">
+          <CardContent className="p-8 text-center">
+            <Loader2 className="h-12 w-12 text-usergy-turquoise mx-auto mb-4 animate-spin" />
+            <h2 className="text-xl font-bold text-usergy-dark mb-2">Loading Your Profile...</h2>
+            <p className="text-gray-600">Setting up your AI Explorer experience.</p>
+          </CardContent>
+        </Card>
       </div>
     );
   }
 
   if (!user) {
-    return null; // Will redirect via useEffect
+    return (
+      <div className="min-h-screen bg-usergy-light flex items-center justify-center">
+        <Card className="max-w-md mx-auto shadow-xl border-0 bg-white/95 backdrop-blur-sm">
+          <CardContent className="p-8 text-center">
+            <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
+            <h2 className="text-xl font-bold text-usergy-dark mb-2">Authentication Required</h2>
+            <p className="text-gray-600 mb-4">Please complete account creation first.</p>
+            <Button 
+              onClick={() => navigate('/signup/account')}
+              className="bg-usergy-turquoise hover:bg-usergy-skyblue"
+            >
+              Go to Account Creation
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
   }
 
   const pageData = [
