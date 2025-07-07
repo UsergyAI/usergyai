@@ -16,7 +16,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   description,
   canonical,
   keywords,
-  image = '/lovable-uploads/45ae045c-4f58-42d9-933a-0e455a95d9a5.png',
+  image = 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png',
   type = 'website',
   noindex = false
 }) => {
@@ -30,7 +30,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
       {canonical && <link rel="canonical" href={canonical} />}
-      {noindex && <meta name="robots" content="noindex,nofollow" />}
+      {noindex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index, follow" />}
 
       {/* Open Graph */}
       <meta property="og:type" content={type} />

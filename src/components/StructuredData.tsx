@@ -21,7 +21,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     "@type": "Organization",
     "name": "Usergy",
     "url": "https://usergy.ai",
-    "logo": "https://usergy.ai/lovable-uploads/45ae045c-4f58-42d9-933a-0e455a95d9a5.png",
+    "logo": "https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png",
     "description": "Expert AI traction services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum.",
     "contactPoint": {
       "@type": "ContactPoint",
@@ -41,6 +41,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     "@type": "WebSite",
     "name": "Usergy",
     "url": "https://usergy.ai",
+    "logo": "https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png",
     "potentialAction": {
       "@type": "SearchAction",
       "target": "https://usergy.ai/search?q={search_term_string}",

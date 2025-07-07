@@ -1,0 +1,26 @@
+{
+  "name": "Usergy",
+  "short_name": "Usergy",
+  "description": "Expert AI traction services connecting visionary founders with engaged enthusiasts",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F8FFFE",
+  "theme_color": "#4ECDC4",
+  "icons": [
+    {
+      "src": "/lovable-uploads/ab623905-07be-4b10-a37c-a65c3eedacd9.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/lovable-uploads/4147593f-e1d4-4995-9360-971c9e1f24c6.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
