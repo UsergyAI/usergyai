@@ -87,16 +87,45 @@ const SignupWelcome = () => {
               </CardContent>
             </Card>
 
-            <div className="space-y-4">
+            <div className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-4">
+                <a 
+                  href="https://discord.com/invite/jkeSnkm5ww" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="block"
+                >
+                  <Button
+                    size="lg"
+                    className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    💬 Join Our Discord Community!
+                  </Button>
+                </a>
+                
+                <a 
+                  href="/community" 
+                  className="block"
+                >
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="w-full border-2 border-usergy-turquoise text-usergy-turquoise hover:bg-usergy-turquoise hover:text-white font-bold px-8 py-4 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                  >
+                    🚀 Explore Future Projects (Coming Soon!)
+                  </Button>
+                </a>
+              </div>
+              
               <Button 
                 size="lg" 
-                className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
                 onClick={() => window.location.href = '/'}
               >
                 Explore Usergy Services
               </Button>
               
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-500 text-center">
                 Keep an eye on your inbox for exclusive AI tool invitations!
               </p>
             </div>

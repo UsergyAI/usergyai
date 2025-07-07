@@ -312,21 +312,21 @@ const SignupAccount = () => {
               
               <CardContent className="p-6">
                 <form onSubmit={handleSubmit} className="space-y-6">
-                  {/* Full Name */}
-                  <div className="space-y-3">
-                    <Label htmlFor="fullName" className="text-sm font-medium text-gray-700">
-                      Full Name <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      id="fullName"
-                      type="text"
-                      placeholder="Your full name"
-                      value={formData.fullName}
-                      onChange={(e) => handleInputChange('fullName', e.target.value)}
-                      onBlur={() => validateField('fullName')}
-                      className={`${errors.fullName ? 'border-red-500' : ''} ${formData.fullName && !errors.fullName ? 'border-green-500' : ''}`}
-                      required
-                    />
+                   {/* Full Name */}
+                   <div className="space-y-3">
+                     <Label htmlFor="fullName" className="signup-question">
+                       Full Name <span className="text-red-500">*</span>
+                     </Label>
+                     <Input
+                       id="fullName"
+                       type="text"
+                       placeholder="Your full name"
+                       value={formData.fullName}
+                       onChange={(e) => handleInputChange('fullName', e.target.value)}
+                       onBlur={() => validateField('fullName')}
+                       className={`transition-all duration-300 ${errors.fullName ? 'border-red-500' : ''} ${formData.fullName && !errors.fullName ? 'field-success' : ''}`}
+                       required
+                     />
                     {errors.fullName && (
                       <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
                         <span>⚠️</span> {errors.fullName}
@@ -334,21 +334,21 @@ const SignupAccount = () => {
                     )}
                   </div>
 
-                  {/* Email Address */}
-                  <div className="space-y-3">
-                    <Label htmlFor="email" className="text-sm font-medium text-gray-700">
-                      Email Address <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="your.email@example.com"
-                      value={formData.email}
-                      onChange={(e) => handleInputChange('email', e.target.value)}
-                      onBlur={() => validateField('email')}
-                      className={`${errors.email ? 'border-red-500' : ''} ${formData.email && !errors.email ? 'border-green-500' : ''}`}
-                      required
-                    />
+                   {/* Email Address */}
+                   <div className="space-y-3">
+                     <Label htmlFor="email" className="signup-question">
+                       Email Address <span className="text-red-500">*</span>
+                     </Label>
+                     <Input
+                       id="email"
+                       type="email"
+                       placeholder="your.email@example.com"
+                       value={formData.email}
+                       onChange={(e) => handleInputChange('email', e.target.value)}
+                       onBlur={() => validateField('email')}
+                       className={`transition-all duration-300 ${errors.email ? 'border-red-500' : ''} ${formData.email && !errors.email ? 'field-success' : ''}`}
+                       required
+                     />
                     <p className="text-xs text-gray-500 opacity-60">This will be your Usergy account email</p>
                     {errors.email && (
                       <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
@@ -357,21 +357,21 @@ const SignupAccount = () => {
                     )}
                   </div>
 
-                  {/* Password */}
-                  <div className="space-y-3">
-                    <Label htmlFor="password" className="text-sm font-medium text-gray-700">
-                      Password <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      id="password"
-                      type="password"
-                      placeholder="Create a strong password"
-                      value={formData.password}
-                      onChange={(e) => handleInputChange('password', e.target.value)}
-                      onBlur={() => validateField('password')}
-                      className={`${errors.password ? 'border-red-500' : ''} ${formData.password && !errors.password ? 'border-green-500' : ''}`}
-                      required
-                    />
+                   {/* Password */}
+                   <div className="space-y-3">
+                     <Label htmlFor="password" className="signup-question">
+                       Password <span className="text-red-500">*</span>
+                     </Label>
+                     <Input
+                       id="password"
+                       type="password"
+                       placeholder="Create a strong password"
+                       value={formData.password}
+                       onChange={(e) => handleInputChange('password', e.target.value)}
+                       onBlur={() => validateField('password')}
+                       className={`transition-all duration-300 ${errors.password ? 'border-red-500' : ''} ${formData.password && !errors.password ? 'field-success' : ''}`}
+                       required
+                     />
                     <p className="text-xs text-gray-500 opacity-60">Min. 8 characters, 1 uppercase, 1 number</p>
                     {errors.password && (
                       <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
@@ -380,21 +380,21 @@ const SignupAccount = () => {
                     )}
                   </div>
 
-                  {/* Confirm Password */}
-                  <div className="space-y-3">
-                    <Label htmlFor="confirmPassword" className="text-sm font-medium text-gray-700">
-                      Confirm Password <span className="text-red-500">*</span>
-                    </Label>
-                    <Input
-                      id="confirmPassword"
-                      type="password"
-                      placeholder="Re-enter your password"
-                      value={formData.confirmPassword}
-                      onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-                      onBlur={() => validateField('confirmPassword')}
-                      className={`${errors.confirmPassword ? 'border-red-500' : ''} ${formData.confirmPassword && !errors.confirmPassword ? 'border-green-500' : ''}`}
-                      required
-                    />
+                   {/* Confirm Password */}
+                   <div className="space-y-3">
+                     <Label htmlFor="confirmPassword" className="signup-question">
+                       Confirm Password <span className="text-red-500">*</span>
+                     </Label>
+                     <Input
+                       id="confirmPassword"
+                       type="password"
+                       placeholder="Re-enter your password"
+                       value={formData.confirmPassword}
+                       onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
+                       onBlur={() => validateField('confirmPassword')}
+                       className={`transition-all duration-300 ${errors.confirmPassword ? 'border-red-500' : ''} ${formData.confirmPassword && !errors.confirmPassword ? 'field-success' : ''}`}
+                       required
+                     />
                     {errors.confirmPassword && (
                       <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
                         <span>⚠️</span> {errors.confirmPassword}
@@ -402,9 +402,9 @@ const SignupAccount = () => {
                     )}
                   </div>
 
-                  {/* Legal Consent */}
-                  <div className="space-y-5">
-                    <Label className="text-sm font-medium text-gray-700">Legal Consent <span className="text-red-500">*</span></Label>
+                   {/* Legal Consent */}
+                   <div className="space-y-5">
+                     <Label className="signup-question">Legal Consent <span className="text-red-500">*</span></Label>
                     
                     <div className="space-y-4">
                       <div className="flex items-start space-x-3 p-4 border rounded-lg hover:bg-gray-50 transition-colors">
