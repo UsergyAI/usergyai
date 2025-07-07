@@ -84,11 +84,12 @@ const Header = () => {
           ? 'bg-white/95 backdrop-blur-sm shadow-lg' 
           : 'bg-transparent'
       }`}
+      role="banner"
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo with embedded SVG */}
-          <Link to="/" className="flex items-center group" onClick={() => handleMenuItemClick('/')}>
+          <Link to="/" className="flex items-center group" onClick={() => handleMenuItemClick('/')} aria-label="Usergy home">
             <div className="relative">
               <svg 
                 width="120" 
@@ -97,6 +98,8 @@ const Header = () => {
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-8 sm:h-10 md:h-12 w-auto transition-all duration-300 group-hover:opacity-80"
+                role="img"
+                aria-label="Usergy logo"
               >
                 <text x="10" y="25" fontSize="24" fontWeight="bold" fill="#4ECDC4">Usergy</text>
               </svg>
@@ -104,7 +107,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation - Hidden on mobile and small tablets */}
-          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8" role="navigation" aria-label="Main navigation">
             <button 
               onClick={() => scrollToSection('hero')}
               className="text-usergy-dark hover:text-usergy-turquoise transition-colors font-semibold text-sm xl:text-base"
@@ -175,7 +178,7 @@ const Header = () => {
         {/* Mobile Menu Dropdown - Improved functionality */}
         {isMobileMenuOpen && (
           <div className="lg:hidden mt-4 py-4 border-t border-gray-200 bg-white/95 backdrop-blur-sm rounded-lg shadow-lg mobile-menu">
-            <nav className="flex flex-col space-y-3">
+            <nav className="flex flex-col space-y-3" role="navigation" aria-label="Mobile navigation">
               <button 
                 onClick={() => scrollToSection('hero')}
                 className="text-left px-4 py-3 text-usergy-dark hover:text-usergy-turquoise hover:bg-gray-50 transition-colors font-semibold rounded-md touch-manipulation"

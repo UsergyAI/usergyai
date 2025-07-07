@@ -9,18 +9,34 @@ import HowItWorksSection from '@/components/HowItWorksSection';
 import TrustSection from '@/components/TrustSection';
 import FinalCTASection from '@/components/FinalCTASection';
 import Footer from '@/components/Footer';
+import SEOHead from '@/components/SEOHead';
+import StructuredData from '@/components/StructuredData';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Usergy: AI Traction & Growth"
+        description="Expert AI traction services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum."
+        canonical="https://usergy.ai"
+        keywords="AI traction, AI growth, AI community, AI feedback, AI founders, startup growth"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: "Home", url: "https://usergy.ai" }
+        ]}
+        pageType="WebPage"
+      />
       <Header />
-      <HeroSection />
-      <ProblemSection />
-      <SolutionSection />
-      <DualValueSection />
-      <HowItWorksSection />
-      <TrustSection />
-      <FinalCTASection />
+      <main role="main">
+        <HeroSection />
+        <ProblemSection />
+        <SolutionSection />
+        <DualValueSection />
+        <HowItWorksSection />
+        <TrustSection />
+        <FinalCTASection />
+      </main>
       <Footer />
     </div>
   );
