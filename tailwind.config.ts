@@ -64,40 +64,13 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				usergy: {
-					turquoise: 'hsl(var(--usergy-turquoise-hsl))',
-					skyblue: 'hsl(var(--usergy-skyblue-hsl))',
-					coral: 'hsl(var(--usergy-coral-hsl))',
-					gold: 'hsl(var(--usergy-gold-hsl))',
-					light: 'hsl(var(--usergy-light-hsl))',
-					dark: 'hsl(var(--usergy-dark-hsl))',
-					purple: 'hsl(var(--usergy-purple-hsl))',
-					green: 'hsl(var(--usergy-green-hsl))',
-					orange: 'hsl(var(--usergy-orange-hsl))'
+					turquoise: '#4ECDC4',
+					skyblue: '#45B7D1',
+					coral: '#FF6B6B',
+					light: '#F9F9F9',
+					dark: '#333333',
+					gold: '#FED766'
 				}
-			},
-			spacing: {
-				'1': 'var(--spacing-1)',
-				'2': 'var(--spacing-2)',
-				'3': 'var(--spacing-3)',
-				'4': 'var(--spacing-4)',
-				'5': 'var(--spacing-5)',
-				'6': 'var(--spacing-6)',
-				'8': 'var(--spacing-8)',
-				'10': 'var(--spacing-10)',
-				'12': 'var(--spacing-12)',
-				'16': 'var(--spacing-16)',
-				'20': 'var(--spacing-20)'
-			},
-			boxShadow: {
-				'sm': 'var(--shadow-sm)',
-				'md': 'var(--shadow-md)',
-				'lg': 'var(--shadow-lg)',
-				'xl': 'var(--shadow-xl)'
-			},
-			screens: {
-				'xs': '320px',
-				'3xl': '1920px',
-				'4xl': '2560px',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
