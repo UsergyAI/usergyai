@@ -8,9 +8,6 @@ interface OptimizedImageProps {
   loading?: 'lazy' | 'eager';
   placeholder?: boolean;
   onLoad?: () => void;
-  width?: number;
-  height?: number;
-  priority?: boolean;
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
@@ -19,17 +16,14 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   className = '',
   loading = 'lazy',
   placeholder = true,
-  onLoad,
-  width,
-  height,
-  priority = false
+  onLoad
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    if (loading === 'eager' || priority) {
+    if (loading === 'eager') {
       setIsInView(true);
       return;
     }
@@ -49,7 +43,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
 
     return () => observer.disconnect();
-  }, [loading, priority]);
+  }, [loading]);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -65,15 +59,12 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         <img
           src={src}
           alt={alt}
-          width={width}
-          height={height}
           className={`transition-opacity duration-300 ${
             isLoaded ? 'opacity-100' : 'opacity-0'
           } ${className}`}
           onLoad={handleLoad}
-          loading={priority ? 'eager' : loading}
+          loading={loading}
           decoding="async"
-          fetchPriority={priority ? 'high' : 'auto'}
         />
       )}
     </div>

@@ -3,62 +3,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/lovable-uploads/4147593f-e1d4-4995-9360-971c9e1f24c6.png" type="image/png" sizes="32x32" />
-    <link rel="icon" href="/lovable-uploads/ab623905-07be-4b10-a37c-a65c3eedacd9.png" type="image/png" sizes="16x16" />
-    <link rel="apple-touch-icon" href="/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png" sizes="180x180" />
+    <link rel="icon" href="/lovable-uploads/45ae045c-4f58-42d9-933a-0e455a95d9a5.png" type="image/png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Usergy: AI Traction & Growth</title>
     
-    <!-- Deferred Analytics Scripts -->
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61825KRLWX"></script>
     <script>
-      // Defer analytics until after main content loads
-      window.addEventListener('load', function() {
-        // Google Analytics 4
-        var script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-61825KRLWX';
-        document.head.appendChild(script);
-        
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-61825KRLWX');
-        
-        // Microsoft Clarity
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-61825KRLWX');
+    </script>
+    
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
             t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
             y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "s81tzqonjo");
-      });
     </script>
     
-    <!-- Performance and Resource Hints -->
+    <!-- Preload critical assets -->
+    <link rel="preload" href="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" as="image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.clarity.ms" />
+    
+    <!-- DNS prefetch for better performance -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="//calendly.com" />
-    
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" as="image" fetchpriority="high" />
-    <link rel="preload" href="/lovable-uploads/45ae045c-4f58-42d9-933a-0e455a95d9a5.png" as="image" />
-    
-    <!-- Critical CSS inlined for first paint -->
-    <style>
-      /* Critical above-the-fold styles */
-      html { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-      body { margin: 0; background-color: #F8FFFE; }
-      .hero-loading { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-    </style>
-    
-    <!-- SEO and Accessibility -->
-    <meta name="robots" content="index, follow, max-image-preview:large" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="color-scheme" content="light" />
   </head>
   <body>
     <div id="root"></div>

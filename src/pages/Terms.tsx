@@ -3,25 +3,10 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
-import SEOHead from '@/components/SEOHead';
-import StructuredData from '@/components/StructuredData';
 
 const Terms = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
-      <SEOHead
-        title="Terms of Service"
-        description="Usergy's terms of service. Read our terms and conditions for using AI traction services, community participation, and service agreements."
-        canonical="https://usergy.ai/terms"
-        noindex={false}
-      />
-      <StructuredData
-        breadcrumbs={[
-          { name: "Home", url: "https://usergy.ai" },
-          { name: "Terms of Service", url: "https://usergy.ai/terms" }
-        ]}
-        pageType="WebPage"
-      />
       <Header />
       
       {/* Hero Section with Enhanced Floating Bubbles */}
@@ -45,7 +30,7 @@ const Terms = () => {
                 Terms of Service
               </h1>
               <p className="text-lg text-gray-600 animate-slide-up">
-                Last updated: <time dateTime="2025-01">January 2025</time>
+                Last updated: January 2025
               </p>
             </div>
           </div>
@@ -53,7 +38,7 @@ const Terms = () => {
       </section>
 
       {/* Content Section - No floating bubbles here */}
-      <main className="relative pb-16 sm:pb-20" style={{ zIndex: 10 }} role="main">
+      <main className="relative pb-16 sm:pb-20" style={{ zIndex: 10 }}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 animate-scale-in">
