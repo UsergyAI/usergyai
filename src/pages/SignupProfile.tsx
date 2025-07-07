@@ -207,8 +207,8 @@ const SignupProfile = () => {
       if (error) {
         console.error('Profile update error:', error);
         toast({
-          title: "We encountered a temporary issue saving your profile.",
-          description: "Please try again or refresh the page. Your account is still active!",
+          title: "We encountered a temporary issue",
+          description: "We encountered a temporary issue saving your profile. Please try again. Your account is active!",
           variant: "destructive"
         });
         return;
@@ -222,11 +222,11 @@ const SignupProfile = () => {
       navigate('/dashboard');
     } catch (error) {
       console.error('Profile completion error:', error);
-      toast({
-        title: "We encountered a temporary issue saving your profile.",
-        description: "Please try again or refresh the page. Your account is still active!",
-        variant: "destructive"
-      });
+        toast({
+          title: "We encountered a temporary issue",
+          description: "We encountered a temporary issue saving your profile. Please try again. Your account is active!",
+          variant: "destructive"
+        });
     } finally {
       setIsLoading(false);
     }

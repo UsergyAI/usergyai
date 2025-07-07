@@ -21,11 +21,13 @@ const ResetPassword = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Check if we have the access token from the reset link
-    const accessToken = searchParams.get('access_token');
+    // Check for tokens from different possible parameters (Supabase uses various formats)
+    const accessToken = searchParams.get('access_token') || searchParams.get('token');
     const refreshToken = searchParams.get('refresh_token');
+    const type = searchParams.get('type');
     
-    if (!accessToken || !refreshToken) {
+    // Only proceed if this is a recovery/password reset flow
+    if (type !== 'recovery' && !accessToken) {
       toast({
         title: "Invalid reset link",
         description: "This password reset link is invalid or has expired.",
@@ -37,19 +39,32 @@ const ResetPassword = () => {
 
     // Set the session with the tokens from the URL
     const setSession = async () => {
-      const { error } = await supabase.auth.setSession({
-        access_token: accessToken,
-        refresh_token: refreshToken,
-      });
-
-      if (error) {
-        console.error('Session error:', error);
-        toast({
-          title: "Invalid reset link",
-          description: "This password reset link is invalid or has expired.",
-          variant: "destructive",
+      if (accessToken && refreshToken) {
+        const { error } = await supabase.auth.setSession({
+          access_token: accessToken,
+          refresh_token: refreshToken,
         });
-        navigate('/forgot-password');
+
+        if (error) {
+          console.error('Session error:', error);
+          toast({
+            title: "Invalid reset link",
+            description: "This password reset link is invalid or has expired.",
+            variant: "destructive",
+          });
+          navigate('/forgot-password');
+        }
+      } else if (type === 'recovery') {
+        // For recovery type, the session should already be set by Supabase
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) {
+          toast({
+            title: "Invalid reset link",
+            description: "This password reset link is invalid or has expired.",
+            variant: "destructive",
+          });
+          navigate('/forgot-password');
+        }
       }
     };
 
