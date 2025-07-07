@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
@@ -17,6 +16,7 @@ import { TIMEZONES } from '@/utils/timezones';
 import { EnhancedCheckbox } from '@/components/ui/enhanced-checkbox';
 import { SearchableSelect } from '@/components/ui/searchable-select';
 import { EnhancedRadioGroup } from '@/components/ui/enhanced-radio-group';
+import { Helmet } from 'react-helmet-async';
 
 const SignupProfile = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -26,10 +26,9 @@ const SignupProfile = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
 
-  // Form data matching the exact specification
+  // Enhanced form data with comprehensive fields
   const [formData, setFormData] = useState({
-    // Page 1: Basic Profile & Location
-    phoneNumber: '',
+    // Basic Profile & Location (Step 1)
     locationCountry: '',
     locationCity: '',
     timeZone: '',
@@ -37,20 +36,22 @@ const SignupProfile = () => {
     operatingSystems: [] as string[],
     aiPassionExpertise: '',
 
-    // Page 2: AI Core & Skills
+    // AI Core & Skills (Step 2)
     aiInterests: [] as string[],
     aiFamiliarity: '',
     gptModelsUsed: [] as string[],
     recentAiTools: '',
-    currentRole: '',
+    jobTitle: '',
     programmingLanguages: [] as string[],
     specificSkills: [] as string[],
-    hasBuiltProjects: '',
+    hasBuiltProjects: false,
     portfolioLink: '',
 
-    // Page 3: Impact & Community
+    // Impact & Community (Step 3)
     amplificationMethods: [] as string[],
     testimonialConsent: '' as 'yes' | 'no' | '',
+    motivations: [] as string[],
+    interestsHobbies: '',
     discordUsername: '',
     linkedinProfile: '',
     twitterUsername: ''
@@ -59,11 +60,8 @@ const SignupProfile = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    
     const checkAuth = async () => {
       try {
-        // Check if user is authenticated
         const { data: { session }, error } = await supabase.auth.getSession();
         
         if (error) {
@@ -72,34 +70,24 @@ const SignupProfile = () => {
           return;
         }
 
-        if (!session?.user) {
-          console.log('No authenticated user found, redirecting to account creation');
+        if (!session) {
           navigate('/signup/account');
           return;
         }
 
-        console.log('User authenticated:', session.user.id);
         setUser(session.user);
 
         // Check if profile already exists and is completed
-        const { data: profile, error: profileError } = await supabase
+        const { data: profile } = await supabase
           .from('profiles')
-          .select('profile_completed, full_name')
+          .select('profile_completed')
           .eq('user_id', session.user.id)
-          .maybeSingle();
-
-        if (profileError) {
-          console.error('Profile check error:', profileError);
-          // Don't redirect on profile error, let user continue
-        }
+          .single();
 
         if (profile?.profile_completed) {
-          console.log('Profile already completed, redirecting to welcome');
           navigate('/signup/welcome');
           return;
         }
-
-        console.log('User ready for profile completion');
 
       } catch (error) {
         console.error('Auth check error:', error);
@@ -126,18 +114,12 @@ const SignupProfile = () => {
     if (step === 1) {
       if (!formData.locationCountry) newErrors.locationCountry = 'Country is required';
       if (!formData.timeZone) newErrors.timeZone = 'Time zone is required';
-      if (formData.devicesOwned.length === 0) newErrors.devicesOwned = 'Select at least one device';
-      if (formData.operatingSystems.length === 0) newErrors.operatingSystems = 'Select at least one operating system';
-      if (!formData.aiPassionExpertise.trim()) newErrors.aiPassionExpertise = 'Please tell us about your AI passion & expertise';
     } else if (step === 2) {
-      if (formData.aiInterests.length === 0) newErrors.aiInterests = 'Select at least one AI interest';
       if (!formData.aiFamiliarity) newErrors.aiFamiliarity = 'AI familiarity level is required';
-      if (formData.gptModelsUsed.length === 0) newErrors.gptModelsUsed = 'Select at least one AI/GPT model you use';
-      if (!formData.currentRole) newErrors.currentRole = 'Current role/profession is required';
-      if (formData.programmingLanguages.length === 0) newErrors.programmingLanguages = 'Select at least one programming language (or None)';
-      if (!formData.hasBuiltProjects) newErrors.hasBuiltProjects = 'Please make a selection';
+      if (formData.aiInterests.length === 0) newErrors.aiInterests = 'Select at least one AI interest';
     } else if (step === 3) {
-      if (!formData.testimonialConsent) newErrors.testimonialConsent = 'Please make a selection about testimonials';
+      if (!formData.testimonialConsent) newErrors.testimonialConsent = 'Please make a selection';
+      if (formData.motivations.length === 0) newErrors.motivations = 'Select at least one motivation';
     }
 
     setErrors(newErrors);
@@ -147,19 +129,11 @@ const SignupProfile = () => {
   const handleNext = () => {
     if (validateStep(currentStep)) {
       setCurrentStep(prev => Math.min(prev + 1, 3));
-      window.scrollTo(0, 0);
     }
   };
 
   const handleBack = () => {
     setCurrentStep(prev => Math.max(prev - 1, 1));
-    window.scrollTo(0, 0);
-  };
-
-  const validatePhoneNumber = (phone: string): boolean => {
-    // Basic phone validation - allow international formats
-    const phoneRegex = /^[+]?[1-9]\d{1,14}$/;
-    return phoneRegex.test(phone.replace(/[\s\-\(\)]/g, ''));
   };
 
   const handleSubmit = async () => {
@@ -168,24 +142,23 @@ const SignupProfile = () => {
     setIsLoading(true);
     
     try {
-      // Build the update data object
       const updateData = {
-        // Map form fields to database columns
         location_country: formData.locationCountry,
-        location_city: formData.locationCity || null,
+        location_city: formData.locationCity,
         time_zone: formData.timeZone,
         devices_owned: formData.devicesOwned,
         operating_systems: formData.operatingSystems,
         ai_understanding: formData.aiFamiliarity,
         gpt_models_used: formData.gptModelsUsed,
-        recent_ai_tools: formData.recentAiTools || null,
-        job_title: formData.currentRole,
+        recent_ai_tools: formData.recentAiTools,
+        job_title: formData.jobTitle,
         programming_languages: formData.programmingLanguages,
-        entrepreneurial_experience: formData.hasBuiltProjects === 'yes',
-        linkedin_profile: formData.linkedinProfile || null,
-        discord_username: formData.discordUsername || null,
-        twitter_username: formData.twitterUsername || null,
         testimonial_consent: formData.testimonialConsent === 'yes',
+        motivations: formData.motivations,
+        interests_hobbies: formData.interestsHobbies,
+        discord_username: formData.discordUsername,
+        linkedin_profile: formData.linkedinProfile,
+        twitter_username: formData.twitterUsername,
         profile_completed: true,
         updated_at: new Date().toISOString()
       };
@@ -198,8 +171,8 @@ const SignupProfile = () => {
       if (error) {
         console.error('Profile update error:', error);
         toast({
-          title: "We encountered a temporary issue",
-          description: "Please try again or refresh the page. Your account is still active!",
+          title: "Error",
+          description: "Failed to save profile. Please try again.",
           variant: "destructive"
         });
         return;
@@ -214,8 +187,8 @@ const SignupProfile = () => {
     } catch (error) {
       console.error('Profile completion error:', error);
       toast({
-        title: "We encountered a temporary issue",
-        description: "Please try again or refresh the page. Your account is still active!",
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
         variant: "destructive"
       });
     } finally {
@@ -226,134 +199,74 @@ const SignupProfile = () => {
   if (!authChecked) {
     return (
       <div className="min-h-screen bg-usergy-light flex items-center justify-center">
-        <Card className="max-w-md mx-auto shadow-xl border-0 bg-white/95 backdrop-blur-sm">
-          <CardContent className="p-8 text-center">
-            <Loader2 className="h-12 w-12 text-usergy-turquoise mx-auto mb-4 animate-spin" />
-            <h2 className="text-xl font-bold text-usergy-dark mb-2">Loading Your Profile...</h2>
-            <p className="text-gray-600">Setting up your AI Explorer experience.</p>
-          </CardContent>
-        </Card>
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-usergy-turquoise" />
+          <p className="text-gray-600">Loading...</p>
+        </div>
       </div>
     );
   }
 
   if (!user) {
-    return (
-      <div className="min-h-screen bg-usergy-light flex items-center justify-center">
-        <Card className="max-w-md mx-auto shadow-xl border-0 bg-white/95 backdrop-blur-sm">
-          <CardContent className="p-8 text-center">
-            <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-4" />
-            <h2 className="text-xl font-bold text-usergy-dark mb-2">Authentication Required</h2>
-            <p className="text-gray-600 mb-4">Please complete account creation first.</p>
-            <Button 
-              onClick={() => navigate('/signup/account')}
-              className="bg-usergy-turquoise hover:bg-usergy-skyblue"
-            >
-              Go to Account Creation
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
+    return null; // Will redirect via useEffect
   }
 
-  const pageData = [
-    {
-      title: "Tell Us About Yourself",
-      subtitle: "Help us get to know you better. This info helps us connect you with the most exciting AI adventures tailored for you."
-    },
-    {
-      title: "Your AI Strengths & Exploration",
-      subtitle: "Help us find projects that perfectly align with your unique AI interests and technical abilities."
-    },
-    {
-      title: "Your Voice, Your Impact, Your Community",
-      subtitle: "These final questions help us understand how you'd like to engage with our community and amplify your impact."
-    }
+  const stepTitles = [
+    "Basic Profile & Location",
+    "AI Core & Skills", 
+    "Impact & Community"
   ];
 
   const renderStep1 = () => (
-    <div className="space-y-8 animate-page-enter">
-      {/* Phone Number */}
-      <div className="space-y-3">
-        <Label htmlFor="phoneNumber" className="question-text">
-          <strong>What's your phone number?</strong> (Optional)
-        </Label>
-        <div className="form-field-focus relative">
-          <Input
-            id="phoneNumber"
-            type="tel"
-            placeholder="e.g., +91 9363173403"
-            value={formData.phoneNumber}
-            onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
-            className="placeholder-enhanced form-transition"
-          />
-        </div>
-      </div>
-
-      {/* Location */}
-      <div className="grid md:grid-cols-2 gap-6">
-        <div className="space-y-3">
-          <Label className="question-text">
-            <strong>Which country are you primarily located in?</strong> <span className="text-red-500">*</span>
-          </Label>
+    <div className="space-y-6">
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="country">Country <span className="text-red-500">*</span></Label>
           <SearchableSelect
             options={COUNTRIES}
             value={formData.locationCountry}
             onChange={(value) => handleInputChange('locationCountry', value)}
-            placeholder="e.g., India"
+            placeholder="Select your country"
             error={!!errors.locationCountry}
-            success={!!formData.locationCountry && !errors.locationCountry}
           />
           {errors.locationCountry && (
-            <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
+            <p className="text-sm text-red-500 flex items-center gap-1">
               <AlertCircle className="h-3 w-3" /> {errors.locationCountry}
             </p>
           )}
         </div>
         
-        <div className="space-y-3">
-          <Label className="question-text">
-            <strong>Your city/state</strong> (optional)
-          </Label>
-          <div className="form-field-focus relative">
-            <Input
-              placeholder="e.g., Tiruchirappalli, Tamil Nadu"
-              value={formData.locationCity}
-              onChange={(e) => handleInputChange('locationCity', e.target.value)}
-              className="placeholder-enhanced form-transition"
-            />
-          </div>
+        <div className="space-y-2">
+          <Label htmlFor="city">City</Label>
+          <Input
+            id="city"
+            placeholder="Your city"
+            value={formData.locationCity}
+            onChange={(e) => handleInputChange('locationCity', e.target.value)}
+          />
         </div>
       </div>
 
-      {/* Time Zone */}
-      <div className="space-y-3">
-        <Label className="question-text">
-          <strong>What's your primary time zone?</strong> <span className="text-red-500">*</span>
-        </Label>
+      <div className="space-y-2">
+        <Label htmlFor="timezone">Time Zone <span className="text-red-500">*</span></Label>
         <SearchableSelect
           options={TIMEZONES}
           value={formData.timeZone}
           onChange={(value) => handleInputChange('timeZone', value)}
-          placeholder="e.g., UTC+05:30 — Kolkata (India)"
+          placeholder="Select your time zone"
           error={!!errors.timeZone}
-          success={!!formData.timeZone && !errors.timeZone}
         />
         {errors.timeZone && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
+          <p className="text-sm text-red-500 flex items-center gap-1">
             <AlertCircle className="h-3 w-3" /> {errors.timeZone}
           </p>
         )}
       </div>
 
-      {/* Devices Available */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>Which devices do you have available for testing AI products?</strong> <span className="text-red-500">*</span>
-        </Label>
-        <div className="grid md:grid-cols-3 gap-3">
-          {['Desktop PC', 'Laptop', 'Android Phone', 'iPhone', 'Tablet', 'VR Headset'].map((device) => (
+      <div className="space-y-3">
+        <Label>Devices You Own (Optional)</Label>
+        <div className="grid md:grid-cols-2 gap-3">
+          {['Desktop Computer', 'Laptop', 'Smartphone', 'Tablet', 'Smart Speaker', 'VR Headset'].map((device) => (
             <EnhancedCheckbox
               key={device}
               id={device}
@@ -366,89 +279,39 @@ const SignupProfile = () => {
                 }
               }}
               label={device}
-              className="form-transition"
             />
           ))}
         </div>
-        {errors.devicesOwned && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
-            <AlertCircle className="h-3 w-3" /> {errors.devicesOwned}
-          </p>
-        )}
-      </div>
-
-      {/* Operating Systems */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>What operating system(s) do you primarily use for testing?</strong> <span className="text-red-500">*</span>
-        </Label>
-        <div className="grid md:grid-cols-3 gap-3">
-          {['Windows', 'macOS', 'Linux', 'Android', 'iOS', 'Other'].map((os) => (
-            <EnhancedCheckbox
-              key={os}
-              id={os}
-              checked={formData.operatingSystems.includes(os)}
-              onCheckedChange={(checked) => {
-                if (checked) {
-                  handleInputChange('operatingSystems', [...formData.operatingSystems, os]);
-                } else {
-                  handleInputChange('operatingSystems', formData.operatingSystems.filter(o => o !== os));
-                }
-              }}
-              label={os}
-              className="form-transition"
-            />
-          ))}
-        </div>
-        {errors.operatingSystems && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
-            <AlertCircle className="h-3 w-3" /> {errors.operatingSystems}
-          </p>
-        )}
-      </div>
-
-      {/* AI Passion & Expertise */}
-      <div className="space-y-3">
-        <Label className="question-text">
-          <strong>Tell us about your AI passion & expertise.</strong> <span className="text-red-500">*</span>
-        </Label>
-        <div className="form-field-focus">
-          <Textarea
-            placeholder="e.g., I'm passionate about exploring new AI tools for productivity."
-            value={formData.aiPassionExpertise}
-            onChange={(e) => handleInputChange('aiPassionExpertise', e.target.value)}
-            rows={4}
-            className={`placeholder-enhanced form-transition ${
-              formData.aiPassionExpertise && !errors.aiPassionExpertise 
-                ? 'form-field-success' 
-                : errors.aiPassionExpertise 
-                  ? 'form-field-error' 
-                  : ''
-            }`}
-          />
-        </div>
-        {errors.aiPassionExpertise && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
-            <AlertCircle className="h-3 w-3" /> {errors.aiPassionExpertise}
-          </p>
-        )}
       </div>
     </div>
   );
 
   const renderStep2 = () => (
-    <div className="space-y-8 animate-page-enter">
-      {/* AI Interests */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>What specific AI areas or applications excite you most?</strong> <span className="text-red-500">*</span>
-        </Label>
+    <div className="space-y-6">
+      <div className="space-y-3">
+        <Label>How familiar are you with AI? <span className="text-red-500">*</span></Label>
+        <EnhancedRadioGroup
+          options={[
+            { value: 'beginner', label: 'Beginner', description: 'Just getting started with AI tools' },
+            { value: 'intermediate', label: 'Intermediate', description: 'Use AI tools regularly' },
+            { value: 'advanced', label: 'Advanced', description: 'Building or working on AI projects' },
+            { value: 'expert', label: 'Expert', description: 'AI researcher or developer' }
+          ]}
+          value={formData.aiFamiliarity}
+          onChange={(value) => handleInputChange('aiFamiliarity', value)}
+          name="aiFamiliarity"
+        />
+        {errors.aiFamiliarity && (
+          <p className="text-sm text-red-500 flex items-center gap-1">
+            <AlertCircle className="h-3 w-3" /> {errors.aiFamiliarity}
+          </p>
+        )}
+      </div>
+
+      <div className="space-y-3">
+        <Label>AI Interests <span className="text-red-500">*</span></Label>
         <div className="grid md:grid-cols-2 gap-3">
-          {[
-            'AI in Finance', 'Productivity AI', 'Conversational AI/Chatbots', 'Generative AI (Image/Video)', 
-            'Generative AI (Text)', 'AI for Education', 'AI Ethics', 'Machine Learning (General)', 
-            'AI for Gaming', 'Natural Language Processing (NLP)', 'Computer Vision', 'AI in Healthcare'
-          ].map((interest) => (
+          {['Machine Learning', 'Computer Vision', 'Natural Language Processing', 'Robotics', 'AI Ethics', 'Generative AI'].map((interest) => (
             <EnhancedCheckbox
               key={interest}
               id={interest}
@@ -461,337 +324,113 @@ const SignupProfile = () => {
                 }
               }}
               label={interest}
-              className="form-transition"
             />
           ))}
         </div>
         {errors.aiInterests && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
+          <p className="text-sm text-red-500 flex items-center gap-1">
             <AlertCircle className="h-3 w-3" /> {errors.aiInterests}
           </p>
         )}
       </div>
 
-      {/* AI Familiarity */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>How would you describe your familiarity with core AI concepts?</strong> <span className="text-red-500">*</span>
-        </Label>
-        <EnhancedRadioGroup
-          options={[
-            { value: 'basic', label: 'Basic (I use AI tools daily)', description: 'Regular user of AI applications' },
-            { value: 'intermediate', label: 'Intermediate (I understand core ML/NN concepts)', description: 'Understanding of machine learning basics' },
-            { value: 'advanced', label: 'Advanced (I can explain ML algorithms/Deep Learning)', description: 'Deep technical knowledge' },
-            { value: 'expert', label: 'Expert (I work with/research AI professionally)', description: 'Professional AI experience' }
-          ]}
-          value={formData.aiFamiliarity}
-          onChange={(value) => handleInputChange('aiFamiliarity', value)}
-          name="aiFamiliarity"
-          className="form-transition"
+      <div className="space-y-2">
+        <Label htmlFor="jobTitle">Job Title</Label>
+        <Input
+          id="jobTitle"
+          placeholder="e.g., Software Developer, Product Manager, Student"
+          value={formData.jobTitle}
+          onChange={(e) => handleInputChange('jobTitle', e.target.value)}
         />
-        {errors.aiFamiliarity && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
-            <AlertCircle className="h-3 w-3" /> {errors.aiFamiliarity}
-          </p>
-        )}
       </div>
-
-      {/* GPT Models Used */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>Which specific AI/GPT models or tools do you use regularly?</strong> <span className="text-red-500">*</span>
-        </Label>
-        <div className="grid md:grid-cols-2 gap-3">
-          {[
-            'ChatGPT (4.0)', 'Claude', 'Gemini', 'DALL·E', 'Bard (Google\'s AI)', 
-            'Midjourney', 'ChatGPT (3.5)', 'Perplexity AI', 'Stable Diffusion', 
-            'Siri/Alexa (voice assistants)', 'Copilot'
-          ].map((model) => (
-            <EnhancedCheckbox
-              key={model}
-              id={model}
-              checked={formData.gptModelsUsed.includes(model)}
-              onCheckedChange={(checked) => {
-                if (checked) {
-                  handleInputChange('gptModelsUsed', [...formData.gptModelsUsed, model]);
-                } else {
-                  handleInputChange('gptModelsUsed', formData.gptModelsUsed.filter(m => m !== model));
-                }
-              }}
-              label={model}
-              className="form-transition"
-            />
-          ))}
-        </div>
-        {errors.gptModelsUsed && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
-            <AlertCircle className="h-3 w-3" /> {errors.gptModelsUsed}
-          </p>
-        )}
-      </div>
-
-      {/* Recent AI Tools */}
-      <div className="space-y-3">
-        <Label className="question-text">
-          <strong>Have you recently discovered any cool AI tools or trends you're following?</strong> (Optional)
-        </Label>
-        <div className="form-field-focus">
-          <Textarea
-            placeholder="e.g., Just found 'MapBrain' for mindmaps and podcasts, or 'BlackBox.ai' for coding assistance."
-            value={formData.recentAiTools}
-            onChange={(e) => handleInputChange('recentAiTools', e.target.value)}
-            rows={3}
-            className="placeholder-enhanced form-transition"
-          />
-        </div>
-      </div>
-
-      {/* Current Role */}
-      <div className="space-y-3">
-        <Label className="question-text">
-          <strong>What's your current role or profession?</strong> <span className="text-red-500">*</span>
-        </Label>
-        <SearchableSelect
-          options={[
-            'Software Engineer', 'Data Scientist', 'AI/ML Engineer', 'AI Researcher', 'Product Manager', 
-            'Project Manager', 'Consultant', 'Analyst', 'Marketing Specialist', 'Student (Undergraduate)', 
-            'Student (Graduate / Postgraduate)', 'Entrepreneur / Founder / Startup CEO', 'Designer (UI/UX, Graphic)', 
-            'Technical Writer', 'Educator', 'Healthcare Professional', 'Financial Analyst', 'Sales Professional', 
-            'Operations Manager', 'Other'
-          ]}
-          value={formData.currentRole}
-          onChange={(value) => handleInputChange('currentRole', value)}
-          placeholder="Select your role/profession"
-          error={!!errors.currentRole}
-          success={!!formData.currentRole && !errors.currentRole}
-        />
-        {errors.currentRole && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
-            <AlertCircle className="h-3 w-3" /> {errors.currentRole}
-          </p>
-        )}
-      </div>
-
-      {/* Programming Languages */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>Which programming languages are you familiar with?</strong> <span className="text-red-500">*</span>
-        </Label>
-        <div className="grid md:grid-cols-3 gap-3">
-          {['Python', 'JavaScript', 'Java', 'C++', 'R', 'Go', 'Rust', 'SQL', 'HTML/CSS', 'None'].map((lang) => (
-            <EnhancedCheckbox
-              key={lang}
-              id={lang}
-              checked={formData.programmingLanguages.includes(lang)}
-              onCheckedChange={(checked) => {
-                if (checked) {
-                  handleInputChange('programmingLanguages', [...formData.programmingLanguages, lang]);
-                } else {
-                  handleInputChange('programmingLanguages', formData.programmingLanguages.filter(l => l !== lang));
-                }
-              }}
-              label={lang}
-              className="form-transition"
-            />
-          ))}
-        </div>
-        {errors.programmingLanguages && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
-            <AlertCircle className="h-3 w-3" /> {errors.programmingLanguages}
-          </p>
-        )}
-      </div>
-
-      {/* Specific Skills */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>What are your key skills relevant to AI product exploration?</strong> (Optional)
-        </Label>
-        <div className="grid md:grid-cols-2 gap-3">
-          {[
-            'Prompt Engineering', 'UI/UX Evaluation', 'Bug Reporting', 'Data Analysis', 
-            'User Research', 'Product Management', 'Technical Writing', 'Creative Writing', 
-            'Community Building', 'Graphic Design'
-          ].map((skill) => (
-            <EnhancedCheckbox
-              key={skill}
-              id={skill}
-              checked={formData.specificSkills.includes(skill)}
-              onCheckedChange={(checked) => {
-                if (checked) {
-                  handleInputChange('specificSkills', [...formData.specificSkills, skill]);
-                } else {
-                  handleInputChange('specificSkills', formData.specificSkills.filter(s => s !== skill));
-                }
-              }}
-              label={skill}
-              className="form-transition"
-            />
-          ))}
-        </div>
-      </div>
-
-      {/* Built Projects */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>Have you built or contributed to any projects (AI or otherwise) before?</strong> <span className="text-red-500">*</span>
-        </Label>
-        <EnhancedRadioGroup
-          options={[
-            { value: 'yes', label: 'Yes', description: 'I have built or contributed to projects' },
-            { value: 'no', label: 'No', description: 'I haven\'t built projects yet' }
-          ]}
-          value={formData.hasBuiltProjects}
-          onChange={(value) => handleInputChange('hasBuiltProjects', value)}
-          name="hasBuiltProjects"
-          className="form-transition"
-        />
-        {errors.hasBuiltProjects && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
-            <AlertCircle className="h-3 w-3" /> {errors.hasBuiltProjects}
-          </p>
-        )}
-      </div>
-
-      {/* Portfolio Link - Conditional */}
-      {formData.hasBuiltProjects === 'yes' && (
-        <div className="space-y-3">
-          <Label className="question-text">
-            <strong>Share your Portfolio, GitHub, or LinkedIn profile link</strong> (Optional)
-          </Label>
-          <div className="form-field-focus relative">
-            <Input
-              placeholder="https://github.com/yourprofile"
-              value={formData.portfolioLink}
-              onChange={(e) => handleInputChange('portfolioLink', e.target.value)}
-              className="placeholder-enhanced form-transition"
-            />
-          </div>
-        </div>
-      )}
     </div>
   );
 
   const renderStep3 = () => (
-    <div className="space-y-8 animate-page-enter">
-      {/* Amplification Methods */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>How would you like to help amplify AI products you love?</strong> (Optional)
-        </Label>
-        <div className="grid gap-3">
-          {[
-            'Post general positive updates on my social media (e.g., "Tried X AI, it\'s cool!")',
-            'Write short reviews/testimonials for Usergy or specific AI products',
-            'Create original content (e.g., a brief video, a quick tutorial) about products I genuinely love',
-            'Participate in short Q&A sessions or interviews about my testing experience',
-            'Join specific client communities (e.g., their Discord, LinkedIn Group)',
-            'None of the above, I prefer to focus on feedback only'
-          ].map((method) => (
+    <div className="space-y-6">
+      <div className="space-y-3">
+        <Label>What motivates you? <span className="text-red-500">*</span></Label>
+        <div className="grid md:grid-cols-2 gap-3">
+          {['Learning new technology', 'Building innovative products', 'Helping others', 'Career advancement', 'Making money', 'Solving problems'].map((motivation) => (
             <EnhancedCheckbox
-              key={method}
-              id={method}
-              checked={formData.amplificationMethods.includes(method)}
+              key={motivation}
+              id={motivation}
+              checked={formData.motivations.includes(motivation)}
               onCheckedChange={(checked) => {
                 if (checked) {
-                  handleInputChange('amplificationMethods', [...formData.amplificationMethods, method]);
+                  handleInputChange('motivations', [...formData.motivations, motivation]);
                 } else {
-                  handleInputChange('amplificationMethods', formData.amplificationMethods.filter(m => m !== method));
+                  handleInputChange('motivations', formData.motivations.filter(m => m !== motivation));
                 }
               }}
-              label={method}
-              className="form-transition"
+              label={motivation}
             />
           ))}
         </div>
+        {errors.motivations && (
+          <p className="text-sm text-red-500 flex items-center gap-1">
+            <AlertCircle className="h-3 w-3" /> {errors.motivations}
+          </p>
+        )}
       </div>
 
-      {/* Testimonial Consent */}
-      <div className="space-y-4">
-        <Label className="question-text">
-          <strong>Are you comfortable with us sharing your first name and general location (e.g., "Alice J. from New York") when quoting your public testimonials or UGC?</strong> <span className="text-red-500">*</span>
-        </Label>
+      <div className="space-y-3">
+        <Label>May we use your feedback as testimonials? <span className="text-red-500">*</span></Label>
         <EnhancedRadioGroup
           options={[
-            { value: 'yes', label: 'Yes', description: 'You may use my first name and general location' },
-            { value: 'no', label: 'No', description: 'Please keep my feedback anonymous' }
+            { value: 'yes', label: 'Yes', description: 'You may use my feedback as testimonials' },
+            { value: 'no', label: 'No', description: 'Please keep my feedback private' }
           ]}
           value={formData.testimonialConsent}
           onChange={(value) => handleInputChange('testimonialConsent', value)}
           name="testimonialConsent"
-          className="form-transition"
         />
         {errors.testimonialConsent && (
-          <p className="text-sm text-red-500 animate-fade-in flex items-center gap-1">
+          <p className="text-sm text-red-500 flex items-center gap-1">
             <AlertCircle className="h-3 w-3" /> {errors.testimonialConsent}
           </p>
         )}
       </div>
 
-      {/* Social Links */}
-      <div className="space-y-6">
-        <div className="space-y-3">
-          <Label className="question-text">
-            <strong>Your Discord Username (e.g., Explorer#1234 - so we can connect!)</strong> (Optional)
-          </Label>
-          <div className="form-field-focus relative">
-            <Input
-              placeholder="e.g., Explorer#1234"
-              value={formData.discordUsername}
-              onChange={(e) => handleInputChange('discordUsername', e.target.value)}
-              className="placeholder-enhanced form-transition"
-            />
-          </div>
-        </div>
+      <div className="space-y-2">
+        <Label htmlFor="interestsHobbies">Interests & Hobbies (Optional)</Label>
+        <Textarea
+          id="interestsHobbies"
+          placeholder="Tell us about your interests and hobbies..."
+          value={formData.interestsHobbies}
+          onChange={(e) => handleInputChange('interestsHobbies', e.target.value)}
+          rows={3}
+        />
+      </div>
 
-        <div className="space-y-3">
-          <Label className="question-text">
-            <strong>Your LinkedIn Profile Link</strong> (Optional)
-          </Label>
-          <div className="form-field-focus relative">
-            <Input
-              placeholder="https://linkedin.com/in/yourprofile"
-              value={formData.linkedinProfile}
-              onChange={(e) => handleInputChange('linkedinProfile', e.target.value)}
-              className="placeholder-enhanced form-transition"
-            />
-          </div>
+      <div className="grid md:grid-cols-2 gap-4">
+        <div className="space-y-2">
+          <Label htmlFor="discordUsername">Discord Username (Optional)</Label>
+          <Input
+            id="discordUsername"
+            placeholder="@username"
+            value={formData.discordUsername}
+            onChange={(e) => handleInputChange('discordUsername', e.target.value)}
+          />
         </div>
-
-        <div className="space-y-3">
-          <Label className="question-text">
-            <strong>Your X (Twitter) Profile Link</strong> (Optional)
-          </Label>
-          <div className="form-field-focus relative">
-            <Input
-              placeholder="https://x.com/yourprofile"
-              value={formData.twitterUsername}
-              onChange={(e) => handleInputChange('twitterUsername', e.target.value)}
-              className="placeholder-enhanced form-transition"
-            />
-          </div>
+        
+        <div className="space-y-2">
+          <Label htmlFor="linkedinProfile">LinkedIn Profile (Optional)</Label>
+          <Input
+            id="linkedinProfile"
+            placeholder="https://linkedin.com/in/username"
+            value={formData.linkedinProfile}
+            onChange={(e) => handleInputChange('linkedinProfile', e.target.value)}
+          />
         </div>
       </div>
     </div>
   );
 
-  const renderStepContent = () => {
-    switch (currentStep) {
-      case 1:
-        return renderStep1();
-      case 2:
-        return renderStep2();
-      case 3:
-        return renderStep3();
-      default:
-        return renderStep1();
-    }
-  };
-
   return (
     <div className="min-h-screen bg-usergy-light">
       <Helmet>
-        <title>Complete Your AI Explorer Profile - Step {currentStep} of 3 - Usergy</title>
+        <title>Complete Your AI Explorer Profile - Usergy</title>
         <meta name="description" content="Complete your AI Explorer profile to unlock exclusive opportunities and connect with the AI community." />
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
@@ -804,12 +443,12 @@ const SignupProfile = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
             {/* Progress Header */}
-            <div className="text-center mb-8 animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-black text-usergy-dark mb-4">
-                Step {currentStep} of 3: Complete Profile
+            <div className="text-center mb-8">
+              <h1 className="text-4xl md:text-5xl font-black text-usergy-dark mb-4 animate-fade-in">
+                Complete Your Explorer Profile
               </h1>
-              <p className="text-xl text-gray-600 mb-6">
-                {pageData[currentStep - 1].subtitle}
+              <p className="text-xl text-gray-600 mb-6 animate-slide-up">
+                Help us understand your background so we can match you with the perfect AI tools to explore.
               </p>
               
               {/* Progress Indicator */}
@@ -837,77 +476,81 @@ const SignupProfile = () => {
               </div>
 
               {/* Step Progress */}
-              <div className="flex items-center justify-center space-x-2 mb-8">
-                {[1, 2, 3].map((step) => (
-                  <div
-                    key={step}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      step === currentStep
-                        ? 'bg-usergy-turquoise scale-125'
-                        : step < currentStep
-                          ? 'bg-green-500'
-                          : 'bg-gray-300'
-                    }`}
-                  />
-                ))}
+              <div className="flex justify-center mb-8">
+                <div className="flex items-center space-x-4">
+                  {[1, 2, 3].map((step) => (
+                    <React.Fragment key={step}>
+                      <div className={`flex items-center space-x-2 ${step === currentStep ? 'text-usergy-turquoise' : step < currentStep ? 'text-green-600' : 'text-gray-400'}`}>
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${
+                          step === currentStep ? 'bg-usergy-turquoise text-white' : 
+                          step < currentStep ? 'bg-green-500 text-white' : 'bg-gray-200 text-gray-500'
+                        }`}>
+                          {step < currentStep ? <CheckCircle className="h-4 w-4" /> : step}
+                        </div>
+                        <span className="text-sm font-medium hidden sm:block">{stepTitles[step - 1]}</span>
+                      </div>
+                      {step < 3 && <div className={`w-8 h-px ${step < currentStep ? 'bg-green-500' : 'bg-gray-300'}`}></div>}
+                    </React.Fragment>
+                  ))}
+                </div>
               </div>
             </div>
 
-            {/* Main Form Card */}
+            {/* Form Card */}
             <Card className="shadow-xl border-0 bg-white/95 backdrop-blur-sm animate-scale-in">
               <CardContent className="p-8">
-                <div className="mb-8">
-                  <h2 className="text-2xl font-bold text-usergy-dark mb-3">
-                    {pageData[currentStep - 1].title}
-                  </h2>
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-usergy-dark mb-2">
+                    {stepTitles[currentStep - 1]}
+                  </h3>
                   <p className="text-gray-600">
-                    {pageData[currentStep - 1].subtitle}
+                    Step {currentStep} of 3 - {
+                      currentStep === 1 ? "Tell us where you're from and your setup" :
+                      currentStep === 2 ? "Share your AI experience and interests" :
+                      "Help us understand your goals and preferences"
+                    }
                   </p>
                 </div>
 
-                {/* Step Content */}
-                {renderStepContent()}
+                {currentStep === 1 && renderStep1()}
+                {currentStep === 2 && renderStep2()}
+                {currentStep === 3 && renderStep3()}
 
                 {/* Navigation Buttons */}
-                <div className="flex justify-between items-center mt-12 pt-6 border-t border-gray-200">
-                  {currentStep > 1 ? (
-                    <Button
-                      onClick={handleBack}
-                      variant="outline"
-                      size="lg"
-                      className="form-transition hover:bg-gray-50"
-                    >
-                      <ArrowLeft className="mr-2 h-5 w-5" />
-                      Previous
-                    </Button>
-                  ) : (
-                    <div></div>
-                  )}
+                <div className="flex justify-between pt-8">
+                  <Button
+                    onClick={handleBack}
+                    disabled={currentStep === 1}
+                    variant="outline"
+                    className="flex items-center space-x-2"
+                  >
+                    <ArrowLeft className="h-4 w-4" />
+                    <span>Back</span>
+                  </Button>
 
                   {currentStep < 3 ? (
                     <Button
                       onClick={handleNext}
-                      size="lg"
-                      className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                      className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white flex items-center space-x-2"
                     >
-                      Next Step
-                      <ArrowRight className="ml-2 h-5 w-5" />
+                      <span>Next</span>
+                      <ArrowRight className="h-4 w-4" />
                     </Button>
                   ) : (
                     <Button
                       onClick={handleSubmit}
-                      size="lg"
                       disabled={isLoading}
-                      className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                      className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white flex items-center space-x-2"
                     >
                       {isLoading ? (
                         <>
-                          <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                          Completing Profile...
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          <span>Saving...</span>
                         </>
                       ) : (
                         <>
-                          Complete Profile →
+                          <span>Complete Profile</span>
+                          <CheckCircle className="h-4 w-4" />
                         </>
                       )}
                     </Button>

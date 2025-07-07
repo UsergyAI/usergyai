@@ -19,42 +19,25 @@ const SignupVerifySuccess = () => {
     
     const handleEmailConfirmation = async () => {
       try {
-        // First, handle any auth callback from the URL (verification tokens)
-        const { data: authData, error: authError } = await supabase.auth.getUser();
+        const { data, error } = await supabase.auth.getSession();
         
-        if (authError) {
-          console.error('Auth error during verification:', authError);
+        if (error || !data.session) {
+          console.error('Email verification error:', error);
           setError('Email verification failed. Please check your email and try the link again, or contact support.');
           setIsProcessing(false);
           return;
         }
 
-        // If we have a user, the verification was successful
-        if (authData?.user) {
-          console.log('Email verification successful, user authenticated:', authData.user.id);
-          
-          // Ensure we have a session
-          const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
-          
-          if (sessionError || !sessionData.session) {
-            console.error('Session error after verification:', sessionError);
-            setError('Authentication failed. Please try signing in again.');
-            setIsProcessing(false);
-            return;
-          }
-
-          // Brief delay to show success message, then redirect
-          setTimeout(() => {
-            navigate('/signup/profile');
-          }, 1500);
-        } else {
-          setError('Email verification failed. Please check your email and try the link again, or contact support.');
-          setIsProcessing(false);
-        }
+        console.log('Email verification successful, user authenticated');
+        
+        setTimeout(() => {
+          navigate('/signup/profile');
+        }, 2000);
         
       } catch (err) {
         console.error('Error handling email confirmation:', err);
         setError('Something went wrong during verification.');
+      } finally {
         setIsProcessing(false);
       }
     };

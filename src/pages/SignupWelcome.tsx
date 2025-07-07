@@ -61,22 +61,25 @@ const SignupWelcome = () => {
                       <MessageCircle className="h-5 w-5 mr-2 text-usergy-turquoise" />
                       Stay Connected
                     </h3>
-                     <div className="space-y-3">
+                    <div className="space-y-3">
                       <a 
                         href="https://discord.com/invite/jkeSnkm5ww" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-3 p-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg hover:from-purple-600 hover:to-purple-700 transition-all duration-300 font-bold text-base shadow-lg hover:shadow-xl transform hover:scale-105"
+                        className="flex items-center justify-between p-3 bg-purple-50 border border-purple-200 rounded-lg hover:bg-purple-100 transition-colors"
                       >
-                        Join Our Discord Community! 💬
-                        <ExternalLink className="h-5 w-5" />
+                        <span className="text-purple-700 font-medium">Join our Discord</span>
+                        <ExternalLink className="h-4 w-4 text-purple-500" />
                       </a>
                       
                       <a 
-                        href="/community" 
-                        className="flex items-center justify-center gap-3 p-4 bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white rounded-lg hover:from-usergy-skyblue hover:to-usergy-turquoise transition-all duration-300 font-bold text-base shadow-lg hover:shadow-xl transform hover:scale-105"
+                        href="https://www.reddit.com/r/UsergyAI/" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-between p-3 bg-orange-50 border border-orange-200 rounded-lg hover:bg-orange-100 transition-colors"
                       >
-                        Explore Future Projects (Coming Soon!) →
+                        <span className="text-orange-700 font-medium">Join our Reddit</span>
+                        <ExternalLink className="h-4 w-4 text-orange-500" />
                       </a>
                     </div>
                   </div>
