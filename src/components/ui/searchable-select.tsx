@@ -78,7 +78,7 @@ export const SearchableSelect: React.FC<SearchableSelectProps> = ({
     <div ref={dropdownRef} className={cn("relative", className)}>
       <div
         className={cn(
-          "relative flex items-center w-full px-4 py-3 border-2 rounded-xl cursor-pointer transition-all duration-300",
+          "relative flex items-center w-full h-[52px] px-4 py-3 border-2 rounded-xl cursor-pointer transition-all duration-300",
           "hover:border-usergy-turquoise/50 focus-within:border-usergy-turquoise focus-within:ring-4 focus-within:ring-usergy-turquoise/10",
           error && "border-red-500 focus-within:border-red-500 focus-within:ring-red-500/10",
           success && "border-green-500 focus-within:border-green-500 focus-within:ring-green-500/10",

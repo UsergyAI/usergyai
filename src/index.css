@@ -225,11 +225,30 @@ select:focus {
   }
 }
 
-/* Placeholder opacity for all inputs */
+/* Placeholder opacity for all inputs - 55% for better visibility */
 input::placeholder,
 textarea::placeholder {
   opacity: 0.55 !important;
   color: rgb(107 114 128) !important;
+}
+
+/* Enhanced field styling consistency */
+.field-consistent {
+  height: 52px;
+  padding: 12px 16px;
+  border: 2px solid rgb(229 231 235);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.field-consistent:hover {
+  border-color: hsl(176 60% 55% / 0.5);
+}
+
+.field-consistent:focus {
+  border-color: hsl(176 60% 55%);
+  box-shadow: 0 0 0 4px hsl(176 60% 55% / 0.1);
+  outline: none;
 }
 
 /* Question text styling */

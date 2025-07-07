@@ -135,11 +135,19 @@ const SignupProfile = () => {
   const handleNext = () => {
     if (validateStep(currentStep)) {
       setCurrentStep(prev => Math.min(prev + 1, 3));
+      // Smooth scroll to top of next section
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
     }
   };
 
   const handleBack = () => {
     setCurrentStep(prev => Math.max(prev - 1, 1));
+    // Smooth scroll to top of previous section
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100);
   };
 
   const handleSubmit = async () => {
@@ -263,7 +271,9 @@ const SignupProfile = () => {
             placeholder="Enter your city/state"
             value={formData.locationCity}
             onChange={(e) => handleInputChange('locationCity', e.target.value)}
-            className="transition-all duration-300"
+            className={`transition-all duration-300 h-[52px] px-4 py-3 border-2 rounded-xl 
+              hover:border-usergy-turquoise/50 focus:border-usergy-turquoise focus:ring-4 focus:ring-usergy-turquoise/10
+              ${formData.locationCity && !errors.locationCity ? 'border-green-500' : 'border-gray-200'}`}
           />
         </div>
       </div>

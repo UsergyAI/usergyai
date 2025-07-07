@@ -172,13 +172,13 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
 
   return (
     <div className={cn("relative", className)}>
-      <div className="flex">
+      <div className="flex h-[52px]">
         {/* Country Code Dropdown */}
         <div ref={dropdownRef} className="relative">
           <button
             type="button"
             className={cn(
-              "flex items-center px-3 py-3 border-2 border-r-0 rounded-l-xl cursor-pointer transition-all duration-300",
+              "flex items-center px-3 py-3 h-full border-2 border-r-0 rounded-l-xl cursor-pointer transition-all duration-300",
               "hover:border-usergy-turquoise/50 focus:border-usergy-turquoise focus:ring-4 focus:ring-usergy-turquoise/10",
               error && "border-red-500 focus:border-red-500 focus:ring-red-500/10",
               success && "border-green-500 focus:border-green-500 focus:ring-green-500/10",
@@ -255,7 +255,7 @@ export const PhoneInput: React.FC<PhoneInputProps> = ({
             onChange={(e) => handlePhoneNumberChange(e.target.value)}
             placeholder={placeholder}
             className={cn(
-              "w-full px-4 py-3 border-2 border-l-0 rounded-r-xl transition-all duration-300",
+              "w-full h-full px-4 py-3 border-2 border-l-0 rounded-r-xl transition-all duration-300",
               "hover:border-usergy-turquoise/50 focus:border-usergy-turquoise focus:ring-4 focus:ring-usergy-turquoise/10 focus:outline-none",
               error && "border-red-500 focus:border-red-500 focus:ring-red-500/10",
               success && "border-green-500 focus:border-green-500 focus:ring-green-500/10",
