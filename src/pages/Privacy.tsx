@@ -3,10 +3,25 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
+import SEOHead from '@/components/SEOHead';
+import StructuredData from '@/components/StructuredData';
 
 const Privacy = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
+      <SEOHead
+        title="Privacy Policy"
+        description="Usergy's privacy policy. Learn how we collect, use, and protect your personal information when using our AI traction services."
+        canonical="https://usergy.ai/privacy"
+        noindex={false}
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: "Home", url: "https://usergy.ai" },
+          { name: "Privacy Policy", url: "https://usergy.ai/privacy" }
+        ]}
+        pageType="WebPage"
+      />
       <Header />
       
       {/* Hero Section with Enhanced Floating Bubbles */}
@@ -30,7 +45,7 @@ const Privacy = () => {
                 Privacy Policy
               </h1>
               <p className="text-lg text-gray-600 animate-slide-up">
-                Last updated: January 2025
+                Last updated: <time dateTime="2025-01">January 2025</time>
               </p>
             </div>
           </div>
@@ -38,7 +53,7 @@ const Privacy = () => {
       </section>
 
       {/* Content Section - No floating bubbles here */}
-      <main className="relative pb-16 sm:pb-20" style={{ zIndex: 10 }}>
+      <main className="relative pb-16 sm:pb-20" style={{ zIndex: 10 }} role="main">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 animate-scale-in">
