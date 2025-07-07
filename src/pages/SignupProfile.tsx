@@ -63,6 +63,7 @@ const SignupProfile = () => {
     
     const checkAuth = async () => {
       try {
+        // Check if user is authenticated
         const { data: { session }, error } = await supabase.auth.getSession();
         
         if (error) {
@@ -71,24 +72,34 @@ const SignupProfile = () => {
           return;
         }
 
-        if (!session) {
+        if (!session?.user) {
+          console.log('No authenticated user found, redirecting to account creation');
           navigate('/signup/account');
           return;
         }
 
+        console.log('User authenticated:', session.user.id);
         setUser(session.user);
 
         // Check if profile already exists and is completed
-        const { data: profile } = await supabase
+        const { data: profile, error: profileError } = await supabase
           .from('profiles')
-          .select('profile_completed')
+          .select('profile_completed, full_name')
           .eq('user_id', session.user.id)
           .maybeSingle();
 
+        if (profileError) {
+          console.error('Profile check error:', profileError);
+          // Don't redirect on profile error, let user continue
+        }
+
         if (profile?.profile_completed) {
+          console.log('Profile already completed, redirecting to welcome');
           navigate('/signup/welcome');
           return;
         }
+
+        console.log('User ready for profile completion');
 
       } catch (error) {
         console.error('Auth check error:', error);

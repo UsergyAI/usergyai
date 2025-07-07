@@ -19,27 +19,42 @@ const SignupVerifySuccess = () => {
     
     const handleEmailConfirmation = async () => {
       try {
-        // Handle Supabase auth callback from email verification
-        const { data, error } = await supabase.auth.getSession();
+        // First, handle any auth callback from the URL (verification tokens)
+        const { data: authData, error: authError } = await supabase.auth.getUser();
         
-        if (error || !data.session) {
-          console.error('Email verification error:', error);
+        if (authError) {
+          console.error('Auth error during verification:', authError);
           setError('Email verification failed. Please check your email and try the link again, or contact support.');
           setIsProcessing(false);
           return;
         }
 
-        console.log('Email verification successful, user authenticated');
-        
-        // Brief delay to show success message, then immediate redirect
-        setTimeout(() => {
-          navigate('/signup/profile');
-        }, 1500);
+        // If we have a user, the verification was successful
+        if (authData?.user) {
+          console.log('Email verification successful, user authenticated:', authData.user.id);
+          
+          // Ensure we have a session
+          const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+          
+          if (sessionError || !sessionData.session) {
+            console.error('Session error after verification:', sessionError);
+            setError('Authentication failed. Please try signing in again.');
+            setIsProcessing(false);
+            return;
+          }
+
+          // Brief delay to show success message, then redirect
+          setTimeout(() => {
+            navigate('/signup/profile');
+          }, 1500);
+        } else {
+          setError('Email verification failed. Please check your email and try the link again, or contact support.');
+          setIsProcessing(false);
+        }
         
       } catch (err) {
         console.error('Error handling email confirmation:', err);
         setError('Something went wrong during verification.');
-      } finally {
         setIsProcessing(false);
       }
     };
