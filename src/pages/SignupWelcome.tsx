@@ -25,8 +25,11 @@ const SignupWelcome = () => {
             <div className="mb-8 animate-fade-in">
               <div className="text-6xl mb-4">🎉</div>
               <h1 className="text-5xl md:text-6xl font-black text-usergy-dark mb-6 animate-scale-in">
-                Welcome to the Usergy Explorer Community! Your Adventure Awaits!
+                Welcome to the Usergy Explorer Community!
               </h1>
+              <h2 className="text-2xl md:text-3xl font-semibold text-usergy-turquoise mb-4">
+                Your Adventure Awaits!
+              </h2>
               <p className="text-xl text-gray-600 max-w-lg mx-auto animate-slide-up">
                 Your profile is complete! You're officially an AI Explorer. Get ready to receive exciting project invitations and connect with fellow innovators.
               </p>
@@ -85,23 +88,13 @@ const SignupWelcome = () => {
             </Card>
 
             <div className="space-y-4">
-              <div className="space-y-3">
-                <Button 
-                  size="lg" 
-                  className="bg-purple-600 hover:bg-purple-700 text-white font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 mb-3"
-                  onClick={() => window.open('https://discord.com/invite/jkeSnkm5ww', '_blank')}
-                >
-                  💬 Join Our Discord Community!
-                </Button>
-                
-                <Button 
-                  size="lg" 
-                  className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-                  onClick={() => window.location.href = '/community'}
-                >
-                  → Explore Future Projects (Coming Soon!)
-                </Button>
-              </div>
+              <Button 
+                size="lg" 
+                className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                onClick={() => window.location.href = '/'}
+              >
+                Explore Usergy Services
+              </Button>
               
               <p className="text-sm text-gray-500">
                 Keep an eye on your inbox for exclusive AI tool invitations!
