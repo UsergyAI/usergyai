@@ -21,25 +21,35 @@ const ResetPassword = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Check for tokens from different possible parameters (Supabase uses various formats)
+    // Handle Supabase auth state changes for password reset
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (event === 'PASSWORD_RECOVERY') {
+        // User is properly authenticated for password reset
+        console.log('Password recovery session established');
+      }
+    });
+
+    // Check for various token formats from Supabase email links
     const accessToken = searchParams.get('access_token') || searchParams.get('token');
     const refreshToken = searchParams.get('refresh_token');
     const type = searchParams.get('type');
+    const code = searchParams.get('code');
     
-    // Only proceed if this is a recovery/password reset flow
-    if (type !== 'recovery' && !accessToken) {
-      toast({
-        title: "Invalid reset link",
-        description: "This password reset link is invalid or has expired.",
-        variant: "destructive",
-      });
-      navigate('/forgot-password');
-      return;
-    }
-
-    // Set the session with the tokens from the URL
-    const setSession = async () => {
-      if (accessToken && refreshToken) {
+    const initializeSession = async () => {
+      // Handle different Supabase auth flow types
+      if (type === 'recovery' || code) {
+        // For newer Supabase auth flows, check if session is already established
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session && !accessToken) {
+          toast({
+            title: "Invalid reset link",
+            description: "This password reset link is invalid or has expired.",
+            variant: "destructive",
+          });
+          navigate('/forgot-password');
+        }
+      } else if (accessToken && refreshToken) {
+        // Handle legacy token-based flows
         const { error } = await supabase.auth.setSession({
           access_token: accessToken,
           refresh_token: refreshToken,
@@ -54,21 +64,20 @@ const ResetPassword = () => {
           });
           navigate('/forgot-password');
         }
-      } else if (type === 'recovery') {
-        // For recovery type, the session should already be set by Supabase
-        const { data: { session } } = await supabase.auth.getSession();
-        if (!session) {
-          toast({
-            title: "Invalid reset link",
-            description: "This password reset link is invalid or has expired.",
-            variant: "destructive",
-          });
-          navigate('/forgot-password');
-        }
+      } else if (!accessToken && !code && type !== 'recovery') {
+        // No valid authentication tokens found
+        toast({
+          title: "Invalid reset link",
+          description: "This password reset link is invalid or has expired.",
+          variant: "destructive",
+        });
+        navigate('/forgot-password');
       }
     };
 
-    setSession();
+    initializeSession();
+
+    return () => subscription.unsubscribe();
   }, [searchParams, navigate, toast]);
 
   const validatePassword = (password: string) => {

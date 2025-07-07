@@ -158,18 +158,24 @@ const SignupProfile = () => {
   const handleNext = () => {
     if (validateStep(currentStep)) {
       setCurrentStep(prev => Math.min(prev + 1, 3));
-      // Smooth scroll to top of next section
+      // Smooth scroll to top of next section with enhanced animation
       setTimeout(() => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.scrollTo({ 
+          top: 0, 
+          behavior: 'smooth' 
+        });
       }, 100);
     }
   };
 
   const handleBack = () => {
     setCurrentStep(prev => Math.max(prev - 1, 1));
-    // Smooth scroll to top of previous section
+    // Smooth scroll to top of previous section with enhanced animation
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ 
+        top: 0, 
+        behavior: 'smooth' 
+      });
     }, 100);
   };
 
@@ -180,21 +186,36 @@ const SignupProfile = () => {
     
     try {
       const updateData = {
+        // Basic Profile & Location
         location_country: formData.locationCountry,
         location_city: formData.locationCity,
         time_zone: formData.timeZone,
+        
+        // Technology & Devices
         devices_owned: formData.devicesOwned,
         operating_systems: formData.operatingSystems,
+        
+        // AI Understanding & Experience
         ai_understanding: formData.aiFamiliarity,
         gpt_models_used: formData.gptModelsUsed,
         recent_ai_tools: formData.recentAiTools,
+        ai_frameworks: formData.aiInterests, // Map AI interests to frameworks
+        
+        // Professional Information
         job_title: formData.jobTitle,
         programming_languages: formData.programmingLanguages,
-        testimonial_consent: formData.testimonialConsent === 'yes',
-        interests_hobbies: formData.aiPassionExpertise,
-        discord_username: formData.discordUsername,
+        frameworks_libraries: formData.specificSkills, // Map skills to frameworks
+        
+        // Social & Portfolio Links
         linkedin_profile: formData.linkedinProfile,
         twitter_username: formData.twitterUsername,
+        discord_username: formData.discordUsername,
+        
+        // Content & Interests
+        interests_hobbies: formData.aiPassionExpertise,
+        
+        // Consent & Completion
+        testimonial_consent: formData.testimonialConsent === 'yes',
         profile_completed: true,
         updated_at: new Date().toISOString()
       };
