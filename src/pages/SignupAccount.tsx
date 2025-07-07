@@ -401,7 +401,7 @@ const SignupAccount = () => {
                         }`}
                         required
                       />
-                      {formData.password && !errors.password && (
+                      {formData.password && !errors.password && formData.password.length >= 8 && (
                         <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500 animate-check-in" />
                       )}
                     </div>
@@ -435,7 +435,7 @@ const SignupAccount = () => {
                         }`}
                         required
                       />
-                      {formData.confirmPassword && !errors.confirmPassword && (
+                      {formData.confirmPassword && !errors.confirmPassword && formData.confirmPassword === formData.password && formData.password.length >= 8 && (
                         <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-green-500 animate-check-in" />
                       )}
                     </div>

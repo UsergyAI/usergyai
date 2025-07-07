@@ -30,9 +30,8 @@ const SignupVerifySuccess = () => {
 
         console.log('Email verification successful, user authenticated');
         
-        setTimeout(() => {
-          navigate('/signup/profile');
-        }, 2000);
+        // Immediate redirect to profile page for seamless flow
+        navigate('/signup/profile');
         
       } catch (err) {
         console.error('Error handling email confirmation:', err);
