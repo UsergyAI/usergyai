@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CheckCircle, Mail, ArrowRight, Loader2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { useRateLimit } from '@/hooks/useRateLimit';
@@ -28,6 +28,7 @@ const SignupAccount = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   // Rate limiting for security
   const rateLimit = useRateLimit({
@@ -151,8 +152,16 @@ const SignupAccount = () => {
       });
 
       if (authError) {
-        if (authError.message.includes('already registered')) {
-          setErrors({ email: 'This email is already registered. Please try signing in instead.' });
+        if (authError.message.includes('already registered') || authError.message.includes('already been registered')) {
+          setErrors({ 
+            email: 'An account with this email already exists. Please try logging in.' 
+          });
+          // Show direct link to login
+          toast({
+            title: "Account Already Exists",
+            description: "An account with this email already exists. Please sign in instead.",
+            variant: "destructive"
+          });
         } else {
           toast({
             title: "Signup Failed",

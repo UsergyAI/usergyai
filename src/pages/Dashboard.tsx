@@ -104,7 +104,7 @@ const Dashboard = () => {
       <div className="min-h-screen flex flex-col bg-gradient-to-br from-usergy-light via-white to-blue-50">
         <Header />
         
-        <main className="flex-1 container mx-auto px-4 py-16">
+        <main className="flex-1 container mx-auto px-4 py-24">
           {/* Hero Section */}
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold text-usergy-dark mb-6">

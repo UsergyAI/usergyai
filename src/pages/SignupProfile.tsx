@@ -108,6 +108,16 @@ const SignupProfile = () => {
     }
   };
 
+  const validateURL = (url: string): boolean => {
+    if (!url.trim()) return true; // Optional fields
+    try {
+      new URL(url);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
   const validateStep = (step: number): boolean => {
     const newErrors: Record<string, string> = {};
 
@@ -124,8 +134,21 @@ const SignupProfile = () => {
       if (!formData.jobTitle) newErrors.jobTitle = 'Current role/title is required';
       if (formData.programmingLanguages.length === 0) newErrors.programmingLanguages = 'Select at least one programming language';
       if (!formData.hasBuiltProjects) newErrors.hasBuiltProjects = 'Please make a selection';
+      
+      // URL validations
+      if (formData.portfolioLink && !validateURL(formData.portfolioLink)) {
+        newErrors.portfolioLink = 'Please enter a valid URL';
+      }
     } else if (step === 3) {
       if (!formData.testimonialConsent) newErrors.testimonialConsent = 'Please make a selection';
+      
+      // URL validations for step 3
+      if (formData.linkedinProfile && !validateURL(formData.linkedinProfile)) {
+        newErrors.linkedinProfile = 'Please enter a valid URL';
+      }
+      if (formData.twitterUsername && !validateURL(formData.twitterUsername)) {
+        newErrors.twitterUsername = 'Please enter a valid URL';
+      }
     }
 
     setErrors(newErrors);
@@ -196,7 +219,7 @@ const SignupProfile = () => {
         description: "Your AI Explorer profile has been completed successfully!",
       });
 
-      navigate('/signup/welcome');
+      navigate('/dashboard');
     } catch (error) {
       console.error('Profile completion error:', error);
       toast({
@@ -602,8 +625,13 @@ const SignupProfile = () => {
           placeholder="https://github.com/yourprofile"
           value={formData.portfolioLink}
           onChange={(e) => handleInputChange('portfolioLink', e.target.value)}
-          className="transition-all duration-300"
+          className={`transition-all duration-300 ${errors.portfolioLink ? 'border-red-500' : ''}`}
         />
+        {errors.portfolioLink && (
+          <p className="text-sm text-red-500 flex items-center gap-1">
+            <AlertCircle className="h-3 w-3" /> {errors.portfolioLink}
+          </p>
+        )}
       </div>
     </div>
   );
@@ -689,8 +717,13 @@ const SignupProfile = () => {
             placeholder="https://linkedin.com/in/yourprofile"
             value={formData.linkedinProfile}
             onChange={(e) => handleInputChange('linkedinProfile', e.target.value)}
-            className="transition-all duration-300"
+            className={`transition-all duration-300 ${errors.linkedinProfile ? 'border-red-500' : ''}`}
           />
+          {errors.linkedinProfile && (
+            <p className="text-sm text-red-500 flex items-center gap-1">
+              <AlertCircle className="h-3 w-3" /> {errors.linkedinProfile}
+            </p>
+          )}
         </div>
 
         <div className="space-y-3">
@@ -701,8 +734,13 @@ const SignupProfile = () => {
             placeholder="https://x.com/yourprofile"
             value={formData.twitterUsername}
             onChange={(e) => handleInputChange('twitterUsername', e.target.value)}
-            className="transition-all duration-300"
+            className={`transition-all duration-300 ${errors.twitterUsername ? 'border-red-500' : ''}`}
           />
+          {errors.twitterUsername && (
+            <p className="text-sm text-red-500 flex items-center gap-1">
+              <AlertCircle className="h-3 w-3" /> {errors.twitterUsername}
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { supabase } from '@/integrations/supabase/client';
@@ -16,6 +16,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState({ email: '', password: '' });
   const navigate = useNavigate();
+  const location = useLocation();
   const { toast } = useToast();
 
   useEffect(() => {
@@ -27,7 +28,17 @@ const Login = () => {
       }
     };
     checkUser();
-  }, [navigate]);
+
+    // Show success message if redirected from password reset
+    if (location.state?.message) {
+      toast({
+        title: "Success",
+        description: location.state.message,
+      });
+      // Clear the state to prevent repeated messages
+      navigate(location.pathname, { replace: true });
+    }
+  }, [navigate, location, toast]);
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -103,28 +114,38 @@ const Login = () => {
         description="Sign in to your Usergy account to continue your AI exploration journey"
       />
       
-      <div className="min-h-screen flex flex-col bg-gradient-to-br from-usergy-light via-white to-blue-50">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-usergy-light via-white to-blue-50 relative overflow-hidden">
         <Header />
         
-        <main className="flex-1 flex items-center justify-center px-4 py-16">
+        {/* Enhanced Background with subtle animations */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-20 left-10 w-32 h-32 bg-usergy-turquoise/10 rounded-full animate-float"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 bg-usergy-skyblue/10 rounded-full animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-40 left-20 w-20 h-20 bg-usergy-coral/10 rounded-full animate-float" style={{ animationDelay: '4s' }}></div>
+          <div className="absolute bottom-20 right-10 w-28 h-28 bg-usergy-gold/10 rounded-full animate-float" style={{ animationDelay: '6s' }}></div>
+        </div>
+        
+        <main className="flex-1 flex items-center justify-center px-4 py-24 relative z-10">
           <div className="w-full max-w-md">
             {/* Hero Section */}
             <div className="text-center mb-8">
-              <h1 className="text-3xl md:text-4xl font-bold text-usergy-dark mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-usergy-dark mb-4 animate-fade-in">
                 Welcome Back, Explorer!
               </h1>
-              <h2 className="text-lg text-gray-600 mb-6">
+              <h2 className="text-lg text-gray-600 mb-6 animate-slide-up">
                 Sign in to continue your journey and explore groundbreaking AI
               </h2>
               
-              {/* Abstract AI Visual */}
-              <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-full flex items-center justify-center">
-                <div className="w-8 h-8 bg-white rounded-full opacity-80"></div>
+              {/* Enhanced Abstract AI Visual */}
+              <div className="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-usergy-turquoise via-usergy-skyblue to-usergy-coral rounded-full flex items-center justify-center animate-pulse-glow relative">
+                <div className="w-10 h-10 bg-white rounded-full opacity-90 animate-pulse"></div>
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-usergy-gold rounded-full animate-bounce"></div>
+                <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-usergy-coral rounded-full animate-ping"></div>
               </div>
             </div>
 
-            {/* Login Form */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-gray-100">
+            {/* Enhanced Login Form */}
+            <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl p-8 border border-gray-100/50 animate-scale-in hover:shadow-3xl transition-all duration-300">
               <h3 className="text-xl font-semibold text-usergy-dark mb-6 text-center">
                 Access Your Usergy Account
               </h3>

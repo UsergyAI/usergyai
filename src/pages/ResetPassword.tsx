@@ -32,7 +32,28 @@ const ResetPassword = () => {
         variant: "destructive",
       });
       navigate('/forgot-password');
+      return;
     }
+
+    // Set the session with the tokens from the URL
+    const setSession = async () => {
+      const { error } = await supabase.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      });
+
+      if (error) {
+        console.error('Session error:', error);
+        toast({
+          title: "Invalid reset link",
+          description: "This password reset link is invalid or has expired.",
+          variant: "destructive",
+        });
+        navigate('/forgot-password');
+      }
+    };
+
+    setSession();
   }, [searchParams, navigate, toast]);
 
   const validatePassword = (password: string) => {
@@ -85,7 +106,14 @@ const ResetPassword = () => {
           title: "Password reset successful",
           description: "Your password has been updated. Please sign in with your new password.",
         });
-        navigate('/login');
+        // Add a slight delay before redirect to ensure toast is visible
+        setTimeout(() => {
+          navigate('/login', { 
+            state: { 
+              message: "Password reset successfully. Please sign in with your new password." 
+            }
+          });
+        }, 1000);
       }
     } catch (error) {
       toast({
@@ -108,7 +136,7 @@ const ResetPassword = () => {
       <div className="min-h-screen flex flex-col bg-gradient-to-br from-usergy-light via-white to-blue-50">
         <Header />
         
-        <main className="flex-1 flex items-center justify-center px-4 py-16">
+        <main className="flex-1 flex items-center justify-center px-4 py-24">
           <div className="w-full max-w-md">
             {/* Hero Section */}
             <div className="text-center mb-8">
