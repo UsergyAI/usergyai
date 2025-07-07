@@ -186,7 +186,7 @@ body {
   white-space: normal;
 }
 
-/* Focus indicators */
+/* Enhanced Focus indicators and Micro-interactions */
 *:focus {
   outline: 2px solid #4ECDC4 !important;
   outline-offset: 2px !important;
@@ -199,6 +199,65 @@ textarea:focus,
 select:focus {
   outline: 2px solid #4ECDC4 !important;
   outline-offset: 2px !important;
+}
+
+/* Global placeholder styling - 50-60% opacity */
+input::placeholder,
+textarea::placeholder {
+  opacity: 0.6 !important;
+  color: inherit !important;
+}
+
+/* Question text styling - bold and distinct */
+.question-text {
+  font-weight: 700 !important;
+  color: #2C3E50 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Field focus micro-interactions */
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #4ECDC4 !important;
+  box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1) !important;
+  transform: translateY(-1px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Completion feedback animation */
+@keyframes completion-feedback {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.field-completed {
+  animation: completion-feedback 0.5s ease-out;
+  border-color: #27AE60 !important;
+}
+
+/* Smooth page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* High contrast mode support */
