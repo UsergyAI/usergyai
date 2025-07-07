@@ -1,39 +1,92 @@
 
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#4ECDC4" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    
+    <!-- Favicon and Icons -->
     <link rel="icon" href="/lovable-uploads/45ae045c-4f58-42d9-933a-0e455a95d9a5.png" type="image/png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="apple-touch-icon" href="/lovable-uploads/45ae045c-4f58-42d9-933a-0e455a95d9a5.png" />
+    
+    <!-- Title will be managed by SEOHead component -->
     <title>Usergy: AI Traction & Growth</title>
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61825KRLWX"></script>
+    <!-- Performance-critical resource hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.clarity.ms" />
+    <link rel="dns-prefetch" href="//calendly.com" />
+    <link rel="dns-prefetch" href="//discord.com" />
+    <link rel="dns-prefetch" href="//linkedin.com" />
+    <link rel="dns-prefetch" href="//reddit.com" />
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    
+    <!-- Preload critical images -->
+    <link rel="preload" href="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" as="image" />
+    <link rel="preload" href="/lovable-uploads/45ae045c-4f58-42d9-933a-0e455a95d9a5.png" as="image" />
+    
+    <!-- Google Analytics 4 with performance optimization -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
-      gtag('config', 'G-61825KRLWX');
+      gtag('config', 'G-61825KRLWX', {
+        page_title: document.title,
+        page_location: window.location.href,
+        send_page_view: false
+      });
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-61825KRLWX"></script>
     
-    <!-- Microsoft Clarity -->
-    <script type="text/javascript">
+    <!-- Microsoft Clarity with deferred loading -->
+    <script>
+      window.addEventListener('load', function() {
         (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
         })(window, document, "clarity", "script", "s81tzqonjo");
+      });
     </script>
     
-    <!-- Preload critical assets -->
-    <link rel="preload" href="/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" as="image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- Inline critical CSS will be injected by build tools -->
+    <style>
+      /* Prevent flash of unstyled content */
+      html { visibility: hidden; opacity: 0; }
+      html.js { visibility: visible; opacity: 1; transition: opacity 0.3s; }
+      
+      /* Critical loading styles */
+      .loading-spinner {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40px;
+        height: 40px;
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #4ECDC4;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        z-index: 9999;
+      }
+      
+      @keyframes spin {
+        0% { transform: translate(-50%, -50%) rotate(0deg); }
+        100% { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+    </style>
     
-    <!-- DNS prefetch for better performance -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <script>
+      document.documentElement.className = 'js';
+    </script>
   </head>
   <body>
     <div id="root"></div>

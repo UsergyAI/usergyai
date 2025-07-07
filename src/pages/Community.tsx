@@ -1,5 +1,5 @@
-
 import React from 'react';
+import SEOHead from '@/components/SEOHead';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CommunityHero from '@/components/community/CommunityHero';
@@ -13,20 +13,30 @@ import FinalCTA from '@/components/community/FinalCTA';
 
 const Community = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
-      <Header />
-      <main>
-        <CommunityHero />
-        <WhyUsergy />
-        <HowItWorks />
-        <UsergyDifference />
-        <ExplorerTestimonials />
-        <RewardsSection />
-        <CommunityFAQs />
-        <FinalCTA />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <SEOHead
+        title="AI Explorer Community"
+        description="Join our exclusive AI Explorer Community. Get early access to innovative AI tools, earn rewards, and shape the future of AI technology."
+        path="/community"
+      />
+      
+      <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
+        <Header />
+        
+        <main id="main-content" role="main">
+          <CommunityHero />
+          <WhyUsergy />
+          <HowItWorks />
+          <UsergyDifference />
+          <ExplorerTestimonials />
+          <RewardsSection />
+          <CommunityFAQs />
+          <FinalCTA />
+        </main>
+        
+        <Footer />
+      </div>
+    </>
   );
 };
 
