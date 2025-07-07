@@ -19,6 +19,7 @@ const SignupVerifySuccess = () => {
     
     const handleEmailConfirmation = async () => {
       try {
+        // Handle Supabase auth callback from email verification
         const { data, error } = await supabase.auth.getSession();
         
         if (error || !data.session) {
@@ -30,8 +31,10 @@ const SignupVerifySuccess = () => {
 
         console.log('Email verification successful, user authenticated');
         
-        // Immediate redirect to profile page for seamless flow
-        navigate('/signup/profile');
+        // Brief delay to show success message, then immediate redirect
+        setTimeout(() => {
+          navigate('/signup/profile');
+        }, 1500);
         
       } catch (err) {
         console.error('Error handling email confirmation:', err);

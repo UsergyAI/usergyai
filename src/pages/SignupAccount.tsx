@@ -187,6 +187,8 @@ const SignupAccount = () => {
           // Continue to success page regardless - user can complete profile later
         }
 
+        // Scroll to top to show success message at the top of viewport
+        window.scrollTo(0, 0);
         setIsSubmitted(true);
       }
     } catch (error: any) {
