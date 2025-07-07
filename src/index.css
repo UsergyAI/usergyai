@@ -27,6 +27,60 @@
   --color-usergy-orange: #E67E22;
 }
 
+/* Global placeholder styling */
+::placeholder {
+  opacity: 0.55 !important;
+  color: rgb(107 114 128) !important;
+}
+
+/* Question text styling */
+.question-text {
+  font-weight: 700;
+  color: var(--usergy-dark);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+/* Focus states for enhanced interactivity */
+input:focus,
+textarea:focus,
+select:focus,
+[role="combobox"]:focus-within {
+  outline: none !important;
+  border-color: var(--usergy-turquoise) !important;
+  box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.1) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Success state styling */
+.field-success {
+  border-color: var(--usergy-green) !important;
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1) !important;
+}
+
+/* Page transition styles */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+}
+
 @layer utilities {
   /* Enhanced Floating Animation for Bubbles */
   @keyframes float-enhanced {
