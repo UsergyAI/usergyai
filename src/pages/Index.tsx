@@ -28,7 +28,7 @@ const Index = () => {
         pageType="WebPage"
       />
       <Header />
-      <main role="main">
+      <main role="main" id="main">
         <HeroSection />
         <ProblemSection />
         <SolutionSection />

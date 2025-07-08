@@ -32,7 +32,7 @@ const Services = () => {
       />
       <Header />
       
-      <main role="main">
+      <main role="main" id="main">
         <ServicesHero />
         
         <PricingMatrixSection />

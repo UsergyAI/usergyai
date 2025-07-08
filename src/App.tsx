@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { usePerformanceOptimization } from "@/hooks/usePerformanceOptimization";
+import PerformanceMonitor from "@/components/PerformanceMonitor";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Community from "./pages/Community";
@@ -48,6 +49,7 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <PerformanceMonitor />
         <Toaster />
         <Sonner />
         <AppContent />

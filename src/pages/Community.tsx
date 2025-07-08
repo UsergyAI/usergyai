@@ -30,7 +30,7 @@ const Community = () => {
         pageType="WebPage"
       />
       <Header />
-      <main role="main">
+      <main role="main" id="main">
         <CommunityHero />
         <WhyUsergy />
         <HowItWorks />

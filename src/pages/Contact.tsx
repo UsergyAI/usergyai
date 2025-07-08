@@ -27,7 +27,7 @@ const Contact = () => {
         pageType="ContactPage"
       />
       <Header />
-      <main role="main">
+      <main role="main" id="main">
         <ContactHero />
         <TrustStatement />
         <ContactFormSection />

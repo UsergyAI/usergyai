@@ -53,7 +53,7 @@ const Terms = () => {
       </section>
 
       {/* Content Section - No floating bubbles here */}
-      <main className="relative pb-16 sm:pb-20" style={{ zIndex: 10 }} role="main">
+      <main className="relative pb-16 sm:pb-20" style={{ zIndex: 10 }} role="main" id="main">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 md:p-12 animate-scale-in">

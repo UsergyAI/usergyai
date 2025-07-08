@@ -89,7 +89,7 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo with embedded SVG */}
-          <Link to="/" className="flex items-center group" onClick={() => handleMenuItemClick('/')} aria-label="Usergy home">
+          <Link to="/" className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-usergy-turquoise focus-visible:ring-offset-2 rounded-md" onClick={() => handleMenuItemClick('/')} aria-label="Usergy home">
             <div className="relative">
               <svg 
                 width="120" 
@@ -97,7 +97,7 @@ const Header = () => {
                 viewBox="0 0 120 40" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-8 sm:h-10 md:h-12 w-auto transition-all duration-300 group-hover:opacity-80"
+                className="h-8 sm:h-10 md:h-12 w-auto transition-all duration-300 group-hover:opacity-80 group-hover:transform group-hover:scale-105"
                 role="img"
                 aria-label="Usergy logo"
               >
@@ -110,37 +110,43 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8" role="navigation" aria-label="Main navigation">
             <button 
               onClick={() => scrollToSection('hero')}
-              className="text-usergy-dark hover:text-usergy-turquoise transition-colors font-semibold text-sm xl:text-base"
+              className="text-usergy-dark hover:text-usergy-turquoise focus-visible:text-usergy-turquoise transition-all duration-200 font-semibold text-sm xl:text-base hover:transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-usergy-turquoise focus-visible:ring-offset-2 rounded-md px-2 py-1"
+              aria-label="Navigate to home section"
             >
               Home
             </button>
             <Link 
               to="/pricing"
-              className="text-usergy-dark hover:text-usergy-turquoise transition-colors font-semibold text-sm xl:text-base"
+              className="text-usergy-dark hover:text-usergy-turquoise focus-visible:text-usergy-turquoise transition-all duration-200 font-semibold text-sm xl:text-base hover:transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-usergy-turquoise focus-visible:ring-offset-2 rounded-md px-2 py-1"
+              aria-label="Navigate to pricing page"
             >
               Pricing
             </Link>
             <Link 
               to="/community"
-              className="text-usergy-dark hover:text-usergy-skyblue transition-colors font-semibold text-sm xl:text-base"
+              className="text-usergy-dark hover:text-usergy-skyblue focus-visible:text-usergy-skyblue transition-all duration-200 font-semibold text-sm xl:text-base hover:transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-usergy-skyblue focus-visible:ring-offset-2 rounded-md px-2 py-1"
+              aria-label="Navigate to community page"
             >
               Community
             </Link>
             <Link 
               to="/contact"
-              className="text-usergy-dark hover:text-usergy-coral transition-colors font-semibold text-sm xl:text-base"
+              className="text-usergy-dark hover:text-usergy-coral focus-visible:text-usergy-coral transition-all duration-200 font-semibold text-sm xl:text-base hover:transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-usergy-coral focus-visible:ring-offset-2 rounded-md px-2 py-1"
+              aria-label="Navigate to contact page"
             >
               Contact
             </Link>
             <button 
               onClick={() => scrollToSection('how-it-works')}
-              className="text-usergy-dark hover:text-usergy-skyblue transition-colors font-semibold text-sm xl:text-base"
+              className="text-usergy-dark hover:text-usergy-skyblue focus-visible:text-usergy-skyblue transition-all duration-200 font-semibold text-sm xl:text-base hover:transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-usergy-skyblue focus-visible:ring-offset-2 rounded-md px-2 py-1"
+              aria-label="Navigate to how it works section"
             >
               How It Works
             </button>
             <button 
               onClick={() => scrollToSection('success-stories')}
-              className="text-usergy-dark hover:text-usergy-coral transition-colors font-semibold text-sm xl:text-base"
+              className="text-usergy-dark hover:text-usergy-coral focus-visible:text-usergy-coral transition-all duration-200 font-semibold text-sm xl:text-base hover:transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-usergy-coral focus-visible:ring-offset-2 rounded-md px-2 py-1"
+              aria-label="Navigate to success stories section"
             >
               Success Stories
             </button>
