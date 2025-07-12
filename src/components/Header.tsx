@@ -159,7 +159,6 @@ const Header = () => {
               size="sm"
               onClick={handleCalendlyRedirect}
               className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold px-2 sm:px-3 md:px-4 lg:px-6 py-1.5 sm:py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-xs sm:text-sm lg:text-base will-change-transform min-w-[70px] sm:min-w-[90px] md:min-w-[110px]"
-              aria-label="Book a strategy call with Usergy"
             >
               <span className="hidden md:inline">Book Strategy Call</span>
               <span className="hidden sm:inline md:hidden">Book Call</span>
