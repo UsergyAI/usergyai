@@ -12,8 +12,13 @@ import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
 import PerformanceOptimizer from '@/components/PerformanceOptimizer';
+import CriticalResourceLoader from '@/components/CriticalResourceLoader';
+import usePerformanceMonitoring from '@/hooks/usePerformanceMonitoring';
+import { useImageOptimization } from '@/hooks/useImageOptimization';
 
 const Index = () => {
+  usePerformanceMonitoring();
+  
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
@@ -29,6 +34,7 @@ const Index = () => {
         ]}
         pageType="WebPage"
       />
+      <CriticalResourceLoader />
       <Header />
       <PerformanceOptimizer />
       <main role="main" id="main" data-hero>

@@ -35,7 +35,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <title>{optimizedTitle}</title>
       <meta name="description" content={optimizedDescription} />
       {keywords && <meta name="keywords" content={keywords} />}
-      {canonical && <link rel="canonical" href={canonical} />}
+      <link rel="canonical" href={canonical || 'https://usergy.ai'} />
       {noindex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
 
       {/* Enhanced SEO Meta Tags */}
