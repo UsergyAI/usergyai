@@ -7,7 +7,7 @@ const AddOnServicesSection = () => {
     {
       title: 'Extra Participant',
       price: '$35 each',
-      description: 'Scale insights with quality participants',
+      description: 'Scale your insights with additional high-quality participants',
       icon: Plus,
       color: 'usergy-turquoise',
       gradient: 'from-usergy-turquoise/20 to-usergy-turquoise/5'
@@ -16,7 +16,7 @@ const AddOnServicesSection = () => {
       title: 'Advanced Analytics',
       price: '+$499',
       subtitle: '(one-time)',
-      description: 'Deep analysis with predictive insights',
+      description: 'Deep-dive analysis with predictive insights and recommendations',
       icon: Search,
       color: 'usergy-coral',
       gradient: 'from-usergy-coral/20 to-usergy-coral/5'
@@ -25,7 +25,7 @@ const AddOnServicesSection = () => {
       title: 'Retainer Bundle',
       price: '10% off',
       subtitle: '3+ projects',
-      description: 'Maximize investment with ongoing partnerships',
+      description: 'Maximize your investment with ongoing partnership discounts',
       icon: Gift,
       color: 'usergy-skyblue',
       gradient: 'from-usergy-skyblue/20 to-usergy-skyblue/5'
@@ -33,19 +33,19 @@ const AddOnServicesSection = () => {
   ];
 
   return (
-    <section className="py-20 lg:py-20 py-10 bg-gray-50">
+    <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h3 className="text-2xl font-bold text-usergy-dark mb-8">
           Enhance Your Traction: Add-On Services
         </h3>
         
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           {addOns.map((addOn, index) => {
             const IconComponent = addOn.icon;
             return (
               <div 
                 key={index}
-                className={`bg-gradient-to-b ${addOn.gradient} rounded-xl p-6 shadow-lg hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 hover:border-${addOn.color}/40 transform group cursor-pointer`}
+                className={`bg-gradient-to-b ${addOn.gradient} rounded-xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-gray-100 hover:border-${addOn.color}/30 transform group cursor-pointer`}
               >
                 <div className="flex items-center justify-center mb-4">
                   <div className={`w-12 h-12 bg-gradient-to-br from-${addOn.color} to-${addOn.color}/80 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
