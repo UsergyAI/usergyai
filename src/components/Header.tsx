@@ -28,24 +28,41 @@ const Header = () => {
     const scrollToSection = searchParams.get('scrollTo');
     
     if (scrollToSection && location.pathname === '/') {
-      // Wait for the page to load and then scroll
-      const attemptScroll = (attempts = 0) => {
-        const maxAttempts = 50;
-        const element = document.getElementById(scrollToSection);
+      // Force load sections and then scroll when navigating from other pages
+      const forceLoadAndScrollFromNavigation = async () => {
+        // First, scroll down to trigger lazy loading of sections
+        const documentHeight = document.documentElement.scrollHeight;
+        const windowHeight = window.innerHeight;
+        const scrollDistance = Math.min(documentHeight * 0.8, windowHeight * 3);
         
-        if (element) {
-          setTimeout(() => {
+        // Scroll down to load sections
+        window.scrollTo({
+          top: scrollDistance,
+          behavior: 'instant'
+        });
+        
+        // Wait for intersection observers to trigger
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
+        // Now attempt to scroll to the target section
+        const attemptScroll = (attempts = 0) => {
+          const maxAttempts = 50;
+          const element = document.getElementById(scrollToSection);
+          
+          if (element) {
             element.scrollIntoView({ 
               behavior: 'smooth',
               block: 'start'
             });
-          }, 100);
-        } else if (attempts < maxAttempts) {
-          setTimeout(() => attemptScroll(attempts + 1), 100);
-        }
+          } else if (attempts < maxAttempts) {
+            setTimeout(() => attemptScroll(attempts + 1), 100);
+          }
+        };
+        
+        attemptScroll();
       };
       
-      setTimeout(() => attemptScroll(), 200);
+      setTimeout(() => forceLoadAndScrollFromNavigation(), 500);
     } else if (!scrollToSection) {
       // Only scroll to top if we're not trying to scroll to a section
       window.scrollTo(0, 0);
@@ -74,23 +91,41 @@ const Header = () => {
       // Navigate to homepage with section parameter
       navigate(`/?scrollTo=${sectionId}`);
     } else {
-      // We're already on homepage, scroll directly
-      const attemptScroll = (attempts = 0) => {
-        const maxAttempts = 30;
-        const element = document.getElementById(sectionId);
+      // We're already on homepage, force lazy sections to load by scrolling
+      const forceLoadAndScroll = async () => {
+        // First, scroll down to trigger lazy loading of sections
+        const documentHeight = document.documentElement.scrollHeight;
+        const windowHeight = window.innerHeight;
+        const scrollDistance = Math.min(documentHeight * 0.8, windowHeight * 3);
         
-        if (element) {
-          element.scrollIntoView({ 
-            behavior: 'smooth',
-            block: 'start'
-          });
-        } else if (attempts < maxAttempts) {
-          setTimeout(() => attemptScroll(attempts + 1), 100);
-        }
+        // Smooth scroll down to load sections
+        window.scrollTo({
+          top: scrollDistance,
+          behavior: 'instant'
+        });
+        
+        // Wait a bit for intersection observers to trigger
+        await new Promise(resolve => setTimeout(resolve, 200));
+        
+        // Now attempt to scroll to the target section
+        const attemptScroll = (attempts = 0) => {
+          const maxAttempts = 50;
+          const element = document.getElementById(sectionId);
+          
+          if (element) {
+            element.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          } else if (attempts < maxAttempts) {
+            setTimeout(() => attemptScroll(attempts + 1), 100);
+          }
+        };
+        
+        attemptScroll();
       };
       
-      // Start attempting to scroll immediately
-      attemptScroll();
+      forceLoadAndScroll();
     }
   };
 
