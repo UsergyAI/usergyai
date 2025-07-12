@@ -11,15 +11,17 @@ import FinalCTASection from '@/components/FinalCTASection';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
+import PerformanceOptimizer from '@/components/PerformanceOptimizer';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead
-        title="Usergy: AI Traction & Growth"
-        description="Expert AI traction services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum."
+        title="Usergy - AI Traction & Growth Experts | Expert Consulting for AI Startups"
+        description="Expert AI traction consulting services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum. Accelerate your AI startup's growth with proven strategies and 1,200+ successful campaigns."
         canonical="https://usergy.ai"
-        keywords="AI traction, AI growth, AI community, AI feedback, AI founders, startup growth"
+        keywords="AI traction, AI growth, AI community, AI feedback, AI founders, startup growth, AI consulting, user engagement, product market fit, AI startup consulting"
+        type="website"
       />
       <StructuredData
         breadcrumbs={[
@@ -28,7 +30,8 @@ const Index = () => {
         pageType="WebPage"
       />
       <Header />
-      <main role="main" id="main">
+      <PerformanceOptimizer />
+      <main role="main" id="main" data-hero>
         <HeroSection />
         <ProblemSection />
         <SolutionSection />

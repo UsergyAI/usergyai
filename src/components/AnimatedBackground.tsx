@@ -131,25 +131,25 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
         ctx.globalAlpha = particle.opacity;
         
         if (particle.type === 'node') {
-          // Draw enhanced pulsing nodes with glow
-          const pulseSize = particle.size + Math.sin(particle.pulse) * 1.5;
+          // Draw enhanced pulsing nodes with glow - ensure minimum radius
+          const pulseSize = Math.max(0.5, particle.size + Math.sin(particle.pulse) * 1.5);
           ctx.fillStyle = particle.color;
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, pulseSize, 0, Math.PI * 2);
           ctx.fill();
           
-          // Enhanced glow effect
+          // Enhanced glow effect - ensure minimum radius
           ctx.shadowBlur = 15;
           ctx.shadowColor = particle.color;
           ctx.beginPath();
-          ctx.arc(particle.x, particle.y, pulseSize * 0.6, 0, Math.PI * 2);
+          ctx.arc(particle.x, particle.y, Math.max(0.5, pulseSize * 0.6), 0, Math.PI * 2);
           ctx.fill();
           ctx.shadowBlur = 0;
         } else {
-          // Draw regular enhanced particles
+          // Draw regular enhanced particles - ensure minimum radius
           ctx.fillStyle = particle.color;
           ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+          ctx.arc(particle.x, particle.y, Math.max(0.5, particle.size), 0, Math.PI * 2);
           ctx.fill();
         }
 

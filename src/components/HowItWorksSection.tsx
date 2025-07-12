@@ -111,11 +111,15 @@ const HowItWorksSection = () => {
 
               <div className="space-y-6">
                 {founderSteps.map((step, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                  <div key={index} className={`bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-xl transform hover:scale-102 ${
+                    isVisible ? 'animate-slide-up' : ''
+                  }`} style={{ animationDelay: `${index * 200}ms` }}>
                     <div 
-                      className="p-6 cursor-pointer"
+                      className="p-6 cursor-pointer relative group"
                       onClick={() => toggleStep(index)}
                     >
+                      {/* Progress indicator line */}
+                      <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-current to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300" style={{ color: step.color }}></div>
                       <div className="flex items-center space-x-4">
                         <div 
                           className="w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
@@ -161,11 +165,15 @@ const HowItWorksSection = () => {
 
               <div className="space-y-6">
                 {userSteps.map((step, index) => (
-                  <div key={index + 100} className="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
+                  <div key={index + 100} className={`bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 hover:shadow-xl transform hover:scale-102 ${
+                    isVisible ? 'animate-slide-up' : ''
+                  }`} style={{ animationDelay: `${(index + 3) * 200}ms` }}>
                     <div 
-                      className="p-6 cursor-pointer"
+                      className="p-6 cursor-pointer relative group"
                       onClick={() => toggleStep(index + 100)}
                     >
+                      {/* Progress indicator line */}
+                      <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-transparent via-current to-transparent opacity-0 group-hover:opacity-30 transition-opacity duration-300" style={{ color: step.color }}></div>
                       <div className="flex items-center space-x-4">
                         <div 
                           className="w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0"

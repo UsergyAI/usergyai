@@ -130,18 +130,57 @@ const SolutionSection = () => {
                 );
               })}
 
-              {/* Dynamic connection indicators */}
+              {/* Enhanced dynamic connection lines */}
               {activeNode && (
                 <div className="absolute inset-0 pointer-events-none">
-                  {[...Array(3)].map((_, i) => (
+                  {/* Flowing lines connecting active node to center */}
+                  <svg className="absolute inset-0 w-full h-full">
+                    <defs>
+                      <linearGradient id="flowingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stopColor="#FED766" stopOpacity="0" />
+                        <stop offset="50%" stopColor="#FED766" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="#FED766" stopOpacity="0" />
+                        <animateTransform 
+                          attributeName="gradientTransform"
+                          type="translate"
+                          values="-100 0;100 0;-100 0"
+                          dur="2s"
+                          repeatCount="indefinite"
+                        />
+                      </linearGradient>
+                    </defs>
+                    {nodes.map((node, index) => {
+                      if (activeNode !== node.id) return null;
+                      const angle = (index * 120 - 90) * (Math.PI / 180);
+                      const x1 = 50 + Math.cos(angle) * 17.5;
+                      const y1 = 50 + Math.sin(angle) * 17.5;
+                      
+                      return (
+                        <line
+                          key={node.id}
+                          x1={`${x1}%`}
+                          y1={`${y1}%`}
+                          x2="50%"
+                          y2="50%"
+                          stroke="url(#flowingGradient)"
+                          strokeWidth="3"
+                          strokeLinecap="round"
+                        />
+                      );
+                    })}
+                  </svg>
+                  
+                  {/* Pulsing dots */}
+                  {[...Array(6)].map((_, i) => (
                     <div
                       key={i}
-                      className={`absolute w-1 bg-gradient-to-r from-usergy-gold to-transparent rounded-full animate-pulse ${
-                        i === 0 ? 'h-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-full' :
-                        i === 1 ? 'h-20 top-1/2 left-1/2 -translate-x-1/2 translate-y-full rotate-180' :
-                        'w-20 h-1 top-1/2 left-1/2 -translate-y-1/2 translate-x-full'
-                      }`}
-                      style={{ animationDelay: `${i * 0.2}s` }}
+                      className="absolute w-2 h-2 bg-usergy-gold rounded-full animate-ping"
+                      style={{
+                        left: `${45 + Math.cos(i * 60 * Math.PI / 180) * 25}%`,
+                        top: `${45 + Math.sin(i * 60 * Math.PI / 180) * 25}%`,
+                        animationDelay: `${i * 0.3}s`,
+                        animationDuration: '2s'
+                      }}
                     />
                   ))}
                 </div>

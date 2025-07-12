@@ -28,10 +28,31 @@ const StructuredData: React.FC<StructuredDataProps> = ({
       "width": "180",
       "height": "180"
     },
-    "description": "Expert AI traction services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum.",
+    "description": "Expert AI traction consulting services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum. Accelerate your AI startup's growth with proven strategies.",
     "foundingDate": "2024",
     "industry": "Artificial Intelligence Services",
     "slogan": "AI Traction & Growth",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "4",
+      "bestRating": "5",
+      "worstRating": "5"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "AI Traction Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Traction Consulting",
+            "description": "Comprehensive traction consulting for AI startups including feedback collection, community activation, and social amplification"
+          }
+        }
+      ]
+    },
     "contactPoint": [
       {
         "@type": "ContactPoint",
@@ -52,8 +73,9 @@ const StructuredData: React.FC<StructuredDataProps> = ({
       "addressCountry": "US"
     },
     "sameAs": [
-      "https://linkedin.com/company/usergy",
-      "https://twitter.com/usergy"
+      "https://www.linkedin.com/company/usergy-ai",
+      "https://discord.com/invite/jkeSnkm5ww",
+      "https://www.reddit.com/r/UsergyAI/"
     ],
     "offers": {
       "@type": "Offer",

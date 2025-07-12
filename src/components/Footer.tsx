@@ -25,7 +25,10 @@ const Footer = () => {
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-14 w-auto opacity-65 transition-all duration-300 group-hover:opacity-50 cursor-pointer"
+                role="img"
+                aria-label="Usergy logo - Navigate to homepage"
               >
+                <title>Usergy</title>
                 <text x="10" y="36" fontSize="28" fontWeight="bold" fill="white">Usergy</text>
               </svg>
             </div>
@@ -66,13 +69,31 @@ const Footer = () => {
             </a>
           </div>
 
-          {/* Key Links */}
-          <div className="flex items-center space-x-6 text-gray-400">
-            <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <span className="text-gray-600">•</span>
-            <Link to="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-            <span className="text-gray-600">•</span>
-            <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
+          {/* Key Links - Enhanced visibility */}
+          <div className="flex items-center space-x-6 text-gray-300">
+            <Link 
+              to="/privacy" 
+              className="hover:text-white transition-colors duration-300 underline decoration-transparent hover:decoration-current underline-offset-4 font-medium"
+              aria-label="View Privacy Policy"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-gray-500">•</span>
+            <Link 
+              to="/terms" 
+              className="hover:text-white transition-colors duration-300 underline decoration-transparent hover:decoration-current underline-offset-4 font-medium"
+              aria-label="View Terms of Service"
+            >
+              Terms of Service
+            </Link>
+            <span className="text-gray-500">•</span>
+            <Link 
+              to="/contact" 
+              className="hover:text-white transition-colors duration-300 underline decoration-transparent hover:decoration-current underline-offset-4 font-medium"
+              aria-label="Contact Usergy"
+            >
+              Contact
+            </Link>
           </div>
         </div>
 

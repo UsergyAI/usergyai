@@ -79,35 +79,37 @@ const TrustSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
+        if (entry.isIntersecting) {
           setIsVisible(true);
-          setHasAnimated(true);
-          
-          // Start count-up animation for each number
-          const animateNumber = (targetValue: number, key: keyof typeof animatedNumbers) => {
-            let start = 0;
-            const duration = 2000;
-            const increment = targetValue / (duration / 16);
+          if (!hasAnimated) {
+            setHasAnimated(true);
+            
+            // Start count-up animation for each number
+            const animateNumber = (targetValue: number, key: keyof typeof animatedNumbers) => {
+              let start = 0;
+              const duration = 2000;
+              const increment = targetValue / (duration / 16);
 
-            const counter = setInterval(() => {
-              start += increment;
-              if (start >= targetValue) {
-                setAnimatedNumbers(prev => ({ ...prev, [key]: targetValue }));
-                clearInterval(counter);
-              } else {
-                setAnimatedNumbers(prev => ({ ...prev, [key]: Math.floor(start) }));
-              }
-            }, 16);
-          };
+              const counter = setInterval(() => {
+                start += increment;
+                if (start >= targetValue) {
+                  setAnimatedNumbers(prev => ({ ...prev, [key]: targetValue }));
+                  clearInterval(counter);
+                } else {
+                  setAnimatedNumbers(prev => ({ ...prev, [key]: Math.floor(start) }));
+                }
+              }, 16);
+            };
 
-          // Animate each KPI number
-          animateNumber(1200, 'campaigns');
-          animateNumber(75000, 'users');
-          animateNumber(92, 'feedback');
-          animateNumber(500, 'revenue');
+            // Animate each KPI number
+            animateNumber(1200, 'campaigns');
+            animateNumber(75000, 'users');
+            animateNumber(92, 'feedback');
+            animateNumber(500, 'revenue');
+          }
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -116,6 +118,15 @@ const TrustSection = () => {
 
     return () => observer.disconnect();
   }, [hasAnimated]);
+
+  // Auto-rotate testimonials every 8 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
