@@ -57,13 +57,13 @@ const FAQAccordion = () => {
             }`}
           >
             <button
-              className="w-full py-6 px-8 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors rounded-2xl group"
+              className="w-full py-8 px-10 text-left flex justify-between items-center hover:bg-gray-50/50 transition-all duration-250 ease-in-out rounded-2xl group"
               onClick={() => toggleFAQ(index)}
             >
               <span className="text-lg font-bold text-usergy-dark pr-6 group-hover:text-usergy-turquoise transition-colors leading-relaxed">
                 {faq.question}
               </span>
-              <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+              <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-250 ease-in-out ${
                 openIndex === index 
                   ? 'bg-usergy-turquoise text-white rotate-180' 
                   : 'bg-gray-100 text-usergy-dark group-hover:bg-usergy-turquoise/10'
@@ -77,8 +77,8 @@ const FAQAccordion = () => {
             </button>
             
             {openIndex === index && (
-              <div className="px-8 pb-6 animate-accordion-down">
-                <div className="border-t border-gray-100 pt-4">
+              <div className="px-10 pb-8 animate-accordion-down">
+                <div className="border-t border-gray-100 pt-6">
                   <p className="text-gray-600 leading-relaxed font-medium">
                     {faq.answer}
                   </p>
