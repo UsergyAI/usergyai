@@ -9,13 +9,14 @@ interface AnimatedBackgroundProps {
 }
 
 const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({ 
-  particleCount = 60, 
+  particleCount = 30, // Reduced from 60 for better performance
   className = "absolute inset-0 w-full h-full pointer-events-none",
   zIndex = 1,
   enableFloatingBubbles = false
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number>();
+  const isVisibleRef = useRef<boolean>(true);
 
   const initializeCanvas = useCallback(() => {
     const canvas = canvasRef.current;
@@ -85,10 +86,16 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
 
     let time = 0;
     let lastTime = 0;
-    const targetFPS = 60;
+    const targetFPS = 30; // Reduced from 60 for better performance
     const frameInterval = 1000 / targetFPS;
 
     const animate = (currentTime: number) => {
+      // Pause animation when not visible
+      if (!isVisibleRef.current) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
+      }
+
       if (currentTime - lastTime < frameInterval) {
         animationRef.current = requestAnimationFrame(animate);
         return;
@@ -192,10 +199,18 @@ const AnimatedBackground: React.FC<AnimatedBackgroundProps> = ({
 
     window.addEventListener('resize', handleResize, { passive: true });
 
+    // Performance optimization: pause animation when page is not visible
+    const handleVisibilityChange = () => {
+      isVisibleRef.current = !document.hidden;
+    };
+    
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     return () => {
       window.removeEventListener('resize', handleResize);
       canvas.removeEventListener('mousemove', handleMouseMove);
       canvas.removeEventListener('mouseleave', handleMouseLeave);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current);
       }

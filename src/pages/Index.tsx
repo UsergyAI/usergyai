@@ -11,20 +11,13 @@ import FinalCTASection from '@/components/FinalCTASection';
 import Footer from '@/components/Footer';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
-import PerformanceOptimizer from '@/components/PerformanceOptimizer';
 import CriticalResourcePreloader from '@/components/CriticalResourcePreloader';
-import ThirdPartyScriptOptimizer from '@/components/ThirdPartyScriptOptimizer';
 import LazyLoadController from '@/components/LazyLoadController';
-import ServiceWorkerManager from '@/components/ServiceWorkerManager';
-import useWebVitalsOptimization from '@/hooks/useWebVitalsOptimization';
-import useCriticalCSS from '@/hooks/useCriticalCSS';
+import ThirdPartyOptimizer from '@/components/ThirdPartyOptimizer';
+import WebVitalsOptimizer from '@/components/WebVitalsOptimizer';
+import PerformanceMonitor from '@/components/PerformanceMonitor';
 
 const Index = () => {
-  // Initialize Web Vitals optimizations
-  useWebVitalsOptimization();
-  
-  // Load critical CSS immediately
-  useCriticalCSS();
 
   return (
     <div className="min-h-screen bg-background">
@@ -44,9 +37,9 @@ const Index = () => {
       
       {/* Performance optimization components */}
       <CriticalResourcePreloader />
-      <PerformanceOptimizer />
-      <ThirdPartyScriptOptimizer />
-      <ServiceWorkerManager />
+      <ThirdPartyOptimizer />
+      <WebVitalsOptimizer />
+      <PerformanceMonitor />
       
       {/* Skip link for accessibility */}
       <a href="#main" className="skip-link" aria-label="Skip to main content">

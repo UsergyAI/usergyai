@@ -18,8 +18,8 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32 lg:pt-36">
-      {/* Enhanced Animated Background Canvas */}
-      <AnimatedBackground particleCount={60} />
+      {/* Enhanced Animated Background Canvas - Optimized */}
+      <AnimatedBackground particleCount={30} />
 
       {/* Enhanced Floating Bubbles - Hero Section Only */}
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>

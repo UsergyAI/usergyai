@@ -27,20 +27,25 @@ export default defineConfig(({ mode }) => ({
           vendor: ['react', 'react-dom'],
           router: ['react-router-dom'],
           ui: ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
-          utils: ['clsx', 'tailwind-merge', 'class-variance-authority']
+          utils: ['clsx', 'tailwind-merge', 'class-variance-authority'],
+          lucide: ['lucide-react']
         }
       }
     },
-    // Enable minification
+    // Enable aggressive minification
     minify: 'esbuild',
-    // Enable sourcemaps for debugging in production
-    sourcemap: true,
+    // Disable sourcemaps in production for smaller bundles
+    sourcemap: false,
     // Optimize chunk size warnings
     chunkSizeWarningLimit: 1000,
     // Enable CSS code splitting
     cssCodeSplit: true,
-    // Optimize assets
-    assetsInlineLimit: 4096
+    // Optimize assets - inline smaller assets
+    assetsInlineLimit: 8192,
+    // Enable compression
+    reportCompressedSize: false,
+    // Target modern browsers for better optimization
+    target: 'es2020'
   },
   optimizeDeps: {
     include: ['react', 'react-dom', 'react-router-dom']

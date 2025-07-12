@@ -75,11 +75,29 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="color-scheme" content="light" />
       <meta name="application-name" content="Usergy" />
       
-      {/* Resource hints for performance */}
-      <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-      <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+      {/* Enhanced resource hints for performance */}
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link rel="dns-prefetch" href="//calendly.com" />
       <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="//www.google-analytics.com" />
+      
+      {/* Critical font loading with font-display: swap */}
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+        media="print"
+        onLoad={() => {
+          const link = document.querySelector('link[href*="fonts.googleapis.com"]') as HTMLLinkElement;
+          if (link) link.media = 'all';
+        }}
+      />
+      <noscript>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+          rel="stylesheet"
+        />
+      </noscript>
       
       {/* Viewport meta tag for responsive design */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />

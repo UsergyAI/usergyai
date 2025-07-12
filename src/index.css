@@ -28,32 +28,32 @@
 }
 
 @layer utilities {
-  /* Enhanced Floating Animation for Bubbles */
+  /* Enhanced Floating Animation for Bubbles - Performance Optimized */
   @keyframes float-enhanced {
     0%, 100% {
-      transform: translateY(0px) translateX(0px) scale(1);
+      transform: translate3d(0px, 0px, 0) scale(1);
       opacity: 0.6;
     }
     25% {
-      transform: translateY(-15px) translateX(5px) scale(1.05);
+      transform: translate3d(5px, -15px, 0) scale(1.05);
       opacity: 0.8;
     }
     50% {
-      transform: translateY(-8px) translateX(-8px) scale(0.95);
+      transform: translate3d(-8px, -8px, 0) scale(0.95);
       opacity: 1;
     }
     75% {
-      transform: translateY(-20px) translateX(10px) scale(1.1);
+      transform: translate3d(10px, -20px, 0) scale(1.1);
       opacity: 0.7;
     }
   }
 
   @keyframes float {
     0%, 100% {
-      transform: translateY(0px);
+      transform: translate3d(0, 0px, 0);
     }
     50% {
-      transform: translateY(-10px);
+      transform: translate3d(0, -10px, 0);
     }
   }
 
@@ -69,58 +69,64 @@
   @keyframes slide-up {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translate3d(0, 30px, 0);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
   }
 
   @keyframes fade-in {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translate3d(0, 10px, 0);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translate3d(0, 0, 0);
     }
   }
 
   @keyframes scale-in {
     from {
       opacity: 0;
-      transform: scale(0.9);
+      transform: scale3d(0.9, 0.9, 1);
     }
     to {
       opacity: 1;
-      transform: scale(1);
+      transform: scale3d(1, 1, 1);
     }
   }
 
   .animate-float-enhanced {
     animation: float-enhanced 6s ease-in-out infinite;
+    will-change: transform, opacity;
   }
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
+    will-change: transform;
   }
 
   .animate-pulse-glow {
     animation: pulse-glow 2s ease-in-out infinite;
+    will-change: box-shadow;
   }
 
   .animate-slide-up {
     animation: slide-up 0.8s ease-out;
+    will-change: transform, opacity;
   }
 
   .animate-fade-in {
     animation: fade-in 0.6s ease-out;
+    will-change: transform, opacity;
   }
 
   .animate-scale-in {
     animation: scale-in 0.5s ease-out;
+    will-change: transform, opacity;
   }
 
   .gradient-text {
