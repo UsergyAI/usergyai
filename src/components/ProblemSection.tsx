@@ -111,21 +111,21 @@ const ProblemSection = () => {
                   bgColor: "bg-red-50"
                 }
               ].map((problem, index) => (
-                 <div
-                   key={index}
-                   className={`flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.02] ${
-                     isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-                   }`}
-                   style={{ animationDelay: `${(index + 2) * 200}ms` }}
-                 >
-                   <div className={`w-14 h-14 rounded-xl ${problem.bgColor} flex items-center justify-center flex-shrink-0 ${problem.color}`}>
-                     <problem.icon className="h-7 w-7" aria-hidden="true" />
-                   </div>
-                   <div>
-                     <h3 className="text-xl font-bold text-usergy-dark mb-2">{problem.title}</h3>
-                     <div className="text-gray-600 leading-relaxed">{problem.description}</div>
-                   </div>
-                 </div>
+                <div
+                  key={index}
+                  className={`flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-500 hover:scale-[1.02] ${
+                    isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+                  }`}
+                  style={{ animationDelay: `${(index + 2) * 200}ms` }}
+                >
+                  <div className={`w-14 h-14 rounded-xl ${problem.bgColor} flex items-center justify-center flex-shrink-0 ${problem.color}`}>
+                    <problem.icon className="h-7 w-7" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-usergy-dark mb-2">{problem.title}</h3>
+                    <p className="text-gray-600 leading-relaxed">{problem.description}</p>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

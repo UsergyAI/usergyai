@@ -213,33 +213,30 @@ const TrustSection = () => {
                 <button 
                   onClick={prevTestimonial}
                   className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
-                  aria-label="Previous testimonial"
                 >
-                  <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
+                  <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 
-                 <div className="flex space-x-2">
-                   {testimonials.map((_, index) => (
-                     <button
-                       key={index}
-                       onClick={() => setCurrentTestimonial(index)}
-                       className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                         index === currentTestimonial 
-                           ? 'bg-usergy-turquoise' 
-                           : 'bg-gray-300 hover:bg-gray-400'
-                       }`}
-                       aria-label={`Go to testimonial ${index + 1}`}
-                     />
-                   ))}
-                 </div>
-                 
-                 <button 
-                   onClick={nextTestimonial}
-                   className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
-                   aria-label="Next testimonial"
-                 >
-                   <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" aria-hidden="true" />
-                 </button>
+                <div className="flex space-x-2">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentTestimonial(index)}
+                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                        index === currentTestimonial 
+                          ? 'bg-usergy-turquoise' 
+                          : 'bg-gray-300 hover:bg-gray-400'
+                      }`}
+                    />
+                  ))}
+                </div>
+                
+                <button 
+                  onClick={nextTestimonial}
+                  className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
+                >
+                  <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                </button>
               </div>
             </div>
           </div>
