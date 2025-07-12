@@ -92,12 +92,6 @@ const SEOHead: React.FC<SEOHeadProps> = ({
           if (link) link.media = 'all';
         }}
       />
-      <noscript>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-      </noscript>
       
       {/* Viewport meta tag for responsive design */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
