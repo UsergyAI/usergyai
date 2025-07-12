@@ -3,9 +3,10 @@ import React from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ServicesHero from '@/components/ServicesHero';
-import PricingMatrixSection from '@/components/PricingMatrixSection';
+import LaunchOfferSection from '@/components/LaunchOfferSection';
+import NewTieredPricingSection from '@/components/NewTieredPricingSection';
 import CustomEnterpriseSection from '@/components/CustomEnterpriseSection';
-import ServiceInclusionsSection from '@/components/ServiceInclusionsSection';
+import CampaignInclusionsSection from '@/components/CampaignInclusionsSection';
 import AddOnServicesSection from '@/components/AddOnServicesSection';
 import WhyUsergySection from '@/components/WhyUsergySection';
 import PricingPsychologySection from '@/components/PricingPsychologySection';
@@ -35,11 +36,11 @@ const Services = () => {
       <main role="main" id="main">
         <ServicesHero />
         
-        <PricingMatrixSection />
+        <LaunchOfferSection />
+        
+        <NewTieredPricingSection />
 
-        <CustomEnterpriseSection />
-
-        <ServiceInclusionsSection />
+        <CampaignInclusionsSection />
 
         <AddOnServicesSection />
 
