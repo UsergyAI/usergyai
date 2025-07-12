@@ -19,11 +19,37 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
+  // Handle route changes and section scrolling
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    // Scroll to top when navigating to a new page
-    window.scrollTo(0, 0);
+    
+    // Check if we need to scroll to a section after navigation
+    const searchParams = new URLSearchParams(location.search);
+    const scrollToSection = searchParams.get('scrollTo');
+    
+    if (scrollToSection && location.pathname === '/') {
+      // Wait for the page to load and then scroll
+      const attemptScroll = (attempts = 0) => {
+        const maxAttempts = 50;
+        const element = document.getElementById(scrollToSection);
+        
+        if (element) {
+          setTimeout(() => {
+            element.scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }, 100);
+        } else if (attempts < maxAttempts) {
+          setTimeout(() => attemptScroll(attempts + 1), 100);
+        }
+      };
+      
+      setTimeout(() => attemptScroll(), 200);
+    } else if (!scrollToSection) {
+      // Only scroll to top if we're not trying to scroll to a section
+      window.scrollTo(0, 0);
+    }
   }, [location]);
 
   // Close menu when clicking outside
@@ -43,25 +69,28 @@ const Header = () => {
 
   const scrollToSection = (sectionId: string) => {
     setIsMobileMenuOpen(false);
+    
     if (location.pathname !== '/') {
-      // Navigate to homepage first, then scroll to section
-      navigate('/');
-      // Use a more robust approach to wait for the section to be rendered
+      // Navigate to homepage with section parameter
+      navigate(`/?scrollTo=${sectionId}`);
+    } else {
+      // We're already on homepage, scroll directly
       const attemptScroll = (attempts = 0) => {
-        const maxAttempts = 20; // Try for up to 2 seconds
+        const maxAttempts = 30;
         const element = document.getElementById(sectionId);
+        
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
         } else if (attempts < maxAttempts) {
           setTimeout(() => attemptScroll(attempts + 1), 100);
         }
       };
-      setTimeout(() => attemptScroll(), 100);
-    } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      
+      // Start attempting to scroll immediately
+      attemptScroll();
     }
   };
 
