@@ -46,12 +46,17 @@ const Header = () => {
     if (location.pathname !== '/') {
       // Navigate to homepage first, then scroll to section
       navigate('/');
-      setTimeout(() => {
+      // Use a more robust approach to wait for the section to be rendered
+      const attemptScroll = (attempts = 0) => {
+        const maxAttempts = 20; // Try for up to 2 seconds
         const element = document.getElementById(sectionId);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
+        } else if (attempts < maxAttempts) {
+          setTimeout(() => attemptScroll(attempts + 1), 100);
         }
-      }, 100);
+      };
+      setTimeout(() => attemptScroll(), 100);
     } else {
       const element = document.getElementById(sectionId);
       if (element) {
