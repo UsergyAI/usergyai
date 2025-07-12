@@ -16,6 +16,7 @@ import CriticalResourcePreloader from '@/components/CriticalResourcePreloader';
 import ThirdPartyScriptOptimizer from '@/components/ThirdPartyScriptOptimizer';
 import LazyLoadController from '@/components/LazyLoadController';
 import ServiceWorkerManager from '@/components/ServiceWorkerManager';
+import CriticalCSSInliner from '@/components/CriticalCSSInliner';
 import useWebVitalsOptimization from '@/hooks/useWebVitalsOptimization';
 import useCriticalCSS from '@/hooks/useCriticalCSS';
 
@@ -43,6 +44,7 @@ const Index = () => {
       />
       
       {/* Performance optimization components */}
+      <CriticalCSSInliner />
       <CriticalResourcePreloader />
       <PerformanceOptimizer />
       <ThirdPartyScriptOptimizer />

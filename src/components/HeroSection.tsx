@@ -18,18 +18,8 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32 lg:pt-36">
-      {/* Enhanced Animated Background Canvas */}
-      <AnimatedBackground particleCount={60} />
-
-      {/* Enhanced Floating Bubbles - Hero Section Only */}
-      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-        <div className="floating-element absolute top-1/4 left-1/4 w-6 h-6 bg-usergy-turquoise/30 rounded-full animate-float-enhanced opacity-60"></div>
-        <div className="floating-element absolute top-1/3 right-1/4 w-8 h-8 bg-usergy-coral/25 rounded-full animate-float-enhanced opacity-50" style={{ animationDelay: '-2s' }}></div>
-        <div className="floating-element absolute bottom-1/4 left-1/3 w-5 h-5 bg-usergy-skyblue/35 rounded-full animate-float-enhanced opacity-70" style={{ animationDelay: '-4s' }}></div>
-        <div className="floating-element absolute bottom-1/3 right-1/3 w-4 h-4 bg-usergy-gold/40 rounded-full animate-float-enhanced opacity-80" style={{ animationDelay: '-6s' }}></div>
-        <div className="floating-element absolute top-1/2 left-1/6 w-7 h-7 bg-usergy-turquoise/20 rounded-full animate-float-enhanced opacity-45" style={{ animationDelay: '-3s' }}></div>
-        <div className="floating-element absolute top-3/4 right-1/6 w-3 h-3 bg-usergy-coral/45 rounded-full animate-float-enhanced opacity-65" style={{ animationDelay: '-5s' }}></div>
-      </div>
+      {/* Optimized Animated Background with reduced particles */}
+      <AnimatedBackground particleCount={15} enableFloatingBubbles={true} />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -59,8 +49,9 @@ const HeroSection = () => {
               size="lg"
               onClick={handleCalendlyRedirect}
               className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-6 sm:px-8 md:px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
+              aria-label="Book your strategy call with Usergy experts"
             >
-              <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+              <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" aria-hidden="true" />
               <span className="truncate">Book Your Strategy Call</span>
             </Button>
             
@@ -70,8 +61,9 @@ const HeroSection = () => {
               variant="outline"
               onClick={handleJoinCommunity}
               className="w-full sm:w-auto min-w-[280px] sm:min-w-[320px] border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold text-base sm:text-lg py-4 sm:py-5 md:py-6 px-6 sm:px-8 md:px-12 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+              aria-label="Join our AI Explorer Community"
             >
-              <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+              <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" aria-hidden="true" />
               <span className="truncate">Join Our AI Explorer Community</span>
             </Button>
           </div>
