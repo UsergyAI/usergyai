@@ -28,41 +28,38 @@ const Header = () => {
     const scrollToSection = searchParams.get('scrollTo');
     
     if (scrollToSection && location.pathname === '/') {
-      // Force load sections and then scroll when navigating from other pages
-      const forceLoadAndScrollFromNavigation = async () => {
-        // First, scroll down to trigger lazy loading of sections
+      // Smooth load and scroll when navigating from other pages
+      const loadAndScrollFromNavigation = async () => {
+        // Save current position (should be 0 since we just navigated)
+        const currentScroll = window.scrollY;
+        
+        // Temporarily scroll down to trigger lazy loading
         const documentHeight = document.documentElement.scrollHeight;
-        const windowHeight = window.innerHeight;
-        const scrollDistance = Math.min(documentHeight * 0.8, windowHeight * 3);
+        const loadPosition = Math.min(documentHeight * 0.7, window.innerHeight * 2);
         
-        // Scroll down to load sections
-        window.scrollTo({
-          top: scrollDistance,
-          behavior: 'instant'
-        });
+        // Instantly scroll to load position
+        window.scrollTo(0, loadPosition);
         
-        // Wait for intersection observers to trigger
-        await new Promise(resolve => setTimeout(resolve, 300));
+        // Wait for sections to load
+        await new Promise(resolve => setTimeout(resolve, 200));
         
-        // Now attempt to scroll to the target section
-        const attemptScroll = (attempts = 0) => {
-          const maxAttempts = 50;
-          const element = document.getElementById(scrollToSection);
-          
-          if (element) {
-            element.scrollIntoView({ 
-              behavior: 'smooth',
-              block: 'start'
-            });
-          } else if (attempts < maxAttempts) {
-            setTimeout(() => attemptScroll(attempts + 1), 100);
-          }
-        };
+        // Return to original position
+        window.scrollTo(0, currentScroll);
         
-        attemptScroll();
+        // Small delay before smooth scroll
+        await new Promise(resolve => setTimeout(resolve, 100));
+        
+        // Smooth scroll to target
+        const element = document.getElementById(scrollToSection);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
       };
       
-      setTimeout(() => forceLoadAndScrollFromNavigation(), 500);
+      setTimeout(() => loadAndScrollFromNavigation(), 300);
     } else if (!scrollToSection) {
       // Only scroll to top if we're not trying to scroll to a section
       window.scrollTo(0, 0);
@@ -91,41 +88,38 @@ const Header = () => {
       // Navigate to homepage with section parameter
       navigate(`/?scrollTo=${sectionId}`);
     } else {
-      // We're already on homepage, force lazy sections to load by scrolling
-      const forceLoadAndScroll = async () => {
-        // First, scroll down to trigger lazy loading of sections
+      // Force load sections invisibly then scroll smoothly
+      const loadSectionsAndScroll = async () => {
+        // Save current scroll position
+        const currentScroll = window.scrollY;
+        
+        // Temporarily scroll down to trigger lazy loading (invisibly)
         const documentHeight = document.documentElement.scrollHeight;
-        const windowHeight = window.innerHeight;
-        const scrollDistance = Math.min(documentHeight * 0.8, windowHeight * 3);
+        const loadPosition = Math.min(documentHeight * 0.7, window.innerHeight * 2);
         
-        // Smooth scroll down to load sections
-        window.scrollTo({
-          top: scrollDistance,
-          behavior: 'instant'
-        });
+        // Instantly scroll to load position (no animation)
+        window.scrollTo(0, loadPosition);
         
-        // Wait a bit for intersection observers to trigger
-        await new Promise(resolve => setTimeout(resolve, 200));
+        // Wait for sections to load
+        await new Promise(resolve => setTimeout(resolve, 150));
         
-        // Now attempt to scroll to the target section
-        const attemptScroll = (attempts = 0) => {
-          const maxAttempts = 50;
-          const element = document.getElementById(sectionId);
-          
-          if (element) {
-            element.scrollIntoView({ 
-              behavior: 'smooth',
-              block: 'start'
-            });
-          } else if (attempts < maxAttempts) {
-            setTimeout(() => attemptScroll(attempts + 1), 100);
-          }
-        };
+        // Instantly return to original position
+        window.scrollTo(0, currentScroll);
         
-        attemptScroll();
+        // Small delay to ensure sections are fully rendered
+        await new Promise(resolve => setTimeout(resolve, 50));
+        
+        // Now smoothly scroll to target
+        const element = document.getElementById(sectionId);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
       };
       
-      forceLoadAndScroll();
+      loadSectionsAndScroll();
     }
   };
 
