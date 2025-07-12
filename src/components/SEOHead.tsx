@@ -35,7 +35,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <title>{optimizedTitle}</title>
       <meta name="description" content={optimizedDescription} />
       {keywords && <meta name="keywords" content={keywords} />}
-      {canonical && <link rel="canonical" href={canonical} />}
+      <link rel="canonical" href={canonical || url} />
       {noindex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
 
       {/* Enhanced SEO Meta Tags */}
@@ -75,10 +75,22 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="color-scheme" content="light" />
       <meta name="application-name" content="Usergy" />
       
-      {/* Preconnect for performance */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link rel="preconnect" href="https://calendly.com" />
+      {/* Resource hints for performance */}
+      <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+      <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+      <link rel="dns-prefetch" href="//calendly.com" />
+      <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+      
+      {/* Viewport meta tag for responsive design */}
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+      
+      {/* Performance optimization meta tags */}
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="format-detection" content="telephone=no" />
+      
+      {/* Security headers */}
+      <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
+      <meta name="referrer" content="strict-origin-when-cross-origin" />
     </Helmet>
   );
 };

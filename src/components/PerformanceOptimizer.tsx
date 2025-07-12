@@ -2,97 +2,121 @@ import React, { useEffect } from 'react';
 
 const PerformanceOptimizer: React.FC = () => {
   useEffect(() => {
-    // Preload critical resources
-    const preloadResources = () => {
-      // Preload hero section background
-      const heroBackground = new Image();
-      heroBackground.src = '/lovable-uploads/hero-bg.webp';
-      
-      // Preload critical CSS
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      link.as = 'style';
-      link.href = '/src/index.css';
-      document.head.appendChild(link);
-    };
+    // Enhanced resource optimization
+    const optimizeResources = () => {
+      // Set optimal resource hints
+      const resourceHints = [
+        { rel: 'dns-prefetch', href: '//fonts.googleapis.com' },
+        { rel: 'dns-prefetch', href: '//fonts.gstatic.com' },
+        { rel: 'dns-prefetch', href: '//www.googletagmanager.com' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com', crossOrigin: 'anonymous' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' }
+      ];
 
-    // Optimize images with lazy loading and WebP support
-    const optimizeImages = () => {
-      const images = document.querySelectorAll('img[data-src]');
-      const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const img = entry.target as HTMLImageElement;
-            if (img.dataset.src) {
-              img.src = img.dataset.src;
-              img.removeAttribute('data-src');
-              observer.unobserve(img);
-            }
-          }
-        });
-      });
-
-      images.forEach(img => imageObserver.observe(img));
-    };
-
-    // Reduce layout shifts
-    const preventLayoutShifts = () => {
-      // Add dimension attributes to images without them
-      const images = document.querySelectorAll('img:not([width]):not([height])');
-      images.forEach(img => {
-        const element = img as HTMLImageElement;
-        if (element.naturalWidth && element.naturalHeight) {
-          element.width = element.naturalWidth;
-          element.height = element.naturalHeight;
-        }
+      resourceHints.forEach(hint => {
+        const link = document.createElement('link');
+        link.rel = hint.rel;
+        link.href = hint.href;
+        if (hint.crossOrigin) link.crossOrigin = hint.crossOrigin;
+        document.head.appendChild(link);
       });
     };
 
-    // Optimize third-party scripts
-    const optimizeThirdPartyScripts = () => {
-      // Delay non-critical scripts
-      const scripts = ['calendly', 'analytics'];
-      scripts.forEach(script => {
-        setTimeout(() => {
-          // Load script after user interaction or delay
-        }, 3000);
-      });
-    };
-
-    // Core Web Vitals optimization
-    const optimizeWebVitals = () => {
-      // Largest Contentful Paint (LCP) optimization
+    // Optimize Critical Resource Path
+    const optimizeCriticalPath = () => {
+      // Mark critical elements for optimization
       const hero = document.querySelector('[data-hero]');
       if (hero) {
         (hero as HTMLElement).style.contentVisibility = 'auto';
+        (hero as HTMLElement).style.containIntrinsicSize = '1200px 600px';
       }
 
-      // First Input Delay (FID) optimization
-      document.addEventListener('click', () => {
-        // Warm up critical resources on first interaction
-      }, { once: true, passive: true });
-
-      // Cumulative Layout Shift (CLS) optimization
+      // Optimize main content container
       const main = document.querySelector('main');
       if (main) {
-        (main as HTMLElement).style.containIntrinsicSize = '1200px 800px';
+        (main as HTMLElement).style.contain = 'layout style paint';
       }
     };
 
-    // Execute optimizations
-    preloadResources();
-    optimizeImages();
-    preventLayoutShifts();
-    optimizeThirdPartyScripts();
-    optimizeWebVitals();
+    // Enhanced Layout Shift Prevention
+    const preventLayoutShifts = () => {
+      // Reserve space for images
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        if (!img.width && !img.height) {
+          img.style.aspectRatio = '16/9'; // Default aspect ratio
+          img.style.width = '100%';
+          img.style.height = 'auto';
+        }
+      });
 
-    // Cleanup
+      // Reserve space for dynamic content
+      const dynamicContainers = document.querySelectorAll('[data-dynamic]');
+      dynamicContainers.forEach(container => {
+        (container as HTMLElement).style.minHeight = '200px';
+      });
+    };
+
+    // Optimize Input Responsiveness
+    const optimizeInputResponsiveness = () => {
+      // Add immediate visual feedback for interactions
+      const interactiveElements = document.querySelectorAll('button, [role="button"], a[href]');
+      interactiveElements.forEach(element => {
+        element.addEventListener('pointerdown', () => {
+          (element as HTMLElement).style.transform = 'scale(0.98)';
+        }, { passive: true });
+
+        element.addEventListener('pointerup', () => {
+          (element as HTMLElement).style.transform = '';
+        }, { passive: true });
+      });
+
+      // Optimize scroll performance
+      let scrollTimeout: NodeJS.Timeout;
+      window.addEventListener('scroll', () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          // Debounced scroll handling
+        }, 16); // ~60fps
+      }, { passive: true });
+    };
+
+    // Cache Strategy Optimization
+    const optimizeCaching = () => {
+      // Service worker registration for caching (if available)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .catch(() => {
+              // Service worker not available, continue without it
+            });
+        });
+      }
+    };
+
+    // Initialize optimizations in priority order
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        optimizeResources();
+        optimizeCriticalPath();
+        preventLayoutShifts();
+        optimizeInputResponsiveness();
+        optimizeCaching();
+      });
+    } else {
+      optimizeResources();
+      optimizeCriticalPath();
+      preventLayoutShifts();
+      optimizeInputResponsiveness();
+      optimizeCaching();
+    }
+
     return () => {
-      // Remove event listeners if needed
+      // Cleanup if needed
     };
   }, []);
 
-  return null; // This component doesn't render anything
+  return null;
 };
 
 export default PerformanceOptimizer;

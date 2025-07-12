@@ -209,31 +209,36 @@ const TrustSection = () => {
               </div>
 
               {/* Navigation */}
-              <div className="flex justify-between items-center mt-6 sm:mt-8">
+              <div className="flex justify-between items-center mt-6 sm:mt-8" role="group" aria-label="Testimonial navigation">
                 <button 
                   onClick={prevTestimonial}
-                  className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
+                  className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-usergy-turquoise focus:ring-offset-2"
+                  aria-label="Previous testimonial"
                 >
                   <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
                 
-                <div className="flex space-x-2">
-                  {testimonials.map((_, index) => (
+                <div className="flex space-x-2" role="tablist" aria-label="Testimonial indicators">
+                  {testimonials.map((testimonial, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentTestimonial(index)}
-                      className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                      className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-usergy-turquoise focus:ring-offset-2 ${
                         index === currentTestimonial 
                           ? 'bg-usergy-turquoise' 
-                          : 'bg-gray-300 hover:bg-gray-400'
+                          : 'bg-gray-400 hover:bg-gray-500'
                       }`}
+                      role="tab"
+                      aria-selected={index === currentTestimonial}
+                      aria-label={`Show testimonial from ${testimonial.author}`}
                     />
                   ))}
                 </div>
                 
                 <button 
                   onClick={nextTestimonial}
-                  className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group"
+                  className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-usergy-turquoise focus:ring-offset-2"
+                  aria-label="Next testimonial"
                 >
                   <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                 </button>
