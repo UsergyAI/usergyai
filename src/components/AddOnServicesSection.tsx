@@ -5,16 +5,16 @@ import { Plus, Search, Gift } from 'lucide-react';
 const AddOnServicesSection = () => {
   const addOns = [
     {
-      title: 'Extra Participant',
+      title: 'Extra User',
       price: '$35 each',
-      description: 'Scale your insights with additional high-quality participants',
+      description: 'Scale your insights with additional high-quality users',
       icon: Plus,
       color: 'usergy-turquoise',
       gradient: 'from-usergy-turquoise/20 to-usergy-turquoise/5'
     },
     {
       title: 'Advanced Analytics',
-      price: '+$499',
+      price: '+$99',
       subtitle: '(one-time)',
       description: 'Deep-dive analysis with predictive insights and recommendations',
       icon: Search,

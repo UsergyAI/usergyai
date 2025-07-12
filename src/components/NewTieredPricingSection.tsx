@@ -22,9 +22,9 @@ const NewTieredPricingSection = () => {
   const tiers = [
     {
       id: 'tier1',
-      campaignSize: '0 – 9 participants',
+      campaignSize: '0 – 9 users',
       price: '$35',
-      description: 'Perfect for a quick pilot and early validation',
+      description: 'Perfect for quick validation & essential insights',
       isLaunchOffer: true,
       cta: 'Claim Your Free Pilot →',
       action: handleClaimFreeOffer,
@@ -38,51 +38,39 @@ const NewTieredPricingSection = () => {
     },
     {
       id: 'tier2',
-      campaignSize: '10 – 19 participants',
+      campaignSize: '10 – 19 users',
       price: '$33',
-      description: 'Best for deeper feedback with built-in savings',
-      cta: 'Book Your Strategy Call →',
-      action: () => handleBookCall('10-19 participants'),
+      description: 'Ideal for deeper feedback & building core community',
       bgGradient: 'from-emerald-50 via-teal-50 to-cyan-50',
       borderColor: 'border-emerald-200/40',
       hoverBorder: 'hover:border-emerald-300/60',
-      buttonGradient: 'from-emerald-500 via-teal-500 to-cyan-500',
-      buttonHover: 'hover:from-teal-500 hover:via-emerald-500 hover:to-teal-500',
       priceColor: 'text-emerald-600'
     },
     {
       id: 'tier3',
-      campaignSize: '20 – 50 participants',
+      campaignSize: '20 – 50 users',
       price: '$31',
-      description: 'Ideal for refining features before a full launch',
-      cta: 'Book Your Strategy Call →',
-      action: () => handleBookCall('20-50 participants'),
+      description: 'Great for refining features & igniting early buzz',
       bgGradient: 'from-blue-50 via-indigo-50 to-purple-50',
       borderColor: 'border-blue-200/40',
       hoverBorder: 'hover:border-blue-300/60',
-      buttonGradient: 'from-blue-500 via-indigo-500 to-purple-500',
-      buttonHover: 'hover:from-indigo-500 hover:via-blue-500 hover:to-indigo-500',
       priceColor: 'text-blue-600'
     },
     {
       id: 'tier4',
-      campaignSize: '51 – 100 participants',
+      campaignSize: '51 – 100 users',
       price: '$29',
-      description: 'Scale your insights affordably for serious validation',
-      cta: 'Book Your Strategy Call →',
-      action: () => handleBookCall('51-100 participants'),
+      description: 'Optimal for scaling insights & widespread advocacy',
       bgGradient: 'from-purple-50 via-pink-50 to-rose-50',
       borderColor: 'border-purple-200/40',
       hoverBorder: 'hover:border-purple-300/60',
-      buttonGradient: 'from-purple-500 via-pink-500 to-rose-500',
-      buttonHover: 'hover:from-pink-500 hover:via-purple-500 hover:to-pink-500',
       priceColor: 'text-purple-600'
     },
     {
       id: 'tier5',
-      campaignSize: '100+ participants',
+      campaignSize: '100+ users',
       price: 'Custom',
-      description: 'Tailored pricing, dedicated community manager, SLA guarantees',
+      description: 'Tailored for strategic growth & dedicated partnership',
       cta: 'Design My Custom Plan →',
       action: handleCustomPlan,
       isCustom: true,
@@ -104,7 +92,7 @@ const NewTieredPricingSection = () => {
             Unlock Your Growth: Choose Your User Impact
           </h2>
           <p className="text-lg font-semibold text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Select your desired participant count below to see how Usergy delivers comprehensive growth, tailored to your needs. 
+            Select your desired user count below to see how Usergy delivers comprehensive growth, tailored to your needs. 
             Our transparent pricing scales with your ambition.
           </p>
           
@@ -151,25 +139,27 @@ const NewTieredPricingSection = () => {
                     <span className={`text-3xl font-black ${tier.priceColor}`}>
                       {tier.price}
                     </span>
-                    {tier.price !== 'Custom' && (
-                      <span className="text-sm text-gray-500 ml-1">/ participant</span>
-                    )}
-                    {tier.isLaunchOffer && (
-                      <div className="text-sm text-gray-500 mt-1 line-through">
-                        Normally $35/participant
-                      </div>
-                    )}
+                      {tier.price !== 'Custom' && (
+                        <span className="text-sm text-gray-500 ml-1">/ user</span>
+                      )}
+                      {tier.isLaunchOffer && (
+                        <div className="text-sm text-gray-500 mt-1 line-through">
+                          Normally $35/user
+                        </div>
+                      )}
                   </div>
                   <p className="text-sm text-gray-600 leading-relaxed font-medium">{tier.description}</p>
                 </div>
 
-                <Button
-                  onClick={tier.action}
-                  className={`w-full bg-gradient-to-r ${tier.buttonGradient} ${tier.buttonHover} text-white font-bold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-base border-2 border-white/20`}
-                >
-                  <Phone className="w-5 h-5 mr-2" />
-                  {tier.cta}
-                </Button>
+                {(tier.isLaunchOffer || tier.isCustom) && (
+                  <Button
+                    onClick={tier.action}
+                    className={`w-full bg-gradient-to-r ${tier.buttonGradient} ${tier.buttonHover} text-white font-bold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-base border-2 border-white/20`}
+                  >
+                    <Phone className="w-5 h-5 mr-2" />
+                    {tier.cta}
+                  </Button>
+                )}
               </div>
             ))}
           </div>
@@ -181,11 +171,10 @@ const NewTieredPricingSection = () => {
             <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-gray-100">
               {/* Table Header */}
               <div className="bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white py-6 px-8">
-                <div className="grid grid-cols-4 gap-8 items-center">
+                <div className="grid grid-cols-3 gap-8 items-center">
                   <div className="text-xl font-bold">Campaign Size</div>
-                  <div className="text-xl font-bold text-center">Price / Participant</div>
+                  <div className="text-xl font-bold text-center">Price / User</div>
                   <div className="text-xl font-bold">What You Get</div>
-                  <div className="text-xl font-bold text-center">Action</div>
                 </div>
               </div>
               
@@ -194,7 +183,7 @@ const NewTieredPricingSection = () => {
                 {tiers.map((tier, index) => (
                   <div
                     key={tier.id}
-                    className={`relative grid grid-cols-4 gap-8 items-center py-6 px-8 bg-gradient-to-r ${tier.bgGradient} hover:shadow-lg transition-all duration-300 group ${
+                    className={`relative grid grid-cols-3 gap-8 items-center py-6 px-8 bg-gradient-to-r ${tier.bgGradient} hover:shadow-lg transition-all duration-300 group ${
                       tier.isLaunchOffer ? 'ring-2 ring-yellow-300/50 bg-gradient-to-r from-yellow-50 to-amber-50' : ''
                     } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''}`}
                   >
@@ -225,41 +214,21 @@ const NewTieredPricingSection = () => {
                     <div className="text-gray-700 font-medium leading-relaxed">
                       {tier.description}
                     </div>
-                    
-                    <div className="text-center">
-                      <Button
-                        onClick={tier.action}
-                        size="sm"
-                        className={`bg-gradient-to-r ${tier.buttonGradient} ${tier.buttonHover} text-white font-bold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 border border-white/20`}
-                      >
-                        {tier.isLaunchOffer ? (
-                          <>
-                            <Sparkles className="w-4 h-4 mr-2" />
-                            Claim Free
-                          </>
-                        ) : tier.isCustom ? (
-                          <>
-                            <Crown className="w-4 h-4 mr-2" />
-                            Get Custom
-                          </>
-                        ) : (
-                          <>
-                            <Phone className="w-4 h-4 mr-2" />
-                            Book Call
-                          </>
-                        )}
-                      </Button>
-                    </div>
                   </div>
                 ))}
               </div>
             </div>
             
-            {/* Credits Never Expire Notice */}
-            <div className="text-center mt-8">
-              <p className="text-lg font-semibold text-usergy-coral bg-gradient-to-r from-usergy-coral/10 to-usergy-coral/5 px-6 py-3 rounded-full inline-block border border-usergy-coral/20">
-                <strong>Credits never expire. Buy only what you need, when you need it.</strong>
-              </p>
+            {/* Consolidated CTA */}
+            <div className="text-center mt-12">
+              <Button
+                onClick={() => handleBookCall('Strategy Call')}
+                size="lg"
+                className="bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue hover:from-usergy-skyblue hover:to-usergy-turquoise text-white font-bold text-lg py-6 px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 border-2 border-white/20"
+              >
+                <Phone className="mr-3 h-6 w-6" />
+                Ready to Accelerate Your AI? Book a Strategy Call!
+              </Button>
             </div>
           </div>
         </div>
