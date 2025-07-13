@@ -13,6 +13,7 @@
     <title>Usergy: AI Traction & Growth</title>
     <meta name="description" content="Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum." />
     <link rel="canonical" href="https://usergy.ai/" />
+    <meta name="twitter:image" content="https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" />
     
     <!-- Immediate SEO meta tag updates based on current URL -->
     <script>
@@ -22,37 +23,98 @@
           '/': {
             title: 'Usergy: AI Traction & Growth',
             description: 'Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum.',
-            canonical: 'https://usergy.ai/'
+            canonical: 'https://usergy.ai/',
+            twitterImage: 'https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png'
           },
           '/pricing': {
             title: 'Usergy Pricing Plans | AI Traction & Growth Solutions',
             description: 'Transparent pricing for AI traction services. Choose from Starter, Growth, or Scale plans. Custom enterprise solutions available with dedicated success management.',
-            canonical: 'https://usergy.ai/pricing'
+            canonical: 'https://usergy.ai/pricing',
+            twitterImage: 'https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png'
           },
           '/community': {
             title: 'Usergy Community | AI Founders & Enthusiasts Network',
             description: 'Join the Usergy community of AI founders and enthusiasts. Connect, share insights, and accelerate your AI startup with like-minded innovators.',
-            canonical: 'https://usergy.ai/community'
+            canonical: 'https://usergy.ai/community',
+            twitterImage: 'https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png',
+            faqSchema: {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Do I need to pay to join?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No, it's completely free for enthusiasts. In fact, you might earn rewards for participating. Our platform charges companies (founders) for campaign support, not community members."
+                  }
+                },
+                {
+                  "@type": "Question", 
+                  "name": "How do I get invited to projects?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "After completing your profile, our matching algorithm connects you with relevant AI projects based on your interests and skills. You'll receive personalized email invitations with project details and participation requirements."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How much time do I need to commit?", 
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "As much or as little as you want. You can participate in short tests (e.g., 30 minutes) or longer trials over weeks - it's up to you which opportunities you accept. There's no mandatory quota."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What kinds of AI projects will I get to test?",
+                  "acceptedAnswer": {
+                    "@type": "Answer", 
+                    "text": "All sorts! From AI art generators to productivity apps to advanced chatbots - if it's a cutting-edge AI tool, it could show up here. You'll always see a description of a project before joining a test."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "I'm an AI founder - can I also join or get help?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Absolutely. If you're building an AI product, check out our Services page to see how Usergy can help you get feedback and users. Many founders also hang out in the community to interact with users - you're welcome to do the same!"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do you ensure participant quality?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "We use a multi-step vetting process including profile verification, skill assessments, and ongoing quality monitoring. Participants who consistently provide valuable feedback earn higher ratings and access to premium opportunities."
+                  }
+                }
+              ]
+            }
           },
           '/contact': {
             title: 'Contact Usergy | Get in Touch with AI Growth Experts',
             description: 'Contact Usergy for AI traction and growth services. Schedule a consultation with our expert team to accelerate your AI startup success.',
-            canonical: 'https://usergy.ai/contact'
+            canonical: 'https://usergy.ai/contact',
+            twitterImage: 'https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png'
           },
           '/user-signup': {
             title: 'Join Usergy | AI Founder & Enthusiast Signup',
             description: 'Sign up to join the Usergy community. Connect with AI founders and enthusiasts, access exclusive resources, and accelerate your AI journey.',
-            canonical: 'https://usergy.ai/user-signup'
+            canonical: 'https://usergy.ai/user-signup',
+            twitterImage: 'https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png'
           },
           '/terms': {
             title: 'Terms of Service | Usergy',
             description: 'Read Usergy\'s terms of service and user agreement. Learn about our policies for AI traction and growth services.',
-            canonical: 'https://usergy.ai/terms'
+            canonical: 'https://usergy.ai/terms',
+            twitterImage: 'https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png'
           },
           '/privacy': {
             title: 'Privacy Policy | Usergy',
             description: 'Learn about Usergy\'s privacy policy and how we protect your data in our AI traction and growth services.',
-            canonical: 'https://usergy.ai/privacy'
+            canonical: 'https://usergy.ai/privacy',
+            twitterImage: 'https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png'
           }
         };
         
@@ -68,6 +130,23 @@
         // Update canonical URL
         const canonicalLink = document.querySelector('link[rel="canonical"]');
         if (canonicalLink) canonicalLink.href = pageData.canonical;
+        
+        // Update Twitter image
+        const twitterImageMeta = document.querySelector('meta[name="twitter:image"]');
+        if (twitterImageMeta && pageData.twitterImage) {
+          twitterImageMeta.content = pageData.twitterImage;
+        }
+        
+        // Add FAQ schema for community page
+        if (pageData.faqSchema) {
+          const existingSchema = document.querySelector('script[type="application/ld+json"]');
+          if (!existingSchema) {
+            const schemaScript = document.createElement('script');
+            schemaScript.type = 'application/ld+json';
+            schemaScript.textContent = JSON.stringify(pageData.faqSchema);
+            document.head.appendChild(schemaScript);
+          }
+        }
       })();
     </script>
     
