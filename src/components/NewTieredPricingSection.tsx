@@ -158,7 +158,7 @@ const NewTieredPricingSection = () => {
                         </div>
                       )}
                   </div>
-                  <p className="text-sm text-gray-600 leading-relaxed font-medium">{tier.description}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed font-medium px-2">{tier.description}</p>
                 </div>
 
                 {(tier.isLaunchOffer || tier.isCustom) && (
@@ -193,7 +193,7 @@ const NewTieredPricingSection = () => {
                 {tiers.map((tier, index) => (
                   <div
                     key={tier.id}
-                    className={`relative grid grid-cols-3 gap-8 items-center py-6 px-8 bg-gradient-to-r ${tier.bgGradient} hover:shadow-lg transition-all duration-300 group ${
+                    className={`relative grid grid-cols-3 gap-8 items-center py-8 px-8 bg-gradient-to-r ${tier.bgGradient} hover:shadow-lg transition-all duration-300 group ${
                       tier.isLaunchOffer ? 'ring-2 ring-yellow-300/50 bg-gradient-to-r from-yellow-50 to-amber-50' : ''
                     } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''} ${tier.isMostPopular ? 'ring-2 ring-red-300/50 bg-gradient-to-r from-red-50 to-pink-50' : ''}`}
                   >
@@ -230,7 +230,7 @@ const NewTieredPricingSection = () => {
                       )}
                     </div>
                     
-                    <div className="text-gray-700 font-medium leading-relaxed">
+                    <div className="text-gray-700 font-medium leading-relaxed px-2">
                       {tier.description}
                     </div>
                   </div>
