@@ -9,10 +9,67 @@
     <link rel="apple-touch-icon" href="https://usergy.ai/favicon-512x512.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Default meta tags - will be overridden by React Helmet for specific pages -->
+    <!-- Default meta tags - will be immediately updated by inline script below -->
     <title>Usergy: AI Traction & Growth</title>
     <meta name="description" content="Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum." />
     <link rel="canonical" href="https://usergy.ai/" />
+    
+    <!-- Immediate SEO meta tag updates based on current URL -->
+    <script>
+      (function() {
+        const path = window.location.pathname;
+        const seoData = {
+          '/': {
+            title: 'Usergy: AI Traction & Growth',
+            description: 'Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum.',
+            canonical: 'https://usergy.ai/'
+          },
+          '/pricing': {
+            title: 'Usergy Pricing Plans | AI Traction & Growth Solutions',
+            description: 'Transparent pricing for AI traction services. Choose from Starter, Growth, or Scale plans. Custom enterprise solutions available with dedicated success management.',
+            canonical: 'https://usergy.ai/pricing'
+          },
+          '/community': {
+            title: 'Usergy Community | AI Founders & Enthusiasts Network',
+            description: 'Join the Usergy community of AI founders and enthusiasts. Connect, share insights, and accelerate your AI startup with like-minded innovators.',
+            canonical: 'https://usergy.ai/community'
+          },
+          '/contact': {
+            title: 'Contact Usergy | Get in Touch with AI Growth Experts',
+            description: 'Contact Usergy for AI traction and growth services. Schedule a consultation with our expert team to accelerate your AI startup success.',
+            canonical: 'https://usergy.ai/contact'
+          },
+          '/user-signup': {
+            title: 'Join Usergy | AI Founder & Enthusiast Signup',
+            description: 'Sign up to join the Usergy community. Connect with AI founders and enthusiasts, access exclusive resources, and accelerate your AI journey.',
+            canonical: 'https://usergy.ai/user-signup'
+          },
+          '/terms': {
+            title: 'Terms of Service | Usergy',
+            description: 'Read Usergy\'s terms of service and user agreement. Learn about our policies for AI traction and growth services.',
+            canonical: 'https://usergy.ai/terms'
+          },
+          '/privacy': {
+            title: 'Privacy Policy | Usergy',
+            description: 'Learn about Usergy\'s privacy policy and how we protect your data in our AI traction and growth services.',
+            canonical: 'https://usergy.ai/privacy'
+          }
+        };
+        
+        const pageData = seoData[path] || seoData['/'];
+        
+        // Update title immediately
+        document.title = pageData.title;
+        
+        // Update meta description
+        const descMeta = document.querySelector('meta[name="description"]');
+        if (descMeta) descMeta.content = pageData.description;
+        
+        // Update canonical URL
+        const canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (canonicalLink) canonicalLink.href = pageData.canonical;
+      })();
+    </script>
     
     <!-- Deferred Analytics Scripts -->
     <script>
