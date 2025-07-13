@@ -28,8 +28,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   const optimizedDescription = description.length > 160 ? description.substring(0, 157) + '...' : description;
   
   // Always ensure clean canonical URLs without index.html
-  const cleanCanonical = canonical ? canonical.replace(/\/index\.html$/, '') : 'https://usergy.ai';
-  const url = cleanCanonical;
+  const url = canonical || 'https://usergy.ai';
 
   return (
     <Helmet>
