@@ -23,7 +23,7 @@ const NewTieredPricingSection = () => {
     {
       id: 'tier1',
       campaignSize: '0 – 9 users',
-      price: '$35',
+      price: 'FREE',
       description: 'Perfect for quick validation & essential insights',
       isLaunchOffer: true,
       cta: 'Claim Your Free Pilot →',
@@ -51,6 +51,7 @@ const NewTieredPricingSection = () => {
       campaignSize: '20 – 50 users',
       price: '$31',
       description: 'Great for refining features & igniting early buzz',
+      isMostPopular: true,
       bgGradient: 'from-blue-50 via-indigo-50 to-purple-50',
       borderColor: 'border-blue-200/40',
       hoverBorder: 'hover:border-blue-300/60',
@@ -113,13 +114,22 @@ const NewTieredPricingSection = () => {
                 key={tier.id}
                 className={`relative bg-gradient-to-br ${tier.bgGradient} border-2 ${tier.borderColor} ${tier.hoverBorder} rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] ${
                   tier.isLaunchOffer ? tier.highlightRing : ''
-                } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''}`}
+                } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''} ${tier.isMostPopular ? 'ring-2 ring-red-300/50 shadow-xl' : ''}`}
               >
                 {tier.isLaunchOffer && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
                     <div className="bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-white">
                       <Sparkles className="w-4 h-4" />
-                      <span className="whitespace-nowrap">FREE for Launch</span>
+                      <span className="whitespace-nowrap">Launch Offer</span>
+                    </div>
+                  </div>
+                )}
+                
+                {tier.isMostPopular && (
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
+                    <div className="bg-gradient-to-r from-usergy-coral via-red-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-white">
+                      <Crown className="w-4 h-4 fill-current" />
+                      <span className="whitespace-nowrap">Most Popular</span>
                     </div>
                   </div>
                 )}
@@ -139,7 +149,7 @@ const NewTieredPricingSection = () => {
                     <span className={`text-3xl font-black ${tier.priceColor}`}>
                       {tier.price}
                     </span>
-                      {tier.price !== 'Custom' && (
+                      {tier.price !== 'Custom' && tier.price !== 'FREE' && (
                         <span className="text-sm text-gray-500 ml-1">/ user</span>
                       )}
                       {tier.isLaunchOffer && (
@@ -185,13 +195,22 @@ const NewTieredPricingSection = () => {
                     key={tier.id}
                     className={`relative grid grid-cols-3 gap-8 items-center py-6 px-8 bg-gradient-to-r ${tier.bgGradient} hover:shadow-lg transition-all duration-300 group ${
                       tier.isLaunchOffer ? 'ring-2 ring-yellow-300/50 bg-gradient-to-r from-yellow-50 to-amber-50' : ''
-                    } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''}`}
+                    } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''} ${tier.isMostPopular ? 'ring-2 ring-red-300/50 bg-gradient-to-r from-red-50 to-pink-50' : ''}`}
                   >
                     {tier.isLaunchOffer && (
                       <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
                         <div className="bg-gradient-to-r from-yellow-400 to-amber-400 text-white px-3 py-1 rounded-r-full text-xs font-bold shadow-lg flex items-center gap-1">
                           <Sparkles className="w-3 h-3" />
-                          FREE
+                          LAUNCH
+                        </div>
+                      </div>
+                    )}
+                    
+                    {tier.isMostPopular && (
+                      <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
+                        <div className="bg-gradient-to-r from-usergy-coral to-red-500 text-white px-3 py-1 rounded-r-full text-xs font-bold shadow-lg flex items-center gap-1">
+                          <Crown className="w-3 h-3 fill-current" />
+                          POPULAR
                         </div>
                       </div>
                     )}
