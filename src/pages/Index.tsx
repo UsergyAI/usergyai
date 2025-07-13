@@ -23,7 +23,7 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <SEOHead
         title="Usergy - AI Traction & Growth Experts | Expert Consulting for AI Startups"
-        description="Expert AI traction consulting services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum. Accelerate your AI startup's growth with proven strategies and 1,200+ successful campaigns."
+        description="Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum."
         canonical="https://usergy.ai"
         keywords="AI traction, AI growth, AI community, AI feedback, AI founders, startup growth, AI consulting, user engagement, product market fit, AI startup consulting"
         type="website"

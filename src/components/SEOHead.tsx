@@ -27,7 +27,9 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   // Ensure descriptions are 150-160 characters for optimal SEO
   const optimizedDescription = description.length > 160 ? description.substring(0, 157) + '...' : description;
   
-  const url = canonical || 'https://usergy.ai';
+  // Always ensure clean canonical URLs without index.html
+  const cleanCanonical = canonical ? canonical.replace(/\/index\.html$/, '') : 'https://usergy.ai';
+  const url = cleanCanonical;
 
   return (
     <Helmet>
