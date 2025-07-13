@@ -9,7 +9,21 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Immediate SEO setup - executes and writes tags before any content loads -->
+    <!-- Page-specific SEO meta tags - will be updated immediately by script -->
+    <title>Usergy: AI Traction & Growth</title>
+    <meta name="description" content="Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum." />
+    <link rel="canonical" href="https://usergy.ai/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" />
+    <meta name="twitter:title" content="Usergy: AI Traction & Growth" />
+    <meta name="twitter:description" content="Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum." />
+    <meta property="og:title" content="Usergy: AI Traction & Growth" />
+    <meta property="og:description" content="Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum." />
+    <meta property="og:url" content="https://usergy.ai/" />
+    <meta property="og:image" content="https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Immediate SEO updates based on current URL - runs before DOM ready -->
     <script>
       (function() {
         const path = window.location.pathname;
@@ -60,79 +74,93 @@
         
         const pageData = seoData[path] || seoData['/'];
         
-        // Write the correct meta tags directly to the document head immediately
-        document.write('<title>' + pageData.title + '</title>');
-        document.write('<meta name="description" content="' + pageData.description + '" />');
-        document.write('<link rel="canonical" href="' + pageData.canonical + '" />');
-        document.write('<meta name="twitter:card" content="summary_large_image" />');
-        document.write('<meta name="twitter:image" content="' + pageData.twitterImage + '" />');
-        document.write('<meta name="twitter:title" content="' + pageData.title + '" />');
-        document.write('<meta name="twitter:description" content="' + pageData.description + '" />');
-        document.write('<meta property="og:title" content="' + pageData.title + '" />');
-        document.write('<meta property="og:description" content="' + pageData.description + '" />');
-        document.write('<meta property="og:url" content="' + pageData.canonical + '" />');
-        document.write('<meta property="og:image" content="' + pageData.twitterImage + '" />');
-        document.write('<meta property="og:type" content="website" />');
+        // Update existing meta tags immediately - safer than document.write
+        document.title = pageData.title;
         
-        // Add FAQ schema for community page only - directly in initial HTML
-        if (path === '/community') {
-          const faqSchema = {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Do I need to pay to join?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "No, it's completely free for enthusiasts. In fact, you might earn rewards for participating. Our platform charges companies (founders) for campaign support, not community members."
-                }
-              },
-              {
-                "@type": "Question", 
-                "name": "How do I get invited to projects?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "After completing your profile, our matching algorithm connects you with relevant AI projects based on your interests and skills. You'll receive personalized email invitations with project details and participation requirements."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How much time do I need to commit?", 
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "As much or as little as you want. You can participate in short tests (e.g., 30 minutes) or longer trials over weeks - it's up to you which opportunities you accept. There's no mandatory quota."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "What kinds of AI projects will I get to test?",
-                "acceptedAnswer": {
-                  "@type": "Answer", 
-                  "text": "All sorts! From AI art generators to productivity apps to advanced chatbots - if it's a cutting-edge AI tool, it could show up here. You'll always see a description of a project before joining a test."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "I'm an AI founder - can I also join or get help?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Absolutely. If you're building an AI product, check out our Services page to see how Usergy can help you get feedback and users. Many founders also hang out in the community to interact with users - you're welcome to do the same!"
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "How do you ensure participant quality?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "We use a multi-step vetting process including profile verification, skill assessments, and ongoing quality monitoring. Participants who consistently provide valuable feedback earn higher ratings and access to premium opportunities."
-                }
-              }
-            ]
-          };
-          document.write('<script type="application/ld+json">' + JSON.stringify(faqSchema) + '</script>');
-        }
+        const updateMeta = (selector, content) => {
+          const element = document.querySelector(selector);
+          if (element) element.content = content;
+        };
+        
+        updateMeta('meta[name="description"]', pageData.description);
+        updateMeta('link[rel="canonical"]', pageData.canonical);
+        updateMeta('meta[name="twitter:image"]', pageData.twitterImage);
+        updateMeta('meta[name="twitter:title"]', pageData.title);
+        updateMeta('meta[name="twitter:description"]', pageData.description);
+        updateMeta('meta[property="og:title"]', pageData.title);
+        updateMeta('meta[property="og:description"]', pageData.description);
+        updateMeta('meta[property="og:url"]', pageData.canonical);
+        updateMeta('meta[property="og:image"]', pageData.twitterImage);
+        
+        // Update canonical href specifically
+        const canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (canonicalLink) canonicalLink.href = pageData.canonical;
       })();
+    </script>
+    
+    <!-- FAQ Schema for Community Page Only - Static Implementation -->
+    <script>
+      if (window.location.pathname === '/community') {
+        const faqSchema = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Do I need to pay to join?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No, it's completely free for enthusiasts. In fact, you might earn rewards for participating. Our platform charges companies (founders) for campaign support, not community members."
+              }
+            },
+            {
+              "@type": "Question", 
+              "name": "How do I get invited to projects?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "After completing your profile, our matching algorithm connects you with relevant AI projects based on your interests and skills. You'll receive personalized email invitations with project details and participation requirements."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How much time do I need to commit?", 
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "As much or as little as you want. You can participate in short tests (e.g., 30 minutes) or longer trials over weeks - it's up to you which opportunities you accept. There's no mandatory quota."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What kinds of AI projects will I get to test?",
+              "acceptedAnswer": {
+                "@type": "Answer", 
+                "text": "All sorts! From AI art generators to productivity apps to advanced chatbots - if it's a cutting-edge AI tool, it could show up here. You'll always see a description of a project before joining a test."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "I'm an AI founder - can I also join or get help?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely. If you're building an AI product, check out our Services page to see how Usergy can help you get feedback and users. Many founders also hang out in the community to interact with users - you're welcome to do the same!"
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How do you ensure participant quality?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We use a multi-step vetting process including profile verification, skill assessments, and ongoing quality monitoring. Participants who consistently provide valuable feedback earn higher ratings and access to premium opportunities."
+              }
+            }
+          ]
+        };
+        
+        const schemaScript = document.createElement('script');
+        schemaScript.type = 'application/ld+json';
+        schemaScript.textContent = JSON.stringify(faqSchema);
+        document.head.appendChild(schemaScript);
+      }
     </script>
     
     <!-- Deferred Analytics Scripts -->
