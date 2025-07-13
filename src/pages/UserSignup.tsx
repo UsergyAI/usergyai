@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import AnimatedBackground from '@/components/AnimatedBackground';
+import SEOHead from '@/components/SEOHead';
+import StructuredData from '@/components/StructuredData';
 
 const UserSignup = () => {
   useEffect(() => {
@@ -24,6 +26,19 @@ const UserSignup = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
+      <SEOHead
+        title="Join AI Explorer Community"
+        description="Sign up to join the Usergy AI Explorer Community. Get early access to AI tools, provide feedback, earn rewards, and shape the future of AI innovation."
+        canonical="https://usergy.ai/user-signup"
+        keywords="AI community signup, AI explorer signup, AI enthusiast registration, AI feedback community, AI testing signup"
+      />
+      <StructuredData
+        breadcrumbs={[
+          { name: "Home", url: "https://usergy.ai" },
+          { name: "Join Community", url: "https://usergy.ai/user-signup" }
+        ]}
+        pageType="WebPage"
+      />
       <Header />
       
       {/* Hero Section with Enhanced Floating Bubbles */}

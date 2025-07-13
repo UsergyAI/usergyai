@@ -27,7 +27,7 @@ const Community = () => {
           { name: "Home", url: "https://usergy.ai" },
           { name: "Community", url: "https://usergy.ai/community" }
         ]}
-        pageType="WebPage"
+        pageType="FAQPage"
       />
       <Header />
       <main role="main" id="main">

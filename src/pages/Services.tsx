@@ -29,7 +29,7 @@ const Services = () => {
           { name: "Home", url: "https://usergy.ai" },
           { name: "Pricing", url: "https://usergy.ai/pricing" }
         ]}
-        pageType="WebPage"
+        pageType="FAQPage"
       />
       <Header />
       

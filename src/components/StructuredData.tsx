@@ -56,13 +56,6 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     "contactPoint": [
       {
         "@type": "ContactPoint",
-        "telephone": "+1-800-USERGY",
-        "contactType": "customer service",
-        "availableLanguage": ["English"],
-        "contactOption": "TollFree"
-      },
-      {
-        "@type": "ContactPoint",
         "email": "hello@usergy.ai",
         "contactType": "customer service",
         "availableLanguage": ["English"]
@@ -101,11 +94,6 @@ const StructuredData: React.FC<StructuredDataProps> = ({
         "@type": "ImageObject",
         "url": "https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png"
       }
-    },
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://usergy.ai/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
     }
   };
 
