@@ -9,10 +9,9 @@
     <link rel="apple-touch-icon" href="https://usergy.ai/favicon-512x512.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Default meta tags - will be immediately updated by inline script below -->
+    <!-- Default meta tags - canonical will be set immediately by script below -->
     <title>Usergy: AI Traction & Growth</title>
     <meta name="description" content="Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum." />
-    <link rel="canonical" href="https://usergy.ai/" />
     <meta name="twitter:image" content="https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png" />
     
     <!-- Immediate SEO meta tag updates based on current URL -->
@@ -127,9 +126,14 @@
         const descMeta = document.querySelector('meta[name="description"]');
         if (descMeta) descMeta.content = pageData.description;
         
-        // Update canonical URL
-        const canonicalLink = document.querySelector('link[rel="canonical"]');
-        if (canonicalLink) canonicalLink.href = pageData.canonical;
+        // Create and set canonical URL immediately
+        let canonicalLink = document.querySelector('link[rel="canonical"]');
+        if (!canonicalLink) {
+          canonicalLink = document.createElement('link');
+          canonicalLink.rel = 'canonical';
+          document.head.appendChild(canonicalLink);
+        }
+        canonicalLink.href = pageData.canonical;
         
         // Update Twitter image
         const twitterImageMeta = document.querySelector('meta[name="twitter:image"]');
