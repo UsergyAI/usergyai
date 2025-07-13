@@ -117,7 +117,7 @@ const NewTieredPricingSection = () => {
                 } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''} ${tier.isMostPopular ? 'ring-2 ring-red-300/50 shadow-xl' : ''}`}
               >
                 {tier.isLaunchOffer && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
                     <div className="bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-white">
                       <Sparkles className="w-4 h-4" />
                       <span className="whitespace-nowrap">Launch Offer</span>
@@ -126,7 +126,7 @@ const NewTieredPricingSection = () => {
                 )}
                 
                 {tier.isMostPopular && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
                     <div className="bg-gradient-to-r from-usergy-coral via-red-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-white">
                       <Crown className="w-4 h-4 fill-current" />
                       <span className="whitespace-nowrap">Most Popular</span>
@@ -135,7 +135,7 @@ const NewTieredPricingSection = () => {
                 )}
                 
                 {tier.isEnterprise && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
                     <div className="bg-gradient-to-r from-gray-600 via-slate-600 to-zinc-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-white">
                       <Crown className="w-4 h-4 fill-current" />
                       <span className="whitespace-nowrap">Enterprise</span>
@@ -143,7 +143,7 @@ const NewTieredPricingSection = () => {
                   </div>
                 )}
                 
-                <div className="text-center mb-6 pt-6">
+                <div className="text-center mb-6 pt-2">
                   <h3 className="text-lg font-bold text-usergy-dark mb-4">{tier.campaignSize}</h3>
                   <div className="mb-4">
                     <span className={`text-3xl font-black ${tier.priceColor}`}>
@@ -158,7 +158,7 @@ const NewTieredPricingSection = () => {
                         </div>
                       )}
                   </div>
-                  <p className="text-sm text-gray-600 leading-relaxed font-medium px-2">{tier.description}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed font-medium">{tier.description}</p>
                 </div>
 
                 {(tier.isLaunchOffer || tier.isCustom) && (
@@ -193,24 +193,24 @@ const NewTieredPricingSection = () => {
                 {tiers.map((tier, index) => (
                   <div
                     key={tier.id}
-                    className={`relative grid grid-cols-3 gap-8 items-center py-8 px-8 bg-gradient-to-r ${tier.bgGradient} hover:shadow-lg transition-all duration-300 group ${
+                    className={`relative grid grid-cols-3 gap-8 items-center py-6 px-8 bg-gradient-to-r ${tier.bgGradient} hover:shadow-lg transition-all duration-300 group ${
                       tier.isLaunchOffer ? 'ring-2 ring-yellow-300/50 bg-gradient-to-r from-yellow-50 to-amber-50' : ''
                     } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''} ${tier.isMostPopular ? 'ring-2 ring-red-300/50 bg-gradient-to-r from-red-50 to-pink-50' : ''}`}
                   >
                     {tier.isLaunchOffer && (
-                      <div className="absolute -left-4 top-2">
-                        <div className="bg-gradient-to-r from-yellow-400 to-amber-400 text-white px-2 py-1 rounded-r-full text-xs font-bold shadow-lg flex items-center gap-1">
+                      <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
+                        <div className="bg-gradient-to-r from-yellow-400 to-amber-400 text-white px-3 py-1 rounded-r-full text-xs font-bold shadow-lg flex items-center gap-1">
                           <Sparkles className="w-3 h-3" />
-                          <span>LAUNCH</span>
+                          LAUNCH
                         </div>
                       </div>
                     )}
                     
                     {tier.isMostPopular && (
-                      <div className="absolute -left-4 top-2">
-                        <div className="bg-gradient-to-r from-usergy-coral to-red-500 text-white px-2 py-1 rounded-r-full text-xs font-bold shadow-lg flex items-center gap-1">
+                      <div className="absolute -left-2 top-1/2 transform -translate-y-1/2">
+                        <div className="bg-gradient-to-r from-usergy-coral to-red-500 text-white px-3 py-1 rounded-r-full text-xs font-bold shadow-lg flex items-center gap-1">
                           <Crown className="w-3 h-3 fill-current" />
-                          <span>POPULAR</span>
+                          POPULAR
                         </div>
                       </div>
                     )}
@@ -230,7 +230,7 @@ const NewTieredPricingSection = () => {
                       )}
                     </div>
                     
-                    <div className="text-gray-700 font-medium leading-relaxed px-2">
+                    <div className="text-gray-700 font-medium leading-relaxed">
                       {tier.description}
                     </div>
                   </div>
