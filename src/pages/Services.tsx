@@ -18,12 +18,7 @@ import StructuredData from '@/components/StructuredData';
 const Services = () => {
   return (
     <div className="min-h-screen bg-background">
-      <SEOHead
-        title="Usergy Pricing Plans | AI Traction & Growth Solutions"
-        description="Transparent pricing for AI traction services. Choose from Starter, Growth, or Scale plans. Custom enterprise solutions available with dedicated success management."
-        canonical="https://usergy.ai/pricing"
-        keywords="AI services pricing, AI traction cost, startup growth pricing, AI community pricing"
-      />
+      <SEOHead />
       <StructuredData
         breadcrumbs={[
           { name: "Home", url: "https://usergy.ai" },

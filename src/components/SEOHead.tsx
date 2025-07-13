@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useLocation } from 'react-router-dom';
+import { getSEODataForPath, updateDocumentMeta } from '@/utils/seoUtils';
 
 interface SEOHeadProps {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
   canonical?: string;
   keywords?: string;
   image?: string;
@@ -20,24 +22,42 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   type = 'website',
   noindex = false
 }) => {
+  const location = useLocation();
+  
+  // Get default SEO data for current path
+  const defaultSEOData = getSEODataForPath(location.pathname);
+  
+  // Use props if provided, otherwise fall back to path-specific defaults
+  const finalTitle = title || defaultSEOData.title;
+  const finalDescription = description || defaultSEOData.description;
+  const finalCanonical = canonical || defaultSEOData.canonical;
+  const finalKeywords = keywords || defaultSEOData.keywords;
+  const finalNoindex = noindex || defaultSEOData.noindex || false;
+  
+  // Immediately update document meta tags for search engines
+  useEffect(() => {
+    updateDocumentMeta({
+      title: finalTitle,
+      description: finalDescription,
+      canonical: finalCanonical,
+      noindex: finalNoindex
+    });
+  }, [finalTitle, finalDescription, finalCanonical, finalNoindex]);
+
   // Ensure titles are under 60 characters for optimal SEO
-  const fullTitle = title.includes('Usergy') ? title : `${title} | Usergy`;
-  const optimizedTitle = fullTitle.length > 60 ? fullTitle.substring(0, 57) + '...' : fullTitle;
+  const optimizedTitle = finalTitle.length > 60 ? finalTitle.substring(0, 57) + '...' : finalTitle;
   
   // Ensure descriptions are 150-160 characters for optimal SEO
-  const optimizedDescription = description.length > 160 ? description.substring(0, 157) + '...' : description;
-  
-  // Always ensure clean canonical URLs without index.html
-  const url = canonical || 'https://usergy.ai';
+  const optimizedDescription = finalDescription.length > 160 ? finalDescription.substring(0, 157) + '...' : finalDescription;
 
   return (
     <Helmet>
       {/* Basic Meta Tags */}
       <title>{optimizedTitle}</title>
       <meta name="description" content={optimizedDescription} />
-      {keywords && <meta name="keywords" content={keywords} />}
-      <link rel="canonical" href={url} />
-      {noindex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
+      {finalKeywords && <meta name="keywords" content={finalKeywords} />}
+      <link rel="canonical" href={finalCanonical} />
+      {finalNoindex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
 
       {/* Enhanced SEO Meta Tags */}
       <meta name="googlebot" content="index, follow" />
@@ -53,7 +73,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:type" content={type} />
       <meta property="og:title" content={optimizedTitle} />
       <meta property="og:description" content={optimizedDescription} />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={finalCanonical} />
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
