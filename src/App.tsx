@@ -8,7 +8,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { usePerformanceOptimization } from "@/hooks/usePerformanceOptimization";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
 import Index from "./pages/Index";
-import Services from "./pages/Services";
+import Pricing from "./pages/Pricing";
 import Community from "./pages/Community";
 import Contact from "./pages/Contact";
 import UserSignup from "./pages/UserSignup";
@@ -32,8 +32,7 @@ const AppContent = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
-        <Route path="/pricing" element={<Services />} />
-        <Route path="/services" element={<Navigate to="/pricing" replace />} />
+        <Route path="/pricing" element={<Pricing />} />
         <Route path="/community" element={<Community />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/user-signup" element={<UserSignup />} />

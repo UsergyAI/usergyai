@@ -15,7 +15,7 @@ import ServicesFinalCTA from '@/components/ServicesFinalCTA';
 import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
 
-const Services = () => {
+const Pricing = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead />
@@ -61,4 +61,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Pricing;
