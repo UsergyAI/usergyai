@@ -198,8 +198,8 @@ const NewTieredPricingSection = () => {
                     } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''} ${tier.isMostPopular ? 'ring-2 ring-red-300/50 bg-gradient-to-r from-red-50 to-pink-50' : ''}`}
                   >
                     {tier.isLaunchOffer && (
-                      <div className="absolute -right-2 top-1/2 transform -translate-y-1/2">
-                        <div className="bg-gradient-to-r from-yellow-400 to-amber-400 text-white px-3 py-1 rounded-l-full text-xs font-bold shadow-lg flex items-center gap-1">
+                      <div className="absolute -left-4 top-2">
+                        <div className="bg-gradient-to-r from-yellow-400 to-amber-400 text-white px-2 py-1 rounded-r-full text-xs font-bold shadow-lg flex items-center gap-1">
                           <Sparkles className="w-3 h-3" />
                           <span>LAUNCH</span>
                         </div>
@@ -207,8 +207,8 @@ const NewTieredPricingSection = () => {
                     )}
                     
                     {tier.isMostPopular && (
-                      <div className="absolute -right-2 top-1/2 transform -translate-y-1/2">
-                        <div className="bg-gradient-to-r from-usergy-coral to-red-500 text-white px-3 py-1 rounded-l-full text-xs font-bold shadow-lg flex items-center gap-1">
+                      <div className="absolute -left-4 top-2">
+                        <div className="bg-gradient-to-r from-usergy-coral to-red-500 text-white px-2 py-1 rounded-r-full text-xs font-bold shadow-lg flex items-center gap-1">
                           <Crown className="w-3 h-3 fill-current" />
                           <span>POPULAR</span>
                         </div>
