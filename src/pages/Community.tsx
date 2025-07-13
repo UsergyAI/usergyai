@@ -17,11 +17,10 @@ const Community = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
       <SEOHead
-        title="Usergy Community | AI Founders & Enthusiasts Network"
-        description="Join the Usergy community of AI founders and enthusiasts. Connect, share insights, and accelerate your AI startup with like-minded innovators."
+        title="AI Explorer Community"
+        description="Join a thriving community of AI enthusiasts and founders. Get early access to AI tools, provide feedback, earn rewards, and shape the future of AI innovation."
         canonical="https://usergy.ai/community"
         keywords="AI community, AI explorers, AI enthusiasts, AI feedback, AI early access, AI testing"
-        image="https://usergy.ai/lovable-uploads/c5c3b275-e91f-4380-a86a-a6b4489557a1.png"
       />
       <StructuredData
         breadcrumbs={[
