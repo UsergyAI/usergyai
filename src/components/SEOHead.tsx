@@ -27,7 +27,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   // Ensure descriptions are 150-160 characters for optimal SEO
   const optimizedDescription = description.length > 160 ? description.substring(0, 157) + '...' : description;
   
-  const url = canonical || (typeof window !== 'undefined' ? window.location.href : 'https://usergy.ai');
+  const url = canonical || 'https://usergy.ai';
 
   return (
     <Helmet>
