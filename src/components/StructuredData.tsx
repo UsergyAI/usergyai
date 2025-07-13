@@ -20,18 +20,24 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "Usergy",
-    "alternateName": "Usergy AI",
+    "alternateName": ["Usergy AI", "Usergy.ai"],
     "url": "https://usergy.ai",
     "logo": {
       "@type": "ImageObject",
       "url": "https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png",
       "width": "180",
-      "height": "180"
+      "height": "180",
+      "caption": "Usergy Logo"
     },
     "description": "Expert AI traction consulting services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum. Accelerate your AI startup's growth with proven strategies.",
     "foundingDate": "2024",
-    "industry": "Artificial Intelligence Services",
+    "industry": ["Artificial Intelligence Services", "Business Consulting", "Startup Services"],
+    "keywords": ["AI startup growth", "AI traction", "startup consulting", "AI community", "business development"],
     "slogan": "AI Traction & Growth",
+    "serviceArea": {
+      "@type": "Place",
+      "name": "Global"
+    },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
@@ -48,7 +54,40 @@ const StructuredData: React.FC<StructuredDataProps> = ({
           "itemOffered": {
             "@type": "Service",
             "name": "AI Traction Consulting",
-            "description": "Comprehensive traction consulting for AI startups including feedback collection, community activation, and social amplification"
+            "description": "Comprehensive traction consulting for AI startups including feedback collection, community activation, and social amplification",
+            "provider": {
+              "@type": "Organization",
+              "name": "Usergy"
+            },
+            "areaServed": "Global",
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceUrl": "https://usergy.ai/contact"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Community Building",
+            "description": "Expert community building services for AI startups to create engaged user bases",
+            "provider": {
+              "@type": "Organization",
+              "name": "Usergy"
+            }
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "AI Product Feedback Collection",
+            "description": "Structured feedback collection from AI enthusiasts and early adopters",
+            "provider": {
+              "@type": "Organization",
+              "name": "Usergy"
+            }
           }
         }
       ]
@@ -58,7 +97,14 @@ const StructuredData: React.FC<StructuredDataProps> = ({
         "@type": "ContactPoint",
         "email": "hello@usergy.ai",
         "contactType": "customer service",
-        "availableLanguage": ["English"]
+        "availableLanguage": ["English"],
+        "url": "https://usergy.ai/contact"
+      },
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "availableLanguage": ["English"],
+        "url": "https://discord.com/invite/jkeSnkm5ww"
       }
     ],
     "address": {
@@ -71,9 +117,13 @@ const StructuredData: React.FC<StructuredDataProps> = ({
       "https://www.reddit.com/r/UsergyAI/"
     ],
     "offers": {
-      "@type": "Offer",
+      "@type": "AggregateOffer",
       "description": "AI traction and growth services for founders",
-      "category": "Service"
+      "category": "Professional Services",
+      "offeredBy": {
+        "@type": "Organization",
+        "name": "Usergy"
+      }
     }
   };
 

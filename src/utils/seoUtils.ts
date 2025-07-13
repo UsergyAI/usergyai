@@ -25,6 +25,13 @@ export const pageSEOData: Record<string, PageSEOData> = {
     keywords: 'AI services pricing, AI traction cost, startup growth pricing, AI community pricing',
     image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
   },
+  '/services': {
+    title: 'Usergy Pricing Plans | AI Traction & Growth Solutions',
+    description: 'Transparent pricing for AI traction services. Choose from Starter, Growth, or Scale plans. Custom enterprise solutions available with dedicated success management.',
+    canonical: 'https://usergy.ai/pricing',
+    keywords: 'AI services pricing, AI traction cost, startup growth pricing, AI community pricing',
+    image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
+  },
   '/community': {
     title: 'Usergy Community | AI Founders & Enthusiasts Network',
     description: 'Join the Usergy community of AI founders and enthusiasts. Connect, share insights, and accelerate your AI startup with like-minded innovators.',
