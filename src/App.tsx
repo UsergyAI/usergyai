@@ -15,7 +15,6 @@ import UserSignup from "./pages/UserSignup";
 import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
-import { ProjectBugs } from "./pages/platform/ProjectBugs";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,7 +39,6 @@ const AppContent = () => {
         <Route path="/user-signup" element={<UserSignup />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
-        <Route path="/project/:projectId/bugs" element={<ProjectBugs />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

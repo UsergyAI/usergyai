@@ -14,71 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      feedback: {
-        Row: {
-          actual_result: string
-          attachments: string[] | null
-          created_at: string
-          description: string
-          device_used: string
-          expected_result: string
-          id: string
-          notes: string | null
-          os_version: string
-          project_id: string | null
-          reproducibility: string
-          severity: string
-          status: string
-          title: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          actual_result: string
-          attachments?: string[] | null
-          created_at?: string
-          description: string
-          device_used: string
-          expected_result: string
-          id?: string
-          notes?: string | null
-          os_version: string
-          project_id?: string | null
-          reproducibility: string
-          severity: string
-          status?: string
-          title: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          actual_result?: string
-          attachments?: string[] | null
-          created_at?: string
-          description?: string
-          device_used?: string
-          expected_result?: string
-          id?: string
-          notes?: string | null
-          os_version?: string
-          project_id?: string | null
-          reproducibility?: string
-          severity?: string
-          status?: string
-          title?: string
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "feedback_project_id_fkey"
-            columns: ["project_id"]
-            isOneToOne: false
-            referencedRelation: "projects"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       profiles: {
         Row: {
           adaptability: string | null
@@ -229,30 +164,6 @@ export type Database = {
           version_control_git?: boolean | null
           work_pace?: string | null
           years_experience?: string | null
-        }
-        Relationships: []
-      }
-      projects: {
-        Row: {
-          created_at: string
-          description: string | null
-          id: string
-          name: string
-          updated_at: string
-        }
-        Insert: {
-          created_at?: string
-          description?: string | null
-          id?: string
-          name: string
-          updated_at?: string
-        }
-        Update: {
-          created_at?: string
-          description?: string | null
-          id?: string
-          name?: string
-          updated_at?: string
         }
         Relationships: []
       }
