@@ -88,7 +88,7 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
             <div
               key={plan.name}
               className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] ${
-                plan.popular ? 'ring-2 ring-usergy-gold/40 shadow-xl' : ''
+                plan.popular ? 'ring-2 ring-primary/40 shadow-xl' : ''
               }`}
             >
               {plan.popular && (
@@ -139,7 +139,7 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
             <div
               key={plan.name}
               className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 ${
-                plan.popular ? 'ring-2 ring-usergy-gold/40 scale-105 shadow-xl' : ''
+                plan.popular ? 'ring-2 ring-primary/40 scale-105 shadow-xl' : ''
               }`}
             >
               {plan.popular && (
@@ -159,7 +159,7 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
                   <span className="text-5xl font-black text-foreground">
                     ${plan.price.toLocaleString()}
                   </span>
-                    <p className="text-gray-500 mt-2 font-medium">for {selectedUsers} users</p>
+                    <p className="text-muted-foreground mt-2 font-medium">for {selectedUsers} users</p>
                   </div>
                 </div>
 

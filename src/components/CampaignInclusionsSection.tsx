@@ -45,7 +45,7 @@ const CampaignInclusionsSection = () => {
           <h2 className="text-3xl lg:text-4xl font-black text-foreground mb-4">
             What Your Usergy Campaign Always Includes
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive solutions designed to accelerate your AI product's growth at every stage
           </p>
         </div>

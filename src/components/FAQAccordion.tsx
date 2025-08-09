@@ -50,17 +50,17 @@ const FAQAccordion = () => {
         {faqs.map((faq, index) => (
           <div 
             key={index} 
-            className={`bg-white rounded-2xl border-2 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden ${
+            className={`bg-card rounded-2xl border-2 shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden ${
               openIndex === index 
-                ? 'border-usergy-turquoise/30 shadow-usergy-turquoise/10' 
-                : 'border-gray-100 hover:border-usergy-turquoise/20'
+                ? 'border-primary/30 shadow-primary/10' 
+                : 'border-border hover:border-primary/20'
             }`}
           >
             <button
-              className="w-full py-6 px-8 text-left flex justify-between items-center hover:bg-gray-50/50 transition-colors rounded-2xl group"
+              className="w-full py-6 px-8 text-left flex justify-between items-center hover:bg-muted/50 transition-colors rounded-2xl group"
               onClick={() => toggleFAQ(index)}
             >
-              <span className="text-lg font-bold text-usergy-dark pr-6 group-hover:text-usergy-turquoise transition-colors leading-relaxed">
+              <span className="text-lg font-bold text-foreground pr-6 group-hover:text-primary transition-colors leading-relaxed">
                 {faq.question}
               </span>
               <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
@@ -78,8 +78,8 @@ const FAQAccordion = () => {
             
             {openIndex === index && (
               <div className="px-8 pb-6 animate-accordion-down">
-                <div className="border-t border-gray-100 pt-4">
-                  <p className="text-gray-600 leading-relaxed font-medium">
+                <div className="border-t border-border pt-4">
+                  <p className="text-muted-foreground leading-relaxed font-medium">
                     {faq.answer}
                   </p>
                 </div>

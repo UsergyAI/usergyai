@@ -35,9 +35,9 @@ const PricingPsychologySection = () => {
   ];
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h3 className="text-2xl font-bold text-usergy-dark text-center mb-12">
+        <h3 className="text-2xl font-bold text-foreground text-center mb-12">
           Our Pricing is Designed for Your Growth
         </h3>
         
@@ -47,15 +47,15 @@ const PricingPsychologySection = () => {
             return (
               <div 
                 key={index}
-                className={`text-center bg-gradient-to-b ${principle.gradient} rounded-xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-gray-100 hover:border-${principle.color}/30 transform group cursor-pointer`}
+                className={"text-center bg-card rounded-xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-border hover:border-primary/40 transform group cursor-pointer"}
               >
-                <div className={`w-16 h-16 bg-gradient-to-br from-${principle.color} to-${principle.color}/80 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                  <IconComponent className="w-8 h-8 text-white" />
+                <div className={"w-16 h-16 bg-primary-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg"}>
+                  <IconComponent className="w-8 h-8 text-primary-foreground" />
                 </div>
-                <h4 className={`font-bold text-${principle.color} mb-3 text-lg group-hover:text-usergy-dark transition-colors`}>
+                <h4 className={"font-bold text-primary mb-3 text-lg group-hover:text-foreground transition-colors"}>
                   {principle.title}
                 </h4>
-                <p className="text-sm text-gray-600 leading-relaxed group-hover:text-gray-800 transition-colors">
+                <p className="text-sm text-muted-foreground leading-relaxed group-hover:text-foreground transition-colors">
                   {principle.description}
                 </p>
               </div>
