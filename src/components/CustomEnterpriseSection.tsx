@@ -75,7 +75,6 @@ const CustomEnterpriseSection = () => {
               </Button>
             </div>
           </div>
-        </div>
     </section>
   );
 };
