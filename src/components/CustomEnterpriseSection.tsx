@@ -14,7 +14,6 @@ const CustomEnterpriseSection = () => {
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-primary/15 rounded-full blur-2xl animate-float" style={{ animationDelay: '-2s' }}></div>
-...
             <div className="inline-flex items-center gap-2 bg-muted px-4 py-2 rounded-full mb-4">
               <Zap className="w-4 h-4 text-primary" />
               <span className="text-sm font-semibold text-foreground">Enterprise Solutions</span>
@@ -50,7 +49,7 @@ const CustomEnterpriseSection = () => {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-border text-center">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-usergy-coral/20 to-usergy-coral/10 flex items-center justify-center mx-auto mb-4">
               <Settings className="w-6 h-6 text-primary" />
-...
+              </div>
               <h3 className="text-lg font-bold text-foreground mb-2">Custom Features</h3>
               <p className="text-sm text-gray-600">Tailored integrations & workflows</p>
             </div>
@@ -77,7 +76,6 @@ const CustomEnterpriseSection = () => {
             </div>
           </div>
         </div>
-      </div>
     </section>
   );
 };
