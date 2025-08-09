@@ -31,10 +31,10 @@ const NewTieredPricingSection = () => {
       bgGradient: 'from-yellow-50 via-amber-50 to-orange-50',
       borderColor: 'border-yellow-300/60',
       hoverBorder: 'hover:border-amber-400/80',
-      buttonGradient: 'from-yellow-500 via-amber-500 to-orange-500',
-      buttonHover: 'hover:from-amber-500 hover:via-orange-500 hover:to-red-500',
-      priceColor: 'text-amber-600',
-      highlightRing: 'ring-2 ring-yellow-300/50 shadow-xl'
+      buttonGradient: 'bg-primary',
+      buttonHover: '',
+      priceColor: 'text-primary',
+      highlightRing: 'ring-2 ring-primary/40 shadow-xl'
     },
     {
       id: 'tier2',
@@ -42,9 +42,9 @@ const NewTieredPricingSection = () => {
       price: '$33',
       description: 'Ideal for deeper feedback & building core community',
       bgGradient: 'from-emerald-50 via-teal-50 to-cyan-50',
-      borderColor: 'border-emerald-200/40',
-      hoverBorder: 'hover:border-emerald-300/60',
-      priceColor: 'text-emerald-600'
+      borderColor: 'border-border',
+      hoverBorder: 'hover:border-primary/40',
+      priceColor: 'text-primary'
     },
     {
       id: 'tier3',
@@ -52,20 +52,20 @@ const NewTieredPricingSection = () => {
       price: '$31',
       description: 'Great for refining features & igniting early buzz',
       isMostPopular: true,
-      bgGradient: 'from-blue-50 via-indigo-50 to-purple-50',
-      borderColor: 'border-blue-200/40',
-      hoverBorder: 'hover:border-blue-300/60',
-      priceColor: 'text-blue-600'
+      bgGradient: '',
+      borderColor: 'border-border',
+      hoverBorder: 'hover:border-primary/40',
+      priceColor: 'text-primary'
     },
     {
       id: 'tier4',
       campaignSize: '51 – 100 users',
       price: '$29',
       description: 'Optimal for scaling insights & widespread advocacy',
-      bgGradient: 'from-purple-50 via-pink-50 to-rose-50',
-      borderColor: 'border-purple-200/40',
-      hoverBorder: 'hover:border-purple-300/60',
-      priceColor: 'text-purple-600'
+      bgGradient: '',
+      borderColor: 'border-border',
+      hoverBorder: 'hover:border-primary/40',
+      priceColor: 'text-primary'
     },
     {
       id: 'tier5',
@@ -78,29 +78,29 @@ const NewTieredPricingSection = () => {
       bgGradient: 'from-gray-50 via-slate-50 to-zinc-50',
       borderColor: 'border-gray-300/60',
       hoverBorder: 'hover:border-gray-400/80',
-      buttonGradient: 'from-gray-600 via-slate-600 to-zinc-600',
-      buttonHover: 'hover:from-slate-600 hover:via-gray-600 hover:to-slate-600',
-      priceColor: 'text-gray-700',
+      buttonGradient: 'bg-muted',
+      buttonHover: '',
+      priceColor: 'text-foreground',
       isEnterprise: true
     }
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-black text-usergy-dark mb-4">
+          <h2 className="text-4xl font-black text-foreground mb-4">
             Unlock Your Growth: Choose Your User Impact
           </h2>
-          <p className="text-lg font-semibold text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg font-semibold text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
             Select your desired user count below to see how Usergy delivers comprehensive growth, tailored to your needs. 
             Our transparent pricing scales with your ambition.
           </p>
           
           {/* Volume Discount Callout */}
-          <div className="mb-12 flex items-center justify-center gap-3 bg-gradient-to-r from-usergy-turquoise/10 to-usergy-skyblue/10 rounded-full px-6 py-3 border border-usergy-turquoise/20 max-w-md mx-auto">
-            <TrendingDown className="w-5 h-5 text-usergy-turquoise" />
-            <span className="text-usergy-turquoise font-semibold">
+          <div className="mb-12 flex items-center justify-center gap-3 bg-muted rounded-full px-6 py-3 border border-border max-w-md mx-auto">
+            <TrendingDown className="w-5 h-5 text-primary" />
+            <span className="text-primary font-semibold">
               Volume discounts unlock greater savings—scale with confidence.
             </span>
           </div>
@@ -112,13 +112,13 @@ const NewTieredPricingSection = () => {
             {tiers.map((tier) => (
               <div
                 key={tier.id}
-                className={`relative bg-gradient-to-br ${tier.bgGradient} border-2 ${tier.borderColor} ${tier.hoverBorder} rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] ${
+                className={`relative bg-card border-2 ${tier.borderColor} ${tier.hoverBorder} rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] ${
                   tier.isLaunchOffer ? tier.highlightRing : ''
-                } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''} ${tier.isMostPopular ? 'ring-2 ring-red-300/50 shadow-xl' : ''}`}
+                } ${tier.isEnterprise ? 'ring-2 ring-muted/60' : ''} ${tier.isMostPopular ? 'ring-2 ring-primary/40 shadow-xl' : ''}`}
               >
                 {tier.isLaunchOffer && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-white">
+                    <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-primary/20">
                       <Sparkles className="w-4 h-4" />
                       <span className="whitespace-nowrap">Launch Offer</span>
                     </div>
@@ -127,7 +127,7 @@ const NewTieredPricingSection = () => {
                 
                 {tier.isMostPopular && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-gradient-to-r from-usergy-coral via-red-500 to-red-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-white">
+                    <div className="bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-primary/20">
                       <Crown className="w-4 h-4 fill-current" />
                       <span className="whitespace-nowrap">Most Popular</span>
                     </div>
@@ -136,7 +136,7 @@ const NewTieredPricingSection = () => {
                 
                 {tier.isEnterprise && (
                   <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
-                    <div className="bg-gradient-to-r from-gray-600 via-slate-600 to-zinc-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-white">
+                    <div className="bg-muted text-foreground px-4 py-2 rounded-full text-sm font-bold shadow-lg flex items-center gap-2 border-2 border-border">
                       <Crown className="w-4 h-4 fill-current" />
                       <span className="whitespace-nowrap">Enterprise</span>
                     </div>
@@ -144,27 +144,27 @@ const NewTieredPricingSection = () => {
                 )}
                 
                 <div className="text-center mb-6 pt-2">
-                  <h3 className="text-lg font-bold text-usergy-dark mb-4">{tier.campaignSize}</h3>
+                  <h3 className="text-lg font-bold text-foreground mb-4">{tier.campaignSize}</h3>
                   <div className="mb-4">
                     <span className={`text-3xl font-black ${tier.priceColor}`}>
                       {tier.price}
                     </span>
                       {tier.price !== 'Custom' && tier.price !== 'FREE' && (
-                        <span className="text-sm text-gray-500 ml-1">/ user</span>
+                        <span className="text-sm text-muted-foreground ml-1">/ user</span>
                       )}
                       {tier.isLaunchOffer && (
-                        <div className="text-sm text-gray-500 mt-1 line-through">
+                        <div className="text-sm text-muted-foreground mt-1 line-through">
                           Normally $35/user
                         </div>
                       )}
                   </div>
-                  <p className="text-sm text-gray-600 leading-relaxed font-medium">{tier.description}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed font-medium">{tier.description}</p>
                 </div>
 
                 {(tier.isLaunchOffer || tier.isCustom) && (
                   <Button
                     onClick={tier.action}
-                    className={`w-full bg-gradient-to-r ${tier.buttonGradient} ${tier.buttonHover} text-white font-bold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-base border-2 border-white/20`}
+                    className={`w-full ${tier.buttonGradient} text-primary-foreground font-bold py-4 px-6 rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 text-base border-2 border-primary/20`}
                   >
                     <Phone className="w-5 h-5 mr-2" />
                     {tier.cta}
@@ -178,9 +178,9 @@ const NewTieredPricingSection = () => {
         {/* Desktop: Table Layout */}
         <div className="hidden lg:block">
           <div className="max-w-5xl mx-auto">
-            <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-gray-100">
+            <div className="bg-card rounded-3xl shadow-2xl overflow-hidden border-2 border-border">
               {/* Table Header */}
-              <div className="bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white py-6 px-8">
+              <div className="bg-primary-gradient text-primary-foreground py-6 px-8">
                 <div className="grid grid-cols-3 gap-8 items-center">
                   <div className="text-xl font-bold">Campaign Size</div>
                   <div className="text-xl font-bold text-center">Price / User</div>
@@ -189,17 +189,17 @@ const NewTieredPricingSection = () => {
               </div>
               
               {/* Table Rows */}
-              <div className="divide-y divide-gray-100">
+              <div className="divide-y divide-border">
                 {tiers.map((tier, index) => (
                   <div
                     key={tier.id}
-                    className={`relative grid grid-cols-3 gap-8 items-center py-6 px-8 bg-gradient-to-r ${tier.bgGradient} hover:shadow-lg transition-all duration-300 group ${
-                      tier.isLaunchOffer ? 'ring-2 ring-yellow-300/50 bg-gradient-to-r from-yellow-50 to-amber-50' : ''
-                    } ${tier.isEnterprise ? 'ring-2 ring-gray-300/40' : ''} ${tier.isMostPopular ? 'ring-2 ring-red-300/50 bg-gradient-to-r from-red-50 to-pink-50' : ''}`}
+                    className={`relative grid grid-cols-3 gap-8 items-center py-6 px-8 bg-card transition-all duration-300 group ${
+                      tier.isLaunchOffer ? 'ring-2 ring-primary/40' : ''
+                    } ${tier.isEnterprise ? 'ring-2 ring-muted/60' : ''} ${tier.isMostPopular ? 'ring-2 ring-primary/40' : ''}`}
                   >
                     {tier.isLaunchOffer && (
                       <div className="absolute -top-3 right-4 z-10">
-                        <div className="bg-gradient-to-r from-yellow-400 to-amber-400 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
+                        <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
                           <Sparkles className="w-3 h-3" />
                           LAUNCH
                         </div>
@@ -208,14 +208,14 @@ const NewTieredPricingSection = () => {
                     
                     {tier.isMostPopular && (
                       <div className="absolute -top-3 right-4 z-10">
-                        <div className="bg-gradient-to-r from-usergy-coral to-red-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
+                        <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-lg flex items-center gap-1">
                           <Crown className="w-3 h-3 fill-current" />
                           POPULAR
                         </div>
                       </div>
                     )}
                     
-                    <div className="font-bold text-usergy-dark text-lg">
+                    <div className="font-bold text-foreground text-lg">
                       {tier.campaignSize}
                     </div>
                     
@@ -224,13 +224,13 @@ const NewTieredPricingSection = () => {
                         {tier.price}
                       </span>
                       {tier.isLaunchOffer && (
-                        <div className="text-sm text-gray-500 line-through mt-1">
+                        <div className="text-sm text-muted-foreground line-through mt-1">
                           $35
                         </div>
                       )}
                     </div>
                     
-                    <div className="text-gray-700 font-medium leading-relaxed">
+                    <div className="text-muted-foreground font-medium leading-relaxed">
                       {tier.description}
                     </div>
                   </div>
@@ -243,7 +243,7 @@ const NewTieredPricingSection = () => {
               <Button
                 onClick={() => handleBookCall('Strategy Call')}
                 size="lg"
-                className="bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue hover:from-usergy-skyblue hover:to-usergy-turquoise text-white font-bold text-lg py-6 px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 border-2 border-white/20"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold text-lg py-6 px-12 rounded-full shadow-2xl hover:shadow-primary/30 transform hover:scale-105 transition-all duration-300 border-2 border-primary/20"
               >
                 <Phone className="mr-3 h-6 w-6" />
                 Ready to Accelerate Your AI? Book a Strategy Call!

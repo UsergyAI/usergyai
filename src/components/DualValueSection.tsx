@@ -20,12 +20,12 @@ const DualValueSection = () => {
   };
 
   return (
-    <section id="for-founders" className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="for-founders" className="py-20 bg-site-background">
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-6">
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-6">
               The Dual Value Proposition
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -39,37 +39,37 @@ const DualValueSection = () => {
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 hidden lg:block">
               <div className="relative">
                 {/* Simple connecting line */}
-                <div className="w-24 h-0.5 bg-gradient-to-r from-usergy-turquoise to-usergy-coral"></div>
+                <div className="w-24 h-0.5 bg-primary"></div>
                 
                 {/* Minimal icon */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-lg border-2 border-gray-100">
-                  <Zap className="h-4 w-4 text-usergy-skyblue" />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-card rounded-full flex items-center justify-center shadow-lg border-2 border-border">
+                  <Zap className="h-4 w-4 text-primary" />
                 </div>
               </div>
             </div>
 
             {/* Founders Card */}
             <div 
-              className={`relative bg-white rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl min-h-[600px] flex flex-col ${
-                hoveredCard === 'founders' ? 'scale-105 shadow-usergy-turquoise/20' : ''
+              className={`relative bg-card rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl min-h-[600px] flex flex-col ${
+                hoveredCard === 'founders' ? 'scale-105 ring-2 ring-primary/40' : ''
               }`}
               onMouseEnter={() => setHoveredCard('founders')}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-usergy-turquoise/10 to-usergy-skyblue/10 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-muted rounded-2xl"></div>
               
               <div className="relative z-10 flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-lg flex items-center justify-center mr-4">
-                    <Rocket className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-primary-gradient rounded-lg flex items-center justify-center mr-4">
+                    <Rocket className="h-6 w-6 text-primary-foreground" />
                   </div>
-                  <h3 className="text-3xl font-bold text-usergy-skyblue">
+                  <h3 className="text-3xl font-bold text-primary">
                     For AI Startup Founders
                   </h3>
                 </div>
 
-                <h4 className="text-2xl font-bold text-usergy-dark mb-6 leading-tight">
+                <h4 className="text-2xl font-bold text-foreground mb-6 leading-tight">
                   Transform Innovation into Undeniable Impact
                 </h4>
 
@@ -83,27 +83,27 @@ const DualValueSection = () => {
                     "Accelerate: Speed up your journey to perfect product-market fit"
                   ].map((benefit, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-usergy-turquoise rounded-full mt-3 flex-shrink-0"></div>
-                      <p className="text-gray-700 font-medium">{benefit}</p>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                      <p className="text-muted-foreground font-medium">{benefit}</p>
                     </div>
                   ))}
                 </div>
 
                 {/* Illustration */}
                 <div className="mb-8 text-center">
-                  <div className="inline-flex items-center space-x-4 p-6 bg-gradient-to-r from-usergy-turquoise/20 to-usergy-skyblue/20 rounded-xl">
-                    <User className="h-10 w-10 text-usergy-turquoise" />
+                  <div className="inline-flex items-center space-x-4 p-6 bg-muted rounded-xl">
+                    <User className="h-10 w-10 text-primary" />
                     <div className="text-2xl">→</div>
-                    <TrendingUp className="h-10 w-10 text-usergy-skyblue" />
+                    <TrendingUp className="h-10 w-10 text-primary" />
                     <div className="text-2xl">→</div>
-                    <Target className="h-10 w-10 text-usergy-turquoise" />
+                    <Target className="h-10 w-10 text-primary" />
                   </div>
                   <p className="text-sm text-gray-500 mt-2">Founder → Growth → Success</p>
                 </div>
 
                 <div className="mt-auto">
                   <Button 
-                    className="w-full bg-usergy-skyblue hover:bg-usergy-turquoise text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
                     onClick={() => scrollToSection('how-it-works')}
                   >
                     See Our Founder Process →
@@ -114,26 +114,26 @@ const DualValueSection = () => {
 
             {/* Users Card */}
             <div 
-              className={`relative bg-white rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl min-h-[600px] flex flex-col ${
-                hoveredCard === 'users' ? 'scale-105 shadow-usergy-coral/20' : ''
+              className={`relative bg-card rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl min-h-[600px] flex flex-col ${
+                hoveredCard === 'users' ? 'scale-105 ring-2 ring-primary/40' : ''
               }`}
               onMouseEnter={() => setHoveredCard('users')}
               onMouseLeave={() => setHoveredCard(null)}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-usergy-coral/10 to-pink-100/50 rounded-2xl"></div>
+              <div className="absolute inset-0 bg-muted rounded-2xl"></div>
               
               <div className="relative z-10 flex flex-col h-full">
                 {/* Header */}
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-gradient-to-br from-usergy-coral to-pink-500 rounded-lg flex items-center justify-center mr-4">
-                    <Gamepad2 className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-primary-gradient rounded-lg flex items-center justify-center mr-4">
+                    <Gamepad2 className="h-6 w-6 text-primary-foreground" />
                   </div>
-                  <h3 className="text-3xl font-bold text-usergy-coral">
+                  <h3 className="text-3xl font-bold text-primary">
                     For AI Enthusiasts
                   </h3>
                 </div>
 
-                <h4 className="text-2xl font-bold text-usergy-dark mb-6 leading-tight">
+                <h4 className="text-2xl font-bold text-foreground mb-6 leading-tight">
                   Explore. Contribute. Earn. Influence.
                 </h4>
 
@@ -147,27 +147,27 @@ const DualValueSection = () => {
                     "Grow: Build your reputation and influence as a respected AI scout"
                   ].map((benefit, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-usergy-coral rounded-full mt-3 flex-shrink-0"></div>
-                      <p className="text-gray-700 font-medium">{benefit}</p>
+                      <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
+                      <p className="text-muted-foreground font-medium">{benefit}</p>
                     </div>
                   ))}
                 </div>
 
                 {/* Illustration */}
                 <div className="mb-8 text-center">
-                  <div className="inline-flex items-center space-x-4 p-6 bg-gradient-to-r from-usergy-coral/20 to-pink-100/50 rounded-xl">
-                    <Search className="h-10 w-10 text-usergy-coral" />
+                  <div className="inline-flex items-center space-x-4 p-6 bg-muted rounded-xl">
+                    <Search className="h-10 w-10 text-primary" />
                     <div className="text-2xl">→</div>
-                    <Lightbulb className="h-10 w-10 text-pink-500" />
+                    <Lightbulb className="h-10 w-10 text-primary" />
                     <div className="text-2xl">→</div>
-                    <Gift className="h-10 w-10 text-usergy-coral" />
+                    <Gift className="h-10 w-10 text-primary" />
                   </div>
                   <p className="text-sm text-gray-500 mt-2">Explore → Contribute → Earn</p>
                 </div>
 
                 <div className="mt-auto">
                   <Button 
-                    className="w-full bg-usergy-coral hover:bg-pink-500 text-white font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
+                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
                     onClick={handleUserSignupNavigation}
                   >
                     Join Our AI Enthusiast Community →

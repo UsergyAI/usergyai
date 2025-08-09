@@ -12,17 +12,12 @@ const CustomEnterpriseSection = () => {
     <section className="py-16 bg-gradient-to-br from-slate-50 via-white to-gray-50 relative overflow-hidden">
       {/* Subtle Background Effects */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-usergy-gold rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-usergy-coral rounded-full blur-2xl animate-float" style={{ animationDelay: '-2s' }}></div>
-      </div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Compact Header */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-usergy-gold/20 to-usergy-coral/20 px-4 py-2 rounded-full mb-4">
-              <Zap className="w-4 h-4 text-usergy-gold" />
-              <span className="text-sm font-semibold text-usergy-dark">Enterprise Solutions</span>
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-primary/15 rounded-full blur-2xl animate-float" style={{ animationDelay: '-2s' }}></div>
+...
+            <div className="inline-flex items-center gap-2 bg-muted px-4 py-2 rounded-full mb-4">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-sm font-semibold text-foreground">Enterprise Solutions</span>
             </div>
             <h2 className="text-3xl lg:text-4xl font-black text-usergy-dark mb-4">
               Scale Beyond Limits
@@ -42,21 +37,21 @@ const CustomEnterpriseSection = () => {
               <p className="text-sm text-gray-600">From 100 to 10,000+ participants</p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-usergy-turquoise/10 text-center">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-usergy-turquoise/20 to-usergy-turquoise/10 flex items-center justify-center mx-auto mb-4">
-                <svg className="w-6 h-6 text-usergy-turquoise" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-border text-center">
+              <div className="w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V18.75A.75.75 0 0112 18z" />
                 </svg>
               </div>
-              <h3 className="text-lg font-bold text-usergy-dark mb-2">Priority Support</h3>
+              <h3 className="text-lg font-bold text-foreground mb-2">Priority Support</h3>
               <p className="text-sm text-gray-600">Dedicated account management</p>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-usergy-coral/10 text-center">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-border text-center">
               <div className="w-12 h-12 rounded-full bg-gradient-to-br from-usergy-coral/20 to-usergy-coral/10 flex items-center justify-center mx-auto mb-4">
-                <Settings className="w-6 h-6 text-usergy-coral" />
-              </div>
-              <h3 className="text-lg font-bold text-usergy-dark mb-2">Custom Features</h3>
+              <Settings className="w-6 h-6 text-primary" />
+...
+              <h3 className="text-lg font-bold text-foreground mb-2">Custom Features</h3>
               <p className="text-sm text-gray-600">Tailored integrations & workflows</p>
             </div>
           </div>

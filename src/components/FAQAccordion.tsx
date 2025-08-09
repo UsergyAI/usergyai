@@ -65,8 +65,8 @@ const FAQAccordion = () => {
               </span>
               <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
                 openIndex === index 
-                  ? 'bg-usergy-turquoise text-white rotate-180' 
-                  : 'bg-gray-100 text-usergy-dark group-hover:bg-usergy-turquoise/10'
+                  ? 'bg-primary text-primary-foreground rotate-180' 
+                  : 'bg-muted text-foreground group-hover:bg-muted'
               }`}>
                 {openIndex === index ? (
                   <Minus className="w-4 h-4" />

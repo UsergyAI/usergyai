@@ -35,21 +35,21 @@ const HowItWorksSection = () => {
     {
       title: "Strategize & Scope",
       icon: Rocket,
-      color: "#4ECDC4",
+      color: "hsl(var(--primary))",
       description: "Collaborate with our expert team to define your goals and map your custom traction strategy",
       details: "We work closely with you to understand your AI product, target market, and growth objectives. Our team develops a comprehensive strategy tailored to your specific needs, ensuring maximum impact and efficient resource allocation."
     },
     {
       title: "Engage & Monitor",
       icon: BarChart3,
-      color: "#45B7D1", 
+      color: "hsl(var(--primary))", 
       description: "Our team manages user engagement, feedback collection, and community activation, providing real-time oversight",
       details: "We handle all aspects of user engagement while you focus on product development. Our experts monitor interactions, facilitate meaningful conversations, and ensure high-quality feedback collection through proven methodologies."
     },
     {
       title: "Analyze & Optimize",
       icon: Target,
-      color: "#FF6B6B",
+      color: "hsl(var(--primary))",
       description: "Receive tailored reports and strategic recommendations from our experts for continuous optimization and product refinement",
       details: "Get comprehensive analysis reports with actionable insights, trend identification, and strategic recommendations. Our team provides ongoing consultation to help you implement changes and optimize your product-market fit."
     }
@@ -59,38 +59,38 @@ const HowItWorksSection = () => {
     {
       title: "Register & Vet",
       icon: Zap,
-      color: "#4ECDC4",
+      color: "hsl(var(--primary))",
       description: "Join our community by registering and completing your profile for expert matching",
       details: "Complete a detailed profile showcasing your expertise and interests. Our team carefully vets each applicant to ensure we maintain a high-quality community of engaged AI enthusiasts and professionals."
     },
     {
       title: "Test & Contribute",
       icon: Users,
-      color: "#45B7D1",
+      color: "hsl(var(--primary))",
       description: "Receive invitations from our team to test and provide meaningful feedback on innovative AI solutions",
       details: "Get personally selected by our experts to participate in exclusive testing opportunities. Provide structured feedback through our guided assessment framework designed to capture valuable insights for founders."
     },
     {
       title: "Earn & Redeem",
       icon: Gift,
-      color: "#FF6B6B",
+      color: "hsl(var(--primary))",
       description: "Collect points and unlock exclusive rewards",
       details: "Earn points for quality feedback, consistent participation, and community engagement. Redeem rewards including early access to premium AI tools, tech merchandise, and exclusive events."
     }
   ];
 
   return (
-    <section id="how-it-works" ref={sectionRef} className="py-20 bg-gradient-to-br from-usergy-light to-white">
+    <section id="how-it-works" ref={sectionRef} className="py-20 bg-site-background">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className={`text-center mb-16 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-6">
+            <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-6">
               How <span className="gradient-text">Usergy Works</span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Our streamlined 3-step process ensures maximum impact and minimal friction. 
               We guide founders through a collaborative journey, and users find impactful ways to contribute.
             </p>
@@ -103,7 +103,7 @@ const HowItWorksSection = () => {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}>
               <div className="text-center mb-8">
-                <div className="inline-flex items-center space-x-3 bg-usergy-turquoise text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg">
+                <div className="inline-flex items-center space-x-3 bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold text-lg shadow-lg">
                   <Rocket className="h-6 w-6" />
                   <span>How We Partner with Founders</span>
                 </div>
@@ -157,7 +157,7 @@ const HowItWorksSection = () => {
               isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             }`}>
               <div className="text-center mb-8">
-                <div className="inline-flex items-center space-x-3 bg-usergy-coral text-white px-6 py-3 rounded-full font-bold text-lg shadow-lg">
+                <div className="inline-flex items-center space-x-3 bg-primary text-primary-foreground px-6 py-3 rounded-full font-bold text-lg shadow-lg">
                   <Users className="h-6 w-6" />
                   <span>For AI Enthusiasts</span>
                 </div>
@@ -208,16 +208,16 @@ const HowItWorksSection = () => {
           </div>
 
           {/* Call to Action - Updated with single button */}
-          <div className={`text-center mt-16 transition-all duration-1000 delay-900 ${
+            <div className={`text-center mt-16 transition-all duration-1000 delay-900 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue text-white rounded-2xl p-8 shadow-2xl">
+            <div className="bg-primary-gradient text-primary-foreground rounded-2xl p-8 shadow-2xl">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your AI Journey?</h3>
               <p className="text-lg mb-6 opacity-90">Join thousands of innovators already building the future with Usergy</p>
               <div className="flex justify-center">
                 <button 
                   onClick={handleCalendlyRedirect}
-                  className="bg-white text-usergy-turquoise font-bold py-4 px-10 rounded-full hover:bg-gray-50 transition-colors duration-300 shadow-lg flex items-center space-x-3 hover:scale-105 transform"
+                  className="bg-primary-foreground text-primary font-bold py-4 px-10 rounded-full hover:bg-muted transition-colors duration-300 shadow-lg flex items-center space-x-3 hover:scale-105 transform"
                 >
                   <Phone className="h-5 w-5" />
                   <span>Book Your Strategy Call</span>
