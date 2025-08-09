@@ -14,156 +14,247 @@ export type Database = {
   }
   public: {
     Tables: {
-      profiles: {
+      clients: {
         Row: {
-          adaptability: string | null
-          age_range: string | null
-          agreed_to_privacy: boolean
-          agreed_to_terms: boolean
-          ai_frameworks: string[] | null
-          ai_understanding: string | null
-          cloud_platforms: string[] | null
-          collaboration_preference: string | null
-          communication_style: string | null
-          conflict_resolution: string | null
+          client_id: string
+          company_name: string | null
           created_at: string
-          current_industry: string | null
-          databases: string[] | null
-          device_models: string | null
-          devices_owned: string[] | null
-          discord_username: string | null
-          entrepreneurial_experience: boolean | null
-          feedback_preference: string | null
-          frameworks_libraries: string[] | null
-          full_name: string
-          gender: string | null
-          gpt_models_used: string[] | null
+          email: string
           id: string
-          interests_hobbies: string | null
-          job_title: string | null
-          linkedin_profile: string | null
-          location_city: string | null
-          location_country: string | null
-          motivations: string[] | null
-          native_languages: string[] | null
-          operating_systems: string[] | null
-          perspective_ai: string | null
-          perspective_ai_agents: string | null
-          problem_solving: string | null
-          profile_completed: boolean | null
-          programming_languages: string[] | null
-          programming_proficiency: string | null
-          race_ethnicity: string[] | null
-          recent_ai_tools: string | null
-          software_practices: string[] | null
-          testimonial_consent: boolean | null
-          time_zone: string | null
-          twitter_username: string | null
           updated_at: string
-          user_id: string
-          version_control_git: boolean | null
-          work_pace: string | null
-          years_experience: string | null
         }
         Insert: {
-          adaptability?: string | null
-          age_range?: string | null
-          agreed_to_privacy?: boolean
-          agreed_to_terms?: boolean
-          ai_frameworks?: string[] | null
-          ai_understanding?: string | null
-          cloud_platforms?: string[] | null
-          collaboration_preference?: string | null
-          communication_style?: string | null
-          conflict_resolution?: string | null
+          client_id: string
+          company_name?: string | null
           created_at?: string
-          current_industry?: string | null
-          databases?: string[] | null
-          device_models?: string | null
-          devices_owned?: string[] | null
-          discord_username?: string | null
-          entrepreneurial_experience?: boolean | null
-          feedback_preference?: string | null
-          frameworks_libraries?: string[] | null
-          full_name: string
-          gender?: string | null
-          gpt_models_used?: string[] | null
+          email: string
           id?: string
-          interests_hobbies?: string | null
-          job_title?: string | null
-          linkedin_profile?: string | null
-          location_city?: string | null
-          location_country?: string | null
-          motivations?: string[] | null
-          native_languages?: string[] | null
-          operating_systems?: string[] | null
-          perspective_ai?: string | null
-          perspective_ai_agents?: string | null
-          problem_solving?: string | null
-          profile_completed?: boolean | null
-          programming_languages?: string[] | null
-          programming_proficiency?: string | null
-          race_ethnicity?: string[] | null
-          recent_ai_tools?: string | null
-          software_practices?: string[] | null
-          testimonial_consent?: boolean | null
-          time_zone?: string | null
-          twitter_username?: string | null
           updated_at?: string
-          user_id: string
-          version_control_git?: boolean | null
-          work_pace?: string | null
-          years_experience?: string | null
         }
         Update: {
-          adaptability?: string | null
-          age_range?: string | null
-          agreed_to_privacy?: boolean
-          agreed_to_terms?: boolean
-          ai_frameworks?: string[] | null
-          ai_understanding?: string | null
-          cloud_platforms?: string[] | null
-          collaboration_preference?: string | null
-          communication_style?: string | null
-          conflict_resolution?: string | null
+          client_id?: string
+          company_name?: string | null
           created_at?: string
-          current_industry?: string | null
-          databases?: string[] | null
-          device_models?: string | null
-          devices_owned?: string[] | null
-          discord_username?: string | null
-          entrepreneurial_experience?: boolean | null
-          feedback_preference?: string | null
-          frameworks_libraries?: string[] | null
-          full_name?: string
-          gender?: string | null
-          gpt_models_used?: string[] | null
+          email?: string
           id?: string
-          interests_hobbies?: string | null
-          job_title?: string | null
-          linkedin_profile?: string | null
-          location_city?: string | null
-          location_country?: string | null
-          motivations?: string[] | null
-          native_languages?: string[] | null
-          operating_systems?: string[] | null
-          perspective_ai?: string | null
-          perspective_ai_agents?: string | null
-          problem_solving?: string | null
-          profile_completed?: boolean | null
-          programming_languages?: string[] | null
-          programming_proficiency?: string | null
-          race_ethnicity?: string[] | null
-          recent_ai_tools?: string | null
-          software_practices?: string[] | null
-          testimonial_consent?: boolean | null
-          time_zone?: string | null
-          twitter_username?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      project_invitations: {
+        Row: {
+          created_at: string
+          id: string
+          match_score: number | null
+          project_id: string
+          status: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          match_score?: number | null
+          project_id: string
+          status?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          match_score?: number | null
+          project_id?: string
+          status?: string | null
           updated_at?: string
           user_id?: string
-          version_control_git?: boolean | null
-          work_pace?: string | null
-          years_experience?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_invitations_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "project_invitations_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_submissions: {
+        Row: {
+          created_at: string
+          id: string
+          project_id: string
+          status: string | null
+          submission_data: Json | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          project_id: string
+          status?: string | null
+          submission_data?: Json | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          project_id?: string
+          status?: string | null
+          submission_data?: Json | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_submissions_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "project_submissions_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          audience_config: Json | null
+          client_id: string
+          created_at: string
+          description: string | null
+          id: string
+          name: string
+          project_details_config: Json | null
+          screening_config: Json | null
+          status: string | null
+          survey_config: Json | null
+          target_testers: number | null
+          updated_at: string
+        }
+        Insert: {
+          audience_config?: Json | null
+          client_id: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          name: string
+          project_details_config?: Json | null
+          screening_config?: Json | null
+          status?: string | null
+          survey_config?: Json | null
+          target_testers?: number | null
+          updated_at?: string
+        }
+        Update: {
+          audience_config?: Json | null
+          client_id?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          name?: string
+          project_details_config?: Json | null
+          screening_config?: Json | null
+          status?: string | null
+          survey_config?: Json | null
+          target_testers?: number | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projects_client_id_fkey"
+            columns: ["client_id"]
+            isOneToOne: false
+            referencedRelation: "clients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_devices: {
+        Row: {
+          created_at: string
+          device_info: Json | null
+          device_type: string
+          id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          device_info?: Json | null
+          device_type: string
+          id?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          device_info?: Json | null
+          device_type?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_devices_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "user_profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_profiles: {
+        Row: {
+          created_at: string
+          email: string
+          first_name: string | null
+          id: string
+          is_internal_user: boolean | null
+          is_profile_complete: boolean | null
+          last_name: string | null
+          profile_data: Json | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          first_name?: string | null
+          id?: string
+          is_internal_user?: boolean | null
+          is_profile_complete?: boolean | null
+          last_name?: string | null
+          profile_data?: Json | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          first_name?: string | null
+          id?: string
+          is_internal_user?: boolean | null
+          is_profile_complete?: boolean | null
+          last_name?: string | null
+          profile_data?: Json | null
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -172,7 +263,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      match_and_invite_users: {
+        Args: { project_id_to_launch: string }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
