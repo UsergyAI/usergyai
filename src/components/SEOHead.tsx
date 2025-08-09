@@ -92,7 +92,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       {/* Additional SEO Meta */}
       <meta name="author" content="Usergy" />
       <meta name="publisher" content="Usergy" />
-      <meta name="theme-color" content="#4ECDC4" />
+      <meta name="theme-color" content="#005BEA" />
       <meta name="color-scheme" content="light" />
       <meta name="application-name" content="Usergy" />
       

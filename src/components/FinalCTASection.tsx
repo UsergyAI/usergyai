@@ -23,7 +23,7 @@ const FinalCTASection = () => {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 bg-gradient-to-br from-usergy-turquoise via-usergy-skyblue to-usergy-coral relative overflow-hidden">
+    <section id="contact" className="py-12 sm:py-16 bg-gradient-to-r from-[#00C6FB] to-[#005BEA] relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-16 h-16 sm:w-24 sm:h-24 bg-white rounded-full blur-xl animate-float"></div>
@@ -36,7 +36,7 @@ const FinalCTASection = () => {
           {/* Compact Header */}
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white mb-4 sm:mb-6 leading-tight px-2">
             Stop Waiting. 
-            <span className="block text-usergy-gold animate-pulse-glow mt-1">Start Building with Expert Guidance.</span>
+            <span className="block text-primary animate-pulse-glow mt-1">Start Building with Expert Guidance.</span>
           </h2>
 
           {/* Compact Sub-header */}
@@ -51,7 +51,7 @@ const FinalCTASection = () => {
             <Button 
               size="lg"
               onClick={handleCalendlyRedirect}
-              className="w-full sm:w-auto sm:min-w-[240px] bg-white text-usergy-turquoise hover:bg-usergy-light font-black text-sm sm:text-base py-3 sm:py-4 px-5 sm:px-8 rounded-full shadow-2xl hover:shadow-white/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
+              className="w-full sm:w-auto sm:min-w-[240px] bg-white text-primary hover:bg-muted font-black text-sm sm:text-base py-3 sm:py-4 px-5 sm:px-8 rounded-full shadow-2xl hover:shadow-white/30 transform hover:scale-105 transition-all duration-300 animate-pulse-glow"
             >
               <Phone className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
               <span className="truncate">Book Strategy Call</span>
@@ -62,7 +62,7 @@ const FinalCTASection = () => {
               size="lg"
               variant="outline"
               onClick={handleJoinCommunity}
-              className="w-full sm:w-auto sm:min-w-[240px] border-2 border-white bg-white/20 text-white hover:bg-white hover:text-usergy-coral font-black text-sm sm:text-base py-3 sm:py-4 px-5 sm:px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
+              className="w-full sm:w-auto sm:min-w-[240px] border border-white bg-white/20 text-white hover:bg-white hover:text-primary font-black text-sm sm:text-base py-3 sm:py-4 px-5 sm:px-8 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 backdrop-blur-sm"
             >
               <ArrowRight className="mr-2 h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
               <span className="truncate">Join AI Community</span>

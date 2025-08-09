@@ -4,19 +4,19 @@ import { useEffect } from 'react';
 const criticalCSS = `
   /* Critical styles for immediate rendering */
   .hero-gradient {
-    background: linear-gradient(135deg, rgb(78, 205, 196), rgb(69, 183, 209));
+    background: linear-gradient(135deg, hsl(195 100% 50%), hsl(217 100% 46%));
   }
   
   .text-usergy-dark {
-    color: rgb(44, 62, 80);
+    color: hsl(var(--foreground));
   }
   
   .bg-usergy-light {
-    background-color: rgb(248, 255, 254);
+    background-color: hsl(var(--background));
   }
   
   .gradient-text {
-    background: linear-gradient(135deg, rgb(78, 205, 196), rgb(69, 183, 209));
+    background: linear-gradient(135deg, hsl(195 100% 50%), hsl(217 100% 46%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -43,7 +43,7 @@ const criticalCSS = `
     position: absolute;
     top: -40px;
     left: 6px;
-    background: #4ECDC4;
+    background: hsl(var(--primary));
     color: white;
     padding: 8px 16px;
     text-decoration: none;
@@ -65,7 +65,7 @@ const criticalCSS = `
   textarea:focus-visible,
   select:focus-visible,
   [tabindex]:focus-visible {
-    outline: 2px solid #4ECDC4;
+    outline: 2px solid hsl(var(--primary));
     outline-offset: 2px;
     border-radius: 4px;
   }

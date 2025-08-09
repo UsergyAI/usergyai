@@ -8,7 +8,7 @@ const ServicesFinalCTA = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue">
+    <section className="py-16 sm:py-20 bg-gradient-to-r from-[#00C6FB] to-[#005BEA]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-4xl font-black text-white mb-6">
           Ready to Unlock Your AI's Full Potential?
@@ -20,7 +20,7 @@ const ServicesFinalCTA = () => {
           <Button 
             size="lg"
             onClick={handleCalendlyRedirect}
-            className="w-full sm:w-auto max-w-md bg-white text-usergy-turquoise hover:bg-usergy-light font-bold text-base sm:text-lg py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-12 rounded-full shadow-2xl hover:shadow-white/30 transform hover:scale-105 transition-all duration-300 min-h-[56px]"
+            className="w-full sm:w-auto max-w-md bg-white text-primary hover:bg-muted font-bold text-base sm:text-lg py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-12 rounded-full shadow-2xl hover:shadow-white/30 transform hover:scale-105 transition-all duration-300 min-h-[56px] focus-visible:ring-2 focus-visible:ring-primary"
           >
             <Phone className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0" />
             <span className="truncate">Book Your Strategy Call Now</span>

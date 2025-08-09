@@ -10,12 +10,12 @@ const ServicesHero = () => {
   };
 
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-usergy-light via-white to-usergy-light pt-28 md:pt-32">
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-background via-background/95 to-primary/5 pt-28 md:pt-32">
       <AnimatedBackground particleCount={50} enableFloatingBubbles={true} />
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-usergy-dark mb-6 leading-tight animate-fade-in">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-6 leading-tight animate-fade-in">
             Invest in Momentum: 
             <span className="block gradient-text mt-2">Your AI's Growth Starts Here</span>
           </h1>
@@ -27,7 +27,7 @@ const ServicesHero = () => {
           <Button 
             size="lg"
             onClick={handleCalendlyRedirect}
-            className="bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold text-lg py-6 px-12 rounded-full shadow-2xl hover:shadow-usergy-turquoise/30 transform hover:scale-105 transition-all duration-300 will-change-transform animate-scale-in"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold text-lg py-6 px-12 rounded-full shadow-2xl hover:shadow-primary/30 transform hover:scale-105 transition-all duration-300 will-change-transform animate-scale-in focus-visible:ring-2 focus-visible:ring-primary"
           >
             <Phone className="mr-3 h-6 w-6" />
             Book Your Strategy Call
