@@ -33,9 +33,9 @@ const AddOnServicesSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h3 className="text-2xl font-bold text-usergy-dark mb-8">
+        <h3 className="text-2xl font-bold text-foreground mb-8">
           Enhance Your Traction: Add-On Services
         </h3>
         
@@ -45,20 +45,20 @@ const AddOnServicesSection = () => {
             return (
               <div 
                 key={index}
-                className={`bg-gradient-to-b ${addOn.gradient} rounded-xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-gray-100 hover:border-${addOn.color}/30 transform group cursor-pointer`}
+                className={`bg-card rounded-xl p-6 shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-300 border border-border hover:border-primary/40 transform group cursor-pointer`}
               >
                 <div className="flex items-center justify-center mb-4">
-                  <div className={`w-12 h-12 bg-gradient-to-br from-${addOn.color} to-${addOn.color}/80 rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
-                    <IconComponent className="w-6 h-6 text-white" />
+                  <div className={`w-12 h-12 bg-primary rounded-full flex items-center justify-center mr-3 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+                    <IconComponent className="w-6 h-6 text-primary-foreground" />
                   </div>
-                  <h4 className={`font-bold text-${addOn.color} group-hover:text-usergy-dark transition-colors text-lg`}>
+                  <h4 className={`font-bold text-primary group-hover:text-foreground transition-colors text-lg`}>
                     {addOn.title}
                   </h4>
                 </div>
-                <p className="text-2xl font-black text-usergy-dark mb-2 group-hover:scale-105 transition-transform">
-                  {addOn.price} {addOn.subtitle && <span className="text-sm text-gray-600">{addOn.subtitle}</span>}
+                <p className="text-2xl font-black text-foreground mb-2 group-hover:scale-105 transition-transform">
+                  {addOn.price} {addOn.subtitle && <span className="text-sm text-muted-foreground">{addOn.subtitle}</span>}
                 </p>
-                <p className="text-sm text-gray-600 group-hover:text-gray-800 transition-colors leading-relaxed">
+                <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors leading-relaxed">
                   {addOn.description}
                 </p>
               </div>

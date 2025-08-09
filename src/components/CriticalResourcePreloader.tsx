@@ -64,9 +64,7 @@ const CriticalResourcePreloader: React.FC = () => {
     const preloadCriticalCSS = () => {
       // Inline critical CSS for above-the-fold content
       const criticalCSS = `
-        .hero-gradient { background: linear-gradient(135deg, rgb(78, 205, 196), rgb(69, 183, 209)); }
-        .text-usergy-dark { color: rgb(44, 62, 80); }
-        .bg-usergy-light { background-color: rgb(248, 255, 254); }
+        .hero-gradient { background: linear-gradient(135deg, hsl(var(--primary-start)), hsl(var(--primary))); }
         .animate-fade-in { animation: fade-in 0.6s ease-out; }
         @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
       `;

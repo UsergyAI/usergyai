@@ -22,13 +22,13 @@ const ClosingStatement = () => {
           {/* Main Heading */}
           <div className="mb-16">
             <div className="inline-flex items-center gap-3 mb-6">
-              <div className="w-2 h-2 bg-usergy-turquoise rounded-full animate-pulse"></div>
-              <h2 className="text-4xl md:text-5xl font-black text-usergy-dark leading-tight">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+              <h2 className="text-4xl md:text-5xl font-black text-foreground leading-tight">
                 Let's Build Something
               </h2>
-              <div className="w-2 h-2 bg-usergy-coral rounded-full animate-pulse" style={{ animationDelay: '-1s' }}></div>
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '-1s' }}></div>
             </div>
-            <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-usergy-turquoise via-usergy-skyblue to-usergy-coral mb-8">
+            <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-primary-gradient mb-8">
               Amazing Together!
             </div>
             <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
@@ -38,28 +38,28 @@ const ClosingStatement = () => {
 
           {/* Value Propositions */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="group bg-gradient-to-br from-white to-usergy-turquoise/5 rounded-3xl p-8 border-2 border-usergy-turquoise/10 hover:border-usergy-turquoise/30 transition-all duration-500 hover:shadow-xl transform hover:-translate-y-2">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Target className="w-8 h-8 text-white" />
+            <div className="group bg-card rounded-3xl p-8 border-2 border-border hover:border-primary/40 transition-all duration-500 hover:shadow-xl transform hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-full bg-primary-gradient flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <Target className="w-8 h-8 text-primary-foreground" />
               </div>
-              <h3 className="text-xl font-bold text-usergy-dark mb-4 group-hover:text-usergy-turquoise transition-colors duration-300">Strategic Growth</h3>
-              <p className="text-gray-600 leading-relaxed">Data-driven strategies that deliver measurable results and sustainable growth</p>
+              <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">Strategic Growth</h3>
+              <p className="text-muted-foreground leading-relaxed">Data-driven strategies that deliver measurable results and sustainable growth</p>
             </div>
 
-            <div className="group bg-gradient-to-br from-white to-usergy-coral/5 rounded-3xl p-8 border-2 border-usergy-coral/10 hover:border-usergy-coral/30 transition-all duration-500 hover:shadow-xl transform hover:-translate-y-2">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-usergy-coral to-usergy-gold flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Zap className="w-8 h-8 text-white" />
+            <div className="group bg-card rounded-3xl p-8 border-2 border-border hover:border-primary/40 transition-all duration-500 hover:shadow-xl transform hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-full bg-primary-gradient flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <Zap className="w-8 h-8 text-primary-foreground" />
               </div>
-              <h3 className="text-xl font-bold text-usergy-dark mb-4 group-hover:text-usergy-coral transition-colors duration-300">Rapid Execution</h3>
-              <p className="text-gray-600 leading-relaxed">Fast implementation with immediate impact and measurable outcomes</p>
+              <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">Rapid Execution</h3>
+              <p className="text-muted-foreground leading-relaxed">Fast implementation with immediate impact and measurable outcomes</p>
             </div>
 
-            <div className="group bg-gradient-to-br from-white to-usergy-purple/5 rounded-3xl p-8 border-2 border-usergy-purple/10 hover:border-usergy-purple/30 transition-all duration-500 hover:shadow-xl transform hover:-translate-y-2">
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-usergy-purple to-usergy-skyblue flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Sparkles className="w-8 h-8 text-white" />
+            <div className="group bg-card rounded-3xl p-8 border-2 border-border hover:border-primary/40 transition-all duration-500 hover:shadow-xl transform hover:-translate-y-2">
+              <div className="w-16 h-16 rounded-full bg-primary-gradient flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <Sparkles className="w-8 h-8 text-primary-foreground" />
               </div>
-              <h3 className="text-xl font-bold text-usergy-dark mb-4 group-hover:text-usergy-purple transition-colors duration-300">Premium Support</h3>
-              <p className="text-gray-600 leading-relaxed">Dedicated experts committed to your success every step of the way</p>
+              <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">Premium Support</h3>
+              <p className="text-muted-foreground leading-relaxed">Dedicated experts committed to your success every step of the way</p>
             </div>
           </div>
 

@@ -67,14 +67,6 @@ export default {
                   border: 'hsl(var(--sidebar-border))',
                   ring: 'hsl(var(--sidebar-ring))'
                 },
-				usergy: {
-					turquoise: '#4ECDC4',
-					skyblue: '#45B7D1',
-					coral: '#FF6B6B',
-					light: '#F9F9F9',
-					dark: '#333333',
-					gold: '#FED766'
-				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -130,10 +122,10 @@ export default {
 				},
 				'pulse-glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px rgba(78, 205, 196, 0.3)'
+						boxShadow: '0 0 20px hsl(var(--primary) / 0.3)'
 					},
 					'50%': {
-						boxShadow: '0 0 30px rgba(78, 205, 196, 0.6)'
+						boxShadow: '0 0 30px hsl(var(--primary) / 0.6)'
 					}
 				},
 				'float': {
