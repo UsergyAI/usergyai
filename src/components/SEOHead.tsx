@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
@@ -18,7 +19,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   description,
   canonical,
   keywords,
-  image = 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png',
+  image = 'https://usergy.ai/favicon.svg',
   type = 'website',
   noindex = false
 }) => {

@@ -157,20 +157,40 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
         <div className="flex items-center justify-between">
-          {/* Logo with embedded SVG */}
+          {/* Updated Logo with new SVG */}
           <Link to="/" className="flex items-center group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md" onClick={() => handleMenuItemClick('/')} aria-label="Usergy home">
-            <div className="relative text-primary">
+            <div className="relative">
               <svg 
-                width="120" 
-                height="40" 
-                viewBox="0 0 120 40" 
+                width="160" 
+                height="50" 
+                viewBox="0 0 320 80" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-8 sm:h-10 md:h-12 w-auto transition-all duration-300 group-hover:opacity-80 group-hover:transform group-hover:scale-105"
                 role="img"
                 aria-label="Usergy logo"
               >
-                <text x="10" y="25" fontSize="24" fontWeight="bold" fill="currentColor">Usergy</text>
+                <defs>
+                  <linearGradient id="usergy-gradient-header" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#00C6FB"/>
+                    <stop offset="1" stopColor="#005BEA"/>
+                  </linearGradient>
+                  <linearGradient id="text-gradient-header" x1="60" y1="40" x2="320" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#00C6FB"/>
+                    <stop offset="1" stopColor="#005BEA"/>
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="20" width="40" height="40" rx="10" fill="url(#usergy-gradient-header)"/>
+                <g transform="translate(8,28)">
+                  <circle cx="6" cy="12" r="3" fill="white"/>
+                  <circle cx="18" cy="6" r="3" fill="white"/>
+                  <circle cx="18" cy="18" r="3" fill="white"/>
+                  <path d="M8.5 14l7-4" stroke="white" strokeWidth="2"/>
+                  <path d="M8.5 10l7 4" stroke="white" strokeWidth="2"/>
+                </g>
+                <text x="60" y="54" fontFamily="Inter, Segoe UI, Arial, sans-serif" fontSize="44" fontWeight="bold" fill="url(#text-gradient-header)">
+                  Usergy
+                </text>
               </svg>
             </div>
           </Link>

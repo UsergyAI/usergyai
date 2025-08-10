@@ -16,56 +16,56 @@ export const pageSEOData: Record<string, PageSEOData> = {
     description: 'Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum.',
     canonical: 'https://usergy.ai/',
     keywords: 'AI startup growth, AI traction, AI community, startup marketing, AI product feedback',
-    image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
+    image: 'https://usergy.ai/favicon.svg'
   },
   '/pricing': {
     title: 'Usergy Pricing Plans | AI Traction & Growth Solutions',
     description: 'Transparent pricing for AI traction services. Choose from Starter, Growth, or Scale plans. Custom enterprise solutions available with dedicated success management.',
     canonical: 'https://usergy.ai/pricing',
     keywords: 'AI services pricing, AI traction cost, startup growth pricing, AI community pricing',
-    image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
+    image: 'https://usergy.ai/favicon.svg'
   },
   '/services': {
     title: 'Usergy Pricing Plans | AI Traction & Growth Solutions',
     description: 'Transparent pricing for AI traction services. Choose from Starter, Growth, or Scale plans. Custom enterprise solutions available with dedicated success management.',
     canonical: 'https://usergy.ai/pricing',
     keywords: 'AI services pricing, AI traction cost, startup growth pricing, AI community pricing',
-    image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
+    image: 'https://usergy.ai/favicon.svg'
   },
   '/community': {
     title: 'Usergy Community | AI Founders & Enthusiasts Network',
     description: 'Join the Usergy community of AI founders and enthusiasts. Connect, share insights, and accelerate your AI startup with like-minded innovators.',
     canonical: 'https://usergy.ai/community',
     keywords: 'AI community, AI founders network, startup community, AI enthusiasts, tech community',
-    image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
+    image: 'https://usergy.ai/favicon.svg'
   },
   '/contact': {
     title: 'Contact Usergy | Get in Touch with AI Growth Experts',
     description: 'Contact Usergy for AI traction and growth services. Schedule a consultation with our expert team to accelerate your AI startup success.',
     canonical: 'https://usergy.ai/contact',
     keywords: 'contact Usergy, AI startup consultation, AI growth services contact, get in touch',
-    image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
+    image: 'https://usergy.ai/favicon.svg'
   },
   '/user-signup': {
     title: 'Join Usergy | AI Founder & Enthusiast Signup',
     description: 'Sign up to join the Usergy community. Connect with AI founders and enthusiasts, access exclusive resources, and accelerate your AI journey.',
     canonical: 'https://usergy.ai/user-signup',
     keywords: 'join Usergy, AI founder signup, AI community signup, startup network',
-    image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
+    image: 'https://usergy.ai/favicon.svg'
   },
   '/terms': {
     title: 'Terms of Service | Usergy',
     description: 'Read Usergy\'s terms of service and user agreement. Learn about our policies for AI traction and growth services.',
     canonical: 'https://usergy.ai/terms',
     noindex: true,
-    image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
+    image: 'https://usergy.ai/favicon.svg'
   },
   '/privacy': {
     title: 'Privacy Policy | Usergy',
     description: 'Learn about Usergy\'s privacy policy and how we protect your data in our AI traction and growth services.',
     canonical: 'https://usergy.ai/privacy',
     noindex: true,
-    image: 'https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png'
+    image: 'https://usergy.ai/favicon.svg'
   }
 };
 

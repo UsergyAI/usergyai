@@ -15,13 +15,13 @@ const Footer = () => {
     <footer className="bg-background text-foreground py-12 border-t border-border">
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Brand with embedded SVG logo - further decreased size */}
+          {/* Brand with new SVG logo */}
           <div className="flex items-center group">
             <div className="relative cursor-pointer" onClick={handleLogoClick}>
               <svg 
-                width="140" 
+                width="180" 
                 height="56" 
-                viewBox="0 0 140 56" 
+                viewBox="0 0 320 80" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-14 w-auto opacity-80 transition-all duration-300 group-hover:opacity-70 cursor-pointer"
@@ -29,7 +29,27 @@ const Footer = () => {
                 aria-label="Usergy logo - Navigate to homepage"
               >
                 <title>Usergy</title>
-                <text x="10" y="36" fontSize="28" fontWeight="bold" fill="currentColor">Usergy</text>
+                <defs>
+                  <linearGradient id="usergy-gradient-footer" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#00C6FB"/>
+                    <stop offset="1" stopColor="#005BEA"/>
+                  </linearGradient>
+                  <linearGradient id="text-gradient-footer" x1="60" y1="40" x2="320" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#00C6FB"/>
+                    <stop offset="1" stopColor="#005BEA"/>
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="20" width="40" height="40" rx="10" fill="url(#usergy-gradient-footer)"/>
+                <g transform="translate(8,28)">
+                  <circle cx="6" cy="12" r="3" fill="white"/>
+                  <circle cx="18" cy="6" r="3" fill="white"/>
+                  <circle cx="18" cy="18" r="3" fill="white"/>
+                  <path d="M8.5 14l7-4" stroke="white" strokeWidth="2"/>
+                  <path d="M8.5 10l7 4" stroke="white" strokeWidth="2"/>
+                </g>
+                <text x="60" y="54" fontFamily="Inter, Segoe UI, Arial, sans-serif" fontSize="44" fontWeight="bold" fill="url(#text-gradient-footer)">
+                  Usergy
+                </text>
               </svg>
             </div>
           </div>
