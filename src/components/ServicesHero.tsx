@@ -20,7 +20,7 @@ const ServicesHero = () => {
             <span className="block gradient-text mt-2">Your AI's Growth Starts Here</span>
           </h1>
           
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
             Explore our integrated traction services designed to provide clear insights, activate vibrant communities, and generate undeniable buzz for your AI innovation.
           </h2>
 

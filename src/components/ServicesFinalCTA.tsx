@@ -20,7 +20,7 @@ const ServicesFinalCTA = () => {
           <Button 
             size="lg"
             onClick={handleCalendlyRedirect}
-            className="w-full sm:w-auto max-w-md bg-card text-primary hover:bg-muted font-bold text-base sm:text-lg py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-12 rounded-full shadow-2xl hover:shadow-primary/30 transform hover:scale-105 transition-all duration-300 min-h-[56px] focus-visible:ring-2 focus-visible:ring-primary"
+            className="btn-primary w-full sm:w-auto max-w-md font-bold text-base sm:text-lg py-4 sm:py-5 lg:py-6 px-6 sm:px-8 lg:px-12 rounded-full shadow-2xl hover:shadow-primary/30 transform hover:scale-105 transition-all duration-300 min-h-[56px]"
           >
             <Phone className="mr-2 sm:mr-3 h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0" />
             <span className="truncate">Book Your Strategy Call Now</span>
