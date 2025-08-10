@@ -33,31 +33,31 @@ const ContactHero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Header */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-usergy-dark mb-6 leading-tight animate-fade-in">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-foreground mb-6 leading-tight animate-fade-in">
             Connect with Our AI Growth Experts
           </h1>
 
           {/* Sub-header */}
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed animate-slide-up">
             Ready to transform your AI vision into reality? Our team is here to provide expert guidance and support. Reach out today!
           </h2>
 
           {/* Contact method cards with uniform design */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-12 sm:mb-16 max-w-4xl mx-auto animate-scale-in">
             {/* Strategy Call Card */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-turquoise/20">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-usergy-turquoise/20 text-usergy-turquoise mx-auto mb-4">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-primary/20">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary mx-auto mb-4">
                 <Calendar className="w-8 h-8" />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-usergy-dark mb-4 text-center">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-4 text-center">
                 Schedule a Strategy Call
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 text-center">
                 Discuss your AI growth strategy with our experts.
               </p>
               <Button
                 onClick={handleCalendlyRedirect}
-                className="w-full bg-usergy-turquoise hover:bg-usergy-skyblue text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
               >
                 <Calendar className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
                 <span className="truncate">Schedule Free Strategy Call</span>
@@ -65,20 +65,20 @@ const ContactHero = () => {
             </div>
 
             {/* Quick Form Card */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-usergy-coral/20">
-              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-usergy-coral/20 text-usergy-coral mx-auto mb-4">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border border-primary/20">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/20 text-primary mx-auto mb-4">
                 <MessageSquare className="w-8 h-8" />
               </div>
-              <h3 className="text-lg sm:text-xl font-bold text-usergy-dark mb-4 text-center">
+              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-4 text-center">
                 Quick Contact Form
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 text-center">
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 text-center">
                 Fill out our form for a prompt response.
               </p>
               <Button
                 onClick={scrollToForm}
                 variant="outline"
-                className="w-full border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
+                className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary font-bold py-3 sm:py-4 px-4 sm:px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300 text-sm sm:text-base min-h-[48px]"
               >
                 <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" />
                 <span className="truncate">Start Form</span>

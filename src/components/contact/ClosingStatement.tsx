@@ -31,7 +31,7 @@ const ClosingStatement = () => {
             <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-primary-gradient mb-8">
               Amazing Together!
             </div>
-            <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               Your AI product deserves undeniable traction. Partner with Usergy to transform your vision into market-leading success.
             </p>
           </div>
@@ -65,10 +65,10 @@ const ClosingStatement = () => {
 
           {/* CTA Section */}
           <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 md:p-12 border-2 border-gray-200 shadow-xl max-w-4xl mx-auto">
-            <h3 className="text-3xl md:text-4xl font-bold text-usergy-dark mb-6">
+            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Ready to Get Started?
             </h3>
-            <p className="text-gray-600 mb-10 leading-relaxed text-lg">
+            <p className="text-muted-foreground mb-10 leading-relaxed text-lg">
               Choose your preferred way to connect with our team. We're here to help you achieve undeniable traction.
             </p>
 
@@ -77,7 +77,7 @@ const ClosingStatement = () => {
               <Button
                 onClick={handleCalendlyRedirect}
                 size="lg"
-                className="w-full sm:w-auto bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue hover:from-usergy-skyblue hover:to-usergy-coral text-white font-bold py-5 px-10 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary font-bold py-5 px-10 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Book Strategy Call
@@ -88,7 +88,7 @@ const ClosingStatement = () => {
                 onClick={scrollToForm}
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-2 border-usergy-coral text-usergy-coral hover:bg-usergy-coral hover:text-white font-bold py-5 px-10 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary font-bold py-5 px-10 rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
               >
                 <MessageSquare className="w-5 h-5 mr-2" />
                 Fill Contact Form
@@ -98,7 +98,7 @@ const ClosingStatement = () => {
 
             {/* Trust Badge */}
             <div className="mt-8 pt-6 border-t border-gray-200">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-muted-foreground">
                 🔒 Trusted by AI startups worldwide • Free consultation • No commitment required
               </p>
             </div>

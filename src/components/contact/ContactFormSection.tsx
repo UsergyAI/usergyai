@@ -35,13 +35,13 @@ const ContactFormSection = () => {
       <section id="contact-form" className="py-12 md:py-16 bg-white relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-2xl mx-auto text-center">
-            <div className="w-24 h-24 bg-gradient-to-br from-usergy-turquoise to-usergy-skyblue rounded-full flex items-center justify-center mx-auto mb-8">
-              <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="w-24 h-24 bg-primary-gradient text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-8">
+              <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
             </div>
-            <h3 className="text-3xl font-bold text-usergy-dark mb-4">Thank You!</h3>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <h3 className="text-3xl font-bold text-foreground mb-4">Thank You!</h3>
+            <p className="text-lg text-muted-foreground leading-relaxed">
               We've received your inquiry and will be in touch within one business day. 
               Your journey to undeniable traction begins!
             </p>
@@ -61,12 +61,12 @@ const ContactFormSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-3xl mx-auto">
-          <Card className="shadow-2xl border-2 border-gray-100 hover:border-usergy-turquoise/20 transition-colors duration-300">
+          <Card className="shadow-2xl border-2 border-border hover:border-primary/30 transition-colors duration-300">
             <CardHeader className="text-center pb-8">
-              <CardTitle className="text-3xl font-bold text-usergy-dark">
+              <CardTitle className="text-3xl font-bold text-foreground">
                 Your Message to Usergy
               </CardTitle>
-              <p className="text-gray-600 mt-4">
+              <p className="text-muted-foreground mt-4">
                 Tell us about your AI product and how we can help you achieve undeniable traction.
               </p>
             </CardHeader>
@@ -75,7 +75,7 @@ const ContactFormSection = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="fullName" className="text-sm font-semibold text-usergy-dark">
+                    <Label htmlFor="fullName" className="text-sm font-semibold text-foreground">
                       Full Name *
                     </Label>
                     <Input
@@ -85,13 +85,13 @@ const ContactFormSection = () => {
                       required
                       value={formData.fullName}
                       onChange={handleChange}
-                      className="border-2 border-gray-200 focus:border-usergy-turquoise transition-colors"
+                      className="border-2 border-border focus-visible:ring-2 focus-visible:ring-primary outline-none transition-colors"
                       placeholder="Your full name"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-sm font-semibold text-usergy-dark">
+                    <Label htmlFor="email" className="text-sm font-semibold text-foreground">
                       Work Email *
                     </Label>
                     <Input
@@ -101,7 +101,7 @@ const ContactFormSection = () => {
                       required
                       value={formData.email}
                       onChange={handleChange}
-                      className="border-2 border-gray-200 focus:border-usergy-turquoise transition-colors"
+                      className="border-2 border-border focus-visible:ring-2 focus-visible:ring-primary outline-none transition-colors"
                       placeholder="your@company.com"
                     />
                   </div>
@@ -109,7 +109,7 @@ const ContactFormSection = () => {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="company" className="text-sm font-semibold text-usergy-dark">
+                    <Label htmlFor="company" className="text-sm font-semibold text-foreground">
                       Company Name *
                     </Label>
                     <Input
@@ -119,13 +119,13 @@ const ContactFormSection = () => {
                       required
                       value={formData.company}
                       onChange={handleChange}
-                      className="border-2 border-gray-200 focus:border-usergy-turquoise transition-colors"
+                      className="border-2 border-border focus-visible:ring-2 focus-visible:ring-primary outline-none transition-colors"
                       placeholder="Your company name"
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="role" className="text-sm font-semibold text-usergy-dark">
+                    <Label htmlFor="role" className="text-sm font-semibold text-foreground">
                       Your Role at Company *
                     </Label>
                     <Input
@@ -135,14 +135,14 @@ const ContactFormSection = () => {
                       required
                       value={formData.role}
                       onChange={handleChange}
-                      className="border-2 border-gray-200 focus:border-usergy-turquoise transition-colors"
+                      className="border-2 border-border focus-visible:ring-2 focus-visible:ring-primary outline-none transition-colors"
                       placeholder="CEO, CTO, Product Manager, etc."
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="userCount" className="text-sm font-semibold text-usergy-dark">
+                  <Label htmlFor="userCount" className="text-sm font-semibold text-foreground">
                     Estimated # of Users Needed
                   </Label>
                   <select
@@ -150,7 +150,7 @@ const ContactFormSection = () => {
                     name="userCount"
                     value={formData.userCount}
                     onChange={handleChange}
-                    className="w-full border-2 border-gray-200 focus:border-usergy-turquoise transition-colors rounded-md px-3 py-2 text-sm"
+                    className="w-full border-2 border-border focus-visible:ring-2 focus-visible:ring-primary outline-none rounded-md px-3 py-2 text-sm"
                   >
                     <option value="">Select range (optional)</option>
                     <option value="5-10">5-10 users</option>
@@ -163,7 +163,7 @@ const ContactFormSection = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-sm font-semibold text-usergy-dark">
+                  <Label htmlFor="message" className="text-sm font-semibold text-foreground">
                     How Can We Help You? *
                   </Label>
                   <Textarea
@@ -172,7 +172,7 @@ const ContactFormSection = () => {
                     required
                     value={formData.message}
                     onChange={handleChange}
-                    className="border-2 border-gray-200 focus:border-usergy-turquoise transition-colors min-h-32"
+                    className="border-2 border-border focus-visible:ring-2 focus-visible:ring-primary outline-none min-h-32"
                     placeholder="Tell us about your AI product, your current challenges, and what kind of support you're looking for..."
                   />
                 </div>
@@ -180,7 +180,7 @@ const ContactFormSection = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full bg-gradient-to-r from-usergy-turquoise to-usergy-skyblue hover:from-usergy-skyblue hover:to-usergy-coral text-white font-bold py-4 px-8 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+                  className="w-full bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary font-bold py-4 px-8 rounded-full shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
                 >
                   Send My Inquiry →
                 </Button>
