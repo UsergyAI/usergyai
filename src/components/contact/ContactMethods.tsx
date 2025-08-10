@@ -20,7 +20,7 @@ const ContactMethods = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-site-background relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-background relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-primary/20 rounded-full blur-2xl animate-float"></div>

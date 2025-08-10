@@ -43,11 +43,11 @@ const HowItWorks = () => {
   };
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-br from-gray-50 via-white to-usergy-light/30 relative overflow-hidden">
+    <section className="py-12 md:py-16 section-wash relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-usergy-skyblue rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-usergy-coral rounded-full blur-2xl animate-float" style={{ animationDelay: '-2s' }}></div>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-primary rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary rounded-full blur-2xl animate-float" style={{ animationDelay: '-2s' }}></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

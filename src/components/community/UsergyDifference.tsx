@@ -44,9 +44,9 @@ const UsergyDifference = () => {
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden">
       {/* Subtle animated background pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/3 left-1/6 w-40 h-40 bg-usergy-turquoise rounded-full blur-3xl animate-pulse opacity-30"></div>
-        <div className="absolute bottom-1/3 right-1/6 w-32 h-32 bg-usergy-coral rounded-full blur-2xl animate-float opacity-40"></div>
-        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-usergy-skyblue rounded-full blur-xl animate-pulse opacity-20" style={{ animationDelay: '-3s' }}></div>
+        <div className="absolute top-1/3 left-1/6 w-40 h-40 bg-primary rounded-full blur-3xl animate-pulse opacity-30"></div>
+        <div className="absolute bottom-1/3 right-1/6 w-32 h-32 bg-primary rounded-full blur-2xl animate-float opacity-40"></div>
+        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-primary rounded-full blur-xl animate-pulse opacity-20" style={{ animationDelay: '-3s' }}></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

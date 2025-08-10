@@ -64,7 +64,7 @@ const ClosingStatement = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 md:p-12 border-2 border-gray-200 shadow-xl max-w-4xl mx-auto">
+          <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 md:p-12 border-2 border-border shadow-xl max-w-4xl mx-auto">
             <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
               Ready to Get Started?
             </h3>
@@ -97,7 +97,7 @@ const ClosingStatement = () => {
             </div>
 
             {/* Trust Badge */}
-            <div className="mt-8 pt-6 border-t border-gray-200">
+            <div className="mt-8 pt-6 border-t border-border">
               <p className="text-sm text-muted-foreground">
                 🔒 Trusted by AI startups worldwide • Free consultation • No commitment required
               </p>

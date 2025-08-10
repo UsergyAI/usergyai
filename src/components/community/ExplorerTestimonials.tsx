@@ -78,7 +78,7 @@ const ExplorerTestimonials = () => {
               variant="outline"
               size="icon"
               onClick={prevTestimonial}
-              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -101,7 +101,7 @@ const ExplorerTestimonials = () => {
               variant="outline"
               size="icon"
               onClick={nextTestimonial}
-              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>

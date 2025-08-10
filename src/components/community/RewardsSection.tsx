@@ -18,7 +18,7 @@ const RewardsSection = () => {
     {
       tier: 'Explorer',
       points: '250-750',
-      color: 'from-usergy-turquoise to-usergy-skyblue',
+      color: 'from-[#00C6FB] to-[#005BEA]',
       rewards: ['$10-25 gift cards', 'Premium testing'],
       badge: 'Silver',
       icon: Target
@@ -26,7 +26,7 @@ const RewardsSection = () => {
     {
       tier: 'Influencer',
       points: '750-1500',
-      color: 'from-usergy-coral to-usergy-turquoise',
+      color: 'from-[#00C6FB] to-[#005BEA]',
       rewards: ['$50-100 rewards', 'Exclusive access'],
       badge: 'Gold',
       icon: Award
@@ -54,37 +54,37 @@ const RewardsSection = () => {
       range: '$10 - $100',
       icon: Gift,
       popularity: 'Most Popular',
-      color: 'from-usergy-turquoise to-usergy-skyblue'
+      color: 'from-[#00C6FB] to-[#005BEA]'
     },
     {
       title: 'Direct PayPal',
       range: 'Instant payments',
       icon: Zap,
       popularity: 'Fast & Easy',
-      color: 'from-usergy-skyblue to-usergy-coral'
+      color: 'from-[#00C6FB] to-[#005BEA]'
     },
     {
       title: 'Premium Software',
       range: 'Exclusive licenses',
       icon: Star,
       popularity: 'High Value',
-      color: 'from-usergy-coral to-usergy-turquoise'
+      color: 'from-[#00C6FB] to-[#005BEA]'
     },
     {
       title: 'Exclusive Merch',
       range: 'Limited edition',
       icon: Award,
       popularity: 'Collector Items',
-      color: 'from-usergy-gold to-usergy-coral'
+      color: 'from-[#00C6FB] to-[#005BEA]'
     }
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-br from-white via-usergy-light/20 to-white relative overflow-hidden">
+    <section className="py-12 md:py-16 section-wash relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-usergy-coral rounded-full blur-3xl animate-pulse opacity-30"></div>
-        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-usergy-turquoise rounded-full blur-2xl animate-float opacity-40"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary rounded-full blur-3xl animate-pulse opacity-30"></div>
+        <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-primary rounded-full blur-2xl animate-float opacity-40"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">

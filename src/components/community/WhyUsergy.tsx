@@ -41,9 +41,9 @@ const WhyUsergy = () => {
     <section className="py-12 sm:py-16 md:py-20 lg:py-24 bg-white relative overflow-hidden">
       {/* Subtle animated background pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-usergy-turquoise/20 via-transparent to-usergy-skyblue/20"></div>
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-usergy-coral rounded-full blur-3xl animate-pulse opacity-20"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-usergy-turquoise rounded-full blur-2xl animate-float opacity-30"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-primary/20 via-transparent to-primary/20"></div>
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary rounded-full blur-3xl animate-pulse opacity-20"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-primary rounded-full blur-2xl animate-float opacity-30"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
