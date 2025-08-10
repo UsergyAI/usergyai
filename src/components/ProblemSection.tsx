@@ -24,7 +24,7 @@ const ProblemSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-20 bg-gradient-to-b from-white to-gray-50 relative">
+    <section ref={sectionRef} className="py-20 bg-site-background relative">
       <div className="container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main Header */}
@@ -32,16 +32,16 @@ const ProblemSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <div className="inline-flex items-center justify-center mb-6">
-              <div className="h-px bg-gradient-to-r from-transparent via-red-300 to-transparent w-20"></div>
-              <AlertTriangle className="h-6 w-6 text-red-500 mx-4" />
-              <div className="h-px bg-gradient-to-r from-transparent via-red-300 to-transparent w-20"></div>
+              <div className="h-px bg-gradient-to-r from-transparent via-destructive/30 to-transparent w-20"></div>
+              <AlertTriangle className="h-6 w-6 text-destructive mx-4" />
+              <div className="h-px bg-gradient-to-r from-transparent via-destructive/30 to-transparent w-20"></div>
             </div>
             
-            <h2 className="text-4xl lg:text-5xl font-bold text-usergy-dark mb-6 leading-tight">
+            <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6 leading-tight">
               The Harsh Truth: Why Groundbreaking AI Products{' '}
-              <span className="text-red-600 relative">
+              <span className="text-destructive relative">
                 Disappear
-                <div className="absolute -bottom-2 left-0 right-0 h-3 bg-red-100 -skew-y-1 -z-10"></div>
+                <div className="absolute -bottom-2 left-0 right-0 h-3 bg-destructive/15 -skew-y-1 -z-10"></div>
               </span>
             </h2>
           </div>
@@ -54,7 +54,7 @@ const ProblemSection = () => {
               isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
             }`}>
               <div className="relative">
-                <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 relative overflow-hidden">
+                <div className="bg-card rounded-3xl p-8 shadow-2xl border border-border relative overflow-hidden">
                   {/* Background pattern */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-50 to-transparent rounded-full -translate-y-8 translate-x-8"></div>
                   
@@ -75,7 +75,7 @@ const ProblemSection = () => {
                         href="https://www.forbes.com/councils/forbestechcouncil/2023/05/02/why-it-startups-fail-reasons-trends-and-solutions/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center text-sm text-gray-500 hover:text-usergy-skyblue transition-colors duration-300 group"
+                        className="inline-flex items-center text-sm text-muted-foreground hover:text-primary transition-colors duration-300 group"
                       >
                         <span className="mr-2 border-b border-transparent group-hover:border-current">Source: Forbes Tech Council</span>
                         <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -118,12 +118,12 @@ const ProblemSection = () => {
                   }`}
                   style={{ animationDelay: `${(index + 2) * 200}ms` }}
                 >
-                  <div className={`w-14 h-14 rounded-xl ${problem.bgColor} flex items-center justify-center flex-shrink-0 ${problem.color}`}>
-                    <problem.icon className="h-7 w-7" />
+                  <div className={`w-14 h-14 rounded-xl ${problem.bgColor} flex items-center justify-center flex-shrink-0 ${problem.color} bg-muted text-primary`}>
+                    <problem.icon className="h-7 w-7 text-primary" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-usergy-dark mb-2">{problem.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{problem.description}</p>
+                    <h3 className="text-xl font-bold text-foreground mb-2">{problem.title}</h3>
+                    <p className="text-muted-foreground leading-relaxed">{problem.description}</p>
                   </div>
                 </div>
               ))}
@@ -135,11 +135,11 @@ const ProblemSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <div className="max-w-2xl mx-auto">
-              <p className="text-2xl lg:text-3xl font-bold text-gray-800 leading-tight">
+              <p className="text-2xl lg:text-3xl font-bold text-foreground leading-tight">
                 The Cost of Invisibility is{' '}
-                <span className="text-red-600 relative">
+                <span className="text-primary relative">
                   Extinction
-                  <div className="absolute -bottom-1 left-0 right-0 h-2 bg-red-200 -skew-y-1"></div>
+                  <div className="absolute -bottom-1 left-0 right-0 h-2 bg-primary/20 -skew-y-1"></div>
                 </span>
               </p>
             </div>

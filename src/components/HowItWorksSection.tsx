@@ -128,10 +128,10 @@ const HowItWorksSection = () => {
                           <step.icon className="h-6 w-6 text-white" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-xl font-bold text-usergy-dark mb-1">{step.title}</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                          <h3 className="text-xl font-bold text-foreground mb-1">{step.title}</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
                         </div>
-                        <div className="text-gray-400 flex-shrink-0 transition-transform duration-300">
+                        <div className="text-muted-foreground flex-shrink-0 transition-transform duration-300">
                           {expandedStep === index ? 
                             <ChevronUp className="h-5 w-5 transform rotate-180" /> : 
                             <ChevronDown className="h-5 w-5" />
@@ -144,7 +144,7 @@ const HowItWorksSection = () => {
                       expandedStep === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}>
                       <div className="px-6 pb-6 border-t border-gray-100 pt-4">
-                        <p className="text-gray-700 leading-relaxed text-sm">{step.details}</p>
+                        <p className="text-muted-foreground leading-relaxed text-sm">{step.details}</p>
                       </div>
                     </div>
                   </div>
@@ -182,8 +182,8 @@ const HowItWorksSection = () => {
                           <step.icon className="h-6 w-6 text-white" />
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-xl font-bold text-usergy-dark mb-1">{step.title}</h3>
-                          <p className="text-gray-600 text-sm leading-relaxed">{step.description}</p>
+                          <h3 className="text-xl font-bold text-foreground mb-1">{step.title}</h3>
+                          <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
                         </div>
                         <div className="text-gray-400 flex-shrink-0 transition-transform duration-300">
                           {expandedStep === index + 100 ? 
@@ -198,7 +198,7 @@ const HowItWorksSection = () => {
                       expandedStep === index + 100 ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                     }`}>
                       <div className="px-6 pb-6 border-t border-gray-100 pt-4">
-                        <p className="text-gray-700 leading-relaxed text-sm">{step.details}</p>
+                        <p className="text-muted-foreground leading-relaxed text-sm">{step.details}</p>
                       </div>
                     </div>
                   </div>
@@ -211,13 +211,13 @@ const HowItWorksSection = () => {
             <div className={`text-center mt-16 transition-all duration-1000 delay-900 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="bg-primary-gradient text-primary-foreground rounded-2xl p-8 shadow-2xl">
+            <div className="brand-gradient text-primary-foreground rounded-2xl p-8 shadow-2xl">
               <h3 className="text-2xl font-bold mb-4">Ready to Transform Your AI Journey?</h3>
               <p className="text-lg mb-6 opacity-90">Join thousands of innovators already building the future with Usergy</p>
               <div className="flex justify-center">
                 <button 
                   onClick={handleCalendlyRedirect}
-                  className="bg-primary-foreground text-primary font-bold py-4 px-10 rounded-full hover:bg-muted transition-colors duration-300 shadow-lg flex items-center space-x-3 hover:scale-105 transform"
+                  className="btn-primary font-bold py-4 px-10 rounded-full transition-colors duration-300 shadow-lg flex items-center space-x-3 hover:scale-105 transform"
                 >
                   <Phone className="h-5 w-5" />
                   <span>Book Your Strategy Call</span>

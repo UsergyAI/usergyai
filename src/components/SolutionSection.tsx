@@ -31,7 +31,7 @@ const SolutionSection = () => {
       title: "Consulting & Strategy",
       icon: MessageSquare,
       bgIcon: Brain,
-      color: "#4ECDC4",
+      color: "hsl(var(--primary))",
       description: "Our experts guide you through strategic planning and optimization",
       details: "Deep dive analysis, market positioning, and growth strategy development"
     },
@@ -40,7 +40,7 @@ const SolutionSection = () => {
       title: "Community Activation",
       icon: Users,
       bgIcon: Network,
-      color: "#45B7D1",
+      color: "hsl(var(--primary))",
       description: "We build and nurture passionate communities around your AI solution",
       details: "User engagement, feedback collection, and community management"
     },
@@ -49,7 +49,7 @@ const SolutionSection = () => {
       title: "Amplification & Buzz",
       icon: Megaphone,
       bgIcon: Target,
-      color: "#FF6B6B",
+      color: "hsl(var(--primary))",
       description: "Our team generates organic buzz and authentic testimonials",
       details: "Social media strategy, influencer outreach, and viral marketing"
     }
@@ -81,16 +81,16 @@ const SolutionSection = () => {
             <div className="relative h-96 flex items-center justify-center">
               {/* Central Methodology Node with enhanced interactivity */}
               <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
-                <div className={`bg-gradient-to-br from-usergy-gold via-yellow-400 to-usergy-gold rounded-full w-40 h-40 flex items-center justify-center shadow-2xl transition-all duration-500 ${
+                <div className={`brand-gradient rounded-full w-40 h-40 flex items-center justify-center shadow-2xl transition-all duration-500 ${
                   activeNode ? 'scale-110' : 'scale-100'
                 }`} style={{
-                  boxShadow: activeNode ? `0 0 60px #FED76680, 0 0 30px #FED76660` : `0 0 40px #FED76660, 0 0 20px #FED76630`
+                  boxShadow: activeNode ? `0 0 60px hsl(var(--primary) / 0.5), 0 0 30px hsl(var(--primary) / 0.4)` : `0 0 40px hsl(var(--primary) / 0.4), 0 0 20px hsl(var(--primary) / 0.2)`
                 }}>
                   <div className="text-center">
-                    <Zap className={`h-10 w-10 text-white mx-auto mb-2 transition-transform duration-300 ${
+                    <Zap className={`h-10 w-10 text-primary-foreground mx-auto mb-2 transition-transform duration-300 ${
                       activeNode ? 'scale-125' : ''
                     }`} />
-                    <div className="text-xs font-black text-white leading-tight">OUR CORE<br/>METHODOLOGY</div>
+                    <div className="text-xs font-black text-primary-foreground leading-tight">OUR CORE<br/>METHODOLOGY</div>
                   </div>
                 </div>
               </div>
@@ -119,10 +119,10 @@ const SolutionSection = () => {
                     onMouseLeave={() => setActiveNode(null)}
                   >
                     <div className="relative">
-                      <node.bgIcon className={`absolute inset-0 h-16 w-16 text-white/20 transform transition-all duration-300 ${
+                      <node.bgIcon className={`absolute inset-0 h-16 w-16 text-primary-foreground/20 transform transition-all duration-300 ${
                         activeNode === node.id ? 'scale-200 rotate-12' : 'scale-175'
                       }`} />
-                      <node.icon className={`h-10 w-10 text-white relative z-10 transition-transform duration-300 ${
+                      <node.icon className={`h-10 w-10 text-primary-foreground relative z-10 transition-transform duration-300 ${
                         activeNode === node.id ? 'scale-125' : ''
                       }`} />
                     </div>
@@ -137,9 +137,9 @@ const SolutionSection = () => {
                   <svg className="absolute inset-0 w-full h-full">
                     <defs>
                       <linearGradient id="flowingGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="#FED766" stopOpacity="0" />
-                        <stop offset="50%" stopColor="#FED766" stopOpacity="0.8" />
-                        <stop offset="100%" stopColor="#FED766" stopOpacity="0" />
+                        <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0" />
+                        <stop offset="50%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+                        <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0" />
                         <animateTransform 
                           attributeName="gradientTransform"
                           type="translate"
@@ -174,7 +174,7 @@ const SolutionSection = () => {
                   {[...Array(6)].map((_, i) => (
                     <div
                       key={i}
-                      className="absolute w-2 h-2 bg-usergy-gold rounded-full animate-ping"
+                      className="absolute w-2 h-2 bg-primary rounded-full animate-ping"
                       style={{
                         left: `${45 + Math.cos(i * 60 * Math.PI / 180) * 25}%`,
                         top: `${45 + Math.sin(i * 60 * Math.PI / 180) * 25}%`,
@@ -216,13 +216,10 @@ const SolutionSection = () => {
                     activeNode === node.id ? 'scale-125' : ''
                   }`}>
                     <node.icon 
-                      className="h-12 w-12 mx-auto" 
-                      style={{ color: node.color }}
+                      className="h-12 w-12 mx-auto text-primary" 
                     />
                   </div>
-                  <h3 className={`text-xl font-bold mb-3 transition-colors duration-300`} style={{ 
-                    color: node.color 
-                  }}>
+                  <h3 className={`text-xl font-bold mb-3 transition-colors duration-300 text-primary`}>
                     {node.title}
                   </h3>
                   <p className="text-gray-600 mb-4">{node.description}</p>
@@ -231,8 +228,8 @@ const SolutionSection = () => {
                   <div className={`transition-all duration-500 overflow-hidden ${
                     activeNode === node.id ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'
                   }`}>
-                    <div className="pt-4 border-t border-gray-200">
-                      <p className="text-sm text-gray-500 italic">{node.details}</p>
+                    <div className="pt-4 border-t border-border">
+                      <p className="text-sm text-muted-foreground italic">{node.details}</p>
                     </div>
                   </div>
                 </div>

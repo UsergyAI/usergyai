@@ -36,16 +36,16 @@ const CommunityFAQs = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-usergy-light to-white relative overflow-hidden">
+  <section className="py-16 md:py-24 bg-site-background relative overflow-hidden">
       {/* Subtle animated background pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-usergy-skyblue rounded-full blur-3xl animate-pulse opacity-30"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-36 h-36 bg-usergy-turquoise rounded-full blur-2xl animate-float opacity-40"></div>
+        <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-primary rounded-full blur-3xl animate-pulse opacity-30"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-36 h-36 bg-primary rounded-full blur-2xl animate-float opacity-40"></div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-usergy-dark mb-6">
+          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
             Questions? We've Got Answers
           </h2>
         </div>
@@ -56,14 +56,14 @@ const CommunityFAQs = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="border-2 border-gray-200 rounded-lg px-6 hover:border-usergy-turquoise/30 transition-colors bg-white/80 backdrop-blur-sm hover:shadow-lg"
+                className="border-2 border-border rounded-lg px-6 hover:border-primary/30 transition-colors bg-card/80 backdrop-blur-sm hover:shadow-lg"
               >
-                <AccordionTrigger className="text-left text-lg font-semibold text-usergy-dark hover:text-usergy-turquoise py-6 group">
+                <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-primary py-6 group">
                   <span className="group-hover:translate-x-1 transition-transform duration-200">
                     {faq.question}
                   </span>
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-6 leading-relaxed">
+                <AccordionContent className="text-muted-foreground pb-6 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -73,7 +73,7 @@ const CommunityFAQs = () => {
       </div>
 
       {/* Elegant section divider */}
-      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-usergy-skyblue/30 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
     </section>
   );
 };

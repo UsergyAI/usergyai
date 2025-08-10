@@ -9,8 +9,8 @@ const AddOnServicesSection = () => {
       price: '$35 each',
       description: 'Scale your insights with additional high-quality users',
       icon: Plus,
-      color: 'usergy-turquoise',
-      gradient: 'from-usergy-turquoise/20 to-usergy-turquoise/5'
+      color: 'primary',
+      gradient: 'from-primary/20 to-primary/5'
     },
     {
       title: 'Advanced Analytics',
@@ -18,8 +18,8 @@ const AddOnServicesSection = () => {
       subtitle: '(one-time)',
       description: 'Deep-dive analysis with predictive insights and recommendations',
       icon: Search,
-      color: 'usergy-coral',
-      gradient: 'from-usergy-coral/20 to-usergy-coral/5'
+      color: 'primary',
+      gradient: 'from-primary/20 to-primary/5'
     },
     {
       title: 'Retainer Bundle',
@@ -27,8 +27,8 @@ const AddOnServicesSection = () => {
       subtitle: '3+ projects',
       description: 'Maximize your investment with ongoing partnership discounts',
       icon: Gift,
-      color: 'usergy-skyblue',
-      gradient: 'from-usergy-skyblue/20 to-usergy-skyblue/5'
+      color: 'primary',
+      gradient: 'from-primary/20 to-primary/5'
     }
   ];
 

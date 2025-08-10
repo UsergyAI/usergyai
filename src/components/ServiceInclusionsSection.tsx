@@ -56,13 +56,13 @@ const ServiceInclusionsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section className="py-20 bg-site-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-black text-usergy-dark mb-4">
+          <h2 className="text-3xl lg:text-4xl font-black text-foreground mb-4">
             What's Included in Each Service Tier
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive solutions designed to accelerate your AI product's growth at every stage
           </p>
         </div>
@@ -75,26 +75,26 @@ const ServiceInclusionsSection = () => {
               return (
                 <div 
                   key={section.id}
-                  className={`relative bg-gradient-to-br ${section.bgGradient} rounded-2xl border ${section.borderColor} shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 p-8 group`}
+                  className="relative bg-card rounded-2xl border border-border shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-2 p-8 group"
                 >
                   <div className="text-center mb-6">
-                    <div className={`w-16 h-16 bg-gradient-to-br from-${section.color} to-${section.color}/80 rounded-full flex items-center justify-center shadow-lg mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <IconComponent className="w-8 h-8 text-white" />
+                    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-lg mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                      <IconComponent className="w-8 h-8 text-primary-foreground" />
                     </div>
-                    <h3 className={`text-2xl font-black text-${section.color} mb-2`}>
+                    <h3 className="text-2xl font-black text-primary mb-2">
                       {section.title}
                     </h3>
-                    <p className="text-gray-600 font-medium text-sm leading-relaxed">{section.subtitle}</p>
+                    <p className="text-muted-foreground font-medium text-sm leading-relaxed">{section.subtitle}</p>
                   </div>
                   
                   <div className="space-y-4">
                     {section.items.map((item, index) => (
                       <div 
                         key={index}
-                        className="flex items-start space-x-3 p-3 bg-white/60 rounded-lg hover:bg-white/80 transition-all duration-300"
+                        className="flex items-start space-x-3 p-3 bg-card/60 rounded-lg hover:bg-card/80 transition-all duration-300"
                       >
-                        <ChevronRight className={`w-5 h-5 text-${section.color} mt-0.5 flex-shrink-0`} />
-                        <span className="text-gray-700 font-medium leading-relaxed text-sm">{item}</span>
+                        <ChevronRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                        <span className="text-foreground font-medium leading-relaxed text-sm">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -112,18 +112,18 @@ const ServiceInclusionsSection = () => {
                   <AccordionItem 
                     key={section.id} 
                     value={section.id}
-                    className={`bg-gradient-to-br ${section.bgGradient} rounded-2xl border ${section.borderColor} shadow-lg hover:shadow-xl transition-all duration-300`}
+                    className="bg-card rounded-2xl border border-border shadow-lg hover:shadow-xl transition-all duration-300" 
                   >
                     <AccordionTrigger className="px-6 py-6 hover:no-underline">
                       <div className="flex items-center space-x-4 w-full">
-                        <div className={`w-12 h-12 bg-gradient-to-br from-${section.color} to-${section.color}/80 rounded-full flex items-center justify-center shadow-lg`}>
-                          <IconComponent className="w-6 h-6 text-white" />
+                        <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg">
+                          <IconComponent className="w-6 h-6 text-primary-foreground" />
                         </div>
                         <div className="text-left flex-grow">
-                          <h3 className={`text-xl font-black text-${section.color} mb-1`}>
+                          <h3 className="text-xl font-black text-primary mb-1">
                             {section.title}
                           </h3>
-                          <p className="text-gray-600 font-medium text-sm">{section.subtitle}</p>
+                          <p className="text-muted-foreground font-medium text-sm">{section.subtitle}</p>
                         </div>
                       </div>
                     </AccordionTrigger>
@@ -132,10 +132,10 @@ const ServiceInclusionsSection = () => {
                         {section.items.map((item, index) => (
                           <div 
                             key={index}
-                            className="flex items-start space-x-3 p-3 bg-white/60 rounded-lg"
+                            className="flex items-start space-x-3 p-3 bg-card/60 rounded-lg"
                           >
-                            <ChevronRight className={`w-5 h-5 text-${section.color} mt-0.5 flex-shrink-0`} />
-                            <span className="text-gray-700 font-medium leading-relaxed text-sm">{item}</span>
+                            <ChevronRight className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                            <span className="text-foreground font-medium leading-relaxed text-sm">{item}</span>
                           </div>
                         ))}
                       </div>

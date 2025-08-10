@@ -137,17 +137,17 @@ const TrustSection = () => {
   };
 
   return (
-    <section id="success-stories" ref={sectionRef} className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-white">
+    <section id="success-stories" ref={sectionRef} className="py-16 sm:py-20 bg-site-background">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-4 sm:mb-6 px-2">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-4 sm:mb-6 px-2">
               Trusted by <span className="gradient-text">Visionary Founders</span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
+            <p className="text-lg sm:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed px-4">
               Join the growing community of AI innovators who trust Usergy's expert guidance to accelerate their product success and market traction.
             </p>
           </div>
@@ -157,23 +157,21 @@ const TrustSection = () => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {kpis.map((kpi, index) => (
-              <div key={index} className="bg-white rounded-xl p-4 sm:p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
+              <div key={index} className="bg-card rounded-xl p-4 sm:p-6 shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
                 <div 
-                  className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-full flex items-center justify-center"
-                  style={{ backgroundColor: kpi.color + '20' }}
+                  className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-3 sm:mb-4 rounded-full flex items-center justify-center bg-primary/10"
                 >
                   <kpi.icon 
-                    className="h-5 w-5 sm:h-6 sm:w-6"
-                    style={{ color: kpi.color }}
+                    className="h-5 w-5 sm:h-6 sm:w-6 text-primary"
                   />
                 </div>
-                <div className="text-2xl sm:text-3xl font-black text-usergy-dark mb-2">
+                <div className="text-2xl sm:text-3xl font-black text-foreground mb-2">
                   {index === 0 ? animatedNumbers.campaigns.toLocaleString() :
                    index === 1 ? animatedNumbers.users.toLocaleString() :
                    index === 2 ? animatedNumbers.feedback :
                    animatedNumbers.revenue.toLocaleString()}{kpi.suffix}
                 </div>
-                <div className="text-sm sm:text-base text-gray-600 font-semibold">{kpi.label}</div>
+                <div className="text-sm sm:text-base text-muted-foreground font-semibold">{kpi.label}</div>
               </div>
             ))}
           </div>
@@ -184,7 +182,7 @@ const TrustSection = () => {
           }`}>
             <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 lg:p-12 relative overflow-hidden">
               {/* Background Pattern */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-usergy-turquoise/10 to-usergy-skyblue/10 rounded-full blur-3xl"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary/10 to-primary/5 rounded-full blur-3xl"></div>
               
               {/* Testimonial Content */}
               <div className="relative z-10">
@@ -199,10 +197,10 @@ const TrustSection = () => {
                 </blockquote>
                 
                 <div className="text-center">
-                  <div className="font-bold text-usergy-dark text-base sm:text-lg">
+                  <div className="font-bold text-foreground text-base sm:text-lg">
                     {testimonials[currentTestimonial].author}
                   </div>
-                  <div className="text-sm sm:text-base text-gray-600">
+                  <div className="text-sm sm:text-base text-muted-foreground">
                     {testimonials[currentTestimonial].role} at {testimonials[currentTestimonial].company}
                   </div>
                 </div>
@@ -212,7 +210,7 @@ const TrustSection = () => {
               <div className="flex justify-between items-center mt-6 sm:mt-8" role="group" aria-label="Testimonial navigation">
                 <button 
                   onClick={prevTestimonial}
-                  className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-usergy-turquoise focus:ring-offset-2"
+                  className="p-2 sm:p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   aria-label="Previous testimonial"
                 >
                   <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -225,8 +223,8 @@ const TrustSection = () => {
                       onClick={() => setCurrentTestimonial(index)}
                       className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-usergy-turquoise focus:ring-offset-2 ${
                         index === currentTestimonial 
-                          ? 'bg-usergy-turquoise' 
-                          : 'bg-gray-400 hover:bg-gray-500'
+                      ? 'bg-primary' 
+                      : 'bg-gray-400 hover:bg-gray-500'
                       }`}
                       role="tab"
                       aria-selected={index === currentTestimonial}
@@ -237,7 +235,7 @@ const TrustSection = () => {
                 
                 <button 
                   onClick={nextTestimonial}
-                  className="p-2 sm:p-3 rounded-full bg-gray-100 hover:bg-usergy-turquoise hover:text-white transition-all duration-300 group focus:outline-none focus:ring-2 focus:ring-usergy-turquoise focus:ring-offset-2"
+                  className="p-2 sm:p-3 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-all duration-300 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
                   aria-label="Next testimonial"
                 >
                   <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />

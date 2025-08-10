@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 /* CSS Variables */
-:root {
+:root{
   --background: 0 0% 100%;
   --foreground: 222.2 84% 4.9%;
 
@@ -16,7 +16,6 @@
   --input: 214.3 31.8% 91.4%;
   --ring: 217 100% 46%;
 
-  --primary-start: 195 100% 50%;
   --primary: 217 100% 46%;
   --primary-foreground: 0 0% 100%;
 
@@ -40,6 +39,19 @@
 
   --radius: 0.75rem;
 }
+
+/* Helpers to guarantee legibility on complex/gradient/photo backgrounds */
+.on-primary { color: hsl(var(--primary-foreground)); }
+.on-muted   { color: hsl(var(--foreground)); }
+.scrim-5    { background: linear-gradient(to bottom, rgba(0,0,0,.05), rgba(0,0,0,.05)); }
+.scrim-10   { background: linear-gradient(to bottom, rgba(0,0,0,.10), rgba(0,0,0,.10)); }
+
+/* Small, safe utilities */
+.brand-gradient { @apply bg-gradient-to-r from-[#00C6FB] to-[#005BEA]; }
+.section-wash   { @apply bg-gradient-to-b from-background via-background/95 to-primary/5; }
+.link-brand     { @apply text-primary underline-offset-4 hover:underline; }
+.btn-primary    { @apply bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary; }
+.btn-ghost      { @apply border border-border text-foreground hover:bg-muted; }
 
 @layer utilities {
   /* Enhanced Floating Animation for Bubbles - Performance Optimized */
@@ -144,7 +156,7 @@
   }
 
 .gradient-text {
-  background: linear-gradient(135deg, hsl(var(--primary-start)), hsl(var(--primary)));
+  background: linear-gradient(135deg, hsl(195 100% 50%), hsl(var(--primary)));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

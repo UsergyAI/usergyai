@@ -8,7 +8,7 @@ const ServicesFinalCTA = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 bg-gradient-to-r from-primary to-accent">
+    <section className="py-16 sm:py-20 brand-gradient">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-4xl font-black text-primary-foreground mb-6">
           Ready to Unlock Your AI's Full Potential?
