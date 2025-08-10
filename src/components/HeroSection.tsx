@@ -39,9 +39,13 @@ const HeroSection = () => {
             <span className="block gradient-text mt-2 md:mt-3">Deserves Expert Guidance</span>
           </h1>
           
-          {/* Improved emphasis styling without rectangular background */}
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-transparent bg-gradient-to-r from-primary via-accent to-primary bg-clip-text mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-pulse-glow px-2">
-            We Deliver Real Traction, Fast.
+          {/* Improved emphasis styling with better readability */}
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black mb-6 sm:mb-8 md:mb-10 lg:mb-12 px-2">
+            <span className="text-foreground drop-shadow-sm">We Deliver </span>
+            <span className="text-primary drop-shadow-sm">Real Traction</span>
+            <span className="text-foreground drop-shadow-sm">, </span>
+            <span className="text-accent drop-shadow-sm">Fast</span>
+            <span className="text-foreground drop-shadow-sm">.</span>
           </div>
 
           {/* Sub-headline with agency messaging */}
