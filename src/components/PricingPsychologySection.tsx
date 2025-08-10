@@ -15,22 +15,22 @@ const PricingPsychologySection = () => {
       title: 'Tier Anchoring',
       icon: Layers,
       description: 'The \'Full Traction\' column anchors perceived value, making our \'Feedback + Community\' plan an incredibly attractive sweet spot for core activation.',
-      color: 'usergy-coral',
-      gradient: 'from-usergy-coral/20 to-usergy-coral/5'
+      color: 'text-primary',
+      gradient: 'section-wash'
     },
     {
       title: 'Volume Discounts',
       icon: TrendingUp,
       description: 'Benefit from built-in volume discounts: per-participant costs decrease as you invest in more users, ensuring scalability for your growth.',
-      color: 'usergy-skyblue',
-      gradient: 'from-usergy-skyblue/20 to-usergy-skyblue/5'
+      color: 'text-primary',
+      gradient: 'section-wash'
     },
     {
       title: 'Complete Transparency',
       icon: Search,
       description: 'All incentives included means no hidden fees or unexpected costs. Your investment directly funds real human insights and engagement.',
-      color: 'usergy-gold',
-      gradient: 'from-usergy-gold/20 to-usergy-gold/5'
+      color: 'text-primary',
+      gradient: 'section-wash'
     }
   ];
 
