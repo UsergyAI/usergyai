@@ -39,11 +39,9 @@ const HeroSection = () => {
             <span className="block gradient-text mt-2 md:mt-3">Deserves Expert Guidance</span>
           </h1>
           
-          {/* Improved emphasis styling with enhanced gradient and better readability */}
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-pulse-glow px-2">
-            <span className="text-transparent bg-gradient-to-r from-primary via-accent to-primary bg-clip-text drop-shadow-lg" style={{ textShadow: '0 0 20px rgba(0, 198, 251, 0.3), 0 0 40px rgba(0, 91, 234, 0.2)' }}>
-              We Deliver Real Traction, Fast.
-            </span>
+          {/* Improved emphasis styling without rectangular background */}
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-transparent bg-gradient-to-r from-primary via-accent to-primary bg-clip-text mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-pulse-glow px-2">
+            We Deliver Real Traction, Fast.
           </div>
 
           {/* Sub-headline with agency messaging */}
