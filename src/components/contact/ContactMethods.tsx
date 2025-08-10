@@ -20,7 +20,7 @@ const ContactMethods = () => {
   };
 
   return (
-    <section className="py-16 md:py-20 bg-site-background relative overflow-hidden">
+    <section className="py-16 md:py-20 bg-background relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none opacity-30">
         <div className="absolute top-1/4 left-1/6 w-32 h-32 bg-primary/20 rounded-full blur-2xl animate-float"></div>
@@ -39,7 +39,7 @@ const ContactMethods = () => {
               </h2>
               <div className="w-2 h-2 bg-primary rounded-full animate-pulse" style={{ animationDelay: '-1s' }}></div>
             </div>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Select your preferred way to start the conversation with our AI growth experts
             </p>
           </div>
@@ -59,7 +59,7 @@ const ContactMethods = () => {
               </p>
               <Button
                 onClick={handleCalendlyRedirect}
-                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <Calendar className="w-4 h-4 mr-2" />
                 Schedule Call
@@ -81,7 +81,7 @@ const ContactMethods = () => {
               <Button
                 onClick={scrollToForm}
                 variant="outline"
-                className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <MessageSquare className="w-4 h-4 mr-2" />
                 Start Form
@@ -103,7 +103,7 @@ const ContactMethods = () => {
               <Button
                 onClick={handleEmailContact}
                 variant="outline"
-                className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+                className="w-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-bold py-4 px-6 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary"
               >
                 <Mail className="w-4 h-4 mr-2" />
                 Send Email
