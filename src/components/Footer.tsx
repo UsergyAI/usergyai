@@ -93,7 +93,7 @@ const Footer = () => {
           <div className="flex items-center space-x-6 text-muted-foreground">
             <Link 
               to="/privacy" 
-              className="hover:text-foreground transition-colors duration-300 underline decoration-transparent hover:decoration-current underline-offset-4 font-medium"
+              className="hover:text-foreground hover:text-primary transition-all duration-200 underline decoration-transparent hover:decoration-current underline-offset-4 font-medium hover:transform hover:scale-105"
               aria-label="View Privacy Policy"
             >
               Privacy Policy
@@ -101,7 +101,7 @@ const Footer = () => {
             <span className="text-muted-foreground">•</span>
             <Link 
               to="/terms" 
-              className="hover:text-foreground transition-colors duration-300 underline decoration-transparent hover:decoration-current underline-offset-4 font-medium"
+              className="hover:text-foreground hover:text-primary transition-all duration-200 underline decoration-transparent hover:decoration-current underline-offset-4 font-medium hover:transform hover:scale-105"
               aria-label="View Terms of Service"
             >
               Terms of Service
@@ -109,7 +109,7 @@ const Footer = () => {
             <span className="text-muted-foreground">•</span>
             <Link 
               to="/contact" 
-              className="hover:text-foreground transition-colors duration-300 underline decoration-transparent hover:decoration-current underline-offset-4 font-medium"
+              className="hover:text-foreground hover:text-primary transition-all duration-200 underline decoration-transparent hover:decoration-current underline-offset-4 font-medium hover:transform hover:scale-105"
               aria-label="Contact Usergy"
             >
               Contact

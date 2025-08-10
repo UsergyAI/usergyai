@@ -166,7 +166,7 @@ const Header = () => {
                 viewBox="0 0 320 80" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg"
-                className="h-8 sm:h-10 md:h-12 w-auto transition-all duration-300 group-hover:opacity-80 group-hover:transform group-hover:scale-105"
+                className="h-10 sm:h-12 md:h-14 w-auto transition-all duration-300 group-hover:opacity-80 group-hover:transform group-hover:scale-105"
                 role="img"
                 aria-label="Usergy logo"
               >
