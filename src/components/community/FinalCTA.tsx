@@ -16,17 +16,17 @@ const FinalCTA = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-usergy-turquoise/10 via-usergy-skyblue/10 to-usergy-coral/10 relative overflow-hidden">
+    <section className="py-16 md:py-24 section-wash relative overflow-hidden">
       {/* Subtle animated background effects */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-usergy-turquoise rounded-full blur-2xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-usergy-coral rounded-full blur-xl animate-float"></div>
-        <div className="absolute top-1/2 right-1/3 w-20 h-20 bg-usergy-skyblue rounded-full blur-lg animate-pulse" style={{ animationDelay: '-2s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary rounded-full blur-2xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-primary rounded-full blur-xl animate-float"></div>
+        <div className="absolute top-1/2 right-1/3 w-20 h-20 bg-primary rounded-full blur-lg animate-pulse" style={{ animationDelay: '-2s' }}></div>
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-black text-usergy-dark mb-8">
+          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-8">
             Ready to Influence the Future of AI?
           </h2>
           

@@ -47,26 +47,26 @@ const ExplorerTestimonials = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-usergy-light to-white">
+    <section className="py-16 md:py-24 section-wash">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-black text-usergy-dark mb-6">
+          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
             Hear From Our Explorers: Real Impact, Real Rewards
           </h2>
         </div>
 
         <div className="max-w-4xl mx-auto relative">
-          <Card className="shadow-2xl border-2 border-usergy-turquoise/20">
+          <Card className="shadow-2xl border-2 border-primary/20">
             <CardContent className="p-12 text-center">
-              <div className="text-6xl text-usergy-turquoise mb-6">"</div>
-              <p className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed italic">
+              <div className="text-6xl text-primary mb-6">"</div>
+              <p className="text-xl md:text-2xl text-foreground mb-8 leading-relaxed italic">
                 {testimonials[currentTestimonial].quote}
               </p>
-              <div className="border-b-2 border-usergy-turquoise w-16 mx-auto mb-6"></div>
-              <h4 className="text-lg font-bold text-usergy-dark">
+              <div className="border-b-2 border-primary w-16 mx-auto mb-6"></div>
+              <h4 className="text-lg font-bold text-foreground">
                 {testimonials[currentTestimonial].name}
               </h4>
-              <p className="text-gray-600">
+              <p className="text-muted-foreground">
                 {testimonials[currentTestimonial].title}
               </p>
             </CardContent>
@@ -78,7 +78,7 @@ const ExplorerTestimonials = () => {
               variant="outline"
               size="icon"
               onClick={prevTestimonial}
-              className="rounded-full border-usergy-turquoise text-usergy-turquoise hover:bg-usergy-turquoise hover:text-white"
+              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -90,8 +90,8 @@ const ExplorerTestimonials = () => {
                   onClick={() => setCurrentTestimonial(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentTestimonial
-                      ? 'bg-usergy-turquoise scale-125'
-                      : 'bg-gray-300 hover:bg-usergy-turquoise/50'
+                      ? 'bg-primary scale-125'
+                      : 'bg-gray-300 hover:bg-primary/50'
                   }`}
                 />
               ))}
@@ -101,7 +101,7 @@ const ExplorerTestimonials = () => {
               variant="outline"
               size="icon"
               onClick={nextTestimonial}
-              className="rounded-full border-usergy-turquoise text-usergy-turquoise hover:bg-usergy-turquoise hover:text-white"
+              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
