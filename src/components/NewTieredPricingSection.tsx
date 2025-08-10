@@ -41,7 +41,7 @@ const NewTieredPricingSection = () => {
       campaignSize: '10 – 19 users',
       price: '$33',
       description: 'Ideal for deeper feedback & building core community',
-      bgGradient: 'from-emerald-50 via-teal-50 to-cyan-50',
+      bgGradient: 'section-wash',
       borderColor: 'border-border',
       hoverBorder: 'hover:border-primary/40',
       priceColor: 'text-primary'
@@ -75,12 +75,12 @@ const NewTieredPricingSection = () => {
       cta: 'Design My Custom Plan →',
       action: handleCustomPlan,
       isCustom: true,
-      bgGradient: 'from-gray-50 via-slate-50 to-zinc-50',
-      borderColor: 'border-gray-300/60',
-      hoverBorder: 'hover:border-gray-400/80',
+      bgGradient: 'bg-card',
+      borderColor: 'border-border',
+      hoverBorder: 'hover:border-primary/40',
       buttonGradient: 'bg-muted',
       buttonHover: '',
-      priceColor: 'text-foreground',
+      priceColor: 'text-primary',
       isEnterprise: true
     }
   ];

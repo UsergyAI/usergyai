@@ -25,7 +25,7 @@ const UserSignup = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
+    <div className="min-h-screen bg-background text-foreground">
       <SEOHead
         title="Join AI Explorer Community"
         description="Sign up to join the Usergy AI Explorer Community. Get early access to AI tools, provide feedback, earn rewards, and shape the future of AI innovation."
@@ -47,22 +47,22 @@ const UserSignup = () => {
         
         {/* Enhanced Floating Bubbles - Hero Section Only */}
         <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 2 }}>
-          <div className="floating-element absolute top-1/4 left-1/4 w-6 h-6 bg-usergy-turquoise/30 rounded-full animate-float-enhanced opacity-60"></div>
-          <div className="floating-element absolute top-1/3 right-1/4 w-8 h-8 bg-usergy-coral/25 rounded-full animate-float-enhanced opacity-50" style={{ animationDelay: '-2s' }}></div>
-          <div className="floating-element absolute bottom-1/4 left-1/3 w-5 h-5 bg-usergy-skyblue/35 rounded-full animate-float-enhanced opacity-70" style={{ animationDelay: '-4s' }}></div>
-          <div className="floating-element absolute bottom-1/3 right-1/3 w-4 h-4 bg-usergy-gold/40 rounded-full animate-float-enhanced opacity-80" style={{ animationDelay: '-6s' }}></div>
-          <div className="floating-element absolute top-1/2 left-1/6 w-7 h-7 bg-usergy-turquoise/20 rounded-full animate-float-enhanced opacity-45" style={{ animationDelay: '-3s' }}></div>
-          <div className="floating-element absolute top-3/4 right-1/6 w-3 h-3 bg-usergy-coral/45 rounded-full animate-float-enhanced opacity-65" style={{ animationDelay: '-5s' }}></div>
+          <div className="floating-element absolute top-1/4 left-1/4 w-6 h-6 bg-primary/30 rounded-full animate-float-enhanced opacity-60"></div>
+          <div className="floating-element absolute top-1/3 right-1/4 w-8 h-8 bg-primary/25 rounded-full animate-float-enhanced opacity-50" style={{ animationDelay: '-2s' }}></div>
+          <div className="floating-element absolute bottom-1/4 left-1/3 w-5 h-5 bg-primary/35 rounded-full animate-float-enhanced opacity-70" style={{ animationDelay: '-4s' }}></div>
+          <div className="floating-element absolute bottom-1/3 right-1/3 w-4 h-4 bg-primary/40 rounded-full animate-float-enhanced opacity-80" style={{ animationDelay: '-6s' }}></div>
+          <div className="floating-element absolute top-1/2 left-1/6 w-7 h-7 bg-primary/20 rounded-full animate-float-enhanced opacity-45" style={{ animationDelay: '-3s' }}></div>
+          <div className="floating-element absolute top-3/4 right-1/6 w-3 h-3 bg-primary/45 rounded-full animate-float-enhanced opacity-65" style={{ animationDelay: '-5s' }}></div>
         </div>
 
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
             {/* Header section */}
             <div className="text-center mb-8 sm:mb-12">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-usergy-dark mb-4 sm:mb-6 leading-tight animate-fade-in px-2">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-4 sm:mb-6 leading-tight animate-fade-in px-2">
                 Join the Usergy Explorer Community!
               </h1>
-              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-usergy-turquoise mb-6 sm:mb-8 animate-pulse-glow px-2">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-primary mb-6 sm:mb-8 animate-pulse-glow px-2">
                 Your Journey to Shaping Tomorrow's AI Starts Here.
               </h2>
             </div>
@@ -93,17 +93,17 @@ const UserSignup = () => {
             </div>
 
             {/* Trust indicators section */}
-            <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-gray-600 animate-fade-in px-4">
+            <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 text-muted-foreground animate-fade-in px-4">
               <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-                <div className="w-2 h-2 bg-usergy-turquoise rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                 <span className="font-semibold text-sm sm:text-base">Join 75,000+ AI Enthusiasts</span>
               </div>
               <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-                <div className="w-2 h-2 bg-usergy-coral rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                 <span className="font-semibold text-sm sm:text-base">Free to Join</span>
               </div>
               <div className="flex items-center justify-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-sm">
-                <div className="w-2 h-2 bg-usergy-skyblue rounded-full animate-pulse"></div>
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                 <span className="font-semibold text-sm sm:text-base">Start Earning Immediately</span>
               </div>
             </div>

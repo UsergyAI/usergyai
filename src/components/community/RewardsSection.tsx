@@ -10,7 +10,7 @@ const RewardsSection = () => {
     {
       tier: 'Starter',
       points: '0-250',
-      color: 'from-gray-400 to-gray-600',
+      color: 'bg-primary-gradient',
       rewards: ['Community access', 'Basic testing'],
       badge: 'Bronze',
       icon: Users
@@ -18,7 +18,7 @@ const RewardsSection = () => {
     {
       tier: 'Explorer',
       points: '250-750',
-      color: 'from-[#00C6FB] to-[#005BEA]',
+      color: 'bg-primary-gradient',
       rewards: ['$10-25 gift cards', 'Premium testing'],
       badge: 'Silver',
       icon: Target
@@ -26,7 +26,7 @@ const RewardsSection = () => {
     {
       tier: 'Influencer',
       points: '750-1500',
-      color: 'from-[#00C6FB] to-[#005BEA]',
+      color: 'bg-primary-gradient',
       rewards: ['$50-100 rewards', 'Exclusive access'],
       badge: 'Gold',
       icon: Award
@@ -34,7 +34,7 @@ const RewardsSection = () => {
     {
       tier: 'Pioneer',
       points: '1500+',
-      color: 'from-yellow-400 to-yellow-600',
+      color: 'bg-primary-gradient',
       rewards: ['Premium software', 'Founder connections'],
       badge: 'Platinum',
       icon: Trophy
@@ -54,28 +54,28 @@ const RewardsSection = () => {
       range: '$10 - $100',
       icon: Gift,
       popularity: 'Most Popular',
-      color: 'from-[#00C6FB] to-[#005BEA]'
+      color: 'bg-primary-gradient'
     },
     {
       title: 'Direct PayPal',
       range: 'Instant payments',
       icon: Zap,
       popularity: 'Fast & Easy',
-      color: 'from-[#00C6FB] to-[#005BEA]'
+      color: 'bg-primary-gradient'
     },
     {
       title: 'Premium Software',
       range: 'Exclusive licenses',
       icon: Star,
       popularity: 'High Value',
-      color: 'from-[#00C6FB] to-[#005BEA]'
+      color: 'bg-primary-gradient'
     },
     {
       title: 'Exclusive Merch',
       range: 'Limited edition',
       icon: Award,
       popularity: 'Collector Items',
-      color: 'from-[#00C6FB] to-[#005BEA]'
+      color: 'bg-primary-gradient'
     }
   ];
 
@@ -96,7 +96,7 @@ const RewardsSection = () => {
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-foreground mb-4 leading-tight">
             Your Impact Creates
-            <span className="block bg-gradient-to-r from-[#00C6FB] to-[#005BEA] bg-clip-text text-transparent">
+              <span className="block bg-primary-gradient bg-clip-text text-transparent">
               Real Value & Rewards
             </span>
           </h2>
@@ -124,7 +124,7 @@ const RewardsSection = () => {
 
         {/* Progress Simulation */}
         <div className="max-w-2xl mx-auto mb-12">
-          <Card className="p-6 bg-gradient-to-r from-[#00C6FB]/5 via-[#00C6FB]/5 to-[#005BEA]/5 border-2 border-primary/20 hover:shadow-xl transition-all duration-300"> 
+          <Card className="p-6 section-wash border-2 border-primary/20 hover:shadow-xl transition-all duration-300"> 
             <CardContent className="p-0">
               <div className="flex justify-between items-center mb-4">
                 <div>
@@ -153,9 +153,9 @@ const RewardsSection = () => {
               const IconComponent = tier.icon;
               return (
                 <Card key={index} className="group hover:shadow-lg transition-all duration-300 hover:scale-105 relative overflow-hidden">
-                  <div className={`h-2 bg-gradient-to-r ${tier.color}`}></div>
+                  <div className="h-2 bg-primary-gradient"></div>
                   <CardContent className="p-4 text-center">
-                    <div className={`inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${tier.color} text-primary-foreground mb-3`}>
+                    <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-primary-gradient text-primary-foreground mb-3">
                       <IconComponent className="h-5 w-5" />
                     </div>
                     <h4 className="text-base font-bold text-foreground mb-1">{tier.tier}</h4>
@@ -204,7 +204,7 @@ const RewardsSection = () => {
         </div>
 
         {/* Compact Future Features Preview */}
-        <div className="text-center bg-gradient-to-r from-white/50 to-white/50 p-6 rounded-xl border border-primary/20 shadow-lg">
+        <div className="text-center section-wash p-6 rounded-xl border border-primary/20 shadow-lg">
           <h3 className="text-xl font-bold text-foreground mb-4">Coming Soon: Enhanced Recognition</h3>
           <div className="grid md:grid-cols-3 gap-6 text-muted-foreground max-w-3xl mx-auto">
             <div className="group hover:scale-105 transition-transform duration-300">

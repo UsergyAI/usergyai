@@ -8,8 +8,8 @@ const PricingPsychologySection = () => {
       title: 'Charm Pricing',
       icon: DollarSign,
       description: 'Our pricing uses charm pricing to make plans feel more approachable and accessible for early-stage budgets, maximizing your growth potential.',
-      color: 'usergy-turquoise',
-      gradient: 'from-usergy-turquoise/20 to-usergy-turquoise/5'
+      color: 'text-primary',
+      gradient: 'section-wash'
     },
     {
       title: 'Tier Anchoring',

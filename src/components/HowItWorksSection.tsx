@@ -125,7 +125,7 @@ const HowItWorksSection = () => {
                           className="w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
                           style={{ backgroundColor: step.color }}
                         >
-                          <step.icon className="h-6 w-6 text-white" />
+                          <step.icon className="h-6 w-6 text-primary-foreground" />
                         </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold text-foreground mb-1">{step.title}</h3>
@@ -179,7 +179,7 @@ const HowItWorksSection = () => {
                           className="w-12 h-12 rounded-full flex items-center justify-center shadow-md flex-shrink-0"
                           style={{ backgroundColor: step.color }}
                         >
-                          <step.icon className="h-6 w-6 text-white" />
+                          <step.icon className="h-6 w-6 text-primary-foreground" />
                         </div>
                         <div className="flex-1">
                           <h3 className="text-xl font-bold text-foreground mb-1">{step.title}</h3>

@@ -51,28 +51,28 @@ const TrustSection = () => {
       number: 1200,
       suffix: '+',
       label: 'Campaigns Launched',
-      color: '#4ECDC4'
+      color: 'text-primary'
     },
     {
       icon: Users,
       number: 75000,
       suffix: '+',
       label: 'AI Users',
-      color: '#45B7D1'
+      color: 'text-primary'
     },
     {
       icon: Award,
       number: 92,
       suffix: '%',
       label: 'Feedback Quality Score',
-      color: '#FF6B6B'
+      color: 'text-destructive'
     },
     {
       icon: TrendingUp,
       number: 500,
       suffix: 'K+',
       label: 'Revenue Generated',
-      color: '#96CEB4'
+      color: 'text-success'
     }
   ];
 
@@ -192,7 +192,7 @@ const TrustSection = () => {
                   ))}
                 </div>
                 
-                <blockquote className="text-lg sm:text-xl lg:text-2xl text-gray-700 text-center mb-6 sm:mb-8 leading-relaxed font-medium px-2">
+                <blockquote className="text-lg sm:text-xl lg:text-2xl text-muted-foreground text-center mb-6 sm:mb-8 leading-relaxed font-medium px-2">
                   "{testimonials[currentTestimonial].quote}"
                 </blockquote>
                 
@@ -221,10 +221,10 @@ const TrustSection = () => {
                     <button
                       key={index}
                       onClick={() => setCurrentTestimonial(index)}
-                      className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-usergy-turquoise focus:ring-offset-2 ${
+                      className={`w-3 h-3 sm:w-4 sm:h-4 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
                         index === currentTestimonial 
                       ? 'bg-primary' 
-                      : 'bg-gray-400 hover:bg-gray-500'
+                      : 'bg-muted-foreground/40 hover:bg-muted-foreground/60'
                       }`}
                       role="tab"
                       aria-selected={index === currentTestimonial}
