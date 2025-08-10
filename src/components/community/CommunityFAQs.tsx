@@ -36,7 +36,7 @@ const CommunityFAQs = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
+  <section className="py-16 md:py-24 bg-site-background relative overflow-hidden">
       {/* Subtle animated background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-primary rounded-full blur-3xl animate-pulse opacity-30"></div>
@@ -58,7 +58,7 @@ const CommunityFAQs = () => {
                 value={`item-${index}`}
                 className="border-2 border-border rounded-lg px-6 hover:border-primary/30 transition-colors bg-card/80 backdrop-blur-sm hover:shadow-lg"
               >
-                <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-primary py-6 group focus-visible:ring-2 focus-visible:ring-primary">
+                <AccordionTrigger className="text-left text-lg font-semibold text-foreground hover:text-primary py-6 group">
                   <span className="group-hover:translate-x-1 transition-transform duration-200">
                     {faq.question}
                   </span>

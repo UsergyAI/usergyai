@@ -14,12 +14,6 @@ const CustomEnterpriseSection = () => {
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-float"></div>
         <div className="absolute bottom-1/4 right-1/4 w-24 h-24 bg-primary/15 rounded-full blur-2xl animate-float" style={{ animationDelay: '-2s' }}></div>
-      </div>
-
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-12">
             <div className="inline-flex items-center gap-2 bg-muted px-4 py-2 rounded-full mb-4">
               <Zap className="w-4 h-4 text-primary" />
               <span className="text-sm font-semibold text-foreground">Enterprise Solutions</span>
@@ -42,9 +36,9 @@ const CustomEnterpriseSection = () => {
               <p className="text-sm text-muted-foreground">From 100 to 10,000+ participants</p>
             </div>
 
-            <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-border text-center">
-              <div className="w-12 h-12 rounded-full bg-primary-gradient flex items-center justify-center mx-auto mb-4">
-                <svg className="w-6 h-6 text-primary-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-border text-center">
+              <div className="w-12 h-12 rounded-full brand-gradient flex items-center justify-center mx-auto mb-4">
+                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192L5.636 18.364M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM12 18a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V18.75A.75.75 0 0112 18z" />
                 </svg>
               </div>
@@ -52,9 +46,9 @@ const CustomEnterpriseSection = () => {
               <p className="text-sm text-muted-foreground">Dedicated account management</p>
             </div>
 
-            <div className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-border text-center">
+            <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-md hover:shadow-lg transition-all duration-300 border border-border text-center">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <Settings className="w-6 h-6 text-primary" />
+              <Settings className="w-6 h-6 text-primary" />
               </div>
               <h3 className="text-lg font-bold text-foreground mb-2">Custom Features</h3>
               <p className="text-sm text-muted-foreground">Tailored integrations & workflows</p>
@@ -74,15 +68,13 @@ const CustomEnterpriseSection = () => {
               <Button
                 size="lg"
                 onClick={handleCalendlyRedirect}
-                className="bg-primary text-primary-foreground hover:bg-primary/90 font-bold py-4 px-8 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300 text-lg border-2 border-primary/20 focus-visible:ring-2 focus-visible:ring-primary"
+                className="btn-primary font-bold py-4 px-8 rounded-2xl shadow-xl transform hover:scale-105 transition-all duration-300 text-lg border-2 border-primary/20"
               >
                 <ArrowRight className="mr-2 h-5 w-5" />
                 Design My Custom Plan
               </Button>
             </div>
           </div>
-        </div>
-      </div>
     </section>
   );
 };

@@ -78,7 +78,7 @@ const ExplorerTestimonials = () => {
               variant="outline"
               size="icon"
               onClick={prevTestimonial}
-              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary"
+              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
@@ -88,10 +88,10 @@ const ExplorerTestimonials = () => {
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 focus-visible:ring-2 focus-visible:ring-primary ${
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     index === currentTestimonial
                       ? 'bg-primary scale-125'
-                      : 'bg-muted hover:bg-primary/50'
+                      : 'bg-gray-300 hover:bg-primary/50'
                   }`}
                 />
               ))}
@@ -101,7 +101,7 @@ const ExplorerTestimonials = () => {
               variant="outline"
               size="icon"
               onClick={nextTestimonial}
-              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground focus-visible:ring-2 focus-visible:ring-primary"
+              className="rounded-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
