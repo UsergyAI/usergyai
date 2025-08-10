@@ -36,7 +36,7 @@ const CommunityFAQs = () => {
   ];
 
   return (
-  <section className="py-16 md:py-24 bg-site-background relative overflow-hidden">
+  <section className="py-16 md:py-24 bg-background relative overflow-hidden">
       {/* Subtle animated background pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-1/4 right-1/4 w-48 h-48 bg-primary rounded-full blur-3xl animate-pulse opacity-30"></div>
