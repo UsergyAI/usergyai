@@ -5,58 +5,50 @@ interface OptimizedImageProps {
   src: string;
   alt: string;
   className?: string;
-  loading?: 'lazy' | 'eager';
-  placeholder?: boolean;
-  onLoad?: () => void;
-  onError?: () => void;
   width?: number;
   height?: number;
   priority?: boolean;
-  sizes?: string;
-  srcSet?: string;
+  onLoad?: () => void;
+  onError?: () => void;
 }
 
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
   alt,
   className = '',
-  loading = 'lazy',
-  placeholder = true,
-  onLoad,
-  onError,
   width,
   height,
   priority = false,
-  sizes,
-  srcSet
+  onLoad,
+  onError
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(priority);
   const imgRef = useRef<HTMLImageElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (loading === 'eager' || priority) {
-      setIsInView(true);
-      return;
-    }
+    if (priority || shouldLoad) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsInView(true);
+          setShouldLoad(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: '50px' }
+      {
+        rootMargin: '100px'
+      }
     );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
     }
 
     return () => observer.disconnect();
-  }, [loading, priority]);
+  }, [priority, shouldLoad]);
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -68,33 +60,34 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     onError?.();
   };
 
+  if (hasError) {
+    return (
+      <div className={`bg-muted flex items-center justify-center ${className}`}>
+        <span className="text-muted-foreground text-sm">Image unavailable</span>
+      </div>
+    );
+  }
+
   return (
-    <div ref={imgRef} className={`relative ${className}`}>
-      {placeholder && !isLoaded && !hasError && (
-        <div className={`absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse ${className}`} />
+    <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-muted animate-pulse" />
       )}
-      {hasError && (
-        <div className={`flex items-center justify-center bg-gray-100 text-gray-400 ${className}`}>
-          <span className="text-sm">Image unavailable</span>
-        </div>
-      )}
-      {isInView && !hasError && (
+      
+      {shouldLoad && (
         <img
+          ref={imgRef}
           src={src}
           alt={alt}
           width={width}
           height={height}
-          sizes={sizes}
-          srcSet={srcSet}
-          className={`transition-opacity duration-300 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          } ${className}`}
           onLoad={handleLoad}
           onError={handleError}
-          loading={priority ? 'eager' : loading}
+          className={`w-full h-full object-cover transition-opacity duration-500 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
+          loading={priority ? 'eager' : 'lazy'}
           decoding="async"
-          fetchPriority={priority ? 'high' : 'auto'}
-          role="img"
         />
       )}
     </div>

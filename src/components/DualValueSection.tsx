@@ -1,180 +1,164 @@
 
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Card, CardContent } from '@/components/ui/card';
+import { Building2, Users, ArrowRight, Target, TrendingUp, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Rocket, Gamepad2, User, TrendingUp, Target, Lightbulb, Search, Gift, Zap } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const DualValueSection = () => {
-  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
+  const handleFounderCTA = () => {
+    window.open('https://calendly.com/swaroop-usergy/30min', '_blank');
   };
 
-  const handleUserSignupNavigation = () => {
-    navigate('/user-signup');
+  const handleUserCTA = () => {
+    navigate('/community');
   };
 
   return (
-    <section id="for-founders" className="py-20 bg-site-background">
-      <div className="container mx-auto px-6">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-6">
-              The Dual Value Proposition
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Whether you're building the next breakthrough AI tool or seeking to explore cutting-edge technology, 
-              Usergy creates reciprocal value that benefits everyone.
-            </p>
-          </div>
+    <section className="py-20 bg-background relative overflow-hidden">
+      {/* Subtle animated background elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-primary rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-48 h-48 bg-primary rounded-full blur-2xl animate-float"></div>
+      </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 relative">
-            {/* Minimal Connection Element */}
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 hidden lg:block">
-              <div className="relative">
-                {/* Simple connecting line */}
-                <div className="w-24 h-0.5 bg-primary"></div>
-                
-                {/* Minimal icon */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-card rounded-full flex items-center justify-center shadow-lg border-2 border-border">
-                  <Zap className="h-4 w-4 text-primary" />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+            Two Paths to AI Innovation
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Whether you're building the future or want to be part of it, Usergy connects visionaries 
+            with passionate communities for mutual growth and success.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          {/* Founders Card */}
+          <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 border-2 border-border hover:border-primary/40 bg-gradient-to-br from-card to-card/50 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <CardContent className="p-10 relative z-10">
+              <div className="text-center mb-8">
+                <div className="w-20 h-20 rounded-full bg-primary-gradient flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                  <Building2 className="w-10 h-10 text-primary-foreground" />
+                </div>
+                <h3 className="text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                  For AI Founders
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  Transform your AI vision into undeniable market traction with our proven three-pillar framework.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <MessageSquare className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground">Get authentic feedback from engaged AI enthusiasts</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Users className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground">Build vibrant communities around your product</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground">Achieve viral social momentum and market recognition</span>
                 </div>
               </div>
-            </div>
 
-            {/* Founders Card */}
-            <div 
-              className={`relative bg-card rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl min-h-[600px] flex flex-col ${
-                hoveredCard === 'founders' ? 'scale-105 ring-2 ring-primary/40' : ''
-              }`}
-              onMouseEnter={() => setHoveredCard('founders')}
-              onMouseLeave={() => setHoveredCard(null)}
+              <Button
+                onClick={handleFounderCTA}
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
+                Book Strategy Session
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+
+              <p className="text-sm text-muted-foreground text-center mt-4">
+                Free consultation • No commitment required
+              </p>
+            </CardContent>
+          </Card>
+
+          {/* Users Card */}
+          <Card className="group hover:shadow-2xl transition-all duration-500 hover:scale-105 border-2 border-border hover:border-primary/40 bg-gradient-to-br from-card to-card/50 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <CardContent className="p-10 relative z-10">
+              <div className="text-center mb-8">
+                <div className="w-20 h-20 rounded-full bg-primary-gradient flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-xl">
+                  <Users className="w-10 h-10 text-primary-foreground" />
+                </div>
+                <h3 className="text-3xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">
+                  For AI Enthusiasts
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+                  Shape the future of AI by testing cutting-edge products before they launch while earning rewards.
+                </p>
+              </div>
+
+              <div className="space-y-4 mb-8">
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <Target className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground">Get exclusive early access to innovative AI tools</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <MessageSquare className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground">Provide meaningful feedback that shapes products</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="w-4 h-4 text-primary" />
+                  </div>
+                  <span className="text-muted-foreground">Earn rewards and build your reputation in AI</span>
+                </div>
+              </div>
+
+              <Button
+                onClick={handleUserCTA}
+                className="w-full bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary font-bold text-lg py-4 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
+              >
+                Join Community
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+
+              <p className="text-sm text-muted-foreground text-center mt-4">
+                Free to join • Start earning immediately
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <p className="text-lg text-muted-foreground mb-6">
+            Ready to be part of the AI revolution? Choose your path and let's grow together.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              onClick={handleFounderCTA}
+              variant="outline"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-3 rounded-xl"
             >
-              <div className="absolute inset-0 bg-muted rounded-2xl"></div>
-              
-              <div className="relative z-10 flex flex-col h-full">
-                {/* Header */}
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-primary-gradient rounded-lg flex items-center justify-center mr-4">
-                    <Rocket className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-primary">
-                    For AI Startup Founders
-                  </h3>
-                </div>
-
-                <h4 className="text-2xl font-bold text-foreground mb-6 leading-tight">
-                  Transform Innovation into Undeniable Impact
-                </h4>
-
-                {/* Benefits List */}
-                <div className="space-y-4 mb-8 flex-grow">
-                  {[
-                    "Acquire: Your first 100-1,000 'true believers' – not just users",
-                    "Validate: Gain honest, structured, and immediately actionable product feedback",
-                    "Cultivate: Build an early, engaged, and loyal user community",
-                    "Amplify: Generate authentic, high-impact social media buzz and visibility",
-                    "Accelerate: Speed up your journey to perfect product-market fit"
-                  ].map((benefit, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
-                      <p className="text-muted-foreground font-medium">{benefit}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Illustration */}
-                <div className="mb-8 text-center">
-                  <div className="inline-flex items-center space-x-4 p-6 bg-muted rounded-xl">
-                    <User className="h-10 w-10 text-primary" />
-                    <div className="text-2xl">→</div>
-                    <TrendingUp className="h-10 w-10 text-primary" />
-                    <div className="text-2xl">→</div>
-                    <Target className="h-10 w-10 text-primary" />
-                  </div>
-                  <p className="text-sm text-gray-500 mt-2">Founder → Growth → Success</p>
-                </div>
-
-                <div className="mt-auto">
-                  <Button 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
-                    onClick={() => scrollToSection('how-it-works')}
-                  >
-                    See Our Founder Process →
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Users Card */}
-            <div 
-              className={`relative bg-card rounded-2xl p-8 shadow-xl transition-all duration-500 hover:shadow-2xl min-h-[600px] flex flex-col ${
-                hoveredCard === 'users' ? 'scale-105 ring-2 ring-primary/40' : ''
-              }`}
-              onMouseEnter={() => setHoveredCard('users')}
-              onMouseLeave={() => setHoveredCard(null)}
+              I'm Building AI
+            </Button>
+            <Button
+              onClick={handleUserCTA}
+              variant="outline"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-3 rounded-xl"
             >
-              <div className="absolute inset-0 bg-muted rounded-2xl"></div>
-              
-              <div className="relative z-10 flex flex-col h-full">
-                {/* Header */}
-                <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 bg-primary-gradient rounded-lg flex items-center justify-center mr-4">
-                    <Gamepad2 className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                  <h3 className="text-3xl font-bold text-primary">
-                    For AI Enthusiasts
-                  </h3>
-                </div>
-
-                <h4 className="text-2xl font-bold text-foreground mb-6 leading-tight">
-                  Explore. Contribute. Earn. Influence.
-                </h4>
-
-                {/* Benefits List */}
-                <div className="space-y-4 mb-8 flex-grow">
-                  {[
-                    "Discover: Get exclusive early access to groundbreaking, unreleased AI tools",
-                    "Influence: Shape the future of AI by providing direct, valued insights",
-                    "Earn: Get tangible rewards (gift cards, exclusive access) for every contribution",
-                    "Connect: Join a vibrant, supportive community of tech explorers and innovators",
-                    "Grow: Build your reputation and influence as a respected AI scout"
-                  ].map((benefit, index) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 bg-primary rounded-full mt-3 flex-shrink-0"></div>
-                      <p className="text-muted-foreground font-medium">{benefit}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Illustration */}
-                <div className="mb-8 text-center">
-                  <div className="inline-flex items-center space-x-4 p-6 bg-muted rounded-xl">
-                    <Search className="h-10 w-10 text-primary" />
-                    <div className="text-2xl">→</div>
-                    <Lightbulb className="h-10 w-10 text-primary" />
-                    <div className="text-2xl">→</div>
-                    <Gift className="h-10 w-10 text-primary" />
-                  </div>
-                  <p className="text-sm text-gray-500 mt-2">Explore → Contribute → Earn</p>
-                </div>
-
-                <div className="mt-auto">
-                  <Button 
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 rounded-xl transition-all duration-300 transform hover:scale-105"
-                    onClick={handleUserSignupNavigation}
-                  >
-                    Join Our AI Enthusiast Community →
-                  </Button>
-                </div>
-              </div>
-            </div>
+              I Love Testing AI
+            </Button>
           </div>
         </div>
       </div>

@@ -1,69 +1,38 @@
+
 import React, { useState, useRef, useEffect } from 'react';
+import { Loader2 } from 'lucide-react';
 
 interface ModernImageOptimizerProps {
   src: string;
   alt: string;
   className?: string;
-  loading?: 'lazy' | 'eager';
-  priority?: boolean;
   width?: number;
   height?: number;
+  priority?: boolean;
   sizes?: string;
-  quality?: number;
+  onLoad?: () => void;
+  onError?: () => void;
 }
 
 const ModernImageOptimizer: React.FC<ModernImageOptimizerProps> = ({
   src,
   alt,
   className = '',
-  loading = 'lazy',
-  priority = false,
   width,
   height,
-  sizes = '100vw',
-  quality = 80
+  priority = false,
+  sizes,
+  onLoad,
+  onError
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(priority);
   const [hasError, setHasError] = useState(false);
-  const [optimalSrc, setOptimalSrc] = useState(src);
+  const [isInView, setIsInView] = useState(priority);
   const imgRef = useRef<HTMLImageElement>(null);
+  const placeholderRef = useRef<HTMLDivElement>(null);
 
-  // Generate modern format sources
   useEffect(() => {
-    const generateOptimalSrc = () => {
-      const baseSrc = src.replace(/\.(png|jpg|jpeg)$/i, '');
-      const originalExt = src.match(/\.(png|jpg|jpeg)$/i)?.[1] || 'png';
-      
-      // Check browser support for modern formats
-      const canvas = document.createElement('canvas');
-      canvas.width = 1;
-      canvas.height = 1;
-      
-      // Test WebP support
-      const webpSupported = canvas.toDataURL('image/webp').indexOf('data:image/webp') === 0;
-      
-      // Test AVIF support
-      const avifSupported = canvas.toDataURL('image/avif').indexOf('data:image/avif') === 0;
-      
-      if (avifSupported) {
-        setOptimalSrc(`${baseSrc}.avif`);
-      } else if (webpSupported) {
-        setOptimalSrc(`${baseSrc}.webp`);
-      } else {
-        setOptimalSrc(src);
-      }
-    };
-
-    generateOptimalSrc();
-  }, [src]);
-
-  // Intersection Observer for lazy loading
-  useEffect(() => {
-    if (priority || loading === 'eager') {
-      setIsInView(true);
-      return;
-    }
+    if (priority) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -72,108 +41,60 @@ const ModernImageOptimizer: React.FC<ModernImageOptimizerProps> = ({
           observer.disconnect();
         }
       },
-      { 
-        threshold: 0.1, 
-        rootMargin: '100px' // Load images 100px before they enter viewport
+      {
+        rootMargin: '50px'
       }
     );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
+    if (placeholderRef.current) {
+      observer.observe(placeholderRef.current);
     }
 
     return () => observer.disconnect();
-  }, [priority, loading]);
-
-  // Generate responsive srcSet
-  const generateSrcSet = () => {
-    if (!width || !height) return '';
-    
-    const baseSrc = optimalSrc.replace(/\.(png|jpg|jpeg|webp|avif)$/i, '');
-    const ext = optimalSrc.match(/\.(png|jpg|jpeg|webp|avif)$/i)?.[1] || 'png';
-    
-    return `
-      ${optimalSrc} 1x,
-      ${baseSrc}@2x.${ext} 2x,
-      ${baseSrc}@3x.${ext} 3x
-    `.trim();
-  };
+  }, [priority]);
 
   const handleLoad = () => {
     setIsLoaded(true);
+    onLoad?.();
   };
 
   const handleError = () => {
-    // Fallback to original format on error
-    if (optimalSrc !== src) {
-      setOptimalSrc(src);
-    } else {
-      setHasError(true);
-    }
+    setHasError(true);
+    onError?.();
   };
 
+  if (hasError) {
+    return (
+      <div className={`bg-muted flex items-center justify-center ${className}`}>
+        <span className="text-muted-foreground text-sm">Failed to load image</span>
+      </div>
+    );
+  }
+
   return (
-    <div 
-      ref={imgRef} 
-      className={`relative ${className}`}
-      style={{ 
-        ...(width && height && { aspectRatio: `${width}/${height}` }),
-        minHeight: height ? `${height}px` : 'auto'
-      }}
-    >
-      {/* Placeholder while loading */}
-      {!isLoaded && !hasError && isInView && (
-        <div 
-          className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse"
-          style={{ aspectRatio: width && height ? `${width}/${height}` : 'auto' }}
-        />
-      )}
-      
-      {/* Error state */}
-      {hasError && (
-        <div className="flex items-center justify-center bg-gray-100 text-gray-400 min-h-[200px]">
-          <span className="text-sm">Image unavailable</span>
+    <div ref={placeholderRef} className={`relative ${className}`}>
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-muted flex items-center justify-center">
+          <Loader2 className="w-6 h-6 text-muted-foreground animate-spin" />
         </div>
       )}
       
-      {/* Optimized image */}
-      {isInView && !hasError && (
-        <picture>
-          {/* AVIF source */}
-          <source 
-            srcSet={optimalSrc.includes('.avif') ? generateSrcSet() : ''} 
-            type="image/avif" 
-            sizes={sizes}
-          />
-          {/* WebP source */}
-          <source 
-            srcSet={optimalSrc.includes('.webp') ? generateSrcSet() : ''} 
-            type="image/webp" 
-            sizes={sizes}
-          />
-          {/* Fallback image */}
-          <img
-            src={optimalSrc}
-            alt={alt}
-            width={width}
-            height={height}
-            sizes={sizes}
-            srcSet={generateSrcSet()}
-            className={`transition-opacity duration-300 ${
-              isLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            onLoad={handleLoad}
-            onError={handleError}
-            loading={priority ? 'eager' : loading}
-            decoding="async"
-            fetchPriority={priority ? 'high' : 'auto'}
-            style={{
-              objectFit: 'cover',
-              width: '100%',
-              height: 'auto'
-            }}
-          />
-        </picture>
+      {isInView && (
+        <img
+          ref={imgRef}
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes={sizes}
+          onLoad={handleLoad}
+          onError={handleError}
+          className={`transition-opacity duration-300 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
+          } ${className}`}
+          loading={priority ? 'eager' : 'lazy'}
+          decoding="async"
+        />
       )}
     </div>
   );
