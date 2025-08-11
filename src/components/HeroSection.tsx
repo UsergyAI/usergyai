@@ -40,7 +40,7 @@ const HeroSection = () => {
           </h1>
           
           {/* Improved emphasis styling without rectangular background */}
-          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black text-transparent bg-gradient-to-r from-primary via-accent to-primary bg-clip-text mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-pulse-glow px-2">
+          <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black tracking-tight text-foreground drop-shadow-md mb-6 sm:mb-8 md:mb-10 lg:mb-12 animate-pulse-glow px-2">
             We Deliver Real Traction, Fast.
           </div>
 

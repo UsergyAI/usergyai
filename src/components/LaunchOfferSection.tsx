@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Phone } from 'lucide-react';
@@ -23,7 +24,7 @@ const LaunchOfferSection = () => {
           <div className="relative mb-6">
             <Sparkles className="w-8 h-8 text-primary mx-auto mb-4 animate-pulse" />
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground mb-4 relative">
-              <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+              <span className="text-foreground">
                 ✨ Launch Special: Your First Traction Sprint is FREE! ✨
               </span>
             </h2>
@@ -38,7 +39,7 @@ const LaunchOfferSection = () => {
             <Button 
               size="lg"
               onClick={handleClaimFreeOffer}
-              className="bg-gradient-to-r from-primary via-accent to-primary hover:from-accent hover:via-primary hover:to-accent text-primary-foreground font-bold text-lg sm:text-xl py-6 sm:py-8 px-8 sm:px-12 rounded-full shadow-2xl hover:shadow-primary/30 transform hover:scale-105 transition-all duration-300 will-change-transform border-2 border-primary/20"
+              className="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary border-2 border-primary/20 transition-all duration-300 font-bold text-lg sm:text-xl py-6 sm:py-8 px-8 sm:px-12 rounded-full shadow-2xl hover:shadow-primary/30 transform hover:scale-105 will-change-transform"
             >
               <Phone className="mr-3 h-6 w-6" />
               Claim Your Free Pilot →
