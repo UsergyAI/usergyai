@@ -100,14 +100,14 @@ const ProblemSection = () => {
                   icon: TrendingDown,
                   title: "Feedback Vacuum", 
                   description: "Without real user insights, even advanced AI solutions miss actual market needs.",
-                  color: "text-orange-600",
-                  bgColor: "bg-orange-50"
+                  color: "text-red-600",
+                  bgColor: "bg-red-50"
                 },
                 {
                   icon: Zap,
                   title: "Zero Buzz",
                   description: "Game-changing innovations remain invisible, lacking social proof needed for momentum.",
-                  color: "text-red-700",
+                  color: "text-red-600",
                   bgColor: "bg-red-50"
                 }
               ].map((problem, index) => (
@@ -118,8 +118,8 @@ const ProblemSection = () => {
                   }`}
                   style={{ animationDelay: `${(index + 2) * 200}ms` }}
                 >
-                  <div className={`w-14 h-14 rounded-xl ${problem.bgColor} flex items-center justify-center flex-shrink-0 ${problem.color} bg-muted text-primary`}>
-                    <problem.icon className="h-7 w-7 text-primary" />
+                  <div className={`w-14 h-14 rounded-xl ${problem.bgColor} flex items-center justify-center flex-shrink-0`}>
+                    <problem.icon className={`h-7 w-7 ${problem.color}`} />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-foreground mb-2">{problem.title}</h3>
@@ -137,9 +137,9 @@ const ProblemSection = () => {
             <div className="max-w-2xl mx-auto">
               <p className="text-2xl lg:text-3xl font-bold text-foreground leading-tight">
                 The Cost of Invisibility is{' '}
-                <span className="text-primary relative">
+                <span className="text-red-600 relative">
                   Extinction
-                  <div className="absolute -bottom-1 left-0 right-0 h-2 bg-primary/20 -skew-y-1"></div>
+                  <div className="absolute -bottom-1 left-0 right-0 h-2 bg-red-600/20 -skew-y-1"></div>
                 </span>
               </p>
             </div>
