@@ -22,7 +22,6 @@ const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
   className = '',
   width,
   height,
-  loading = 'lazy',
   priority = false,
   sizes,
   srcSet
@@ -45,8 +44,6 @@ const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
       width={width}
       height={height}
       priority={priority}
-      sizes={sizes}
-      srcSet={srcSet}
       onError={handleError}
     />
   );
