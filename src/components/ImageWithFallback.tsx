@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import OptimizedImage from './OptimizedImage';
 
@@ -41,10 +42,7 @@ const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
       className={className}
       width={width}
       height={height}
-      loading={loading}
       priority={priority}
-      sizes={sizes}
-      srcSet={srcSet}
       onError={handleError}
     />
   );

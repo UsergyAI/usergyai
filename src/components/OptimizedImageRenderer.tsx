@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ModernImageOptimizer from './ModernImageOptimizer';
 
@@ -59,7 +60,6 @@ const OptimizedImageRenderer: React.FC<OptimizedImageRendererProps> = ({
         width={width}
         height={height}
         sizes={sizes}
-        loading={priority ? 'eager' : 'lazy'}
       />
     </picture>
   );
