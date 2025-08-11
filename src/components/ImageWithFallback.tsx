@@ -1,15 +1,14 @@
-
 import React, { useState } from 'react';
 import OptimizedImage from './OptimizedImage';
 
 interface ImageWithFallbackProps {
   src: string;
-  fallbackSrc: string;
+  fallbackSrc?: string;
   alt: string;
   className?: string;
   width?: number;
   height?: number;
-  loading?: 'eager' | 'lazy';
+  loading?: 'lazy' | 'eager';
   priority?: boolean;
   sizes?: string;
   srcSet?: string;
@@ -17,22 +16,21 @@ interface ImageWithFallbackProps {
 
 const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
   src,
-  fallbackSrc,
+  fallbackSrc = '/lovable-uploads/placeholder.png',
   alt,
   className = '',
   width,
   height,
+  loading = 'lazy',
   priority = false,
   sizes,
   srcSet
 }) => {
   const [imgSrc, setImgSrc] = useState(src);
-  const [hasError, setHasError] = useState(false);
 
   const handleError = () => {
-    if (!hasError && imgSrc !== fallbackSrc) {
+    if (imgSrc !== fallbackSrc) {
       setImgSrc(fallbackSrc);
-      setHasError(true);
     }
   };
 
@@ -43,7 +41,10 @@ const ImageWithFallback: React.FC<ImageWithFallbackProps> = ({
       className={className}
       width={width}
       height={height}
+      loading={loading}
       priority={priority}
+      sizes={sizes}
+      srcSet={srcSet}
       onError={handleError}
     />
   );

@@ -1,47 +1,92 @@
-
 import { useEffect } from 'react';
+
+// Critical CSS for above-the-fold content
+const criticalCSS = `
+  /* Critical styles for immediate rendering */
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(195 100% 50%), hsl(217 100% 46%));
+  }
+  
+  .text-usergy-dark {
+    color: hsl(var(--foreground));
+  }
+  
+  .bg-usergy-light {
+    background-color: hsl(var(--background));
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(195 100% 50%), hsl(217 100% 46%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  /* Essential animations for hero section */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.6s ease-out;
+  }
+  
+  /* Skip link styles */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: hsl(var(--primary));
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 9999;
+    font-weight: bold;
+    transition: top 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .skip-link:focus {
+    top: 6px;
+  }
+  
+  /* Focus styles for accessibility */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+`;
 
 export const useCriticalCSS = () => {
   useEffect(() => {
-    // Apply critical CSS styles for above-the-fold content
+    // Inject critical CSS immediately
     const style = document.createElement('style');
-    style.textContent = `
-      /* Critical CSS for immediate rendering */
-      .hero-gradient {
-        background: linear-gradient(135deg, hsl(204 100% 97%) 0%, hsl(0 0% 100%) 35%, hsl(210 40% 98%) 100%);
-      }
-      
-      .primary-gradient {
-        background: linear-gradient(135deg, hsl(217 91% 60%) 0%, hsl(212 100% 46%) 100%);
-      }
-      
-      .section-wash {
-        background: linear-gradient(to bottom, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 50%, hsl(0 0% 100%) 100%);
-      }
-      
-      .animate-float {
-        animation: float 6s ease-in-out infinite;
-      }
-      
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-      }
-      
-      .animate-pulse-glow {
-        animation: pulse-glow 2s infinite;
-      }
-      
-      @keyframes pulse-glow {
-        0%, 100% { box-shadow: 0 0 20px hsl(217 91% 60% / 0.3); }
-        50% { box-shadow: 0 0 40px hsl(217 91% 60% / 0.6), 0 0 60px hsl(217 91% 60% / 0.4); }
-      }
-    `;
-    
-    document.head.appendChild(style);
-    
+    style.textContent = criticalCSS;
+    style.setAttribute('data-critical', 'true');
+    document.head.insertBefore(style, document.head.firstChild);
+
     return () => {
-      document.head.removeChild(style);
+      // Cleanup on unmount
+      const criticalStyle = document.querySelector('style[data-critical="true"]');
+      if (criticalStyle) {
+        criticalStyle.remove();
+      }
     };
   }, []);
 };
+
+export default useCriticalCSS;

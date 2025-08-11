@@ -29,9 +29,12 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
       name: 'Feedback Only',
       subtitle: 'Essential Insights',
       price: prices.feedback,
+      color: 'coral',
+      gradient: '',
       borderColor: 'border-border',
       hoverBorder: 'hover:border-primary/40',
       buttonGradient: 'bg-primary',
+      buttonHover: '',
       iconColor: 'text-primary',
       features: [
         'Recruit & incentivize premium users with all costs included',
@@ -43,9 +46,12 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
       name: 'Feedback + Community',
       subtitle: 'Growth Catalyst',
       price: prices.community,
+      color: 'turquoise',
+      gradient: '',
       borderColor: 'border-border',
       hoverBorder: 'hover:border-primary/40',
       buttonGradient: 'bg-primary',
+      buttonHover: '',
       iconColor: 'text-primary',
       popular: true,
       features: [
@@ -58,9 +64,12 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
       name: 'Full Traction',
       subtitle: 'Market Domination',
       price: prices.full,
+      color: 'skyblue',
+      gradient: '',
       borderColor: 'border-border',
       hoverBorder: 'hover:border-primary/40',
       buttonGradient: 'bg-primary',
+      buttonHover: '',
       iconColor: 'text-primary',
       features: [
         'Everything in Community package plus premium features',
@@ -78,7 +87,7 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
           {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className={`relative bg-gradient-to-br border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] ${
+              className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-[1.02] ${
                 plan.popular ? 'ring-2 ring-primary/40 shadow-xl' : ''
               }`}
             >
@@ -129,7 +138,7 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
           {plans.map((plan, index) => (
             <div
               key={plan.name}
-              className={`relative bg-gradient-to-br border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 ${
+              className={`relative bg-gradient-to-br ${plan.gradient} border-2 ${plan.borderColor} ${plan.hoverBorder} rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 ${
                 plan.popular ? 'ring-2 ring-primary/40 scale-105 shadow-xl' : ''
               }`}
             >
