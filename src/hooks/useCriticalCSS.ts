@@ -7,13 +7,6 @@ const criticalCSS = `
     background: linear-gradient(135deg, hsl(195 100% 50%), hsl(217 100% 46%));
   }
   
-  .text-usergy-dark {
-    color: hsl(var(--foreground));
-  }
-  
-  .bg-usergy-light {
-    background-color: hsl(var(--background));
-  }
   
   .gradient-text {
     background: linear-gradient(135deg, hsl(195 100% 50%), hsl(217 100% 46%));

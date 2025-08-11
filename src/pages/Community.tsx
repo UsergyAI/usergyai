@@ -15,7 +15,7 @@ import StructuredData from '@/components/StructuredData';
 
 const Community = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-usergy-light via-white to-usergy-light">
+    <div className="min-h-screen section-wash">
       <SEOHead
         title="AI Explorer Community"
         description="Join a thriving community of AI enthusiasts and founders. Get early access to AI tools, provide feedback, earn rewards, and shape the future of AI innovation."

@@ -60,18 +60,18 @@ const SolutionSection = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto text-center">
           {/* Section Header */}
-          <h2 className={`text-4xl lg:text-5xl font-extrabold text-usergy-dark mb-8 transition-all duration-1000 ${
+          <h2 className={`text-4xl lg:text-5xl font-extrabold text-foreground mb-8 transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             What We Do 
             <span className="gradient-text"> For You</span>
           </h2>
 
-          <p className={`text-xl text-gray-600 mb-16 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${
+          <p className={`text-xl text-muted-foreground mb-16 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             We deliver comprehensive AI traction consulting that integrates three critical pillars into one powerful, seamless process. 
-            <span className="font-semibold text-usergy-dark">This is our proven methodology for real growth.</span>
+            <span className="font-semibold text-foreground">This is our proven methodology for real growth.</span>
           </p>
 
           {/* Interactive Methodology Center */}
@@ -196,8 +196,8 @@ const SolutionSection = () => {
                     activeNode === node.id 
                       ? 'bg-white shadow-2xl scale-105 transform border-2' 
                       : hoveredService === index
-                      ? 'bg-gray-50 shadow-xl scale-102 transform'
-                      : 'hover:bg-gray-50 hover:scale-102 hover:shadow-lg'
+                      ? 'bg-muted shadow-xl scale-102 transform'
+                      : 'hover:bg-muted hover:scale-102 hover:shadow-lg'
                   }`}
                   style={{ 
                     borderColor: activeNode === node.id ? node.color : 'transparent',
@@ -222,7 +222,7 @@ const SolutionSection = () => {
                   <h3 className={`text-xl font-bold mb-3 transition-colors duration-300 text-primary`}>
                     {node.title}
                   </h3>
-                  <p className="text-gray-600 mb-4">{node.description}</p>
+                  <p className="text-muted-foreground mb-4">{node.description}</p>
                   
                   {/* Expandable details */}
                   <div className={`transition-all duration-500 overflow-hidden ${

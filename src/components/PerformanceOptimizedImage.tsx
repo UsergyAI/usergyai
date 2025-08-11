@@ -70,7 +70,7 @@ const PerformanceOptimizedImage: React.FC<PerformanceOptimizedImageProps> = ({
     <div ref={imgRef} className={`relative ${className}`}>
       {!isLoaded && !hasError && (
         <div 
-          className="absolute inset-0 bg-gray-200 animate-pulse rounded"
+          className="absolute inset-0 bg-muted animate-pulse rounded"
           style={{ width, height }}
         />
       )}
@@ -96,7 +96,7 @@ const PerformanceOptimizedImage: React.FC<PerformanceOptimizedImageProps> = ({
       
       {hasError && (
         <div 
-          className="absolute inset-0 bg-gray-100 flex items-center justify-center text-gray-500 text-sm"
+          className="absolute inset-0 bg-muted flex items-center justify-center text-muted-foreground text-sm"
           style={{ width, height }}
         >
           Failed to load image

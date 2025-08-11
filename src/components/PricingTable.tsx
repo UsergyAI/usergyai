@@ -29,7 +29,7 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
       name: 'Feedback Only',
       subtitle: 'Essential Insights',
       price: prices.feedback,
-      color: 'coral',
+      
       gradient: '',
       borderColor: 'border-border',
       hoverBorder: 'hover:border-primary/40',
@@ -46,7 +46,7 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
       name: 'Feedback + Community',
       subtitle: 'Growth Catalyst',
       price: prices.community,
-      color: 'turquoise',
+      
       gradient: '',
       borderColor: 'border-border',
       hoverBorder: 'hover:border-primary/40',
@@ -64,7 +64,7 @@ const PricingTable = ({ selectedUsers }: PricingTableProps) => {
       name: 'Full Traction',
       subtitle: 'Market Domination',
       price: prices.full,
-      color: 'skyblue',
+      
       gradient: '',
       borderColor: 'border-border',
       hoverBorder: 'hover:border-primary/40',

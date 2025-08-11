@@ -8,7 +8,7 @@ const WhyUsergySection = () => {
         <h2 className="text-4xl font-black text-foreground text-center mb-8">
           Why Usergy is Your Smartest Investment for AI Growth
         </h2>
-        <div className="max-w-4xl mx-auto text-lg text-gray-600 leading-relaxed">
+        <div className="max-w-4xl mx-auto text-lg text-muted-foreground leading-relaxed">
           <p className="mb-6">
             Founders often spend thousands on fragmented tools or agencies for just one aspect of traction. UserTesting for basic feedback can cost up to <span className="font-bold text-primary">$40,000/year</span>. Building communities can incur <span className="font-bold text-primary">$10,000-$50,000</span> in development or agency fees up to <span className="font-bold text-primary">$1,999+/month</span>. And social media amplification agencies charge upwards of <span className="font-bold text-primary">$8,500/month</span>.
           </p>

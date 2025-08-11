@@ -124,14 +124,14 @@ const ModernImageOptimizer: React.FC<ModernImageOptimizerProps> = ({
       {/* Placeholder while loading */}
       {!isLoaded && !hasError && isInView && (
         <div 
-          className="absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse"
+          className="absolute inset-0 bg-muted animate-pulse"
           style={{ aspectRatio: width && height ? `${width}/${height}` : 'auto' }}
         />
       )}
       
       {/* Error state */}
       {hasError && (
-        <div className="flex items-center justify-center bg-gray-100 text-gray-400 min-h-[200px]">
+        <div className="flex items-center justify-center bg-muted text-muted-foreground min-h-[200px]">
           <span className="text-sm">Image unavailable</span>
         </div>
       )}

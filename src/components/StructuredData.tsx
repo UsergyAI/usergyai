@@ -43,7 +43,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
       "ratingValue": "5.0",
       "reviewCount": "4",
       "bestRating": "5",
-      "worstRating": "5"
+      "worstRating": "1"
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",

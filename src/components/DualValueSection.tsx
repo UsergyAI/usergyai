@@ -28,7 +28,7 @@ const DualValueSection = () => {
             <h2 className="text-4xl lg:text-5xl font-extrabold text-foreground mb-6">
               The Dual Value Proposition
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Whether you're building the next breakthrough AI tool or seeking to explore cutting-edge technology, 
               Usergy creates reciprocal value that benefits everyone.
             </p>
@@ -98,7 +98,7 @@ const DualValueSection = () => {
                     <div className="text-2xl">→</div>
                     <Target className="h-10 w-10 text-primary" />
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">Founder → Growth → Success</p>
+                  <p className="text-sm text-muted-foreground mt-2">Founder → Growth → Success</p>
                 </div>
 
                 <div className="mt-auto">
@@ -162,7 +162,7 @@ const DualValueSection = () => {
                     <div className="text-2xl">→</div>
                     <Gift className="h-10 w-10 text-primary" />
                   </div>
-                  <p className="text-sm text-gray-500 mt-2">Explore → Contribute → Earn</p>
+                  <p className="text-sm text-muted-foreground mt-2">Explore → Contribute → Earn</p>
                 </div>
 
                 <div className="mt-auto">

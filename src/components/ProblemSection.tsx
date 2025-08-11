@@ -63,10 +63,10 @@ const ProblemSection = () => {
                       <div className="text-7xl font-black text-red-600">42%</div>
                     </div>
                     
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2 text-center">
+                    <h3 className="text-2xl font-bold text-foreground mb-2 text-center">
                       of AI startups fail within 2 years
                     </h3>
-                    <p className="text-gray-600 text-center mb-6 text-lg">
+                    <p className="text-muted-foreground text-center mb-6 text-lg">
                       due to poor market traction
                     </p>
                     

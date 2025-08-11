@@ -44,9 +44,9 @@ const Pricing = () => {
         <PricingPsychologySection />
 
         {/* FAQ Section */}
-        <section className="py-20 bg-gray-50" aria-labelledby="faq-heading">
+        <section className="py-20 bg-muted" aria-labelledby="faq-heading">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 id="faq-heading" className="text-3xl font-black text-usergy-dark text-center mb-12">
+            <h2 id="faq-heading" className="text-3xl font-black text-foreground text-center mb-12">
               Common Questions About Usergy Services
             </h2>
             <FAQAccordion />

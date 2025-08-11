@@ -185,7 +185,7 @@ const HowItWorksSection = () => {
                           <h3 className="text-xl font-bold text-foreground mb-1">{step.title}</h3>
                           <p className="text-muted-foreground text-sm leading-relaxed">{step.description}</p>
                         </div>
-                        <div className="text-gray-400 flex-shrink-0 transition-transform duration-300">
+                        <div className="text-muted-foreground flex-shrink-0 transition-transform duration-300">
                           {expandedStep === index + 100 ? 
                             <ChevronUp className="h-5 w-5 transform rotate-180" /> : 
                             <ChevronDown className="h-5 w-5" />

@@ -71,10 +71,10 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   return (
     <div ref={imgRef} className={`relative ${className}`}>
       {placeholder && !isLoaded && !hasError && (
-        <div className={`absolute inset-0 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-pulse ${className}`} />
+        <div className={`absolute inset-0 bg-muted animate-pulse ${className}`} />
       )}
       {hasError && (
-        <div className={`flex items-center justify-center bg-gray-100 text-gray-400 ${className}`}>
+        <div className={`flex items-center justify-center bg-muted text-muted-foreground ${className}`}>
           <span className="text-sm">Image unavailable</span>
         </div>
       )}
