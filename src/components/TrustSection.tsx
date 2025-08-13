@@ -55,21 +55,21 @@ const TrustSection = () => {
     },
     {
       icon: Users,
-      number: 75000,
+      number: 500,
       suffix: '+',
       label: 'AI Users',
       color: 'text-primary'
     },
     {
       icon: Award,
-      number: 92,
+      number: 97,
       suffix: '%',
       label: 'Feedback Quality Score',
       color: 'text-destructive'
     },
     {
       icon: TrendingUp,
-      number: 500,
+      number: 30,
       suffix: 'K+',
       label: 'Revenue Generated',
       color: 'text-success'
@@ -103,9 +103,9 @@ const TrustSection = () => {
 
             // Animate each KPI number
             animateNumber(12, 'campaigns');
-            animateNumber(75000, 'users');
-            animateNumber(92, 'feedback');
-            animateNumber(500, 'revenue');
+            animateNumber(500, 'users');
+            animateNumber(97, 'feedback');
+            animateNumber(30, 'revenue');
           }
         }
       },
