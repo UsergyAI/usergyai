@@ -48,7 +48,7 @@ const TrustSection = () => {
   const kpis = [
     {
       icon: Target,
-      number: 1200,
+      number: 12,
       suffix: '+',
       label: 'Campaigns Launched',
       color: 'text-primary'
@@ -102,7 +102,7 @@ const TrustSection = () => {
             };
 
             // Animate each KPI number
-            animateNumber(1200, 'campaigns');
+            animateNumber(12, 'campaigns');
             animateNumber(75000, 'users');
             animateNumber(92, 'feedback');
             animateNumber(500, 'revenue');
