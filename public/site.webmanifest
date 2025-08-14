@@ -1,32 +1,49 @@
 
 {
-  "name": "Usergy",
+  "name": "Usergy - AI Traction & Growth",
   "short_name": "Usergy",
-  "description": "Expert AI traction services connecting visionary founders with engaged enthusiasts",
+  "description": "Expert AI traction services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F8FFFE",
-  "theme_color": "#4ECDC4",
+  "background_color": "#FFFFFF",
+  "theme_color": "#005BEA",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en-US",
+  "categories": ["business", "productivity", "utilities"],
   "icons": [
     {
       "src": "/favicon.svg",
       "sizes": "16x16",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
       "src": "/favicon.svg",
       "sizes": "32x32",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
       "src": "/favicon.svg",
       "sizes": "180x180",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
     },
     {
       "src": "/favicon.svg",
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "1280x720",
+      "type": "image/svg+xml",
+      "form_factor": "wide",
+      "label": "Usergy homepage"
     }
   ]
 }

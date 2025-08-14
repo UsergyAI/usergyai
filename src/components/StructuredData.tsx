@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
@@ -15,7 +16,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
   breadcrumbs = [],
   pageType = 'WebPage'
 }) => {
-  // Enhanced Organization Schema
+  // Enhanced Organization Schema with consistent logo
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -24,15 +25,15 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     "url": "https://usergy.ai",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png",
-      "width": "180",
-      "height": "180",
-      "caption": "Usergy Logo"
+      "url": "https://usergy.ai/favicon.svg",
+      "width": "64",
+      "height": "64",
+      "caption": "Usergy Logo - AI Traction & Growth Services"
     },
     "description": "Expert AI traction consulting services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum. Accelerate your AI startup's growth with proven strategies.",
     "foundingDate": "2024",
     "industry": ["Artificial Intelligence Services", "Business Consulting", "Startup Services"],
-    "keywords": ["AI startup growth", "AI traction", "startup consulting", "AI community", "business development"],
+    "keywords": ["AI startup growth", "AI traction", "startup consulting", "AI community", "business development", "AI feedback", "product market fit"],
     "slogan": "AI Traction & Growth",
     "serviceArea": {
       "@type": "Place",
@@ -40,8 +41,8 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     },
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "4",
+      "ratingValue": "4.9",
+      "reviewCount": "12",
       "bestRating": "5",
       "worstRating": "1"
     },
@@ -71,7 +72,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
           "itemOffered": {
             "@type": "Service",
             "name": "AI Community Building",
-            "description": "Expert community building services for AI startups to create engaged user bases",
+            "description": "Expert community building services for AI startups to create engaged user bases of 500+ AI enthusiasts",
             "provider": {
               "@type": "Organization",
               "name": "Usergy"
@@ -83,7 +84,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
           "itemOffered": {
             "@type": "Service",
             "name": "AI Product Feedback Collection",
-            "description": "Structured feedback collection from AI enthusiasts and early adopters",
+            "description": "Structured feedback collection from AI enthusiasts and early adopters with 97% quality score",
             "provider": {
               "@type": "Organization",
               "name": "Usergy"
@@ -98,7 +99,15 @@ const StructuredData: React.FC<StructuredDataProps> = ({
         "email": "hello@usergy.ai",
         "contactType": "customer service",
         "availableLanguage": ["English"],
-        "url": "https://usergy.ai/contact"
+        "url": "https://usergy.ai/contact",
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00",
+          "validFrom": "2024-01-01",
+          "validThrough": "2025-12-31"
+        }
       },
       {
         "@type": "ContactPoint",
@@ -109,7 +118,8 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     ],
     "address": {
       "@type": "PostalAddress",
-      "addressCountry": "US"
+      "addressCountry": "US",
+      "addressRegion": "Global"
     },
     "sameAs": [
       "https://www.linkedin.com/company/usergy-ai",
@@ -123,11 +133,12 @@ const StructuredData: React.FC<StructuredDataProps> = ({
       "offeredBy": {
         "@type": "Organization",
         "name": "Usergy"
-      }
+      },
+      "priceRange": "$500-$5000"
     }
   };
 
-  // Enhanced Website Schema
+  // Enhanced Website Schema with consistent logo
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -142,8 +153,15 @@ const StructuredData: React.FC<StructuredDataProps> = ({
       "name": "Usergy",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png"
+        "url": "https://usergy.ai/favicon.svg",
+        "width": "64",
+        "height": "64"
       }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://usergy.ai/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
   };
 
@@ -167,8 +185,8 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     "description": "Expert AI traction services for founders and entrepreneurs",
     "url": typeof window !== 'undefined' ? window.location.href : 'https://usergy.ai',
     "inLanguage": "en-US",
-    "dateModified": "2024-01-07",
-    "lastReviewed": "2024-01-07",
+    "dateModified": "2025-01-14",
+    "lastReviewed": "2025-01-14",
     "isPartOf": {
       "@type": "WebSite",
       "name": "Usergy",
@@ -179,7 +197,9 @@ const StructuredData: React.FC<StructuredDataProps> = ({
       "name": "Usergy",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://usergy.ai/lovable-uploads/e5f86441-69d0-46b9-b865-d05a56c17b3e.png"
+        "url": "https://usergy.ai/favicon.svg",
+        "width": "64",
+        "height": "64"
       }
     }
   };

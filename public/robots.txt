@@ -1,8 +1,21 @@
+
+# Robots.txt for Usergy.ai - AI Traction & Growth Services
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
 
 User-agent: Twitterbot
 Allow: /
@@ -10,7 +23,27 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: LinkedInBot
 Allow: /
 
+User-agent: WhatsApp
+Allow: /
+
+User-agent: *
+Allow: /
+Crawl-delay: 5
+
+# Disallow admin or sensitive areas (none currently)
+# Disallow: /admin/
+
+# Important pages for crawling priority
+Allow: /pricing
+Allow: /community
+Allow: /contact
+Allow: /user-signup
+
+# Sitemap location
 Sitemap: https://usergy.ai/sitemap.xml
+
+# Host specification
+Host: https://usergy.ai

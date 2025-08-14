@@ -34,6 +34,7 @@ const SEOHead: React.FC<SEOHeadProps> = ({
   const finalCanonical = canonical || defaultSEOData.canonical;
   const finalKeywords = keywords || defaultSEOData.keywords;
   const finalNoindex = noindex || defaultSEOData.noindex || false;
+  const finalImage = image;
   
   // Immediately update document meta tags for search engines
   useEffect(() => {
@@ -69,24 +70,25 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       {/* Language and Locale */}
       <meta property="og:locale" content="en_US" />
       <meta name="language" content="en" />
+      <meta httpEquiv="content-language" content="en-US" />
       
-      {/* Enhanced Open Graph */}
+      {/* Enhanced Open Graph with consistent logo */}
       <meta property="og:type" content={type} />
       <meta property="og:title" content={optimizedTitle} />
       <meta property="og:description" content={optimizedDescription} />
       <meta property="og:url" content={finalCanonical} />
-      <meta property="og:image" content={image} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Usergy - AI Traction & Growth Services" />
+      <meta property="og:image" content={finalImage} />
+      <meta property="og:image:width" content="64" />
+      <meta property="og:image:height" content="64" />
+      <meta property="og:image:alt" content="Usergy - AI Traction & Growth Services Logo" />
       <meta property="og:site_name" content="Usergy" />
 
-      {/* Enhanced Twitter Card */}
+      {/* Enhanced Twitter Card with consistent logo */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={optimizedTitle} />
       <meta name="twitter:description" content={optimizedDescription} />
-      <meta name="twitter:image" content={image} />
-      <meta name="twitter:image:alt" content="Usergy - AI Traction & Growth Services" />
+      <meta name="twitter:image" content={finalImage} />
+      <meta name="twitter:image:alt" content="Usergy - AI Traction & Growth Services Logo" />
       <meta name="twitter:creator" content="@usergy" />
       <meta name="twitter:site" content="@usergy" />
 
@@ -125,6 +127,37 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       {/* Security headers */}
       <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
       <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+      {/* Structured Data for better search results */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": optimizedTitle,
+          "description": optimizedDescription,
+          "url": finalCanonical,
+          "inLanguage": "en-US",
+          "isPartOf": {
+            "@type": "WebSite",
+            "name": "Usergy",
+            "url": "https://usergy.ai"
+          },
+          "author": {
+            "@type": "Organization",
+            "name": "Usergy"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Usergy",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://usergy.ai/favicon.svg",
+              "width": "64",
+              "height": "64"
+            }
+          }
+        })}
+      </script>
     </Helmet>
   );
 };

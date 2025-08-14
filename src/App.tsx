@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { usePerformanceOptimization } from "@/hooks/usePerformanceOptimization";
 import PerformanceMonitor from "@/components/PerformanceMonitor";
+import SEOAudit from "@/components/SEOAudit";
 import Index from "./pages/Index";
 import Pricing from "./pages/Pricing";
 import Community from "./pages/Community";
@@ -42,6 +43,7 @@ const AppContent = () => {
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <SEOAudit />
     </BrowserRouter>
   );
 };
