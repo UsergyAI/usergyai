@@ -20,9 +20,9 @@ const MobilePerformanceOptimizer = () => {
               img.decoding = 'async';
               
               // Add mobile-specific srcset if not present
-              if (!img.srcSet && img.width && img.width > 400) {
+              if (!img.srcset && img.width && img.width > 400) {
                 const mobileSrc = img.src.replace(/\.(jpg|jpeg|png)$/i, '-mobile.$1');
-                img.srcSet = `${mobileSrc} 400w, ${img.src} 800w`;
+                img.srcset = `${mobileSrc} 400w, ${img.src} 800w`;
                 img.sizes = '(max-width: 768px) 400px, 800px';
               }
             }
