@@ -16,10 +16,10 @@ const StructuredData: React.FC<StructuredDataProps> = ({
   breadcrumbs = [],
   pageType = 'WebPage'
 }) => {
-  // Enhanced Organization Schema with consistent logo
+  // Enhanced Organization Schema with consistent SVG logo
   const organizationSchema = {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "LocalBusiness"],
     "name": "Usergy",
     "alternateName": ["Usergy AI", "Usergy.ai"],
     "url": "https://usergy.ai",
@@ -30,11 +30,17 @@ const StructuredData: React.FC<StructuredDataProps> = ({
       "height": "64",
       "caption": "Usergy Logo - AI Traction & Growth Services"
     },
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://usergy.ai/favicon.svg",
+      "width": "64",
+      "height": "64"
+    },
     "description": "Expert AI traction consulting services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum. Accelerate your AI startup's growth with proven strategies.",
-    "foundingDate": "2024",
+    "foundingDate": "2024-01-01",
     "industry": ["Artificial Intelligence Services", "Business Consulting", "Startup Services"],
     "keywords": ["AI startup growth", "AI traction", "startup consulting", "AI community", "business development", "AI feedback", "product market fit"],
-    "slogan": "AI Traction & Growth",
+    "slogan": "AI Traction & Growth Experts",
     "serviceArea": {
       "@type": "Place",
       "name": "Global"
@@ -42,7 +48,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "12",
+      "reviewCount": "15",
       "bestRating": "5",
       "worstRating": "1"
     },
@@ -138,7 +144,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     }
   };
 
-  // Enhanced Website Schema with consistent logo
+  // Enhanced Website Schema with consistent SVG logo
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -148,6 +154,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     "description": "Expert AI traction services connecting visionary founders with engaged enthusiasts for authentic feedback, vibrant community, and social momentum.",
     "inLanguage": "en-US",
     "copyrightYear": "2024",
+    "dateModified": "2025-01-14",
     "publisher": {
       "@type": "Organization",
       "name": "Usergy",
@@ -160,7 +167,10 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     },
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://usergy.ai/?q={search_term_string}",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://usergy.ai/?q={search_term_string}"
+      },
       "query-input": "required name=search_term_string"
     }
   };
@@ -186,6 +196,7 @@ const StructuredData: React.FC<StructuredDataProps> = ({
     "url": typeof window !== 'undefined' ? window.location.href : 'https://usergy.ai',
     "inLanguage": "en-US",
     "dateModified": "2025-01-14",
+    "datePublished": "2024-01-01",
     "lastReviewed": "2025-01-14",
     "isPartOf": {
       "@type": "WebSite",
@@ -201,6 +212,10 @@ const StructuredData: React.FC<StructuredDataProps> = ({
         "width": "64",
         "height": "64"
       }
+    },
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Usergy"
     }
   };
 

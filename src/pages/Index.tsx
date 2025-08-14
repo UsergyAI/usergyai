@@ -18,16 +18,9 @@ import WebVitalsOptimizer from '@/components/WebVitalsOptimizer';
 import PerformanceMonitor from '@/components/PerformanceMonitor';
 
 const Index = () => {
-
   return (
     <div className="min-h-screen bg-background">
-      <SEOHead
-        title="Usergy - AI Traction & Growth Experts | Expert Consulting for AI Startups"
-        description="Usergy: AI Traction & Growth - Our expert team connects visionary AI founders with engaged enthusiasts to deliver authentic feedback, vibrant community, and social momentum."
-        canonical="https://usergy.ai"
-        keywords="AI traction, AI growth, AI community, AI feedback, AI founders, startup growth, AI consulting, user engagement, product market fit, AI startup consulting"
-        type="website"
-      />
+      <SEOHead />
       <StructuredData
         breadcrumbs={[
           { name: "Home", url: "https://usergy.ai" }

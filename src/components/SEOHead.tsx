@@ -46,17 +46,11 @@ const SEOHead: React.FC<SEOHeadProps> = ({
     });
   }, [finalTitle, finalDescription, finalCanonical, finalNoindex]);
 
-  // Ensure titles are under 60 characters for optimal SEO
-  const optimizedTitle = finalTitle.length > 60 ? finalTitle.substring(0, 57) + '...' : finalTitle;
-  
-  // Ensure descriptions are 150-160 characters for optimal SEO
-  const optimizedDescription = finalDescription.length > 160 ? finalDescription.substring(0, 157) + '...' : finalDescription;
-
   return (
     <Helmet>
       {/* Basic Meta Tags */}
-      <title>{optimizedTitle}</title>
-      <meta name="description" content={optimizedDescription} />
+      <title>{finalTitle}</title>
+      <meta name="description" content={finalDescription} />
       {finalKeywords && <meta name="keywords" content={finalKeywords} />}
       <link rel="canonical" href={finalCanonical} />
       {finalNoindex ? <meta name="robots" content="noindex,nofollow" /> : <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />}
@@ -65,17 +59,17 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="googlebot" content="index, follow" />
       <meta name="bingbot" content="index, follow" />
       <meta name="format-detection" content="telephone=no" />
-      <meta name="referrer" content="origin-when-cross-origin" />
+      <meta name="referrer" content="strict-origin-when-cross-origin" />
       
       {/* Language and Locale */}
       <meta property="og:locale" content="en_US" />
       <meta name="language" content="en" />
       <meta httpEquiv="content-language" content="en-US" />
       
-      {/* Enhanced Open Graph with consistent logo */}
+      {/* Enhanced Open Graph with consistent SVG logo */}
       <meta property="og:type" content={type} />
-      <meta property="og:title" content={optimizedTitle} />
-      <meta property="og:description" content={optimizedDescription} />
+      <meta property="og:title" content={finalTitle} />
+      <meta property="og:description" content={finalDescription} />
       <meta property="og:url" content={finalCanonical} />
       <meta property="og:image" content={finalImage} />
       <meta property="og:image:width" content="64" />
@@ -83,10 +77,10 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:image:alt" content="Usergy - AI Traction & Growth Services Logo" />
       <meta property="og:site_name" content="Usergy" />
 
-      {/* Enhanced Twitter Card with consistent logo */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={optimizedTitle} />
-      <meta name="twitter:description" content={optimizedDescription} />
+      {/* Enhanced Twitter Card with consistent SVG logo */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={finalTitle} />
+      <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={finalImage} />
       <meta name="twitter:image:alt" content="Usergy - AI Traction & Growth Services Logo" />
       <meta name="twitter:creator" content="@usergy" />
@@ -128,23 +122,37 @@ const SEOHead: React.FC<SEOHeadProps> = ({
       <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
       <meta name="referrer" content="strict-origin-when-cross-origin" />
 
-      {/* Structured Data for better search results */}
+      {/* Enhanced Structured Data for better search results */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebPage",
-          "name": optimizedTitle,
-          "description": optimizedDescription,
+          "name": finalTitle,
+          "description": finalDescription,
           "url": finalCanonical,
           "inLanguage": "en-US",
+          "dateModified": "2025-01-14",
+          "datePublished": "2024-01-01",
           "isPartOf": {
             "@type": "WebSite",
             "name": "Usergy",
-            "url": "https://usergy.ai"
+            "url": "https://usergy.ai",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://usergy.ai/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
           },
           "author": {
             "@type": "Organization",
-            "name": "Usergy"
+            "name": "Usergy",
+            "url": "https://usergy.ai",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://usergy.ai/favicon.svg",
+              "width": "64",
+              "height": "64"
+            }
           },
           "publisher": {
             "@type": "Organization",
@@ -155,6 +163,17 @@ const SEOHead: React.FC<SEOHeadProps> = ({
               "width": "64",
               "height": "64"
             }
+          },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://usergy.ai"
+              }
+            ]
           }
         })}
       </script>
