@@ -13,13 +13,11 @@ import SEOHead from '@/components/SEOHead';
 import StructuredData from '@/components/StructuredData';
 import CriticalResourcePreloader from '@/components/CriticalResourcePreloader';
 import LazyLoadController from '@/components/LazyLoadController';
-import MobilePerformanceOptimizer from '@/components/MobilePerformanceOptimizer';
-import { useMobileOptimization } from '@/hooks/useMobileOptimization';
+import ThirdPartyOptimizer from '@/components/ThirdPartyOptimizer';
+import WebVitalsOptimizer from '@/components/WebVitalsOptimizer';
+import PerformanceMonitor from '@/components/PerformanceMonitor';
 
 const Index = () => {
-  // Use mobile optimization hook
-  useMobileOptimization();
-
   return (
     <div className="min-h-screen bg-background">
       <SEOHead />
@@ -30,11 +28,11 @@ const Index = () => {
         pageType="WebPage"
       />
       
-      {/* Critical resource preloader */}
+      {/* Performance optimization components */}
       <CriticalResourcePreloader />
-      
-      {/* Mobile-specific performance optimizer */}
-      <MobilePerformanceOptimizer />
+      <ThirdPartyOptimizer />
+      <WebVitalsOptimizer />
+      <PerformanceMonitor />
       
       {/* Skip link for accessibility */}
       <a href="#main" className="skip-link" aria-label="Skip to main content">
@@ -47,33 +45,33 @@ const Index = () => {
         {/* Critical above-the-fold content loaded immediately */}
         <HeroSection />
         
-        {/* Below-the-fold content with lazy loading for better mobile performance */}
-        <LazyLoadController priority={false} rootMargin="100px">
+        {/* Below-the-fold content with lazy loading */}
+        <LazyLoadController priority={false}>
           <ProblemSection />
         </LazyLoadController>
         
-        <LazyLoadController priority={false} rootMargin="100px">
+        <LazyLoadController priority={false}>
           <SolutionSection />
         </LazyLoadController>
         
-        <LazyLoadController priority={false} rootMargin="100px">
+        <LazyLoadController priority={false}>
           <DualValueSection />
         </LazyLoadController>
         
-        <LazyLoadController priority={false} rootMargin="100px">
+        <LazyLoadController priority={false}>
           <HowItWorksSection />
         </LazyLoadController>
         
-        <LazyLoadController priority={false} rootMargin="100px">
+        <LazyLoadController priority={false}>
           <TrustSection />
         </LazyLoadController>
         
-        <LazyLoadController priority={false} rootMargin="100px">
+        <LazyLoadController priority={false}>
           <FinalCTASection />
         </LazyLoadController>
       </main>
       
-      <LazyLoadController priority={false} rootMargin="100px">
+      <LazyLoadController priority={false}>
         <Footer />
       </LazyLoadController>
     </div>

@@ -1,5 +1,5 @@
 
-/* Font will be loaded via mobile-optimized loading for better performance */
+/* Font will be loaded via CriticalResourcePreloader for better performance */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,16 +38,6 @@
   --popover-foreground: 222.2 84% 4.9%;
 
   --radius: 0.75rem;
-  
-  /* Mobile-optimized animation duration */
-  --animation-duration: 0.3s;
-}
-
-/* Mobile-first responsive design variables */
-@media (max-width: 768px) {
-  :root {
-    --animation-duration: 0.2s;
-  }
 }
 
 /* Helpers to guarantee legibility on complex/gradient/photo backgrounds */
@@ -65,22 +55,22 @@
 .btn-ghost      { @apply border border-border text-foreground hover:bg-muted; }
 
 @layer utilities {
-  /* Mobile-optimized animations with reduced motion support */
+  /* Enhanced Floating Animation for Bubbles - Performance Optimized */
   @keyframes float-enhanced {
     0%, 100% {
       transform: translate3d(0px, 0px, 0) scale(1);
       opacity: 0.6;
     }
     25% {
-      transform: translate3d(3px, -10px, 0) scale(1.02);
+      transform: translate3d(5px, -15px, 0) scale(1.05);
       opacity: 0.8;
     }
     50% {
-      transform: translate3d(-5px, -5px, 0) scale(0.98);
+      transform: translate3d(-8px, -8px, 0) scale(0.95);
       opacity: 1;
     }
     75% {
-      transform: translate3d(7px, -12px, 0) scale(1.05);
+      transform: translate3d(10px, -20px, 0) scale(1.1);
       opacity: 0.7;
     }
   }
@@ -90,23 +80,23 @@
       transform: translate3d(0, 0px, 0);
     }
     50% {
-      transform: translate3d(0, -8px, 0);
+      transform: translate3d(0, -10px, 0);
     }
   }
 
-  @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 15px hsl(var(--primary) / 0.2);
-    }
-    50% {
-      box-shadow: 0 0 25px hsl(var(--primary) / 0.4);
-    }
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.6);
+  }
+}
 
   @keyframes slide-up {
     from {
       opacity: 0;
-      transform: translate3d(0, 20px, 0);
+      transform: translate3d(0, 30px, 0);
     }
     to {
       opacity: 1;
@@ -117,7 +107,7 @@
   @keyframes fade-in {
     from {
       opacity: 0;
-      transform: translate3d(0, 8px, 0);
+      transform: translate3d(0, 10px, 0);
     }
     to {
       opacity: 1;
@@ -128,7 +118,7 @@
   @keyframes scale-in {
     from {
       opacity: 0;
-      transform: scale3d(0.95, 0.95, 1);
+      transform: scale3d(0.9, 0.9, 1);
     }
     to {
       opacity: 1;
@@ -136,69 +126,56 @@
     }
   }
 
-  /* Mobile-optimized animation classes */
   .animate-float-enhanced {
-    animation: float-enhanced 4s ease-in-out infinite;
+    animation: float-enhanced 6s ease-in-out infinite;
     will-change: transform, opacity;
   }
 
   .animate-float {
-    animation: float var(--animation-duration, 3s) ease-in-out infinite;
+    animation: float 3s ease-in-out infinite;
     will-change: transform;
   }
 
   .animate-pulse-glow {
-    animation: pulse-glow calc(var(--animation-duration, 2s) * 0.7) ease-in-out infinite;
+    animation: pulse-glow 2s ease-in-out infinite;
     will-change: box-shadow;
   }
 
   .animate-slide-up {
-    animation: slide-up var(--animation-duration, 0.8s) ease-out;
+    animation: slide-up 0.8s ease-out;
     will-change: transform, opacity;
   }
 
   .animate-fade-in {
-    animation: fade-in var(--animation-duration, 0.6s) ease-out;
+    animation: fade-in 0.6s ease-out;
     will-change: transform, opacity;
   }
 
   .animate-scale-in {
-    animation: scale-in var(--animation-duration, 0.5s) ease-out;
+    animation: scale-in 0.5s ease-out;
     will-change: transform, opacity;
   }
 
-  .gradient-text {
-    background: linear-gradient(135deg, hsl(195 100% 50%), hsl(var(--primary)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
+.gradient-text {
+  background: linear-gradient(135deg, hsl(195 100% 50%), hsl(var(--primary)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
 
   .floating-element {
     will-change: transform;
     backface-visibility: hidden;
   }
-
-  /* Mobile-specific touch optimization */
-  .touch-manipulation {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
 }
 
-/* Mobile-first responsive design improvements */
+/* Responsive Design Improvements */
 @media (max-width: 640px) {
   .floating-element {
-    animation-duration: calc(var(--animation-duration, 0.3s) * 2);
-  }
-  
-  /* Reduce complex animations on mobile */
-  .animate-float-enhanced {
-    animation: float 2s ease-in-out infinite;
+    animation-duration: 8s;
   }
 }
 
-/* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .animate-float-enhanced,
   .animate-float,
@@ -206,13 +183,9 @@
   .floating-element {
     animation: none;
   }
-  
-  :root {
-    --animation-duration: 0.01ms;
-  }
 }
 
-/* Performance optimization */
+/* Performance Optimization */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -220,10 +193,9 @@
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  -webkit-text-size-adjust: 100%;
 }
 
-/* Mobile-optimized skip link */
+/* Enhanced Skip link for accessibility */
 .skip-link {
   position: absolute;
   top: -40px;
@@ -235,18 +207,15 @@ body {
   border-radius: 4px;
   z-index: 9999;
   font-weight: bold;
-  transition: top var(--animation-duration, 0.3s) ease;
+  transition: top 0.3s ease;
   font-size: 14px;
-  min-height: 44px;
-  display: flex;
-  align-items: center;
 }
 
 .skip-link:focus {
   top: 6px;
 }
 
-/* Enhanced mobile-first focus styles */
+/* Enhanced Focus styles for accessibility */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
@@ -258,7 +227,7 @@ select:focus-visible,
   border-radius: 4px;
 }
 
-/* Mobile-optimized interactive elements */
+/* Enhanced interactive elements */
 button:not(:disabled),
 a,
 input,
@@ -268,7 +237,6 @@ select,
 [role="link"],
 [tabindex="0"] {
   cursor: pointer;
-  touch-action: manipulation;
 }
 
 button:disabled {
@@ -276,7 +244,7 @@ button:disabled {
   opacity: 0.6;
 }
 
-/* Mobile-first touch targets */
+/* Ensure adequate touch targets on mobile */
 @media (max-width: 768px) {
   button,
   a,
@@ -286,24 +254,6 @@ button:disabled {
   [role="link"] {
     min-height: 44px;
     min-width: 44px;
-    position: relative;
-  }
-  
-  /* Improve text readability on mobile */
-  body {
-    font-size: 16px;
-    line-height: 1.6;
-  }
-  
-  /* Optimize mobile typography */
-  h1 { font-size: 1.875rem; line-height: 1.2; }
-  h2 { font-size: 1.5rem; line-height: 1.3; }
-  h3 { font-size: 1.25rem; line-height: 1.4; }
-  
-  /* Mobile-specific spacing improvements */
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
   }
 }
 
@@ -312,18 +262,5 @@ button:disabled {
   .gradient-text {
     background: none;
     color: hsl(var(--foreground));
-  }
-}
-
-/* Connection-aware optimizations */
-@media (prefers-reduced-data: reduce) {
-  .animate-float-enhanced,
-  .animate-pulse-glow {
-    animation: none;
-  }
-  
-  .gradient-text {
-    background: none;
-    color: hsl(var(--primary));
   }
 }
