@@ -1,16 +1,12 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Sparkles, Phone } from 'lucide-react';
-
 const LaunchOfferSection = () => {
   const handleClaimFreeOffer = () => {
     const calendlyUrl = 'https://calendly.com/swaroop-usergy/30min?a1=Launch%20Special&a2=Free%20Pilot';
     window.open(calendlyUrl, '_blank');
   };
-
-  return (
-    <section className="py-20 bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
+  return <section className="py-20 bg-gradient-to-br from-background via-background to-primary/5 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-10 left-10 w-32 h-32 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-2xl"></div>
@@ -36,23 +32,15 @@ const LaunchOfferSection = () => {
           </p>
           
           <div className="mb-6">
-            <Button 
-              size="lg"
-              onClick={handleClaimFreeOffer}
-              className="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary border-2 border-primary/20 transition-all duration-300 font-bold text-lg sm:text-xl py-6 sm:py-8 px-8 sm:px-12 rounded-full shadow-2xl hover:shadow-primary/30 transform hover:scale-105 will-change-transform"
-            >
+            <Button size="lg" onClick={handleClaimFreeOffer} className="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary border-2 border-primary/20 transition-all duration-300 font-bold text-lg sm:text-xl py-6 sm:py-8 px-8 sm:px-12 rounded-full shadow-2xl hover:shadow-primary/30 transform hover:scale-105 will-change-transform">
               <Phone className="mr-3 h-6 w-6" />
               Claim Your Free Pilot →
             </Button>
           </div>
           
-          <p className="text-sm sm:text-base font-semibold text-foreground bg-card/60 backdrop-blur-sm px-6 py-3 rounded-full inline-block shadow-lg border border-primary/20">
-            (Only 5 spots available starting Aug 1st, 2025!)
-          </p>
+          <p className="text-sm sm:text-base font-semibold text-foreground bg-card/60 backdrop-blur-sm px-6 py-3 rounded-full inline-block shadow-lg border border-primary/20">(Only 5 spots available starting Oct 1st, 2025!)</p>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default LaunchOfferSection;
