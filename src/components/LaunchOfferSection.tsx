@@ -26,10 +26,7 @@ const LaunchOfferSection = () => {
             </h2>
           </div>
           
-          <p className="text-lg sm:text-xl font-semibold text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            For the first 5 visionary AI startups launching in August 2025, experience Usergy's 0-9 participants plan absolutely free. 
-            Kickstart your growth with authentic insights and real user buzz, on us.
-          </p>
+          <p className="text-lg sm:text-xl font-semibold text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">For the first 5 visionary AI startups launching in October 2025, experience Usergy's 0-9 participants plan absolutely free. Kickstart your growth with authentic insights and real user buzz, on us.</p>
           
           <div className="mb-6">
             <Button size="lg" onClick={handleClaimFreeOffer} className="bg-primary text-primary-foreground hover:bg-primary/90 focus-visible:ring-2 focus-visible:ring-primary border-2 border-primary/20 transition-all duration-300 font-bold text-lg sm:text-xl py-6 sm:py-8 px-8 sm:px-12 rounded-full shadow-2xl hover:shadow-primary/30 transform hover:scale-105 will-change-transform">
